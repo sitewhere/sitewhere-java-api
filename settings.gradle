@@ -1,0 +1,4 @@
+rootProject.name = 'sitewhere-java-api'
+include ':sitewhere-java-model'
+
+project(':sitewhere-java-model').projectDir = "$rootDir/sitewhere-java-model" as File

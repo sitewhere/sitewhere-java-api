@@ -1,0 +1,43 @@
+buildscript {
+	repositories {
+		maven { url "https://plugins.gradle.org/m2/" }
+ 	}
+	dependencies {
+		classpath 'io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE'
+		classpath "gradle.plugin.nl.javadude.gradle.plugins:license-gradle-plugin:0.14.0"
+	}
+}
+
+apply plugin: 'distribution'
+    
+allprojects {
+    group = 'com.sitewhere'
+	version = '2.0.0-SNAPSHOT'
+	
+    repositories {
+        maven { url "http://repo.maven.apache.org/maven2" }
+    }
+}
+
+subprojects {
+	apply plugin: 'eclipse'
+	
+    // Use Spring dependency management.
+ 	apply plugin: 'io.spring.dependency-management'
+	dependencyManagement {
+		imports {
+			mavenBom 'io.spring.platform:platform-bom:Cairo-SR1'
+		}
+	}
+	
+	apply plugin: "com.github.hierynomus.license"
+	license {
+		header rootProject.file('HEADER')
+    	include "**/*.java"
+	}
+ 	
+ 	// Choose Java settings.
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
