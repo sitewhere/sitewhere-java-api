@@ -28,6 +28,7 @@ import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
 import com.sitewhere.rest.model.common.Location;
 import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
+import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.event.DeviceEventBatch;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
@@ -89,9 +90,15 @@ public class ApiTests {
     }
 
     @Test
-    public void testConnectivity() throws SiteWhereException {
+    public void testVersion() throws SiteWhereException {
 	Version version = getClient().getSiteWhereVersion();
 	System.out.println("SiteWhere version is " + version.getVersionIdentifier() + ".");
+    }
+
+    @Test
+    public void testDeviceType() throws SiteWhereException {
+	DeviceType type = getClient().getDeviceTypeByToken(SiteWhereClient.defaultTenant(), "galaxytab3");
+	System.out.println("Device type is '" + type.getName() + "'.");
     }
 
     @Test

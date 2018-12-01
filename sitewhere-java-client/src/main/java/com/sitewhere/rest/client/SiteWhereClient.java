@@ -151,6 +151,13 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return new Builder();
     }
 
+    public static ITenantAuthentication defaultTenant() {
+	TenantAuthentication auth = new TenantAuthentication();
+	auth.setTenantToken("default");
+	auth.setTenantAuthToken("sitewhere1234567890");
+	return auth;
+    }
+
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#initialize()
      */
@@ -245,7 +252,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public Version getSiteWhereVersion() throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
-	return sendRest(getRestApiUrl() + "system/version", HttpMethod.GET, null, Version.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "system/version", HttpMethod.GET, null, Version.class, vars);
     }
 
     /*
@@ -257,7 +264,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     public DeviceType createDeviceType(ITenantAuthentication tenant, DeviceTypeCreateRequest request)
 	    throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
-	return sendRest(getRestApiUrl() + "devicetypes", HttpMethod.POST, request, DeviceType.class, vars);
+	return sendTenantRest(tenant, getRestApiUrl() + "devicetypes", HttpMethod.POST, request, DeviceType.class,
+		vars);
     }
 
     /*
@@ -269,7 +277,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     public DeviceType getDeviceTypeByToken(ITenantAuthentication tenant, String token) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", token);
-	return sendRest(getRestApiUrl() + "devicetypes/{token}", HttpMethod.GET, null, DeviceType.class, vars);
+	return sendTenantRest(tenant, getRestApiUrl() + "devicetypes/{token}", HttpMethod.GET, null, DeviceType.class,
+		vars);
     }
 
     /*
@@ -282,7 +291,8 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", token);
-	return sendRest(getRestApiUrl() + "devicetypes/{token}", HttpMethod.PUT, null, DeviceType.class, vars);
+	return sendTenantRest(tenant, getRestApiUrl() + "devicetypes/{token}", HttpMethod.PUT, null, DeviceType.class,
+		vars);
     }
 
     /*
@@ -296,8 +306,10 @@ public class SiteWhereClient implements ISiteWhereClient {
 	vars.put("includeDeleted", String.valueOf(includeDeleted));
 	vars.put("includeAsset", String.valueOf(includeAsset));
 	addSearchCriteria(vars, criteria);
-	return sendRest(getRestApiUrl() + "devicetypes?includeDeleted={includeDeleted}&includeAsset={includeAsset}&"
-		+ getSearchCriteriaFields(criteria), HttpMethod.GET, null, DeviceTypeSearchResults.class, vars);
+	return sendGlobalRest(
+		getRestApiUrl() + "devicetypes?includeDeleted={includeDeleted}&includeAsset={includeAsset}&"
+			+ getSearchCriteriaFields(criteria),
+		HttpMethod.GET, null, DeviceTypeSearchResults.class, vars);
     }
 
     /*
@@ -309,7 +321,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", token);
 	vars.put("force", String.valueOf(deletePermanently));
-	return sendRest(getRestApiUrl() + "devicetypes/{token}&force={force}", HttpMethod.DELETE, null,
+	return sendGlobalRest(getRestApiUrl() + "devicetypes/{token}&force={force}", HttpMethod.DELETE, null,
 		DeviceType.class, vars);
     }
 
@@ -324,8 +336,8 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", specToken);
-	return sendRest(getRestApiUrl() + "devicetypes/{token}/commands", HttpMethod.POST, request, DeviceCommand.class,
-		vars);
+	return sendGlobalRest(getRestApiUrl() + "devicetypes/{token}/commands", HttpMethod.POST, request,
+		DeviceCommand.class, vars);
     }
 
     /*
@@ -340,7 +352,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", specificationToken);
 	vars.put("includeDeleted", String.valueOf(includeDeleted));
-	return sendRest(getRestApiUrl() + "devicetypes/{token}/commands?includeDeleted={includeDeleted}",
+	return sendGlobalRest(getRestApiUrl() + "devicetypes/{token}/commands?includeDeleted={includeDeleted}",
 		HttpMethod.GET, null, DeviceCommandSearchResults.class, vars);
     }
 
@@ -352,7 +364,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public Area createArea(AreaCreateRequest request) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
-	return sendRest(getRestApiUrl() + "areas", HttpMethod.POST, request, Area.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "areas", HttpMethod.POST, request, Area.class, vars);
     }
 
     /*
@@ -361,7 +373,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public Area getAreaByToken(String token) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
-	return sendRest(getRestApiUrl() + "areas/" + token, HttpMethod.GET, null, Area.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "areas/" + token, HttpMethod.GET, null, Area.class, vars);
     }
 
     /*
@@ -374,7 +386,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     public Zone createZone(String siteToken, ZoneCreateRequest request) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("siteToken", siteToken);
-	return sendRest(getRestApiUrl() + "sites/{siteToken}/zones", HttpMethod.POST, request, Zone.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "sites/{siteToken}/zones", HttpMethod.POST, request, Zone.class, vars);
     }
 
     /*
@@ -387,7 +399,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("siteToken", siteToken);
 	String url = getRestApiUrl() + "sites/{siteToken}/zones";
-	return sendRest(url, HttpMethod.GET, null, ZoneSearchResults.class, vars);
+	return sendGlobalRest(url, HttpMethod.GET, null, ZoneSearchResults.class, vars);
     }
 
     /*
@@ -400,7 +412,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public Device createDevice(DeviceCreateRequest request) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
-	return sendRest(getRestApiUrl() + "devices", HttpMethod.POST, request, Device.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "devices", HttpMethod.POST, request, Device.class, vars);
     }
 
     /*
@@ -413,7 +425,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     public Device getDeviceByHardwareId(String hardwareId) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("hardwareId", hardwareId);
-	return sendRest(getRestApiUrl() + "devices/{hardwareId}", HttpMethod.GET, null, Device.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "devices/{hardwareId}", HttpMethod.GET, null, Device.class, vars);
     }
 
     /*
@@ -426,7 +438,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     public Device updateDevice(String hardwareId, DeviceCreateRequest request) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("hardwareId", hardwareId);
-	return sendRest(getRestApiUrl() + "devices/{hardwareId}", HttpMethod.PUT, request, Device.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "devices/{hardwareId}", HttpMethod.PUT, request, Device.class, vars);
     }
 
     /*
@@ -445,7 +457,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	vars.put("includeSpecification", String.valueOf(populateSpecification));
 	vars.put("includeAssignment", String.valueOf(populateAssignment));
 	addSearchCriteria(vars, criteria);
-	return sendRest(
+	return sendGlobalRest(
 		getRestApiUrl() + "devices?includeDeleted={includeDeleted}"
 			+ "&excludeAssigned={excludeAssigned}&includeSpecification={includeSpecification}"
 			+ "&includeAssignment={includeAssignment}&" + getSearchCriteriaFields(criteria),
@@ -464,7 +476,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	vars.put("hardwareId", hardwareId);
 	vars.put("force", String.valueOf(force));
 	String url = getRestApiUrl() + "devices/{hardwareId}&force={force}";
-	return sendRest(url, HttpMethod.DELETE, null, Device.class, vars);
+	return sendGlobalRest(url, HttpMethod.DELETE, null, Device.class, vars);
     }
 
     /*
@@ -477,7 +489,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     public DeviceAssignment getCurrentAssignmentForDevice(String hardwareId) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("hardwareId", hardwareId);
-	return sendRest(
+	return sendGlobalRest(
 		getRestApiUrl()
 			+ "devices/{hardwareId}/assignment?includeAsset=false&includeDevice=false&includeSite=false",
 		HttpMethod.GET, null, DeviceAssignment.class, vars);
@@ -492,7 +504,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public DeviceAssignment createDeviceAssignment(IDeviceAssignmentCreateRequest request) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
-	return sendRest(getRestApiUrl() + "assignments", HttpMethod.POST, request, DeviceAssignment.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "assignments", HttpMethod.POST, request, DeviceAssignment.class, vars);
     }
 
     /*
@@ -505,8 +517,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     public DeviceAssignment getDeviceAssignmentByToken(String assignmentToken) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("assignmentToken", assignmentToken);
-	return sendRest(getRestApiUrl() + "assignments/{assignmentToken}", HttpMethod.GET, null, DeviceAssignment.class,
-		vars);
+	return sendGlobalRest(getRestApiUrl() + "assignments/{assignmentToken}", HttpMethod.GET, null,
+		DeviceAssignment.class, vars);
     }
 
     /*
@@ -517,8 +529,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     public DeviceAssignmentSearchResults listAssignmentsForSite(String token) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
-	return sendRest(getRestApiUrl() + "sites/" + token + "/assignments?includeDevice=true", HttpMethod.GET, null,
-		DeviceAssignmentSearchResults.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "sites/" + token + "/assignments?includeDevice=true", HttpMethod.GET,
+		null, DeviceAssignmentSearchResults.class, vars);
     }
 
     /*
@@ -535,7 +547,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	if (force) {
 	    url += "?force=true";
 	}
-	return sendRest(url, HttpMethod.DELETE, null, DeviceAssignment.class, vars);
+	return sendGlobalRest(url, HttpMethod.DELETE, null, DeviceAssignment.class, vars);
     }
 
     /*
@@ -549,7 +561,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     public DeviceAssignmentSearchResults listDeviceAssignmentHistory(String hardwareId) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("hardwareId", hardwareId);
-	return sendRest(getRestApiUrl() + "devices/{hardwareId}/assignments", HttpMethod.GET, null,
+	return sendGlobalRest(getRestApiUrl() + "devices/{hardwareId}/assignments", HttpMethod.GET, null,
 		DeviceAssignmentSearchResults.class, vars);
     }
 
@@ -576,7 +588,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	if (criteria != null) {
 	    url += "&page=" + criteria.getPageNumber() + "&pageSize=" + criteria.getPageSize();
 	}
-	return sendRest(url, HttpMethod.GET, null, DeviceAssignmentSearchResults.class, vars);
+	return sendGlobalRest(url, HttpMethod.GET, null, DeviceAssignmentSearchResults.class, vars);
     }
 
     /*
@@ -590,7 +602,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("hardwareId", hardwareId);
-	return sendRest(getRestApiUrl() + "devices/{hardwareId}/batch", HttpMethod.POST, batch,
+	return sendGlobalRest(getRestApiUrl() + "devices/{hardwareId}/batch", HttpMethod.POST, batch,
 		DeviceEventBatchResponse.class, vars);
     }
 
@@ -605,7 +617,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", token);
-	return sendRest(getRestApiUrl() + "assignments/{token}/metadata", HttpMethod.POST, metadata,
+	return sendGlobalRest(getRestApiUrl() + "assignments/{token}/metadata", HttpMethod.POST, metadata,
 		DeviceAssignment.class, vars);
     }
 
@@ -621,7 +633,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", assignmentToken);
-	return sendRest(getRestApiUrl() + "assignments/{token}/measurements", HttpMethod.POST, request,
+	return sendGlobalRest(getRestApiUrl() + "assignments/{token}/measurements", HttpMethod.POST, request,
 		DeviceMeasurement.class, vars);
     }
 
@@ -641,7 +653,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	if (searchCriteria != null) {
 	    url += getSearchCriteriaFields(searchCriteria);
 	}
-	return sendRest(url, HttpMethod.GET, null, DeviceMeasurementsSearchResults.class, vars);
+	return sendGlobalRest(url, HttpMethod.GET, null, DeviceMeasurementsSearchResults.class, vars);
     }
 
     /*
@@ -656,7 +668,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", assignmentToken);
-	return sendRest(getRestApiUrl() + "assignments/{token}/locations", HttpMethod.POST, request,
+	return sendGlobalRest(getRestApiUrl() + "assignments/{token}/locations", HttpMethod.POST, request,
 		DeviceLocation.class, vars);
     }
 
@@ -673,7 +685,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	vars.put("token", assignmentToken);
 	addSearchCriteria(vars, criteria);
 	String url = getRestApiUrl() + "assignments/{token}/locations?" + getSearchCriteriaFields(criteria);
-	return sendRest(url, HttpMethod.GET, null, DeviceLocationSearchResults.class, vars);
+	return sendGlobalRest(url, HttpMethod.GET, null, DeviceLocationSearchResults.class, vars);
     }
 
     /*
@@ -687,8 +699,8 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", assignmentToken);
-	return sendRest(getRestApiUrl() + "assignments/{token}/alerts", HttpMethod.POST, request, DeviceAlert.class,
-		vars);
+	return sendGlobalRest(getRestApiUrl() + "assignments/{token}/alerts", HttpMethod.POST, request,
+		DeviceAlert.class, vars);
     }
 
     /*
@@ -704,7 +716,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	vars.put("token", assignmentToken);
 	addSearchCriteria(vars, criteria);
 	String url = getRestApiUrl() + "assignments/{token}/alerts?" + getSearchCriteriaFields(criteria);
-	return sendRest(url, HttpMethod.GET, null, DeviceAlertSearchResults.class, vars);
+	return sendGlobalRest(url, HttpMethod.GET, null, DeviceAlertSearchResults.class, vars);
     }
 
     /*
@@ -719,7 +731,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    DeviceCommandInvocationCreateRequest request) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", assignmentToken);
-	return sendRest(getRestApiUrl() + "assignments/{token}/invocations", HttpMethod.POST, request,
+	return sendGlobalRest(getRestApiUrl() + "assignments/{token}/invocations", HttpMethod.POST, request,
 		DeviceCommandInvocation.class, vars);
     }
 
@@ -737,7 +749,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	vars.put("token", assignmentToken);
 	addSearchCriteria(vars, criteria);
 	String url = getRestApiUrl() + "assignments/{token}/invocations?" + getSearchCriteriaFields(criteria);
-	return sendRest(url, HttpMethod.GET, null, DeviceCommandInvocationSearchResults.class, vars);
+	return sendGlobalRest(url, HttpMethod.GET, null, DeviceCommandInvocationSearchResults.class, vars);
     }
 
     /*
@@ -751,8 +763,8 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", assignmentToken);
-	return sendRest(getRestApiUrl() + "assignments/{token}/streams", HttpMethod.POST, request, DeviceStream.class,
-		vars);
+	return sendGlobalRest(getRestApiUrl() + "assignments/{token}/streams", HttpMethod.POST, request,
+		DeviceStream.class, vars);
     }
 
     /*
@@ -767,7 +779,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	vars.put("token", assignmentToken);
 	vars.put("streamId", streamId);
 	String url = getRestApiUrl() + "assignments/{token}/streams/{streamId}";
-	return sendRest(url, HttpMethod.GET, null, DeviceStream.class, vars);
+	return sendGlobalRest(url, HttpMethod.GET, null, DeviceStream.class, vars);
     }
 
     /*
@@ -783,7 +795,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	vars.put("token", assignmentToken);
 	addSearchCriteria(vars, criteria);
 	String url = getRestApiUrl() + "assignments/{token}/streams?" + getSearchCriteriaFields(criteria);
-	return sendRest(url, HttpMethod.GET, null, DeviceStreamSearchResults.class, vars);
+	return sendGlobalRest(url, HttpMethod.GET, null, DeviceStreamSearchResults.class, vars);
     }
 
     /*
@@ -858,7 +870,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	request.setParameterValues(parameters);
 	request.setDeviceTokens(deviceTokens);
 	Map<String, String> vars = new HashMap<String, String>();
-	return sendRest(getRestApiUrl() + "batch/command", HttpMethod.POST, request, BatchOperation.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "batch/command", HttpMethod.POST, request, BatchOperation.class, vars);
     }
 
     /*
@@ -870,7 +882,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public DeviceGroup createDeviceGroup(DeviceGroupCreateRequest request) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
-	return sendRest(getRestApiUrl() + "devicegroups", HttpMethod.POST, request, DeviceGroup.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "devicegroups", HttpMethod.POST, request, DeviceGroup.class, vars);
     }
 
     /*
@@ -883,7 +895,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     public DeviceGroup getDeviceGroupByToken(String token) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", token);
-	return sendRest(getRestApiUrl() + "devicegroups/{token}", HttpMethod.GET, null, DeviceGroup.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "devicegroups/{token}", HttpMethod.GET, null, DeviceGroup.class, vars);
     }
 
     /*
@@ -895,7 +907,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     public DeviceGroup deleteDeviceGroup(String token) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", token);
-	return sendRest(getRestApiUrl() + "devicegroups/{token}", HttpMethod.DELETE, null, DeviceGroup.class, vars);
+	return sendGlobalRest(getRestApiUrl() + "devicegroups/{token}", HttpMethod.DELETE, null, DeviceGroup.class,
+		vars);
     }
 
     /*
@@ -914,7 +927,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	if (role != null) {
 	    url += "&role=" + role;
 	}
-	return sendRest(url, HttpMethod.GET, null, DeviceGroupSearchResults.class, vars);
+	return sendGlobalRest(url, HttpMethod.GET, null, DeviceGroupSearchResults.class, vars);
     }
 
     /*
@@ -928,7 +941,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    List<DeviceGroupElementCreateRequest> elements) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", groupToken);
-	return sendRest(getRestApiUrl() + "devicegroups/{token}/elements", HttpMethod.PUT, elements,
+	return sendGlobalRest(getRestApiUrl() + "devicegroups/{token}/elements", HttpMethod.PUT, elements,
 		DeviceGroupElementSearchResults.class, vars);
     }
 
@@ -945,7 +958,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	vars.put("token", groupToken);
 	addSearchCriteria(vars, criteria);
 	String url = getRestApiUrl() + "devicegroups/{token}/elements?" + getSearchCriteriaFields(criteria);
-	return sendRest(url, HttpMethod.GET, null, DeviceGroupElementSearchResults.class, vars);
+	return sendGlobalRest(url, HttpMethod.GET, null, DeviceGroupElementSearchResults.class, vars);
     }
 
     /*
@@ -959,7 +972,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    List<DeviceGroupElementCreateRequest> elements) throws SiteWhereException {
 	Map<String, String> vars = new HashMap<String, String>();
 	vars.put("token", groupToken);
-	return sendRest(getRestApiUrl() + "devicegroups/{token}/elements", HttpMethod.DELETE, elements,
+	return sendGlobalRest(getRestApiUrl() + "devicegroups/{token}/elements", HttpMethod.DELETE, elements,
 		DeviceGroupElementSearchResults.class, vars);
     }
 
@@ -975,7 +988,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	if ((criteria != null) && (criteria.length() > 0)) {
 	    url += "?criteria=" + criteria;
 	}
-	return sendRest(getRestApiUrl() + url, HttpMethod.GET, null, AssetSearchResults.class, vars);
+	return sendGlobalRest(getRestApiUrl() + url, HttpMethod.GET, null, AssetSearchResults.class, vars);
     }
 
     /**
@@ -1052,7 +1065,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     }
 
     /**
-     * Send a REST request and handle the response.
+     * Send a global REST invocation.
      * 
      * @param url
      * @param method
@@ -1062,11 +1075,41 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @return
      * @throws SiteWhereSystemException
      */
-    protected <S, T> S sendRest(String url, HttpMethod method, T input, Class<S> clazz, Map<String, String> vars)
+    protected <S, T> S sendGlobalRest(String url, HttpMethod method, T input, Class<S> clazz, Map<String, String> vars)
 	    throws SiteWhereSystemException {
 	try {
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.add("Authorization", "Bearer " + getJwt());
+	    HttpEntity<T> entity = new HttpEntity<T>(input, headers);
+	    ResponseEntity<S> response = getClient().exchange(url, method, entity, clazz, vars);
+	    return response.getBody();
+	} catch (ResourceAccessException e) {
+	    if (e.getCause() instanceof SiteWhereSystemException) {
+		throw (SiteWhereSystemException) e.getCause();
+	    }
+	    throw new RuntimeException(e);
+	}
+    }
+
+    /**
+     * Send a tenant-specific REST invocation.
+     * 
+     * @param tenant
+     * @param url
+     * @param method
+     * @param input
+     * @param clazz
+     * @param vars
+     * @return
+     * @throws SiteWhereSystemException
+     */
+    protected <S, T> S sendTenantRest(ITenantAuthentication tenant, String url, HttpMethod method, T input,
+	    Class<S> clazz, Map<String, String> vars) throws SiteWhereSystemException {
+	try {
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.add("Authorization", "Bearer " + getJwt());
+	    headers.add(ISiteWhereWebConstants.HEADER_TENANT_ID, tenant.getTenantToken());
+	    headers.add(ISiteWhereWebConstants.HEADER_TENANT_AUTH, tenant.getTenantAuthToken());
 	    HttpEntity<T> entity = new HttpEntity<T>(input, headers);
 	    ResponseEntity<S> response = getClient().exchange(url, method, entity, clazz, vars);
 	    return response.getBody();
