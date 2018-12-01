@@ -151,10 +151,29 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return new Builder();
     }
 
+    /**
+     * Authentication for default tenant.
+     * 
+     * @return
+     */
     public static ITenantAuthentication defaultTenant() {
 	TenantAuthentication auth = new TenantAuthentication();
 	auth.setTenantToken("default");
 	auth.setTenantAuthToken("sitewhere1234567890");
+	return auth;
+    }
+
+    /**
+     * Authentication for specific tenant.
+     * 
+     * @param tenantToken
+     * @param tenantAuthToken
+     * @return
+     */
+    public static ITenantAuthentication forTenant(String tenantToken, String tenantAuthToken) {
+	TenantAuthentication auth = new TenantAuthentication();
+	auth.setTenantToken(tenantToken);
+	auth.setTenantAuthToken(tenantAuthToken);
 	return auth;
     }
 

@@ -55,3 +55,18 @@ The object model for all of the core SiteWhere data model is included with the c
 For calls that are tenant-specific, more information must be passed along with each
 method invocation. You must provide the tenant id and tenant authentication token
 which are passed as headers to the REST call (along with the JWT used for all calls).
+The format for tenant calls is:
+
+```
+DeviceType type = getClient().getDeviceTypeByToken(SiteWhereClient.defaultTenant(), "galaxytab3");
+```
+
+for the default tenant installed with the contruction example data, or for an arbitrary tenant
+
+```
+DeviceType type = getClient().getDeviceTypeByToken(SiteWhereClient.forTenant("token", "auth"), "galaxytab3");
+```
+
+using the unique token for the tenant and the tenant authentication token specific to that tenant.
+
+
