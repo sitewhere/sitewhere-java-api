@@ -68,9 +68,10 @@ public interface ISiteWhereClient {
     /**
      * Initialize the client.
      * 
+     * @return
      * @throws SiteWhereException
      */
-    public void initialize() throws SiteWhereException;
+    public ISiteWhereClient initialize() throws SiteWhereException;
 
     /**
      * Get SiteWhere version information.

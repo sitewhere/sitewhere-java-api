@@ -116,7 +116,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     public static final int DEFAULT_CONNECT_TIMEOUT = 3 * 1000;
 
     /** Indicates whether to write debug information to the console */
-    public static final boolean DEBUG_ENABLED = true;
+    public static final boolean DEBUG_ENABLED = false;
 
     /** Use CXF web client to send requests */
     private RestTemplate client;
@@ -142,11 +142,20 @@ public class SiteWhereClient implements ISiteWhereClient {
     /** JWT for authenticating with server */
     private String jwt;
 
+    /**
+     * Get new builder class.
+     * 
+     * @return
+     */
+    public static Builder newBuilder() {
+	return new Builder();
+    }
+
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#initialize()
      */
     @Override
-    public void initialize() throws SiteWhereException {
+    public ISiteWhereClient initialize() throws SiteWhereException {
 	if (DEBUG_ENABLED) {
 	    enableDebugging();
 	}
@@ -173,6 +182,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 
 	// Authenticate and get JWT.
 	this.jwt = getJwtFromServer();
+	return this;
     }
 
     /**
@@ -192,6 +202,39 @@ public class SiteWhereClient implements ISiteWhereClient {
 	System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
 	System.setProperty("org.apache.commons.logging.simplelog.showdatetime", "true");
 	System.setProperty("org.apache.commons.logging.simplelog.log.org.apache", "debug");
+    }
+
+    /**
+     * Builder class.
+     */
+    public static class Builder {
+
+	private SiteWhereClient client = new SiteWhereClient();
+
+	public ISiteWhereClient build() {
+	    return client;
+	}
+
+	/**
+	 * Set connection parameters for client.
+	 * 
+	 * @param protocol
+	 * @param hostname
+	 * @param port
+	 * @return
+	 */
+	public Builder withConnectionTo(String protocol, String hostname, int port) {
+	    client.setProtocol(protocol);
+	    client.setHostname(hostname);
+	    client.setPort(port);
+	    return this;
+	}
+
+	public Builder forUser(String username, String password) {
+	    client.setUsername(username);
+	    client.setPassword(password);
+	    return this;
+	}
     }
 
     /*
@@ -1128,6 +1171,9 @@ public class SiteWhereClient implements ISiteWhereClient {
     }
 
     public RestTemplate getClient() {
+	if (client == null) {
+	    throw new RuntimeException("Must call initialize() on client before using.");
+	}
 	return client;
     }
 

@@ -85,8 +85,7 @@ public class ApiTests {
 
     @Before
     public void setup() throws SiteWhereException {
-	this.client = new SiteWhereClient();
-	getClient().initialize();
+	this.client = SiteWhereClient.newBuilder().build().initialize();
     }
 
     @Test
