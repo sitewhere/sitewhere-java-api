@@ -48,8 +48,7 @@ public class SiteWhereClientTester implements Callable<TestResults> {
      */
     @Override
     public TestResults call() throws Exception {
-	ISiteWhereClient client = new SiteWhereClient("http://sw-swarm-master.cloudapp.net:8080/sitewhere/api/",
-		"admin", "password");
+	ISiteWhereClient client = new SiteWhereClient();
 	for (int i = 0; i < eventCount; i++) {
 	    int random = (int) Math.floor(Math.random() * 3);
 	    if (random == 0) {

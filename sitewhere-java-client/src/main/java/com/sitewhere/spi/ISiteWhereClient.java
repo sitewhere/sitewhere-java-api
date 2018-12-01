@@ -66,6 +66,13 @@ import com.sitewhere.spi.device.request.IDeviceAssignmentCreateRequest;
 public interface ISiteWhereClient {
 
     /**
+     * Initialize the client.
+     * 
+     * @throws SiteWhereException
+     */
+    public void initialize() throws SiteWhereException;
+
+    /**
      * Get SiteWhere version information.
      * 
      * @return
@@ -76,30 +83,35 @@ public interface ISiteWhereClient {
     /**
      * Create a new device type.
      * 
+     * @param tenant
      * @param request
      * @return
      * @throws SiteWhereException
      */
-    public DeviceType createDeviceType(DeviceTypeCreateRequest request) throws SiteWhereException;
+    public DeviceType createDeviceType(ITenantAuthentication tenant, DeviceTypeCreateRequest request)
+	    throws SiteWhereException;
 
     /**
      * Get a device type by token.
      * 
+     * @param tenant
      * @param token
      * @return
      * @throws SiteWhereException
      */
-    public DeviceType getDeviceTypeByToken(String token) throws SiteWhereException;
+    public DeviceType getDeviceTypeByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
 
     /**
      * Update an existing device type.
      * 
+     * @param tenant
      * @param token
      * @param request
      * @return
      * @throws SiteWhereException
      */
-    public DeviceType updateDeviceType(String token, DeviceTypeCreateRequest request) throws SiteWhereException;
+    public DeviceType updateDeviceType(ITenantAuthentication tenant, String token, DeviceTypeCreateRequest request)
+	    throws SiteWhereException;
 
     /**
      * List device types that meet the given criteria.

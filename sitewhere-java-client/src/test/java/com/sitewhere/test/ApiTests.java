@@ -84,14 +84,14 @@ public class ApiTests {
     private ISiteWhereClient client;
 
     @Before
-    public void setup() {
+    public void setup() throws SiteWhereException {
 	this.client = new SiteWhereClient();
+	getClient().initialize();
     }
 
     @Test
     public void testConnectivity() throws SiteWhereException {
-	SiteWhereClient client = new SiteWhereClient();
-	Version version = client.getSiteWhereVersion();
+	Version version = getClient().getSiteWhereVersion();
 	System.out.println("SiteWhere version is " + version.getVersionIdentifier() + ".");
     }
 
@@ -190,7 +190,7 @@ public class ApiTests {
 
     @Test
     public void testDeviceEventBatch() throws SiteWhereException {
-	SiteWhereClient client = new SiteWhereClient("http://localhost:9090/sitewhere/api/", "admin", "password");
+	SiteWhereClient client = new SiteWhereClient();
 	DeviceEventBatch batch = new DeviceEventBatch();
 	batch.setHardwareId("5a95f3f2-96f0-47f9-b98d-f5c081d01948");
 	DeviceMeasurementCreateRequest mx = new DeviceMeasurementCreateRequest();
@@ -362,5 +362,13 @@ public class ApiTests {
 	} else {
 	    Assert.fail("Unexpected exception: " + e.getMessage());
 	}
+    }
+
+    public ISiteWhereClient getClient() {
+	return client;
+    }
+
+    public void setClient(ISiteWhereClient client) {
+	this.client = client;
     }
 }
