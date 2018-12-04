@@ -11,7 +11,6 @@ import java.util.UUID;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.http.MediaType;
 
 import com.sitewhere.rest.client.SiteWhereClient;
 import com.sitewhere.rest.model.device.request.DeviceStreamCreateRequest;
@@ -37,7 +36,7 @@ public class StreamTests {
 	String streamId = UUID.randomUUID().toString();
 	DeviceStreamCreateRequest screate = new DeviceStreamCreateRequest();
 	screate.setStreamId(streamId);
-	screate.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+	screate.setContentType("xxx");
 	client.createDeviceStream(ASSN_TOKEN, screate);
 
 	byte[] chunk1 = "This is the first chunk of data.".getBytes();

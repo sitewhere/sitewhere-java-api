@@ -39,6 +39,7 @@ import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupElementCreateRequest;
+import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.device.streaming.DeviceStream;
 import com.sitewhere.rest.model.search.AssetSearchResults;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
@@ -92,13 +93,21 @@ public class ApiTests {
     @Test
     public void testVersion() throws SiteWhereException {
 	Version version = getClient().getSiteWhereVersion();
-	System.out.println("SiteWhere version is " + version.getVersionIdentifier() + ".");
+	json(version);
     }
 
     @Test
-    public void testDeviceType() throws SiteWhereException {
+    public void testCreateDeviceType() throws SiteWhereException {
+	DeviceTypeCreateRequest request = new DeviceTypeCreateRequest.Builder("test", "Test Device Type")
+		.withDescription("This is a device type added via REST.").withImageUrl("http://www.test.com").build();
+	DeviceType type = getClient().createDeviceType(SiteWhereClient.defaultTenant(), request);
+	json(type);
+    }
+
+    @Test
+    public void testGetDeviceType() throws SiteWhereException {
 	DeviceType type = getClient().getDeviceTypeByToken(SiteWhereClient.defaultTenant(), "galaxytab3");
-	System.out.println("Device type is '" + type.getName() + "'.");
+	json(type);
     }
 
     @Test
