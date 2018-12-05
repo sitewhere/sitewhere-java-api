@@ -12,6 +12,10 @@ dependencies {
     testCompile group: 'org.apache.activemq', name: 'activemq-all', version:'5.10.0'
 }
 
+license {
+	exclude "**/Base64.java"
+}
+
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
     classifier = 'sources'

@@ -8,7 +8,6 @@
 package com.sitewhere.rest.client;
 
 import java.io.IOException;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -719,7 +718,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     protected String getAuthHeader() {
 	String token = getUsername() + ":" + getPassword();
-	String encoded = new String(Base64.getEncoder().encodeToString(token.getBytes()));
+	String encoded = new String(Base64.encode(token.getBytes()));
 	return "Basic " + encoded;
     }
 
