@@ -15,38 +15,20 @@ package com.sitewhere.spi.batch;
 public enum BatchOperationStatus {
 
     /** Indicates a batch operation has not been processed */
-    Unprocessed('U'),
+    Unprocessed,
+
+    /** Indicates that operation is being initialized */
+    Initializing,
+
+    /** Indicates that operation has been initialized */
+    Initialized,
 
     /** Indicates a batch operation is currently being processed */
-    Processing('P'),
+    Processing,
 
     /** Indicates processing succeeded for the batch operation */
-    FinishedSuccessfully('F'),
+    FinishedSuccessfully,
 
     /** Indicates processing finished with errors for the batch operation */
-    FinishedWithErrors('E');
-
-    /** Event code */
-    private char code;
-
-    private BatchOperationStatus(char code) {
-	this.code = code;
-    }
-
-    public static BatchOperationStatus getByCode(char code) {
-	for (BatchOperationStatus value : BatchOperationStatus.values()) {
-	    if (value.getCode() == code) {
-		return value;
-	    }
-	}
-	return null;
-    }
-
-    public char getCode() {
-	return code;
-    }
-
-    public void setCode(char code) {
-	this.code = code;
-    }
+    FinishedWithErrors;
 }
