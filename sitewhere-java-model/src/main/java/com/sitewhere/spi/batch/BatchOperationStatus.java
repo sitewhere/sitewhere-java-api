@@ -21,10 +21,10 @@ public enum BatchOperationStatus {
     Initializing,
 
     /** Indicates that operation has been initialized */
-    Initialized,
+    InitializedSuccessfully,
 
-    /** Indicates a batch operation is currently being processed */
-    Processing,
+    /** Indicates that some batch elements could not be created */
+    InitializedWithErrors,
 
     /** Indicates processing succeeded for the batch operation */
     FinishedSuccessfully,
