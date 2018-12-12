@@ -18,6 +18,13 @@ import com.sitewhere.spi.batch.ElementProcessingStatus;
 public interface IBatchElementCreateRequest {
 
     /**
+     * Get token for device affected by operation.
+     * 
+     * @return
+     */
+    public String getDeviceToken();
+
+    /**
      * Get processing status indicator.
      * 
      * @return

@@ -22,6 +22,9 @@ public class BatchElementCreateRequest implements IBatchElementCreateRequest, Se
     /** Serialization version identifier */
     private static final long serialVersionUID = -3369336266183401785L;
 
+    /** Token for affected device */
+    private String deviceToken;
+
     /** Processing status for update */
     private ElementProcessingStatus processingStatus;
 
@@ -30,6 +33,19 @@ public class BatchElementCreateRequest implements IBatchElementCreateRequest, Se
 
     /** Metadata values */
     private Map<String, String> metadata;
+
+    /*
+     * @see
+     * com.sitewhere.spi.batch.request.IBatchElementCreateRequest#getDeviceToken()
+     */
+    @Override
+    public String getDeviceToken() {
+	return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+	this.deviceToken = deviceToken;
+    }
 
     /*
      * @see com.sitewhere.spi.batch.request.IBatchElementCreateRequest#
