@@ -21,11 +21,11 @@ import com.sitewhere.spi.device.event.request.IDeviceMeasurementCreateRequest;
 public interface IDeviceEventBatch {
 
     /**
-     * Unique device hardware id.
+     * Unique device token.
      * 
      * @return
      */
-    public String getHardwareId();
+    public String getDeviceToken();
 
     /**
      * Get a list of device measurements create requests.

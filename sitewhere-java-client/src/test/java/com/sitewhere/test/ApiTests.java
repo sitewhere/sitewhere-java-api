@@ -207,7 +207,7 @@ public class ApiTests {
     public void testDeviceEventBatch() throws SiteWhereException {
 	SiteWhereClient client = new SiteWhereClient();
 	DeviceEventBatch batch = new DeviceEventBatch();
-	batch.setHardwareId("5a95f3f2-96f0-47f9-b98d-f5c081d01948");
+	batch.setDeviceToken("5a95f3f2-96f0-47f9-b98d-f5c081d01948");
 	DeviceMeasurementCreateRequest mx = new DeviceMeasurementCreateRequest();
 	mx.setName("test");
 	mx.setValue(123.4);

@@ -53,7 +53,7 @@ public class StompTest {
      */
     protected String createMeasurementsJson(String hardwareId) throws Exception {
 	DeviceEventBatch batch = new DeviceEventBatch();
-	batch.setHardwareId(hardwareId);
+	batch.setDeviceToken(hardwareId);
 	DeviceMeasurementCreateRequest request = new DeviceMeasurementCreateRequest();
 	request.setEventDate(new Date());
 	request.setName("engine.temp");

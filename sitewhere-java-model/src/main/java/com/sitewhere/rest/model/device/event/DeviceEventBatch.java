@@ -32,8 +32,8 @@ public class DeviceEventBatch implements IDeviceEventBatch, Serializable {
     /** Serialization version identifier */
     private static final long serialVersionUID = -6779882564394545114L;
 
-    /** Device hardware id */
-    private String hardwareId;
+    /** Device token */
+    private String deviceToken;
 
     /** List of measurements requests */
     private List<DeviceMeasurementCreateRequest> measurements = new ArrayList<DeviceMeasurementCreateRequest>();
@@ -45,16 +45,15 @@ public class DeviceEventBatch implements IDeviceEventBatch, Serializable {
     private List<DeviceAlertCreateRequest> alerts = new ArrayList<DeviceAlertCreateRequest>();
 
     /*
-     * (non-Javadoc)
-     * 
-     * @see com.sitewhere.spi.device.IDeviceEventBatch#getHardwareId()
+     * @see com.sitewhere.spi.device.event.IDeviceEventBatch#getDeviceToken()
      */
-    public String getHardwareId() {
-	return hardwareId;
+    @Override
+    public String getDeviceToken() {
+	return deviceToken;
     }
 
-    public void setHardwareId(String hardwareId) {
-	this.hardwareId = hardwareId;
+    public void setDeviceToken(String deviceToken) {
+	this.deviceToken = deviceToken;
     }
 
     /*
@@ -62,6 +61,7 @@ public class DeviceEventBatch implements IDeviceEventBatch, Serializable {
      * 
      * @see com.sitewhere.spi.device.IDeviceEventBatch#getMeasurements()
      */
+    @Override
     @SuppressWarnings("unchecked")
     public List<IDeviceMeasurementCreateRequest> getMeasurements() {
 	return (List<IDeviceMeasurementCreateRequest>) (List<? extends IDeviceMeasurementCreateRequest>) measurements;
@@ -76,6 +76,7 @@ public class DeviceEventBatch implements IDeviceEventBatch, Serializable {
      * 
      * @see com.sitewhere.spi.device.IDeviceEventBatch#getLocations()
      */
+    @Override
     @SuppressWarnings("unchecked")
     public List<IDeviceLocationCreateRequest> getLocations() {
 	return (List<IDeviceLocationCreateRequest>) (List<? extends IDeviceLocationCreateRequest>) locations;
@@ -90,6 +91,7 @@ public class DeviceEventBatch implements IDeviceEventBatch, Serializable {
      * 
      * @see com.sitewhere.spi.device.IDeviceEventBatch#getAlerts()
      */
+    @Override
     @SuppressWarnings("unchecked")
     public List<IDeviceAlertCreateRequest> getAlerts() {
 	return (List<IDeviceAlertCreateRequest>) (List<? extends IDeviceAlertCreateRequest>) alerts;
