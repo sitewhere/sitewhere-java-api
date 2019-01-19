@@ -43,4 +43,18 @@ public interface IVersion extends Serializable {
      * @return
      */
     public String getBuildTimestamp();
+
+    /**
+     * Gets the Git revision id.
+     * 
+     * @return
+     */
+    public String getGitRevision();
+
+    /**
+     * Gets the abbreviated version of the Git revision.
+     * 
+     * @return
+     */
+    public String getGitRevisionAbbrev();
 }

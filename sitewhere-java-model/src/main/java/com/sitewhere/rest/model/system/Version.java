@@ -31,17 +31,19 @@ public class Version implements IVersion {
     /** Build timestamp */
     private String buildTimestamp;
 
-    /** Server implementation class */
-    private Class<?> serverClass;
+    /** Git revision */
+    private String gitRevision;
+
+    /** Abbreviated version of Git revision */
+    private String gitRevisionAbbrev;
 
     public Version() {
     }
 
     /*
-     * (non-Javadoc)
-     * 
      * @see com.sitewhere.spi.system.IVersion#getEdition()
      */
+    @Override
     public String getEdition() {
 	return edition;
     }
@@ -51,10 +53,9 @@ public class Version implements IVersion {
     }
 
     /*
-     * (non-Javadoc)
-     * 
      * @see com.sitewhere.spi.system.IVersion#getEditionIdentifier()
      */
+    @Override
     public String getEditionIdentifier() {
 	return editionIdentifier;
     }
@@ -64,10 +65,9 @@ public class Version implements IVersion {
     }
 
     /*
-     * (non-Javadoc)
-     * 
      * @see com.sitewhere.spi.system.IVersion#getVersionIdentifier()
      */
+    @Override
     public String getVersionIdentifier() {
 	return versionIdentifier;
     }
@@ -77,10 +77,9 @@ public class Version implements IVersion {
     }
 
     /*
-     * (non-Javadoc)
-     * 
      * @see com.sitewhere.spi.system.IVersion#getBuildTimestamp()
      */
+    @Override
     public String getBuildTimestamp() {
 	return buildTimestamp;
     }
@@ -90,15 +89,26 @@ public class Version implements IVersion {
     }
 
     /*
-     * (non-Javadoc)
-     * 
-     * @see com.sitewhere.spi.system.IVersion#getServerClass()
+     * @see com.sitewhere.spi.system.IVersion#getGitRevision()
      */
-    public Class<?> getServerClass() {
-	return serverClass;
+    @Override
+    public String getGitRevision() {
+	return gitRevision;
     }
 
-    public void setServerClass(Class<?> serverClass) {
-	this.serverClass = serverClass;
+    public void setGitRevision(String gitRevision) {
+	this.gitRevision = gitRevision;
+    }
+
+    /*
+     * @see com.sitewhere.spi.system.IVersion#getGitRevisionAbbrev()
+     */
+    @Override
+    public String getGitRevisionAbbrev() {
+	return gitRevisionAbbrev;
+    }
+
+    public void setGitRevisionAbbrev(String gitRevisionAbbrev) {
+	this.gitRevisionAbbrev = gitRevisionAbbrev;
     }
 }
