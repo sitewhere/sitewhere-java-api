@@ -15,7 +15,7 @@ import com.sitewhere.spi.device.event.request.IDeviceEventCreateRequest;
  * 
  * @author Derek
  */
-public interface IInboundEventPayload {
+public interface IDecodedEventPayload {
 
     /**
      * Get unique event source id.

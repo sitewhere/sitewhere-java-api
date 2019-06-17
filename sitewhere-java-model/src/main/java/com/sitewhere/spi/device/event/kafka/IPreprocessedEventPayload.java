@@ -9,27 +9,23 @@ package com.sitewhere.spi.device.event.kafka;
 
 import java.util.UUID;
 
-import com.sitewhere.spi.device.event.IDeviceEvent;
-
 /**
- * Get payload passed for inbound events after they have been persisted to the
- * event datastore.
- * 
- * @author Derek
+ * Event payload after payload is decoded and initial inbound processing has
+ * been completed.
  */
-public interface IPersistedEventPayload {
+public interface IPreprocessedEventPayload extends IDecodedEventPayload {
 
     /**
-     * Get device id.
+     * Get unique device id.
      * 
      * @return
      */
     public UUID getDeviceId();
 
     /**
-     * Get device event details.
+     * Get unique device assignment id.
      * 
      * @return
      */
-    public IDeviceEvent getEvent();
+    public UUID getDeviceAssignmentId();
 }
