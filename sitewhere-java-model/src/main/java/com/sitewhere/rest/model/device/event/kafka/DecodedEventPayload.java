@@ -7,7 +7,7 @@
  */
 package com.sitewhere.rest.model.device.event.kafka;
 
-import com.sitewhere.spi.device.event.kafka.IInboundEventPayload;
+import com.sitewhere.spi.device.event.kafka.IDecodedEventPayload;
 import com.sitewhere.spi.device.event.request.IDeviceEventCreateRequest;
 
 /**
@@ -15,7 +15,7 @@ import com.sitewhere.spi.device.event.request.IDeviceEventCreateRequest;
  * 
  * @author Derek
  */
-public class InboundEventPayload implements IInboundEventPayload {
+public class DecodedEventPayload implements IDecodedEventPayload {
 
     /** Event source id */
     private String sourceId;
