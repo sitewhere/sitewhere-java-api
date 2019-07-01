@@ -5,10 +5,17 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package com.sitewhere.spi.common;
+package com.sitewhere.spi.common.request;
 
 /**
- * Entity that includes branding information.
+ * Required fields for creating a tree entity.
  */
-public interface IBrandedEntity extends IPersistentEntity, IColorProvider, IIconProvider, IImageProvider {
+public interface ITreeEntityCreateRequest {
+
+    /**
+     * Get unique id of parent entity.
+     * 
+     * @return
+     */
+    public String getParentToken();
 }

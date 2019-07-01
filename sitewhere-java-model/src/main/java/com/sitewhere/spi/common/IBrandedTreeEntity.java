@@ -8,7 +8,7 @@
 package com.sitewhere.spi.common;
 
 /**
- * Entity that includes branding information.
+ * Entity with branding information and arranged in a tree structure.
  */
-public interface IBrandedEntity extends IPersistentEntity, IColorProvider, IIconProvider, IImageProvider {
+public interface IBrandedTreeEntity extends IBrandedEntity, ITreeEntity {
 }

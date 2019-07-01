@@ -29,7 +29,7 @@ public class CustomerCreateRequest extends BrandedEntityCreateRequest implements
     public String customerTypeToken;
 
     /** Parent customer token */
-    public String parentCustomerToken;
+    public String parentToken;
 
     /** Site name */
     private String name;
@@ -51,16 +51,16 @@ public class CustomerCreateRequest extends BrandedEntityCreateRequest implements
     }
 
     /*
-     * @see com.sitewhere.spi.customer.request.ICustomerCreateRequest#
-     * getParentCustomerToken()
+     * @see
+     * com.sitewhere.spi.common.request.ITreeEntityCreateRequest#getParentToken()
      */
     @Override
-    public String getParentCustomerToken() {
-	return parentCustomerToken;
+    public String getParentToken() {
+	return parentToken;
     }
 
-    public void setParentCustomerToken(String parentCustomerToken) {
-	this.parentCustomerToken = parentCustomerToken;
+    public void setParentToken(String parentToken) {
+	this.parentToken = parentToken;
     }
 
     /*
@@ -93,9 +93,9 @@ public class CustomerCreateRequest extends BrandedEntityCreateRequest implements
 	/** Request being built */
 	private CustomerCreateRequest request = new CustomerCreateRequest();
 
-	public Builder(String customerTypeToken, String parentCustomerToken, String token, String name) {
+	public Builder(String customerTypeToken, String parentToken, String token, String name) {
 	    request.setCustomerTypeToken(customerTypeToken);
-	    request.setParentCustomerToken(parentCustomerToken);
+	    request.setParentToken(parentToken);
 	    request.setToken(token);
 	    request.setName(name);
 	    request.setDescription("");
