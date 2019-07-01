@@ -10,15 +10,13 @@ package com.sitewhere.spi.customer;
 import java.util.UUID;
 
 import com.sitewhere.spi.common.IAccessible;
-import com.sitewhere.spi.common.IBrandedEntity;
+import com.sitewhere.spi.common.IBrandedTreeEntity;
 
 /**
  * An entity that represents a customer (device owner) based on a previously
  * defined customer type.
- * 
- * @author Derek
  */
-public interface ICustomer extends IBrandedEntity, IAccessible {
+public interface ICustomer extends IBrandedTreeEntity, IAccessible {
 
     /**
      * Get id of corresponding customer type.
@@ -26,11 +24,4 @@ public interface ICustomer extends IBrandedEntity, IAccessible {
      * @return
      */
     public UUID getCustomerTypeId();
-
-    /**
-     * Get id of parent customer (null if none).
-     * 
-     * @return
-     */
-    public UUID getParentCustomerId();
 }

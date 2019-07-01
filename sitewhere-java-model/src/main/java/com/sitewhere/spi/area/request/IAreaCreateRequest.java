@@ -12,13 +12,14 @@ import java.util.List;
 import com.sitewhere.spi.common.IAccessible;
 import com.sitewhere.spi.common.ILocation;
 import com.sitewhere.spi.common.request.IBrandedEntityCreateRequest;
+import com.sitewhere.spi.common.request.ITreeEntityCreateRequest;
 
 /**
  * Interface for arguments needed to create an area.
  * 
  * @author Derek
  */
-public interface IAreaCreateRequest extends IAccessible, IBrandedEntityCreateRequest {
+public interface IAreaCreateRequest extends IAccessible, IBrandedEntityCreateRequest, ITreeEntityCreateRequest {
 
     /**
      * Get token for corresponding area type.
@@ -26,13 +27,6 @@ public interface IAreaCreateRequest extends IAccessible, IBrandedEntityCreateReq
      * @return
      */
     public String getAreaTypeToken();
-
-    /**
-     * Get token for parent area (null if none).
-     * 
-     * @return
-     */
-    public String getParentAreaToken();
 
     /**
      * Get list of coordinates that defines the area bounds.

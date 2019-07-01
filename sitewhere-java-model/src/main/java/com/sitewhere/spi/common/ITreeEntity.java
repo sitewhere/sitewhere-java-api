@@ -7,8 +7,17 @@
  */
 package com.sitewhere.spi.common;
 
+import java.util.UUID;
+
 /**
- * Entity that includes branding information.
+ * Entity which can have a link to a parent entity to form a tree structure.
  */
-public interface IBrandedEntity extends IPersistentEntity, IColorProvider, IIconProvider, IImageProvider {
+public interface ITreeEntity {
+
+    /**
+     * Get unique id of parent entity.
+     * 
+     * @return
+     */
+    public UUID getParentId();
 }

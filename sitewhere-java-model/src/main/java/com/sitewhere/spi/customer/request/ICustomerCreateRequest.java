@@ -9,13 +9,14 @@ package com.sitewhere.spi.customer.request;
 
 import com.sitewhere.spi.common.IAccessible;
 import com.sitewhere.spi.common.request.IBrandedEntityCreateRequest;
+import com.sitewhere.spi.common.request.ITreeEntityCreateRequest;
 
 /**
  * Interface for arguments needed to create a customer.
  * 
  * @author Derek
  */
-public interface ICustomerCreateRequest extends IAccessible, IBrandedEntityCreateRequest {
+public interface ICustomerCreateRequest extends IAccessible, IBrandedEntityCreateRequest, ITreeEntityCreateRequest {
 
     /**
      * Get token for corresponding customer type.
@@ -23,11 +24,4 @@ public interface ICustomerCreateRequest extends IAccessible, IBrandedEntityCreat
      * @return
      */
     public String getCustomerTypeToken();
-
-    /**
-     * Get token for parent customer (null if none).
-     * 
-     * @return
-     */
-    public String getParentCustomerToken();
 }

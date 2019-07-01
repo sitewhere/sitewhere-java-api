@@ -29,7 +29,7 @@ public class Customer extends BrandedEntity implements ICustomer {
     private UUID customerTypeId;
 
     /** Parent customer id */
-    private UUID parentCustomerId;
+    private UUID parentId;
 
     /** Area name */
     private String name;
@@ -50,15 +50,15 @@ public class Customer extends BrandedEntity implements ICustomer {
     }
 
     /*
-     * @see com.sitewhere.spi.customer.ICustomer#getParentCustomerId()
+     * @see com.sitewhere.spi.common.ITreeEntity#getParentId()
      */
     @Override
-    public UUID getParentCustomerId() {
-	return parentCustomerId;
+    public UUID getParentId() {
+	return parentId;
     }
 
-    public void setParentCustomerId(UUID parentCustomerId) {
-	this.parentCustomerId = parentCustomerId;
+    public void setParentId(UUID parentId) {
+	this.parentId = parentId;
     }
 
     /*

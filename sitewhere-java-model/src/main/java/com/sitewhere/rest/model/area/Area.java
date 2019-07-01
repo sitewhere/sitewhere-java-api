@@ -32,7 +32,7 @@ public class Area extends BrandedEntity implements IArea {
     private UUID areaTypeId;
 
     /** Parent area id */
-    private UUID parentAreaId;
+    private UUID parentId;
 
     /** Area name */
     private String name;
@@ -59,15 +59,15 @@ public class Area extends BrandedEntity implements IArea {
     }
 
     /*
-     * @see com.sitewhere.spi.area.IArea#getParentAreaId()
+     * @see com.sitewhere.spi.common.ITreeEntity#getParentId()
      */
     @Override
-    public UUID getParentAreaId() {
-	return parentAreaId;
+    public UUID getParentId() {
+	return parentId;
     }
 
-    public void setParentAreaId(UUID parentAreaId) {
-	this.parentAreaId = parentAreaId;
+    public void setParentId(UUID parentId) {
+	this.parentId = parentId;
     }
 
     /*

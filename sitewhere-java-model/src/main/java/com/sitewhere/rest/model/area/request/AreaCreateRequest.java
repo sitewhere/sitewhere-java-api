@@ -32,7 +32,7 @@ public class AreaCreateRequest extends BrandedEntityCreateRequest implements IAr
     public String areaTypeToken;
 
     /** Parent area token */
-    public String parentAreaToken;
+    public String parentToken;
 
     /** Site name */
     private String name;
@@ -56,15 +56,16 @@ public class AreaCreateRequest extends BrandedEntityCreateRequest implements IAr
     }
 
     /*
-     * @see com.sitewhere.spi.area.request.IAreaCreateRequest#getParentAreaToken()
+     * @see
+     * com.sitewhere.spi.common.request.ITreeEntityCreateRequest#getParentToken()
      */
     @Override
-    public String getParentAreaToken() {
-	return parentAreaToken;
+    public String getParentToken() {
+	return parentToken;
     }
 
-    public void setParentAreaToken(String parentAreaToken) {
-	this.parentAreaToken = parentAreaToken;
+    public void setParentToken(String parentToken) {
+	this.parentToken = parentToken;
     }
 
     /*
@@ -108,9 +109,9 @@ public class AreaCreateRequest extends BrandedEntityCreateRequest implements IAr
 	/** Request being built */
 	private AreaCreateRequest request = new AreaCreateRequest();
 
-	public Builder(String areaTypeToken, String parentAreaToken, String token, String name) {
+	public Builder(String areaTypeToken, String parentToken, String token, String name) {
 	    request.setAreaTypeToken(areaTypeToken);
-	    request.setParentAreaToken(parentAreaToken);
+	    request.setParentToken(parentToken);
 	    request.setToken(token);
 	    request.setName(name);
 	    request.setDescription("");
