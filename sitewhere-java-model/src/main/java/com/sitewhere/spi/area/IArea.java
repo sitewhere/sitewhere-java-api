@@ -9,14 +9,13 @@ package com.sitewhere.spi.area;
 
 import java.util.UUID;
 
-import com.sitewhere.spi.common.IAccessible;
 import com.sitewhere.spi.common.IBrandedTreeEntity;
 
 /**
  * An entity that represents a geographical area based on a previously defined
  * area type.
  */
-public interface IArea extends IBrandedTreeEntity, IAccessible, IBoundedEntity {
+public interface IArea extends IBrandedTreeEntity, IBoundedEntity {
 
     /**
      * Get id of corresponding area type.

@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * Entity which can have a link to a parent entity to form a tree structure.
  */
-public interface ITreeEntity {
+public interface ITreeEntity extends IAccessible {
 
     /**
      * Get unique id of parent entity.
