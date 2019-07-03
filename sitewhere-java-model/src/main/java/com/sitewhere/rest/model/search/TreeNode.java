@@ -9,12 +9,15 @@ package com.sitewhere.rest.model.search;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.MetadataProvider;
 import com.sitewhere.spi.search.ITreeNode;
 
 /**
  * Model object for a node in a tree which can point to an external entity.
  */
+@JsonInclude(Include.NON_NULL)
 public class TreeNode extends MetadataProvider implements ITreeNode {
 
     /** Serial version UID */
