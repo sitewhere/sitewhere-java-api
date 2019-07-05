@@ -17,6 +17,9 @@ import com.sitewhere.rest.model.asset.Asset;
 import com.sitewhere.rest.model.asset.AssetType;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
+import com.sitewhere.rest.model.batch.BatchOperation;
+import com.sitewhere.rest.model.customer.CustomerType;
+import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
@@ -128,7 +131,36 @@ public interface SiteWhereRestRetrofit {
     @DELETE("assignments/{token}")
     Call<DeviceAssignment> deleteDeviceAssignment(@Path("token") String token, @HeaderMap Map<String, String> headers);
     
+    // ------------------------------------------------------------------------
+    // Batch Operations  
+    // ------------------------------------------------------------------------
 
+    @GET("/batch/{batchToken}")
+    Call<BatchOperation> getBatchOperationByToken(@Path("batchToken") String batchToken, @HeaderMap Map<String, String> headers);
+
+    // ------------------------------------------------------------------------
+    // Command Invocations
+    // ------------------------------------------------------------------------
+
+    // ------------------------------------------------------------------------
+    // Customer Types
+    // ------------------------------------------------------------------------
+
+    @GET("/customertypes/{customerTypeToken}")
+    Call<CustomerType> getCustomerTypeByToken(@Path("customerTypeToken") String customerTypeToken, @HeaderMap Map<String, String> headers);
+
+    @POST("customertypes")
+    Call<CustomerType> createCustomerType(@Body CustomerTypeCreateRequest request, 
+	    @HeaderMap Map<String, String> headers);
+
+    @PUT("customertypes/{customerTypeToken}")
+    Call<CustomerType> updateCustomerType(@Path("customerTypeToken") String customerTypeToken, @Body CustomerTypeCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("customertypes/{customerTypeToken}")
+    Call<CustomerType> deleteCustomerType(@Path("customerTypeToken") String customerTypeToken, @HeaderMap Map<String, String> headers);
+    
+    
     // ------------------------------------------------------------------------
     // Device Types 
     // ------------------------------------------------------------------------

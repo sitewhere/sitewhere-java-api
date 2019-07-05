@@ -22,6 +22,8 @@ import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.common.MetadataProvider;
+import com.sitewhere.rest.model.customer.CustomerType;
+import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceType;
@@ -322,6 +324,71 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public DeviceAssignment deleteDeviceAssignment(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
+    // ------------------------------------------------------------------------
+    // Batch Operations  
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a batch operation by token.
+     * 
+     * @param tenant
+     * @param batchToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public BatchOperation getBatchOperationByToken(ITenantAuthentication tenant, String batchToken) throws SiteWhereException;
+    
+    // ------------------------------------------------------------------------
+    // Command Invocations
+    // ------------------------------------------------------------------------
+
+    // ------------------------------------------------------------------------
+    // Customer Types
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a customer type by token.
+     * 
+     * @param tenant
+     * @param customerTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public CustomerType getCustomerTypeByToken(ITenantAuthentication tenant, String customerTypeToken) throws SiteWhereException;
+    
+    /**
+     * Create a new customer type.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public CustomerType createCustomerType(ITenantAuthentication tenant, CustomerTypeCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing customer type.
+     * 
+     * @param tenant
+     * @param customerTypeToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public CustomerType updateCustomerType(ITenantAuthentication tenant, String customerTypeToken, CustomerTypeCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing customer type.
+     * 
+     * @param tenant
+     * @param customerTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public CustomerType deleteCustomerType(ITenantAuthentication tenant, String customerTypeToken) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Device Types 
