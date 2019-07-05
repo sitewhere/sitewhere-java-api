@@ -210,7 +210,17 @@ public interface ISiteWhereClient {
      */
     public AreaType updateAreaType(ITenantAuthentication tenant, String areaTypeToken, AreaTypeCreateRequest request)
 	    throws SiteWhereException;
-
+    
+    /**
+     * Delete an existing area type.
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType deleteAreaType(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
+    
     /**
      * Create a new zone associated with a site.
      * 

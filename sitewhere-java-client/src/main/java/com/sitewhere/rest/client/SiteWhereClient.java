@@ -249,6 +249,13 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+
+    @Override
+    public AreaType deleteAreaType(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().deleteAreaType(areaTypeToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     @Override
     public Zone createZone(String siteToken, ZoneCreateRequest request) throws SiteWhereException {
 	// TODO Auto-generated method stub
@@ -821,5 +828,4 @@ public class SiteWhereClient implements ISiteWhereClient {
     public void setJwt(String jwt) {
 	this.jwt = jwt;
     }
-
 }
