@@ -175,11 +175,16 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#updateDeviceType(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String,
+     * com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest)
+     */
     @Override
     public DeviceType updateDeviceType(ITenantAuthentication tenant, String token, DeviceTypeCreateRequest request)
 	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
+	Call<DeviceType> call = getRestRetrofit().updateDeviceType(token, request, createHeadersFor(tenant));
+	return processRestCall(call);
     }
 
     @Override
