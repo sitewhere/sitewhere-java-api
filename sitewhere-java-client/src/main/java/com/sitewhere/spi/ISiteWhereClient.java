@@ -14,6 +14,7 @@ import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.AreaType;
 import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
+import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.common.MetadataProvider;
@@ -176,7 +177,18 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public Area getAreaByToken(String token) throws SiteWhereException;
-    
+
+    /**
+     * Create a new area type.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType createAreaType(ITenantAuthentication tenant, AreaTypeCreateRequest request)
+	    throws SiteWhereException;
+
     /**
      * Get a area type by token.
      * 

@@ -10,6 +10,7 @@ package com.sitewhere.rest.client;
 import java.util.Map;
 
 import com.sitewhere.rest.model.area.AreaType;
+import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.system.Version;
@@ -35,6 +36,9 @@ public interface SiteWhereRestRetrofit {
     @GET("/areatypes/{areaTypeToken}")
     Call<AreaType> getAreaTypeByToken(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
 
+    @POST("areatypes")
+    Call<AreaType> createAreaType(@Body AreaTypeCreateRequest request, @HeaderMap Map<String, String> headers);
+    
     @POST("devicetypes")
     Call<DeviceType> createDeviceType(@Body DeviceTypeCreateRequest request, @HeaderMap Map<String, String> headers);
 
