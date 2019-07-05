@@ -13,7 +13,9 @@ import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.AreaType;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
+import com.sitewhere.rest.model.asset.Asset;
 import com.sitewhere.rest.model.asset.AssetType;
+import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
@@ -89,6 +91,22 @@ public interface SiteWhereRestRetrofit {
     @DELETE("assettypes/{assetTypeToken}")
     Call<AssetType> deleteAssetType(@Path("assetTypeToken") String assetTypeToken, @HeaderMap Map<String, String> headers);
     
+    // ------------------------------------------------------------------------
+    // Asset  
+    // ------------------------------------------------------------------------
+    
+    @GET("/assets/{assetToken}")
+    Call<Asset> getAssetByToken(@Path("assetToken") String assetToken, @HeaderMap Map<String, String> headers);
+
+    @POST("assets")
+    Call<Asset> createAsset(@Body AssetCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("assets/{assetToken}")
+    Call<Asset> updateAsset(@Path("assetToken") String assetToken, @Body AssetCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("assets/{assetToken}")
+    Call<Asset> deleteAsset(@Path("assetToken") String assetToken, @HeaderMap Map<String, String> headers);
 
     // ------------------------------------------------------------------------
     // Device Types 

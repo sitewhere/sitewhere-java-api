@@ -16,7 +16,9 @@ import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
+import com.sitewhere.rest.model.asset.Asset;
 import com.sitewhere.rest.model.asset.AssetType;
+import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.common.MetadataProvider;
@@ -226,6 +228,52 @@ public interface ISiteWhereClient {
      */
     public AssetType deleteAssetType(ITenantAuthentication tenant, String assetTypeToken) throws SiteWhereException;
     
+    // ------------------------------------------------------------------------
+    // Asset  
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a asset by token.
+     * 
+     * @param tenant
+     * @param assetToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Asset getAssetByToken(ITenantAuthentication tenant, String assetToken) throws SiteWhereException;
+    
+    /**
+     * Create a new asset type.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Asset createAsset(ITenantAuthentication tenant, AssetCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing asset type.
+     * 
+     * @param tenant
+     * @param assetToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Asset updateAsset(ITenantAuthentication tenant, String assetToken, AssetCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing asset type.
+     * 
+     * @param tenant
+     * @param assetToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Asset deleteAsset(ITenantAuthentication tenant, String assetToken) throws SiteWhereException;
     
     
     // ------------------------------------------------------------------------
