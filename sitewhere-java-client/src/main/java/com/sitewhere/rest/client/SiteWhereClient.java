@@ -40,6 +40,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCrea
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
+import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
@@ -357,6 +358,57 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Call<Asset > call = getRestRetrofit().deleteAsset (assetToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
+
+    // ------------------------------------------------------------------------
+    // Assignments  
+    // ------------------------------------------------------------------------
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getDeviceAssignmentByToken()
+     */
+    @Override
+    public DeviceAssignment getDeviceAssignmentByToken(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<DeviceAssignment > call = getRestRetrofit().getDeviceAssignmentByToken(token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createDeviceAssignment()
+     */
+    @Override
+    public DeviceAssignment createDeviceAssignment(ITenantAuthentication tenant, DeviceAssignmentCreateRequest request)
+	    throws SiteWhereException {
+	Call<DeviceAssignment > call = getRestRetrofit().createDeviceAssignment(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#updateDeviceAssignment()
+     */
+    @Override
+    public DeviceAssignment updateDeviceAssignment(ITenantAuthentication tenant, String token, DeviceAssignmentCreateRequest request)
+	    throws SiteWhereException {
+	Call<DeviceAssignment > call = getRestRetrofit().updateDeviceAssignment(token, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteDeviceAssignment()
+     */
+    @Override
+    public DeviceAssignment deleteDeviceAssignment(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<DeviceAssignment > call = getRestRetrofit().deleteDeviceAssignment (token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     
     // ------------------------------------------------------------------------
     // Device Types 
