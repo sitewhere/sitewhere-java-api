@@ -154,6 +154,121 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    // ------------------------------------------------------------------------
+    // Area Types 
+    // ------------------------------------------------------------------------
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getAreaTypeByToken()
+     */
+    @Override
+    public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().getAreaTypeByToken(areaTypeToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createAreaType()
+     */
+    @Override
+    public AreaType createAreaType(ITenantAuthentication tenant, AreaTypeCreateRequest request)
+	    throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().createAreaType(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#updateAreaType()
+     */
+    @Override
+    public AreaType updateAreaType(ITenantAuthentication tenant, String areaTypeToken, AreaTypeCreateRequest request)
+	    throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().updateAreaType(areaTypeToken, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteAreaType()
+     */
+    @Override
+    public AreaType deleteAreaType(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().deleteAreaType(areaTypeToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    // ------------------------------------------------------------------------
+    // Areas  
+    // ------------------------------------------------------------------------
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getAreaByToken()
+     */
+    @Override
+    public Area getAreaByToken(ITenantAuthentication tenant, String areaToken) throws SiteWhereException {
+	Call<Area> call = getRestRetrofit().getAreaByToken(areaToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createArea()
+     */
+    @Override
+    public Area createArea(ITenantAuthentication tenant, AreaCreateRequest request)
+	    throws SiteWhereException {
+	Call<Area> call = getRestRetrofit().createArea(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#updateArea()
+     */
+    @Override
+    public Area updateArea(ITenantAuthentication tenant, String areaToken, AreaCreateRequest request)
+	    throws SiteWhereException {
+	Call<Area> call = getRestRetrofit().updateArea(areaToken, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteArea()
+     */
+    @Override
+    public Area deleteArea(ITenantAuthentication tenant, String areaToken) throws SiteWhereException {
+	Call<Area> call = getRestRetrofit().deleteArea(areaToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    // ------------------------------------------------------------------------
+    // Device Types 
+    // ------------------------------------------------------------------------
+    
+    /*
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#getDeviceTypeByToken(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String)
+     */
+    @Override
+    public DeviceType getDeviceTypeByToken(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<DeviceType> call = getRestRetrofit().getDeviceTypeByToken(token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#createDeviceType(com.sitewhere.spi.
      * ITenantAuthentication,
@@ -163,17 +278,6 @@ public class SiteWhereClient implements ISiteWhereClient {
     public DeviceType createDeviceType(ITenantAuthentication tenant, DeviceTypeCreateRequest request)
 	    throws SiteWhereException {
 	Call<DeviceType> call = getRestRetrofit().createDeviceType(request, createHeadersFor(tenant));
-	return processRestCall(call);
-    }
-
-    /*
-     * @see
-     * com.sitewhere.spi.ISiteWhereClient#getDeviceTypeByToken(com.sitewhere.spi.
-     * ITenantAuthentication, java.lang.String)
-     */
-    @Override
-    public DeviceType getDeviceTypeByToken(ITenantAuthentication tenant, String token) throws SiteWhereException {
-	Call<DeviceType> call = getRestRetrofit().getDeviceTypeByToken(token, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -229,32 +333,6 @@ public class SiteWhereClient implements ISiteWhereClient {
     }
 
     
-    @Override
-    public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
-	Call<AreaType> call = getRestRetrofit().getAreaTypeByToken(areaTypeToken, createHeadersFor(tenant));
-	return processRestCall(call);
-    }
-
-    @Override
-    public AreaType createAreaType(ITenantAuthentication tenant, AreaTypeCreateRequest request)
-	    throws SiteWhereException {
-	Call<AreaType> call = getRestRetrofit().createAreaType(request, createHeadersFor(tenant));
-	return processRestCall(call);
-    }
-    
-    @Override
-    public AreaType updateAreaType(ITenantAuthentication tenant, String areaTypeToken, AreaTypeCreateRequest request)
-	    throws SiteWhereException {
-	Call<AreaType> call = getRestRetrofit().updateAreaType(areaTypeToken, request, createHeadersFor(tenant));
-	return processRestCall(call);
-    }
-
-
-    @Override
-    public AreaType deleteAreaType(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
-	Call<AreaType> call = getRestRetrofit().deleteAreaType(areaTypeToken, createHeadersFor(tenant));
-	return processRestCall(call);
-    }
     
     @Override
     public Zone createZone(String siteToken, ZoneCreateRequest request) throws SiteWhereException {
