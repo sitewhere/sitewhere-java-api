@@ -22,7 +22,9 @@ import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.common.MetadataProvider;
+import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
+import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
@@ -389,6 +391,53 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public CustomerType deleteCustomerType(ITenantAuthentication tenant, String customerTypeToken) throws SiteWhereException;
+
+    // ------------------------------------------------------------------------
+    // Customer
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a customer by token.
+     * 
+     * @param tenant
+     * @param customerToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Customer getCustomerByToken(ITenantAuthentication tenant, String customerToken) throws SiteWhereException;
+    
+    /**
+     * Create a new customer.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Customer createCustomer(ITenantAuthentication tenant, CustomerCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing customer.
+     * 
+     * @param tenant
+     * @param customerToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Customer updateCustomer(ITenantAuthentication tenant, String customerToken, CustomerCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing customer.
+     * 
+     * @param tenant
+     * @param customerToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Customer deleteCustomer(ITenantAuthentication tenant, String customerToken) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Device Types 

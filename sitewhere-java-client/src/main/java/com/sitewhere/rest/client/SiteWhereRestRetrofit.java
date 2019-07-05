@@ -18,7 +18,9 @@ import com.sitewhere.rest.model.asset.AssetType;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
+import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
+import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceType;
@@ -160,6 +162,23 @@ public interface SiteWhereRestRetrofit {
     @DELETE("customertypes/{customerTypeToken}")
     Call<CustomerType> deleteCustomerType(@Path("customerTypeToken") String customerTypeToken, @HeaderMap Map<String, String> headers);
     
+    // ------------------------------------------------------------------------
+    // Customer
+    // ------------------------------------------------------------------------
+
+    @GET("/customers/{customerToken}")
+    Call<Customer> getCustomerByToken(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
+
+    @POST("customers")
+    Call<Customer> createCustomer(@Body CustomerCreateRequest request, 
+	    @HeaderMap Map<String, String> headers);
+
+    @PUT("customers/{customerToken}")
+    Call<Customer> updateCustomer(@Path("customerToken") String customerToken, @Body CustomerCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("customers/{customerToken}")
+    Call<Customer> deleteCustomer(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Device Types 
