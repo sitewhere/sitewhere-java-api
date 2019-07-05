@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.sitewhere.rest.model.area.Area;
+import com.sitewhere.rest.model.area.AreaType;
 import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
@@ -175,6 +176,16 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public Area getAreaByToken(String token) throws SiteWhereException;
+    
+    /**
+     * Get a area type by token.
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
 
     /**
      * Create a new zone associated with a site.

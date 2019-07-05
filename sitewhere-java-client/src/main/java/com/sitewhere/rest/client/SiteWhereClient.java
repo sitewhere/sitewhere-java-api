@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.sitewhere.rest.model.area.Area;
+import com.sitewhere.rest.model.area.AreaType;
 import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
@@ -224,6 +225,13 @@ public class SiteWhereClient implements ISiteWhereClient {
     public Area getAreaByToken(String token) throws SiteWhereException {
 	// TODO Auto-generated method stub
 	return null;
+    }
+
+
+    @Override
+    public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().getAreaTypeByToken(areaTypeToken, createHeadersFor(tenant));
+	return processRestCall(call);
     }
 
     @Override
