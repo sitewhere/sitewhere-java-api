@@ -17,7 +17,9 @@ import com.sitewhere.rest.model.asset.Asset;
 import com.sitewhere.rest.model.asset.AssetType;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
+import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceType;
+import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.system.Version;
 
@@ -107,6 +109,25 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("assets/{assetToken}")
     Call<Asset> deleteAsset(@Path("assetToken") String assetToken, @HeaderMap Map<String, String> headers);
+    
+    // ------------------------------------------------------------------------
+    // Assignments  
+    // ------------------------------------------------------------------------
+    
+    @GET("/assignments/{token}")
+    Call<DeviceAssignment> getDeviceAssignmentByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    @POST("assignments")
+    Call<DeviceAssignment> createDeviceAssignment(@Body DeviceAssignmentCreateRequest request, 
+	    @HeaderMap Map<String, String> headers);
+
+    @PUT("assignments/{token}")
+    Call<DeviceAssignment> updateDeviceAssignment(@Path("token") String token, @Body DeviceAssignmentCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("assignments/{token}")
+    Call<DeviceAssignment> deleteDeviceAssignment(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    
 
     // ------------------------------------------------------------------------
     // Device Types 

@@ -37,6 +37,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCrea
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
+import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
@@ -243,7 +244,7 @@ public interface ISiteWhereClient {
     public Asset getAssetByToken(ITenantAuthentication tenant, String assetToken) throws SiteWhereException;
     
     /**
-     * Create a new asset type.
+     * Create a new asset.
      * 
      * @param tenant
      * @param request
@@ -254,7 +255,7 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
 
     /**
-     * Update an existing asset type.
+     * Update an existing asset.
      * 
      * @param tenant
      * @param assetToken
@@ -266,7 +267,7 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
     
     /**
-     * Delete an existing asset type.
+     * Delete an existing asset.
      * 
      * @param tenant
      * @param assetToken
@@ -275,6 +276,52 @@ public interface ISiteWhereClient {
      */
     public Asset deleteAsset(ITenantAuthentication tenant, String assetToken) throws SiteWhereException;
     
+    // ------------------------------------------------------------------------
+    // Assignments  
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a device assignment by token.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceAssignment getDeviceAssignmentByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
+    
+    /**
+     * Create a new device assignment.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceAssignment createDeviceAssignment(ITenantAuthentication tenant, DeviceAssignmentCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing device assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceAssignment updateDeviceAssignment(ITenantAuthentication tenant, String token, DeviceAssignmentCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing device assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceAssignment deleteDeviceAssignment(ITenantAuthentication tenant, String token) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Device Types 
