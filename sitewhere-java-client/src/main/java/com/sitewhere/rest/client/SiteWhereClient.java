@@ -228,7 +228,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return null;
     }
 
-
+    
     @Override
     public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
 	Call<AreaType> call = getRestRetrofit().getAreaTypeByToken(areaTypeToken, createHeadersFor(tenant));
@@ -239,6 +239,13 @@ public class SiteWhereClient implements ISiteWhereClient {
     public AreaType createAreaType(ITenantAuthentication tenant, AreaTypeCreateRequest request)
 	    throws SiteWhereException {
 	Call<AreaType> call = getRestRetrofit().createAreaType(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    @Override
+    public AreaType updateAreaType(ITenantAuthentication tenant, String areaTypeToken, AreaTypeCreateRequest request)
+	    throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().updateAreaType(areaTypeToken, request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -814,4 +821,5 @@ public class SiteWhereClient implements ISiteWhereClient {
     public void setJwt(String jwt) {
 	this.jwt = jwt;
     }
+
 }

@@ -198,6 +198,18 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
+    
+    /**
+     * Update an existing area type.
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType updateAreaType(ITenantAuthentication tenant, String areaTypeToken, AreaTypeCreateRequest request)
+	    throws SiteWhereException;
 
     /**
      * Create a new zone associated with a site.
