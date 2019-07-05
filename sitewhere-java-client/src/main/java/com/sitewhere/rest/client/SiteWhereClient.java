@@ -24,7 +24,9 @@ import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.common.MetadataProvider;
+import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
+import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.rest.model.device.Device;
@@ -480,6 +482,55 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
     
+    // ------------------------------------------------------------------------
+    // Customer
+    // ------------------------------------------------------------------------
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getCustomerByToken()
+     */
+    @Override
+    public Customer getCustomerByToken(ITenantAuthentication tenant, String customerToken) throws SiteWhereException {
+	Call<Customer > call = getRestRetrofit().getCustomerByToken(customerToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createCustomer()
+     */
+    @Override
+    public Customer createCustomer(ITenantAuthentication tenant, CustomerCreateRequest request)
+	    throws SiteWhereException {
+	Call<Customer > call = getRestRetrofit().createCustomer(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#updateCustomer()
+     */
+    @Override
+    public Customer updateCustomer(ITenantAuthentication tenant, String customerToken, CustomerCreateRequest request)
+	    throws SiteWhereException {
+	Call<Customer > call = getRestRetrofit().updateCustomer(customerToken, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteCustomer()
+     */
+    @Override
+    public Customer deleteCustomer(ITenantAuthentication tenant, String customerToken) throws SiteWhereException {
+	Call<Customer > call = getRestRetrofit().deleteCustomer (customerToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
     
     // ------------------------------------------------------------------------
     // Device Types 
