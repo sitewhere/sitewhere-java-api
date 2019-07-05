@@ -16,6 +16,8 @@ import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
+import com.sitewhere.rest.model.asset.AssetType;
+import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.common.MetadataProvider;
 import com.sitewhere.rest.model.device.Device;
@@ -177,6 +179,54 @@ public interface ISiteWhereClient {
      */
     public Area deleteArea(ITenantAuthentication tenant, String areaToken) throws SiteWhereException;
     
+    // ------------------------------------------------------------------------
+    // Asset Types  
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a asset type by token.
+     * 
+     * @param tenant
+     * @param assetTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public AssetType getAssetTypeByToken(ITenantAuthentication tenant, String assetTypeToken) throws SiteWhereException;
+    
+    /**
+     * Create a new asset type type.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public AssetType createAssetType(ITenantAuthentication tenant, AssetTypeCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing asset type type.
+     * 
+     * @param tenant
+     * @param assetTypeToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public AssetType updateAssetType(ITenantAuthentication tenant, String assetTypeToken, AssetTypeCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing asset type type.
+     * 
+     * @param tenant
+     * @param assetTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public AssetType deleteAssetType(ITenantAuthentication tenant, String assetTypeToken) throws SiteWhereException;
+    
+    
     
     // ------------------------------------------------------------------------
     // Device Types 
@@ -258,24 +308,6 @@ public interface ISiteWhereClient {
      */
     public DeviceCommandSearchResults listDeviceCommands(String specificationToken, boolean includeDeleted)
 	    throws SiteWhereException;
-
-    /**
-     * Create a new area.
-     * 
-     * @param request
-     * @return
-     * @throws SiteWhereException
-     */
-    public Area createArea(AreaCreateRequest request) throws SiteWhereException;
-
-    /**
-     * Get area by unique token.
-     * 
-     * @param token
-     * @return
-     * @throws SiteWhereException
-     */
-    public Area getAreaByToken(String token) throws SiteWhereException;
 
     /**
      * Create a new zone associated with a site.
