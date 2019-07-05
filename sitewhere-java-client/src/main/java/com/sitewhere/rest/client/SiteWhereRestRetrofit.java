@@ -9,12 +9,15 @@ package com.sitewhere.rest.client;
 
 import java.util.Map;
 
+import com.sitewhere.rest.model.area.AreaType;
+import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.system.Version;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
@@ -30,7 +33,20 @@ public interface SiteWhereRestRetrofit {
 
     @GET("system/version")
     Call<Version> getVersion();
+    
+    @GET("/areatypes/{areaTypeToken}")
+    Call<AreaType> getAreaTypeByToken(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
 
+    @POST("areatypes")
+    Call<AreaType> createAreaType(@Body AreaTypeCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("areatypes/{areaTypeToken}")
+    Call<AreaType> updateAreaType(@Path("areaTypeToken") String areaTypeToken, @Body AreaTypeCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("areatypes/{areaTypeToken}")
+    Call<AreaType> deleteAreaType(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
+    
     @POST("devicetypes")
     Call<DeviceType> createDeviceType(@Body DeviceTypeCreateRequest request, @HeaderMap Map<String, String> headers);
 

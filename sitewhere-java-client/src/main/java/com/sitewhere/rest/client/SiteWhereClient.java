@@ -13,8 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.sitewhere.rest.model.area.Area;
+import com.sitewhere.rest.model.area.AreaType;
 import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
+import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.common.MetadataProvider;
@@ -226,6 +228,34 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return null;
     }
 
+    
+    @Override
+    public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().getAreaTypeByToken(areaTypeToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    @Override
+    public AreaType createAreaType(ITenantAuthentication tenant, AreaTypeCreateRequest request)
+	    throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().createAreaType(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    @Override
+    public AreaType updateAreaType(ITenantAuthentication tenant, String areaTypeToken, AreaTypeCreateRequest request)
+	    throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().updateAreaType(areaTypeToken, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+
+    @Override
+    public AreaType deleteAreaType(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
+	Call<AreaType> call = getRestRetrofit().deleteAreaType(areaTypeToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     @Override
     public Zone createZone(String siteToken, ZoneCreateRequest request) throws SiteWhereException {
 	// TODO Auto-generated method stub

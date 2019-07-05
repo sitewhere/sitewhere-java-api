@@ -11,8 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.sitewhere.rest.model.area.Area;
+import com.sitewhere.rest.model.area.AreaType;
 import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
+import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.common.MetadataProvider;
@@ -176,6 +178,49 @@ public interface ISiteWhereClient {
      */
     public Area getAreaByToken(String token) throws SiteWhereException;
 
+    /**
+     * Create a new area type.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType createAreaType(ITenantAuthentication tenant, AreaTypeCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Get a area type by token.
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
+    
+    /**
+     * Update an existing area type.
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType updateAreaType(ITenantAuthentication tenant, String areaTypeToken, AreaTypeCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing area type.
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType deleteAreaType(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
+    
     /**
      * Create a new zone associated with a site.
      * 
