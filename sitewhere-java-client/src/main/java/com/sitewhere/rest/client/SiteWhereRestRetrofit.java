@@ -9,7 +9,9 @@ package com.sitewhere.rest.client;
 
 import java.util.Map;
 
+import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.AreaType;
+import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
@@ -34,6 +36,10 @@ public interface SiteWhereRestRetrofit {
     @GET("system/version")
     Call<Version> getVersion();
     
+    // ------------------------------------------------------------------------
+    // Area Types 
+    // ------------------------------------------------------------------------
+    
     @GET("/areatypes/{areaTypeToken}")
     Call<AreaType> getAreaTypeByToken(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
 
@@ -46,6 +52,27 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("areatypes/{areaTypeToken}")
     Call<AreaType> deleteAreaType(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
+
+    // ------------------------------------------------------------------------
+    // Areas  
+    // ------------------------------------------------------------------------
+    
+    @GET("/areas/{areaToken}")
+    Call<Area> getAreaByToken(@Path("areaToken") String areaToken, @HeaderMap Map<String, String> headers);
+
+    @POST("areas")
+    Call<Area> createArea(@Body AreaCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("areas/{areaToken}")
+    Call<Area> updateArea(@Path("areaToken") String areaToken, @Body AreaCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("areas/{areaToken}")
+    Call<Area> deleteArea(@Path("areaToken") String areaToken, @HeaderMap Map<String, String> headers);
+
+    // ------------------------------------------------------------------------
+    // Device Types 
+    // ------------------------------------------------------------------------
     
     @POST("devicetypes")
     Call<DeviceType> createDeviceType(@Body DeviceTypeCreateRequest request, @HeaderMap Map<String, String> headers);

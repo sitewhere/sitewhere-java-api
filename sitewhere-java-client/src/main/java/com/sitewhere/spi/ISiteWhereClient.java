@@ -83,6 +83,115 @@ public interface ISiteWhereClient {
      */
     public Version getSiteWhereVersion() throws SiteWhereException;
 
+    // ------------------------------------------------------------------------
+    // Area Types 
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a area type by token.
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
+    
+    /**
+     * Create a new area type.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType createAreaType(ITenantAuthentication tenant, AreaTypeCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing area type.
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType updateAreaType(ITenantAuthentication tenant, String areaTypeToken, AreaTypeCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing area type.
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public AreaType deleteAreaType(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
+    
+    // ------------------------------------------------------------------------
+    // Areas  
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a area by token.
+     * 
+     * @param tenant
+     * @param areaToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Area getAreaByToken(ITenantAuthentication tenant, String areaToken) throws SiteWhereException;
+    
+    /**
+     * Create a new area type.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Area createArea(ITenantAuthentication tenant, AreaCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing area type.
+     * 
+     * @param tenant
+     * @param areaToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Area updateArea(ITenantAuthentication tenant, String areaToken, AreaCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing area type.
+     * 
+     * @param tenant
+     * @param areaToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Area deleteArea(ITenantAuthentication tenant, String areaToken) throws SiteWhereException;
+    
+    
+    // ------------------------------------------------------------------------
+    // Device Types 
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a device type by token.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceType getDeviceTypeByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
     /**
      * Create a new device type.
      * 
@@ -93,16 +202,6 @@ public interface ISiteWhereClient {
      */
     public DeviceType createDeviceType(ITenantAuthentication tenant, DeviceTypeCreateRequest request)
 	    throws SiteWhereException;
-
-    /**
-     * Get a device type by token.
-     * 
-     * @param tenant
-     * @param token
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceType getDeviceTypeByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
 
     /**
      * Update an existing device type.
@@ -178,49 +277,6 @@ public interface ISiteWhereClient {
      */
     public Area getAreaByToken(String token) throws SiteWhereException;
 
-    /**
-     * Create a new area type.
-     * 
-     * @param tenant
-     * @param request
-     * @return
-     * @throws SiteWhereException
-     */
-    public AreaType createAreaType(ITenantAuthentication tenant, AreaTypeCreateRequest request)
-	    throws SiteWhereException;
-
-    /**
-     * Get a area type by token.
-     * 
-     * @param tenant
-     * @param areaTypeToken
-     * @return
-     * @throws SiteWhereException
-     */
-    public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
-    
-    /**
-     * Update an existing area type.
-     * 
-     * @param tenant
-     * @param areaTypeToken
-     * @param request
-     * @return
-     * @throws SiteWhereException
-     */
-    public AreaType updateAreaType(ITenantAuthentication tenant, String areaTypeToken, AreaTypeCreateRequest request)
-	    throws SiteWhereException;
-    
-    /**
-     * Delete an existing area type.
-     * 
-     * @param tenant
-     * @param areaTypeToken
-     * @return
-     * @throws SiteWhereException
-     */
-    public AreaType deleteAreaType(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
-    
     /**
      * Create a new zone associated with a site.
      * 
