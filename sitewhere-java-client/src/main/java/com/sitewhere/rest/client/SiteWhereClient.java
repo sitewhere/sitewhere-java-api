@@ -18,7 +18,9 @@ import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
+import com.sitewhere.rest.model.asset.Asset;
 import com.sitewhere.rest.model.asset.AssetType;
+import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.common.MetadataProvider;
@@ -263,7 +265,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#getAssetType ByToken()
+     * @see com.sitewhere.spi.ISiteWhereClient#getAssetTypeByToken()
      */
     @Override
     public AssetType getAssetTypeByToken(ITenantAuthentication tenant, String assetTypeToken) throws SiteWhereException {
@@ -274,7 +276,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#createAssetType ()
+     * @see com.sitewhere.spi.ISiteWhereClient#createAssetType()
      */
     @Override
     public AssetType createAssetType(ITenantAuthentication tenant, AssetTypeCreateRequest request)
@@ -286,7 +288,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#updateAssetType ()
+     * @see com.sitewhere.spi.ISiteWhereClient#updateAssetType()
      */
     @Override
     public AssetType updateAssetType(ITenantAuthentication tenant, String assetTypeToken, AssetTypeCreateRequest request)
@@ -298,11 +300,61 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#deleteAssetType ()
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteAssetType()
      */
     @Override
     public AssetType deleteAssetType(ITenantAuthentication tenant, String assetTypeToken) throws SiteWhereException {
 	Call<AssetType > call = getRestRetrofit().deleteAssetType (assetTypeToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    // ------------------------------------------------------------------------
+    // Asset  
+    // ------------------------------------------------------------------------
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getAssetByToken()
+     */
+    @Override
+    public Asset getAssetByToken(ITenantAuthentication tenant, String assetToken) throws SiteWhereException {
+	Call<Asset > call = getRestRetrofit().getAssetByToken(assetToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createAsset()
+     */
+    @Override
+    public Asset createAsset(ITenantAuthentication tenant, AssetCreateRequest request)
+	    throws SiteWhereException {
+	Call<Asset > call = getRestRetrofit().createAsset(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#updateAsset()
+     */
+    @Override
+    public Asset updateAsset(ITenantAuthentication tenant, String assetToken, AssetCreateRequest request)
+	    throws SiteWhereException {
+	Call<Asset > call = getRestRetrofit().updateAsset(assetToken, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteAsset()
+     */
+    @Override
+    public Asset deleteAsset(ITenantAuthentication tenant, String assetToken) throws SiteWhereException {
+	Call<Asset > call = getRestRetrofit().deleteAsset (assetToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
     
