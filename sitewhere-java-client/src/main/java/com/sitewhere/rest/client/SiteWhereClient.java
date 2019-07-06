@@ -731,6 +731,22 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteDeviceType()
+     */
+    @Override
+    public DeviceType deleteDeviceType(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<DeviceType > call = getRestRetrofit().deleteDeviceType(token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    // ------------------------------------------------------------------------
+    // Devices
+    // ------------------------------------------------------------------------
+    
+    
     @Override
     public DeviceTypeSearchResults listDeviceTypes(boolean includeDeleted, boolean includeDetailedAssetInfo,
 	    SearchCriteria criteria) throws SiteWhereException {

@@ -252,13 +252,22 @@ public interface SiteWhereRestRetrofit {
     // Device Types 
     // ------------------------------------------------------------------------
     
-    @POST("devicetypes")
-    Call<DeviceType> createDeviceType(@Body DeviceTypeCreateRequest request, @HeaderMap Map<String, String> headers);
-
     @GET("devicetypes/{token}")
     Call<DeviceType> getDeviceTypeByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    @POST("devicetypes")
+    Call<DeviceType> createDeviceType(@Body DeviceTypeCreateRequest request, @HeaderMap Map<String, String> headers);
 
     @PUT("devicetypes/{token}")
     Call<DeviceType> updateDeviceType(@Path("token") String token, @Body DeviceTypeCreateRequest request,
 	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("devicetypes/{token}")
+    Call<DeviceType> deleteDeviceType(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    // ------------------------------------------------------------------------
+    // Devices
+    // ------------------------------------------------------------------------
+
+
 }

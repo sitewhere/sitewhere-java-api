@@ -628,6 +628,23 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
 
     /**
+     * Delete an existing device type.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceType deleteDeviceType(ITenantAuthentication tenant, String token) throws SiteWhereException;
+    
+    // ------------------------------------------------------------------------
+    // Devices
+    // ------------------------------------------------------------------------
+    
+    
+    
+    
+    /**
      * List device types that meet the given criteria.
      * 
      * @param includeDeleted
