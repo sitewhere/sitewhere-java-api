@@ -99,7 +99,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     public static final String DEFAULT_HOSTNAME = "localhost";
 
     /** Default port for REST services */
-    public static final int DEFAULT_PORT = 8080;
+    public static final int DEFAULT_PORT = 80;
 
     /** Relative URI for SiteWhere authentication APIs */
     public static final String AUTH_RELATIVE_URL = "/sitewhere/authapi/";
@@ -579,6 +579,60 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public DeviceCommand deleteDeviceCommand(ITenantAuthentication tenant, String token) throws SiteWhereException {
 	Call<DeviceCommand > call = getRestRetrofit().deleteDeviceCommand (token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    // ------------------------------------------------------------------------
+    // Device Events
+    // ------------------------------------------------------------------------
+    
+    // ------------------------------------------------------------------------
+    // Device Groups
+    // ------------------------------------------------------------------------
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getDeviceGroupByToken()
+     */
+    @Override
+    public DeviceGroup getDeviceGroupByToken(ITenantAuthentication tenant, String groupToken) throws SiteWhereException {
+	Call<DeviceGroup > call = getRestRetrofit().getDeviceGroupByToken(groupToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createDeviceGroup()
+     */
+    @Override
+    public DeviceGroup createDeviceGroup(ITenantAuthentication tenant, DeviceGroupCreateRequest request)
+	    throws SiteWhereException {
+	Call<DeviceGroup > call = getRestRetrofit().createDeviceGroup(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#updateDeviceGroup()
+     */
+    @Override
+    public DeviceGroup updateDeviceGroup(ITenantAuthentication tenant, String groupToken, DeviceGroupCreateRequest request)
+	    throws SiteWhereException {
+	Call<DeviceGroup > call = getRestRetrofit().updateDeviceGroup(groupToken, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteDeviceGroup()
+     */
+    @Override
+    public DeviceGroup deleteDeviceGroup(ITenantAuthentication tenant, String groupToken) throws SiteWhereException {
+	Call<DeviceGroup > call = getRestRetrofit().deleteDeviceGroup (groupToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
     

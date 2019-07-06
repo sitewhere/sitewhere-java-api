@@ -25,8 +25,10 @@ import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
+import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
+import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.system.Version;
 
@@ -200,7 +202,28 @@ public interface SiteWhereRestRetrofit {
     @DELETE("commands/{token}")
     Call<DeviceCommand> deleteDeviceCommand(@Path("token") String token, @HeaderMap Map<String, String> headers);
     
+    // ------------------------------------------------------------------------
+    // Device Events
+    // ------------------------------------------------------------------------
     
+    // ------------------------------------------------------------------------
+    // Device Groups
+    // ------------------------------------------------------------------------
+    
+    @GET("/devicegroups/{groupToken}")
+    Call<DeviceGroup> getDeviceGroupByToken(@Path("groupToken") String groupToken, @HeaderMap Map<String, String> headers);
+
+    @POST("devicegroups")
+    Call<DeviceGroup> createDeviceGroup(@Body DeviceGroupCreateRequest request, 
+	    @HeaderMap Map<String, String> headers);
+
+    @PUT("devicegroups/{groupToken}")
+    Call<DeviceGroup> updateDeviceGroup(@Path("groupToken") String groupToken, @Body DeviceGroupCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("devicegroups/{groupToken}")
+    Call<DeviceGroup> deleteDeviceGroup(@Path("groupToken") String groupToken, @HeaderMap Map<String, String> headers);
+       
     // ------------------------------------------------------------------------
     // Device Types 
     // ------------------------------------------------------------------------
