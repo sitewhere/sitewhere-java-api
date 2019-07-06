@@ -23,12 +23,14 @@ import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.DeviceAssignment;
+import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
+import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.system.Version;
 
@@ -223,7 +225,29 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("devicegroups/{groupToken}")
     Call<DeviceGroup> deleteDeviceGroup(@Path("groupToken") String groupToken, @HeaderMap Map<String, String> headers);
-       
+
+    // ------------------------------------------------------------------------
+    // Device States
+    // ------------------------------------------------------------------------
+
+    // ------------------------------------------------------------------------
+    // Device Statuses
+    // ------------------------------------------------------------------------
+    
+    @GET("/statuses/{token}")
+    Call<DeviceStatus> getDeviceStatusByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    @POST("statuses")
+    Call<DeviceStatus> createDeviceStatus(@Body DeviceStatusCreateRequest request, 
+	    @HeaderMap Map<String, String> headers);
+
+    @PUT("statuses/{token}")
+    Call<DeviceStatus> updateDeviceStatus(@Path("token") String token, @Body DeviceStatusCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("statuses/{token}")
+    Call<DeviceStatus> deleteDeviceStatus(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Device Types 
     // ------------------------------------------------------------------------

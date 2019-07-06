@@ -28,6 +28,7 @@ import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
+import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
@@ -46,6 +47,7 @@ import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupElementCreateRequest;
+import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStreamCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.device.streaming.DeviceStream;
@@ -536,6 +538,57 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public DeviceGroup deleteDeviceGroup(ITenantAuthentication tenant, String groupToken) throws SiteWhereException;
+    
+    // ------------------------------------------------------------------------
+    // Device States
+    // ------------------------------------------------------------------------
+
+    // ------------------------------------------------------------------------
+    // Device Statuses
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a device status by token.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceStatus getDeviceStatusByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
+    
+    /**
+     * Create a new device status.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceStatus createDeviceStatus(ITenantAuthentication tenant, DeviceStatusCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing device status.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceStatus updateDeviceStatus(ITenantAuthentication tenant, String token, DeviceStatusCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing device status.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceStatus deleteDeviceStatus(ITenantAuthentication tenant, String token) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Device Types 
