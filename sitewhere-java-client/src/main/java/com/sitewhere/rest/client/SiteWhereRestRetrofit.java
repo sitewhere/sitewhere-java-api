@@ -22,6 +22,7 @@ import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
+import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
@@ -29,6 +30,7 @@ import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
+import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
@@ -269,5 +271,17 @@ public interface SiteWhereRestRetrofit {
     // Devices
     // ------------------------------------------------------------------------
 
+    @GET("devices/{deviceToken}")
+    Call<Device> getDeviceByToken(@Path("deviceToken") String deviceToken, @HeaderMap Map<String, String> headers);
+
+    @POST("devices")
+    Call<Device> createDevice(@Body DeviceCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("devices/{deviceToken}")
+    Call<Device> updateDevice(@Path("deviceToken") String deviceToken, @Body DeviceCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("devices/{deviceToken}")
+    Call<Device> deleteDevice(@Path("deviceToken") String deviceToken, @HeaderMap Map<String, String> headers);
 
 }

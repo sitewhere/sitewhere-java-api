@@ -746,6 +746,54 @@ public class SiteWhereClient implements ISiteWhereClient {
     // Devices
     // ------------------------------------------------------------------------
     
+    /*
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#getDeviceByToken(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String)
+     */
+    @Override
+    public Device getDeviceByToken(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException {
+	Call<Device> call = getRestRetrofit().getDeviceByToken(deviceToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#createDevice(com.sitewhere.spi.
+     * ITenantAuthentication,
+     * com.sitewhere.rest.model.device.request.DeviceCreateRequest)
+     */
+    @Override
+    public Device createDevice(ITenantAuthentication tenant, DeviceCreateRequest request)
+	    throws SiteWhereException {
+	Call<Device> call = getRestRetrofit().createDevice(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#updateDevice(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String,
+     * com.sitewhere.rest.model.device.request.DeviceCreateRequest)
+     */
+    @Override
+    public Device updateDevice(ITenantAuthentication tenant, String deviceToken, DeviceCreateRequest request)
+	    throws SiteWhereException {
+	Call<Device> call = getRestRetrofit().updateDevice(deviceToken, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteDevice()
+     */
+    @Override
+    public Device deleteDevice(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException {
+	Call<Device > call = getRestRetrofit().deleteDevice(deviceToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    
+    // ------------------------------------------------------------------------
     
     @Override
     public DeviceTypeSearchResults listDeviceTypes(boolean includeDeleted, boolean includeDetailedAssetInfo,

@@ -641,9 +641,51 @@ public interface ISiteWhereClient {
     // Devices
     // ------------------------------------------------------------------------
     
+    /**
+     * Get a device by token.
+     * 
+     * @param tenant
+     * @param deviceToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Device getDeviceByToken(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException;
+
+    /**
+     * Create a new device.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Device createDevice(ITenantAuthentication tenant, DeviceCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing device.
+     * 
+     * @param tenant
+     * @param deviceToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Device updateDevice(ITenantAuthentication tenant, String deviceToken, DeviceCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing device.
+     * 
+     * @param tenant
+     * @param deviceToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Device deleteDevice(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException;
     
     
-    
+    // ------------------------------------------------------------------------
     /**
      * List device types that meet the given criteria.
      * 
