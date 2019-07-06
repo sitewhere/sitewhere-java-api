@@ -440,6 +440,54 @@ public interface ISiteWhereClient {
     public Customer deleteCustomer(ITenantAuthentication tenant, String customerToken) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
+    // Device Commands
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a device command by token.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceCommand getDeviceCommandByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
+    
+    /**
+     * Create a new device command.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceCommand createDeviceCommand(ITenantAuthentication tenant, DeviceCommandCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing device command.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceCommand updateDeviceCommand(ITenantAuthentication tenant, String token, DeviceCommandCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing device command.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceCommand deleteDeviceCommand(ITenantAuthentication tenant, String token) throws SiteWhereException;
+    
+    
+    // ------------------------------------------------------------------------
     // Device Types 
     // ------------------------------------------------------------------------
     
