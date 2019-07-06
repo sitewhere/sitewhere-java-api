@@ -486,6 +486,56 @@ public interface ISiteWhereClient {
      */
     public DeviceCommand deleteDeviceCommand(ITenantAuthentication tenant, String token) throws SiteWhereException;
     
+    // ------------------------------------------------------------------------
+    // Device Events
+    // ------------------------------------------------------------------------
+    
+    // ------------------------------------------------------------------------
+    // Device Groups
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a device group by token.
+     * 
+     * @param tenant
+     * @param groupToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceGroup getDeviceGroupByToken(ITenantAuthentication tenant, String groupToken) throws SiteWhereException;
+    
+    /**
+     * Create a new device group.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceGroup createDeviceGroup(ITenantAuthentication tenant, DeviceGroupCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing device group.
+     * 
+     * @param tenant
+     * @param groupToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceGroup updateDeviceGroup(ITenantAuthentication tenant, String groupToken, DeviceGroupCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing device group.
+     * 
+     * @param tenant
+     * @param groupToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceGroup deleteDeviceGroup(ITenantAuthentication tenant, String groupToken) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Device Types 
