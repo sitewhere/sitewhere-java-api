@@ -24,7 +24,9 @@ import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceType;
+import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
+import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.system.Version;
 
@@ -179,6 +181,25 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("customers/{customerToken}")
     Call<Customer> deleteCustomer(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
+    
+    // ------------------------------------------------------------------------
+    // Device Commands
+    // ------------------------------------------------------------------------
+    
+    @GET("/commands/{token}")
+    Call<DeviceCommand> getDeviceCommandByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    @POST("commands")
+    Call<DeviceCommand> createDeviceCommand(@Body DeviceCommandCreateRequest request, 
+	    @HeaderMap Map<String, String> headers);
+
+    @PUT("commands/{token}")
+    Call<DeviceCommand> updateDeviceCommand(@Path("token") String token, @Body DeviceCommandCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("commands/{token}")
+    Call<DeviceCommand> deleteDeviceCommand(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    
     
     // ------------------------------------------------------------------------
     // Device Types 

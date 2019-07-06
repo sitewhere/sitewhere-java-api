@@ -531,6 +531,56 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Call<Customer > call = getRestRetrofit().deleteCustomer (customerToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
+
+    // ------------------------------------------------------------------------
+    // Device Commands
+    // ------------------------------------------------------------------------
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getDeviceCommandByToken()
+     */
+    @Override
+    public DeviceCommand getDeviceCommandByToken(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<DeviceCommand > call = getRestRetrofit().getDeviceCommandByToken(token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createDeviceCommand()
+     */
+    @Override
+    public DeviceCommand createDeviceCommand(ITenantAuthentication tenant, DeviceCommandCreateRequest request)
+	    throws SiteWhereException {
+	Call<DeviceCommand > call = getRestRetrofit().createDeviceCommand(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#updateDeviceCommand()
+     */
+    @Override
+    public DeviceCommand updateDeviceCommand(ITenantAuthentication tenant, String token, DeviceCommandCreateRequest request)
+	    throws SiteWhereException {
+	Call<DeviceCommand > call = getRestRetrofit().updateDeviceCommand(token, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteDeviceCommand()
+     */
+    @Override
+    public DeviceCommand deleteDeviceCommand(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<DeviceCommand > call = getRestRetrofit().deleteDeviceCommand (token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
     
     // ------------------------------------------------------------------------
     // Device Types 
