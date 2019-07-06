@@ -54,7 +54,9 @@ import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStreamCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.device.streaming.DeviceStream;
+import com.sitewhere.rest.model.scheduling.Schedule;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
+import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
 import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
 import com.sitewhere.rest.model.search.AssetSearchResults;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
@@ -851,7 +853,57 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Call<ScheduledJob > call = getRestRetrofit().deleteScheduledJob(token, createHeadersFor(tenant));
 	return processRestCall(call);
     }
+
+    // ------------------------------------------------------------------------
+    // Schedules
+    // ------------------------------------------------------------------------
     
+    /*
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#getScheduleByToken(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String)
+     */
+    @Override
+    public Schedule getScheduleByToken(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<Schedule> call = getRestRetrofit().getScheduleByToken(token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#createSchedule(com.sitewhere.spi.
+     * ITenantAuthentication,
+     * com.sitewhere.rest.model.device.request.ScheduleCreateRequest)
+     */
+    @Override
+    public Schedule createSchedule(ITenantAuthentication tenant, ScheduleCreateRequest request)
+	    throws SiteWhereException {
+	Call<Schedule> call = getRestRetrofit().createSchedule(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#updateSchedule(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String,
+     * com.sitewhere.rest.model.device.request.ScheduleCreateRequest)
+     */
+    @Override
+    public Schedule updateSchedule(ITenantAuthentication tenant, String token, ScheduleCreateRequest request)
+	    throws SiteWhereException {
+	Call<Schedule> call = getRestRetrofit().updateSchedule(token, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteSchedule()
+     */
+    @Override
+    public Schedule deleteSchedule(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<Schedule > call = getRestRetrofit().deleteSchedule(token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     // ------------------------------------------------------------------------
     
     @Override

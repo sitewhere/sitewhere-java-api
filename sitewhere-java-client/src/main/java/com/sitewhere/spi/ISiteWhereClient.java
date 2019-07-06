@@ -51,7 +51,9 @@ import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStreamCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.device.streaming.DeviceStream;
+import com.sitewhere.rest.model.scheduling.Schedule;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
+import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
 import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
 import com.sitewhere.rest.model.search.AssetSearchResults;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
@@ -740,6 +742,53 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public ScheduledJob deleteScheduledJob(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
+    // ------------------------------------------------------------------------
+    // Schedules
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a schedule by token.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public Schedule getScheduleByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
+    /**
+     * Create a new schedule.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Schedule createSchedule(ITenantAuthentication tenant, ScheduleCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing schedule.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Schedule updateSchedule(ITenantAuthentication tenant, String token, ScheduleCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing schedule.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public Schedule deleteSchedule(ITenantAuthentication tenant, String token) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     /**

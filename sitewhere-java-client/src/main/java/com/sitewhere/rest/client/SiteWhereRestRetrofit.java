@@ -34,7 +34,9 @@ import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
+import com.sitewhere.rest.model.scheduling.Schedule;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
+import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
 import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
 import com.sitewhere.rest.model.system.Version;
 
@@ -310,5 +312,22 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("jobs/{token}")
     Call<ScheduledJob> deleteScheduledJob(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    
+    // ------------------------------------------------------------------------
+    // Schedules
+    // ------------------------------------------------------------------------
+    
+    @GET("schedules/{token}")
+    Call<Schedule> getScheduleByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    @POST("schedules")
+    Call<Schedule> createSchedule(@Body ScheduleCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("schedules/{token}")
+    Call<Schedule> updateSchedule(@Path("token") String token, @Body ScheduleCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("schedules/{token}")
+    Call<Schedule> deleteSchedule(@Path("token") String token, @HeaderMap Map<String, String> headers);
     
 }
