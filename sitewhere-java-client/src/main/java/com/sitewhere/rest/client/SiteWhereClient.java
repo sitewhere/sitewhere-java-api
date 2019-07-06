@@ -54,6 +54,8 @@ import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStreamCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.device.streaming.DeviceStream;
+import com.sitewhere.rest.model.scheduling.ScheduledJob;
+import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
 import com.sitewhere.rest.model.search.AssetSearchResults;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.DeviceAlertSearchResults;
@@ -792,6 +794,63 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
     
+    // ------------------------------------------------------------------------
+    // External Search
+    // ------------------------------------------------------------------------
+    
+    // ------------------------------------------------------------------------
+    // Instance
+    // ------------------------------------------------------------------------
+    
+    // ------------------------------------------------------------------------
+    // Scheduled Jobs
+    // ------------------------------------------------------------------------
+
+    /*
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#getScheduledJobByToken(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String)
+     */
+    @Override
+    public ScheduledJob getScheduledJobByToken(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<ScheduledJob> call = getRestRetrofit().getScheduledJobByToken(token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#createScheduledJob(com.sitewhere.spi.
+     * ITenantAuthentication,
+     * com.sitewhere.rest.model.device.request.ScheduledJobCreateRequest)
+     */
+    @Override
+    public ScheduledJob createScheduledJob(ITenantAuthentication tenant, ScheduledJobCreateRequest request)
+	    throws SiteWhereException {
+	Call<ScheduledJob> call = getRestRetrofit().createScheduledJob(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#updateScheduledJob(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String,
+     * com.sitewhere.rest.model.device.request.ScheduledJobCreateRequest)
+     */
+    @Override
+    public ScheduledJob updateScheduledJob(ITenantAuthentication tenant, String token, ScheduledJobCreateRequest request)
+	    throws SiteWhereException {
+	Call<ScheduledJob> call = getRestRetrofit().updateScheduledJob(token, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteScheduledJob()
+     */
+    @Override
+    public ScheduledJob deleteScheduledJob(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<ScheduledJob > call = getRestRetrofit().deleteScheduledJob(token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
     
     // ------------------------------------------------------------------------
     
