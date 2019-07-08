@@ -63,7 +63,7 @@ public interface SiteWhereRestRetrofit {
     // Area Types 
     // ------------------------------------------------------------------------
     
-    @GET("/areatypes/{areaTypeToken}")
+    @GET("areatypes/{areaTypeToken}")
     Call<AreaType> getAreaTypeByToken(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
 
     @POST("areatypes")
@@ -80,7 +80,7 @@ public interface SiteWhereRestRetrofit {
     // Areas  
     // ------------------------------------------------------------------------
     
-    @GET("/areas/{areaToken}")
+    @GET("areas/{areaToken}")
     Call<Area> getAreaByToken(@Path("areaToken") String areaToken, @HeaderMap Map<String, String> headers);
 
     @POST("areas")
@@ -97,7 +97,7 @@ public interface SiteWhereRestRetrofit {
     // Asset Types  
     // ------------------------------------------------------------------------
     
-    @GET("/assettypes/{assetTypeToken}")
+    @GET("assettypes/{assetTypeToken}")
     Call<AssetType> getAssetTypeByToken(@Path("assetTypeToken") String assetTypeToken, @HeaderMap Map<String, String> headers);
 
     @POST("assettypes")
@@ -114,7 +114,7 @@ public interface SiteWhereRestRetrofit {
     // Asset  
     // ------------------------------------------------------------------------
     
-    @GET("/assets/{assetToken}")
+    @GET("assets/{assetToken}")
     Call<Asset> getAssetByToken(@Path("assetToken") String assetToken, @HeaderMap Map<String, String> headers);
 
     @POST("assets")
@@ -131,7 +131,7 @@ public interface SiteWhereRestRetrofit {
     // Assignments  
     // ------------------------------------------------------------------------
     
-    @GET("/assignments/{token}")
+    @GET("assignments/{token}")
     Call<DeviceAssignment> getDeviceAssignmentByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
     @POST("assignments")
@@ -149,7 +149,7 @@ public interface SiteWhereRestRetrofit {
     // Batch Operations  
     // ------------------------------------------------------------------------
 
-    @GET("/batch/{batchToken}")
+    @GET("batch/{batchToken}")
     Call<BatchOperation> getBatchOperationByToken(@Path("batchToken") String batchToken, @HeaderMap Map<String, String> headers);
 
     // ------------------------------------------------------------------------
@@ -160,7 +160,7 @@ public interface SiteWhereRestRetrofit {
     // Customer Types
     // ------------------------------------------------------------------------
 
-    @GET("/customertypes/{customerTypeToken}")
+    @GET("customertypes/{customerTypeToken}")
     Call<CustomerType> getCustomerTypeByToken(@Path("customerTypeToken") String customerTypeToken, @HeaderMap Map<String, String> headers);
 
     @POST("customertypes")
@@ -178,7 +178,7 @@ public interface SiteWhereRestRetrofit {
     // Customer
     // ------------------------------------------------------------------------
 
-    @GET("/customers/{customerToken}")
+    @GET("customers/{customerToken}")
     Call<Customer> getCustomerByToken(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
 
     @POST("customers")
@@ -196,7 +196,7 @@ public interface SiteWhereRestRetrofit {
     // Device Commands
     // ------------------------------------------------------------------------
     
-    @GET("/commands/{token}")
+    @GET("commands/{token}")
     Call<DeviceCommand> getDeviceCommandByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
     @POST("commands")
@@ -218,7 +218,7 @@ public interface SiteWhereRestRetrofit {
     // Device Groups
     // ------------------------------------------------------------------------
     
-    @GET("/devicegroups/{groupToken}")
+    @GET("devicegroups/{groupToken}")
     Call<DeviceGroup> getDeviceGroupByToken(@Path("groupToken") String groupToken, @HeaderMap Map<String, String> headers);
 
     @POST("devicegroups")
@@ -240,7 +240,7 @@ public interface SiteWhereRestRetrofit {
     // Device Statuses
     // ------------------------------------------------------------------------
     
-    @GET("/statuses/{token}")
+    @GET("statuses/{token}")
     Call<DeviceStatus> getDeviceStatusByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
     @POST("statuses")
