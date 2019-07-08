@@ -9,6 +9,8 @@ package com.sitewhere.rest.client;
 
 import com.sitewhere.rest.model.area.AreaType;
 import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
+import com.sitewhere.rest.model.search.SearchResults;
+import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.spi.SiteWhereException;
 
 /**
@@ -72,6 +74,16 @@ public class AreaTypeRestTests extends AbstractCRUDRestClientTests<AreaType, Are
     @Override
     protected AreaType deleteEntity(String token) throws SiteWhereException {
 	return getClient().deleteAreaType(getTenatAuthentication(), token);
+    }
+
+    // ------------------------------------------------------------------------
+    // LIST
+    // ------------------------------------------------------------------------
+    
+    @Override
+    protected SearchResults<AreaType> listEntities() throws SiteWhereException {
+	AreaTypeSearchCriteria searchCriteria = new AreaTypeSearchCriteria(0, 10);
+	return getClient().listAreaTypes(getTenatAuthentication(), searchCriteria);
     }
 
 }

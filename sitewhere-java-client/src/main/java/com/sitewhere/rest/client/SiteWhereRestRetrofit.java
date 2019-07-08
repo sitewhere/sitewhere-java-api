@@ -55,6 +55,7 @@ import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Retrofit API for SiteWhere REST APIs.
@@ -69,9 +70,9 @@ public interface SiteWhereRestRetrofit {
     
     @GET("areatypes")
     Call<SearchResults<AreaType>> listAreaTypes(
-	    @Path("includeContainedAreaTypes") Boolean includeContainedAreaTypes, 
-	    @Path("page") Integer page, 
-	    @Path("pageSize") Integer pageSize, 
+	    @Query("includeContainedAreaTypes") Boolean includeContainedAreaTypes, 
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
 	    @HeaderMap Map<String, String> headers);    
     
     @GET("areatypes/{areaTypeToken}")

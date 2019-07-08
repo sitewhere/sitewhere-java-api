@@ -7,6 +7,7 @@
  */
 package com.sitewhere.rest.model.search;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.sitewhere.spi.search.ISearchResults;
@@ -24,7 +25,12 @@ public class SearchResults<T> implements ISearchResults<T> {
     /** List of results */
     private List<T> results;
 
+    public SearchResults() {
+	this(Collections.emptyList());
+    }
+    
     public SearchResults(List<T> all) {
+	super();
 	setNumResults(all.size());
 	setResults(all);
     }

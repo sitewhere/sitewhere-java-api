@@ -7,13 +7,10 @@
  */
 package com.sitewhere.test;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,30 +20,19 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.sitewhere.rest.client.SiteWhereClient;
-import com.sitewhere.rest.model.area.Zone;
-import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
-import com.sitewhere.rest.model.common.Location;
 import com.sitewhere.rest.model.device.Device;
-import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.event.DeviceEventBatch;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
-import com.sitewhere.rest.model.device.group.DeviceGroup;
-import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
-import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
-import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
-import com.sitewhere.rest.model.device.request.DeviceGroupElementCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.device.streaming.DeviceStream;
 import com.sitewhere.rest.model.search.AssetSearchResults;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.DeviceAssignmentSearchResults;
 import com.sitewhere.rest.model.search.DeviceCommandSearchResults;
-import com.sitewhere.rest.model.search.DeviceGroupElementSearchResults;
-import com.sitewhere.rest.model.search.DeviceGroupSearchResults;
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.system.Version;
@@ -109,7 +95,8 @@ public class ApiTests {
 	DeviceType type = getClient().getDeviceTypeByToken(SiteWhereClient.defaultTenant(), "galaxytab3");
 	json(type);
     }
-
+    
+    /*
     @Test
     public void testDeviceCRUD() throws SiteWhereException {
 	// Delete device if it already exists.
@@ -201,7 +188,7 @@ public class ApiTests {
 	// Delete device.
 	device = client.deleteDevice(TEST_HARDWARE_ID, true);
 	Assert.assertNotNull(device);
-    }
+    }*/
 
     @Test
     public void testDeviceEventBatch() throws SiteWhereException {
@@ -234,6 +221,7 @@ public class ApiTests {
 	System.out.println("Found " + results.getNumResults() + " assets matching the criteria.");
     }
 
+    /*
     @Test
     public void testCreateZone() throws SiteWhereException {
 	SiteWhereClient client = new SiteWhereClient();
@@ -249,7 +237,7 @@ public class ApiTests {
 	System.out.println("Created zone: " + results.getName());
 	SearchResults<Zone> search = client.listZonesForSite(TEST_SITE_TOKEN);
 	System.out.println("Found " + search.getNumResults() + " results.");
-    }
+    }*/
 
     @Test
     public void testListDevices() throws SiteWhereException {
@@ -333,6 +321,7 @@ public class ApiTests {
 	System.out.println("Found " + results.getNumResults() + " commands.");
     }
 
+    /*
     @Test
     public void testDeviceGroups() throws SiteWhereException {
 	SiteWhereClient client = new SiteWhereClient();
@@ -361,7 +350,7 @@ public class ApiTests {
 	Assert.assertNotNull(deleted);
 	DeviceGroupSearchResults after = client.listDeviceGroups(null, new SearchCriteria(1, 0), false);
 	Assert.assertEquals(before.getNumResults(), after.getNumResults() + 1);
-    }
+    }*/
 
     /**
      * Verifies that

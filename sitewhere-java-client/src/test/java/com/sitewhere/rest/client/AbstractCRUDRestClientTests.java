@@ -8,6 +8,7 @@
 package com.sitewhere.rest.client;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.UUID;
@@ -17,6 +18,7 @@ import org.junit.Test;
 
 import com.sitewhere.rest.model.common.PersistentEntity;
 import com.sitewhere.rest.model.common.request.PersistentEntityCreateRequest;
+import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.spi.ISiteWhereClient;
 import com.sitewhere.spi.ITenantAuthentication;
 import com.sitewhere.spi.SiteWhereException;
@@ -70,7 +72,14 @@ public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR
 	T deleteEntity = deleteEntity(token);
 
 	assertNotNull("Deleted entity is null", deleteEntity);
-}
+    }
+    
+    @Test
+    public void testList() throws SiteWhereException {
+	SearchResults<T> results = listEntities();
+	assertNotNull(results);
+	assertNotEquals(0, results.getNumResults());
+    }
     
     // Getters/Setters --------------------------------------------------------
     
@@ -96,4 +105,6 @@ public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR
 
     protected abstract T deleteEntity(String token) throws SiteWhereException;
 
+    protected abstract SearchResults<T> listEntities() throws SiteWhereException;
+    
 }
