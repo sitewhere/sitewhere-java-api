@@ -11,8 +11,10 @@ import java.util.Map;
 
 import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.AreaType;
+import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
+import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
 import com.sitewhere.rest.model.asset.Asset;
 import com.sitewhere.rest.model.asset.AssetType;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
@@ -360,7 +362,7 @@ public interface SiteWhereRestRetrofit {
     // ------------------------------------------------------------------------
     
     @GET("users/{username}")
-    Call<User> getUserByToken(@Path("username") String username, @HeaderMap Map<String, String> headers);
+    Call<User> getUserByUsername(@Path("username") String username, @HeaderMap Map<String, String> headers);
 
     @POST("users")
     Call<User> createUser(@Body UserCreateRequest request, @HeaderMap Map<String, String> headers);
@@ -371,5 +373,22 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("users/{username}")
     Call<User> deleteUser(@Path("username") String username, @HeaderMap Map<String, String> headers); 
+    
+    // ------------------------------------------------------------------------
+    // Zones
+    // ------------------------------------------------------------------------
+    
+    @GET("zones/{zoneToken}")
+    Call<Zone> getZoneByToken(@Path("zoneToken") String zoneToken, @HeaderMap Map<String, String> headers);
+
+    @POST("zones")
+    Call<Zone> createZone(@Body ZoneCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("zones/{zoneToken}")
+    Call<Zone> updateZone(@Path("zoneToken") String zoneToken, @Body ZoneCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("zones/{zoneToken}")
+    Call<Zone> deleteZone(@Path("zoneToken") String zoneToken, @HeaderMap Map<String, String> headers); 
     
 }

@@ -974,7 +974,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     @Override
     public User getUserByUsername(ITenantAuthentication tenant, String username) throws SiteWhereException {
-	Call<User> call = getRestRetrofit().getUserByToken(username, createHeadersFor(tenant));
+	Call<User> call = getRestRetrofit().getUserByUsername(username, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1012,18 +1012,62 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Call<User > call = getRestRetrofit().deleteUser(username, createHeadersFor(tenant));
 	return processRestCall(call);
     }
+
+    // ------------------------------------------------------------------------
+    // Zones
+    // ------------------------------------------------------------------------
+
+    /*
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#getZoneByToken(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String)
+     */
+    @Override
+    public Zone getZoneByToken(ITenantAuthentication tenant, String zoneToken) throws SiteWhereException {
+	Call<Zone> call = getRestRetrofit().getZoneByToken(zoneToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#createZone(com.sitewhere.spi.
+     * ITenantAuthentication,
+     * com.sitewhere.rest.model.device.request.ZoneCreateRequest)
+     */
+    @Override
+    public Zone createZone(ITenantAuthentication tenant, ZoneCreateRequest request)
+	    throws SiteWhereException {
+	Call<Zone> call = getRestRetrofit().createZone(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#updateZone(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String,
+     * com.sitewhere.rest.model.device.request.ZoneCreateRequest)
+     */
+    @Override
+    public Zone updateZone(ITenantAuthentication tenant, String zoneToken, ZoneCreateRequest request)
+	    throws SiteWhereException {
+	Call<Zone> call = getRestRetrofit().updateZone(zoneToken, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteZone()
+     */
+    @Override
+    public Zone deleteZone(ITenantAuthentication tenant, String zoneToken) throws SiteWhereException {
+	Call<Zone > call = getRestRetrofit().deleteZone(zoneToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
     
     // ------------------------------------------------------------------------
     
     @Override
     public DeviceTypeSearchResults listDeviceTypes(boolean includeDeleted, boolean includeDetailedAssetInfo,
 	    SearchCriteria criteria) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceType deleteDeviceType(String token, boolean deletePermanently) throws SiteWhereException {
 	// TODO Auto-generated method stub
 	return null;
     }

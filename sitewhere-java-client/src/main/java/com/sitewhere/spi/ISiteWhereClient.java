@@ -850,7 +850,7 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
     
     /**
-     * Get a user by token.
+     * Get a user by username.
      * 
      * @param tenant
      * @param username
@@ -860,7 +860,7 @@ public interface ISiteWhereClient {
     public User getUserByUsername(ITenantAuthentication tenant, String username) throws SiteWhereException;
 
     /**
-     * Create a new tenant.
+     * Create a new user.
      * 
      * @param tenant
      * @param request
@@ -871,7 +871,7 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
 
     /**
-     * Update an existing tenant.
+     * Update an existing user.
      * 
      * @param tenant
      * @param username
@@ -883,7 +883,7 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
 
     /**
-     * Delete an existing tenant.
+     * Delete an existing user.
      * 
      * @param tenant
      * @param username
@@ -891,7 +891,54 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public User deleteUser(ITenantAuthentication tenant, String username) throws SiteWhereException;
-        
+
+    // ------------------------------------------------------------------------
+    // Zones
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a zone by token.
+     * 
+     * @param tenant
+     * @param zoneToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Zone getZoneByToken(ITenantAuthentication tenant, String zoneToken) throws SiteWhereException;
+
+    /**
+     * Create a new zone.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Zone createZone(ITenantAuthentication tenant, ZoneCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing zone.
+     * 
+     * @param tenant
+     * @param zoneToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Zone updateZone(ITenantAuthentication tenant, String zoneToken, ZoneCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing zone.
+     * 
+     * @param tenant
+     * @param zoneToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Zone deleteZone(ITenantAuthentication tenant, String zoneToken) throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     /**
      * List device types that meet the given criteria.
@@ -904,16 +951,6 @@ public interface ISiteWhereClient {
      */
     public DeviceTypeSearchResults listDeviceTypes(boolean includeDeleted, boolean includeDetailedAssetInfo,
 	    SearchCriteria criteria) throws SiteWhereException;
-
-    /**
-     * Delete an existing device type.
-     * 
-     * @param token
-     * @param deletePermanently
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceType deleteDeviceType(String token, boolean deletePermanently) throws SiteWhereException;
 
     /**
      * Create a new device command for a specification.
