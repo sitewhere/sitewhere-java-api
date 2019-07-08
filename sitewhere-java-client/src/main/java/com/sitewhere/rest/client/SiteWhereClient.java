@@ -45,6 +45,8 @@ import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCrea
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
+import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
+import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
@@ -73,6 +75,7 @@ import com.sitewhere.rest.model.search.DeviceTypeSearchResults;
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
+import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
@@ -190,8 +193,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#getAreaTypeByToken()
      */
     @Override
-    public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
-	Call<AreaType> call = getRestRetrofit().getAreaTypeByToken(areaTypeToken, createHeadersFor(tenant));
+    public MarshaledAreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException {
+	Call<MarshaledAreaType> call = getRestRetrofit().getAreaTypeByToken(areaTypeToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -245,6 +248,27 @@ public class SiteWhereClient implements ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Areas  
     // ------------------------------------------------------------------------
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listAreas()
+     */
+    @Override
+    public SearchResults<Area> listAreas(ITenantAuthentication tenant, AreaSearchCriteria searchCriteria)
+	    throws SiteWhereException {
+	Call<SearchResults<Area>> call = getRestRetrofit().listAreas(
+		searchCriteria.getAreaTypeToken(),
+		searchCriteria.getIncludeAreaType(),
+		searchCriteria.getIncludeAssignments(),
+		searchCriteria.getIncludeZones(),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		searchCriteria.getParentAreaToken(),
+		searchCriteria.getRootOnly(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
     
     /*
      * (non-Javadoc)
@@ -252,8 +276,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#getAreaByToken()
      */
     @Override
-    public Area getAreaByToken(ITenantAuthentication tenant, String areaToken) throws SiteWhereException {
-	Call<Area> call = getRestRetrofit().getAreaByToken(areaToken, createHeadersFor(tenant));
+    public MarshaledArea getAreaByToken(ITenantAuthentication tenant, String areaToken) throws SiteWhereException {
+	Call<MarshaledArea> call = getRestRetrofit().getAreaByToken(areaToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 

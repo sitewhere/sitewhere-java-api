@@ -42,6 +42,8 @@ import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCrea
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
+import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
+import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
@@ -70,6 +72,7 @@ import com.sitewhere.rest.model.search.DeviceTypeSearchResults;
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
+import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
@@ -118,7 +121,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public AreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
+    public MarshaledAreaType getAreaTypeByToken(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
     
     /**
      * Create a new area type.
@@ -171,6 +174,17 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
+     * List areas matching criteria
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<Area> listAreas(ITenantAuthentication tenant, 
+	    AreaSearchCriteria searchCriteria) throws SiteWhereException;
+    
+    /**
      * Get a area by token.
      * 
      * @param tenant
@@ -178,7 +192,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Area getAreaByToken(ITenantAuthentication tenant, String areaToken) throws SiteWhereException;
+    public MarshaledArea getAreaByToken(ITenantAuthentication tenant, String areaToken) throws SiteWhereException;
     
     /**
      * Create a new area type.

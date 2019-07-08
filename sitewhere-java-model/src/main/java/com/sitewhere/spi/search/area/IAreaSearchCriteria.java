@@ -7,8 +7,6 @@
  */
 package com.sitewhere.spi.search.area;
 
-import java.util.UUID;
-
 import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
@@ -19,23 +17,45 @@ import com.sitewhere.spi.search.ISearchCriteria;
 public interface IAreaSearchCriteria extends ISearchCriteria {
 
     /**
+     * Only match areas of the given type.
+     * 
+     * @return
+     */
+    public String getAreaTypeToken();
+
+    /**
+     * Indicates if included area type are to be returned.
+     * 
+     * @return
+     */
+    public Boolean getIncludeAreaType();
+    
+    /**
+     * Indicates if assignments are to be returned.
+     * 
+     * @return
+     */
+    public Boolean getIncludeAssignments();
+    
+    /**
+     * Indicates if zones are to be returned.
+     * 
+     * @return
+     */
+    public Boolean getIncludeZones();
+    
+    /**
+     * Requires that areas have the given area as a parent.
+     * 
+     * @return
+     */
+    public String getParentAreaToken();
+    
+    /**
      * Indicates if only root elements are to be returned.
      * 
      * @return
      */
     public Boolean getRootOnly();
 
-    /**
-     * Requires that areas have the given area as a parent.
-     * 
-     * @return
-     */
-    public UUID getParentAreaId();
-
-    /**
-     * Require that areas have the given area type.
-     * 
-     * @return
-     */
-    public UUID getAreaTypeId();
 }

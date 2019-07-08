@@ -10,15 +10,15 @@ package com.sitewhere.rest.model.device.marshaling;
 import java.util.List;
 
 import com.sitewhere.rest.model.area.Area;
+import com.sitewhere.rest.model.area.AreaType;
 import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.device.DeviceAssignment;
-import com.sitewhere.spi.area.IArea;
-import com.sitewhere.spi.area.IAreaType;
 
 /**
  * Extends {@link Area} to support fields that can be included on REST calls.
  * 
  * @author Derek
+ * @author Jorge Villaverde
  */
 public class MarshaledArea extends Area {
 
@@ -26,10 +26,10 @@ public class MarshaledArea extends Area {
     private static final long serialVersionUID = 129857679204159756L;
 
     /** Area type */
-    private IAreaType areaType;
+    private AreaType areaType;
 
     /** Parent area information */
-    private IArea parentArea;
+    private Area parentArea;
 
     /** List of assignments for area */
     private List<DeviceAssignment> deviceAssignments;
@@ -37,19 +37,19 @@ public class MarshaledArea extends Area {
     /** List of zones for site */
     private List<Zone> zones;
 
-    public IAreaType getAreaType() {
+    public AreaType getAreaType() {
 	return areaType;
     }
 
-    public void setAreaType(IAreaType areaType) {
+    public void setAreaType(AreaType areaType) {
 	this.areaType = areaType;
     }
 
-    public IArea getParentArea() {
+    public Area getParentArea() {
 	return parentArea;
     }
 
-    public void setParentArea(IArea parentArea) {
+    public void setParentArea(Area parentArea) {
 	this.parentArea = parentArea;
     }
 

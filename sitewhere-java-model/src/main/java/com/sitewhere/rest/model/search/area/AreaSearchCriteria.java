@@ -7,8 +7,6 @@
  */
 package com.sitewhere.rest.model.search.area;
 
-import java.util.UUID;
-
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.spi.search.area.IAreaSearchCriteria;
 
@@ -19,19 +17,88 @@ import com.sitewhere.spi.search.area.IAreaSearchCriteria;
  */
 public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCriteria {
 
+    /** Only return areas of the given type */
+    private String areaTypeToken;
+    
+    /** Include Area Type */
+    private Boolean includeAreaType;
+    
+    /** Include assignments */
+    private Boolean includeAssignments;
+
+    /** Include zones */
+    private Boolean includeZones;
+    
+    /** Only return areas with the given parent */
+    private String parentAreaToken;
+
     /** Only return root areas */
     private Boolean rootOnly;
-
-    /** Only return areas with the given parent */
-    private UUID parentAreaId;
-
-    /** Only return areas of the given type */
-    private UUID areaTypeId;
 
     public AreaSearchCriteria(int pageNumber, int pageSize) {
 	super(pageNumber, pageSize);
     }
 
+    /*
+     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getAreaTypeToken()
+     */
+    @Override
+    public String getAreaTypeToken() {
+	return areaTypeToken;
+    }
+
+    public void setAreaTypeTokeb(String areaTypeToken) {
+	this.areaTypeToken = areaTypeToken;
+    }
+
+    /*
+     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getIncludeAreaType()
+     */
+    @Override
+    public Boolean getIncludeAreaType() {
+	return includeAreaType;
+    }
+
+    public void setIncludeAreaType(Boolean includeAreaType) {
+	this.includeAreaType = includeAreaType;
+    }
+
+    /*
+     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getIncludeAssignments()
+     */
+    @Override
+    public Boolean getIncludeAssignments() {
+	return includeAssignments;
+    }
+
+    public void setIncludeAssignments(Boolean includeAssignments) {
+	this.includeAssignments = includeAssignments;
+    }
+    
+    /*
+     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getIncludeZones()
+     */
+    @Override
+    public Boolean getIncludeZones() {
+	return includeZones;
+    }
+
+    public void setIncludeZones(Boolean includeZones) {
+	this.includeZones = includeZones;
+    }
+
+    /*
+     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getParentAreaToken()
+     */
+    @Override    
+    public String getParentAreaToken() {
+	return parentAreaToken;
+    }
+
+    public void setParentAreaToken(String parentAreaToken) {
+	this.parentAreaToken = parentAreaToken;
+    }
+    
     /*
      * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getRootOnly()
      */
@@ -42,29 +109,5 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
 
     public void setRootOnly(Boolean rootOnly) {
 	this.rootOnly = rootOnly;
-    }
-
-    /*
-     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getParentAreaId()
-     */
-    @Override
-    public UUID getParentAreaId() {
-	return parentAreaId;
-    }
-
-    public void setParentAreaId(UUID parentAreaId) {
-	this.parentAreaId = parentAreaId;
-    }
-
-    /*
-     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getAreaTypeId()
-     */
-    @Override
-    public UUID getAreaTypeId() {
-	return areaTypeId;
-    }
-
-    public void setAreaTypeId(UUID areaTypeId) {
-	this.areaTypeId = areaTypeId;
     }
 }

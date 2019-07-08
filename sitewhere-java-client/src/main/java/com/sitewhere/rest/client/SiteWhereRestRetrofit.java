@@ -30,6 +30,8 @@ import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
+import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
+import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
@@ -76,7 +78,7 @@ public interface SiteWhereRestRetrofit {
 	    @HeaderMap Map<String, String> headers);    
     
     @GET("areatypes/{areaTypeToken}")
-    Call<AreaType> getAreaTypeByToken(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
+    Call<MarshaledAreaType> getAreaTypeByToken(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
 
     @POST("areatypes")
     Call<AreaType> createAreaType(@Body AreaTypeCreateRequest request, @HeaderMap Map<String, String> headers);
@@ -96,9 +98,21 @@ public interface SiteWhereRestRetrofit {
     // ------------------------------------------------------------------------
     // Areas  
     // ------------------------------------------------------------------------
+
+    @GET("areas")
+    Call<SearchResults<Area>> listAreas(
+	    @Query("areaTypeToken") String areaTypeToken,
+	    @Query("includeAreaType") Boolean includeAreaType, 
+	    @Query("includeAssignments") Boolean includeAssignments, 
+	    @Query("includeZones") Boolean includeZones, 	    
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @Query("parentAreaToken") String parentAreaToken,
+	    @Query("rootOnly") Boolean rootOnly, 
+	    @HeaderMap Map<String, String> headers);    
     
     @GET("areas/{areaToken}")
-    Call<Area> getAreaByToken(@Path("areaToken") String areaToken, @HeaderMap Map<String, String> headers);
+    Call<MarshaledArea> getAreaByToken(@Path("areaToken") String areaToken, @HeaderMap Map<String, String> headers);
 
     @POST("areas")
     Call<Area> createArea(@Body AreaCreateRequest request, @HeaderMap Map<String, String> headers);

@@ -5,8 +5,9 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package com.sitewhere.rest.client;
+package com.sitewhere.rest.client.area;
 
+import com.sitewhere.rest.client.AbstractCRUDRestClientTests;
 import com.sitewhere.rest.model.area.AreaType;
 import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.search.SearchResults;
