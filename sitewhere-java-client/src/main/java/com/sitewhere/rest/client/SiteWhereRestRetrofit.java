@@ -87,6 +87,11 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("areatypes/{areaTypeToken}")
     Call<AreaType> deleteAreaType(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
+    
+    @GET("areatypes/{areaTypeToken}/label/{generatorId}")
+    Call<byte[]> getLabelForAreaType(@Path("areaTypeToken") String areaTypeToken,
+	    @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);
 
     // ------------------------------------------------------------------------
     // Areas  

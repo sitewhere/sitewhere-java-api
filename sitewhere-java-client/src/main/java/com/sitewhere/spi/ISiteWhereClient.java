@@ -153,6 +153,19 @@ public interface ISiteWhereClient {
      */
     public AreaType deleteAreaType(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
     
+    /**
+     * Get label for area type
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForAreaType(ITenantAuthentication tenant, 
+	    String areaTypeToken,
+	    String generatorId) throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Areas  
     // ------------------------------------------------------------------------

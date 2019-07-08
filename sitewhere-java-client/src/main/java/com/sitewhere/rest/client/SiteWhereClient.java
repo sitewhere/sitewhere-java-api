@@ -229,6 +229,18 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Call<AreaType> call = getRestRetrofit().deleteAreaType(areaTypeToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForAreaType()
+     */
+    @Override
+    public byte[] getLabelForAreaType(ITenantAuthentication tenant, String areaTypeToken, String generatorId)
+	    throws SiteWhereException {
+	Call<byte[]> call = getRestRetrofit().getLabelForAreaType(areaTypeToken, generatorId, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
     
     // ------------------------------------------------------------------------
     // Areas  
