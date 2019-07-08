@@ -74,6 +74,8 @@ import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.system.Version;
+import com.sitewhere.rest.model.tenant.Tenant;
+import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
 import com.sitewhere.spi.ISiteWhereClient;
 import com.sitewhere.spi.ITenantAuthentication;
 import com.sitewhere.spi.SiteWhereException;
@@ -158,16 +160,6 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return new Builder();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.sitewhere.spi.ISiteWhereClient#getSiteWhereVersion()
-     */
-    @Override
-    public Version getSiteWhereVersion() throws SiteWhereException {
-	Call<Version> call = getRestRetrofit().getVersion();
-	return processRestCall(call);
-    }
 
     // ------------------------------------------------------------------------
     // Area Types 
@@ -904,6 +896,71 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    // ------------------------------------------------------------------------
+    // System
+    // ------------------------------------------------------------------------
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getSiteWhereVersion()
+     */
+    @Override
+    public Version getSiteWhereVersion() throws SiteWhereException {
+	Call<Version> call = getRestRetrofit().getVersion();
+	return processRestCall(call);
+    }
+    
+    // ------------------------------------------------------------------------
+    // Tenants
+    // ------------------------------------------------------------------------
+
+    /*
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#getTenantByToken(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String)
+     */
+    @Override
+    public Tenant getTenantByToken(ITenantAuthentication tenant, String tenantToken) throws SiteWhereException {
+	Call<Tenant> call = getRestRetrofit().getTenantByToken(tenantToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#createTenant(com.sitewhere.spi.
+     * ITenantAuthentication,
+     * com.sitewhere.rest.model.device.request.TenantCreateRequest)
+     */
+    @Override
+    public Tenant createTenant(ITenantAuthentication tenant, TenantCreateRequest request)
+	    throws SiteWhereException {
+	Call<Tenant> call = getRestRetrofit().createTenant(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#updateTenant(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String,
+     * com.sitewhere.rest.model.device.request.TenantCreateRequest)
+     */
+    @Override
+    public Tenant updateTenant(ITenantAuthentication tenant, String tenantToken, TenantCreateRequest request)
+	    throws SiteWhereException {
+	Call<Tenant> call = getRestRetrofit().updateTenant(tenantToken, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteTenant()
+     */
+    @Override
+    public Tenant deleteTenant(ITenantAuthentication tenant, String tenantToken) throws SiteWhereException {
+	Call<Tenant > call = getRestRetrofit().deleteTenant(tenantToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     // ------------------------------------------------------------------------
     
     @Override

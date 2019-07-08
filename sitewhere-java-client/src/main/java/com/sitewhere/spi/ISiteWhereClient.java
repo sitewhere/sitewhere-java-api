@@ -71,6 +71,8 @@ import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.system.Version;
+import com.sitewhere.rest.model.tenant.Tenant;
+import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
 import com.sitewhere.spi.device.DeviceAssignmentStatus;
 import com.sitewhere.spi.device.event.IDeviceMeasurement;
 import com.sitewhere.spi.device.request.IDeviceAssignmentCreateRequest;
@@ -89,14 +91,6 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public ISiteWhereClient initialize() throws SiteWhereException;
-
-    /**
-     * Get SiteWhere version information.
-     * 
-     * @return
-     * @throws SiteWhereException
-     */
-    public Version getSiteWhereVersion() throws SiteWhereException;
 
     // ------------------------------------------------------------------------
     // Area Types 
@@ -789,7 +783,67 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public Schedule deleteSchedule(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
+    // ------------------------------------------------------------------------
+    // System
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get SiteWhere version information.
+     * 
+     * @return
+     * @throws SiteWhereException
+     */
+    public Version getSiteWhereVersion() throws SiteWhereException;
+
+    // ------------------------------------------------------------------------
+    // Tenants
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a tenant by token.
+     * 
+     * @param tenant
+     * @param tenantToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Tenant getTenantByToken(ITenantAuthentication tenant, String tenantToken) throws SiteWhereException;
+
+    /**
+     * Create a new tenant.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Tenant createTenant(ITenantAuthentication tenant, TenantCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing tenant.
+     * 
+     * @param tenant
+     * @param tenantToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Tenant updateTenant(ITenantAuthentication tenant, String tenantToken, TenantCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing tenant.
+     * 
+     * @param tenant
+     * @param tenantToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Tenant deleteTenant(ITenantAuthentication tenant, String tenantToken) throws SiteWhereException;
     
+        
     // ------------------------------------------------------------------------
     /**
      * List device types that meet the given criteria.

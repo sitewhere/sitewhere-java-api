@@ -39,6 +39,8 @@ import com.sitewhere.rest.model.scheduling.ScheduledJob;
 import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
 import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
 import com.sitewhere.rest.model.system.Version;
+import com.sitewhere.rest.model.tenant.Tenant;
+import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -55,10 +57,7 @@ import retrofit2.http.Path;
  * @author Derek
  */
 public interface SiteWhereRestRetrofit {
-
-    @GET("system/version")
-    Call<Version> getVersion();
-    
+        
     // ------------------------------------------------------------------------
     // Area Types 
     // ------------------------------------------------------------------------
@@ -330,4 +329,27 @@ public interface SiteWhereRestRetrofit {
     @DELETE("schedules/{token}")
     Call<Schedule> deleteSchedule(@Path("token") String token, @HeaderMap Map<String, String> headers);
     
+    // ------------------------------------------------------------------------
+    // System
+    // ------------------------------------------------------------------------
+
+    @GET("system/version")
+    Call<Version> getVersion();
+
+    // ------------------------------------------------------------------------
+    // Tenants
+    // ------------------------------------------------------------------------
+
+    @GET("tenants/{tenantToken}")
+    Call<Tenant> getTenantByToken(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);
+
+    @POST("tenants")
+    Call<Tenant> createTenant(@Body TenantCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("tenants/{tenantToken}")
+    Call<Tenant> updateTenant(@Path("tenantToken") String tenantToken, @Body TenantCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("tenants/{tenantToken}")
+    Call<Tenant> deleteTenant(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);
 }
