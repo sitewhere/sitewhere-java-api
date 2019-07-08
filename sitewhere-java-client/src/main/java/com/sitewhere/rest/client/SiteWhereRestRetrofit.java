@@ -11,8 +11,10 @@ import java.util.Map;
 
 import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.AreaType;
+import com.sitewhere.rest.model.area.Zone;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
+import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
 import com.sitewhere.rest.model.asset.Asset;
 import com.sitewhere.rest.model.asset.AssetType;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
@@ -22,15 +24,27 @@ import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
+import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
+import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
+import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
+import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
+import com.sitewhere.rest.model.scheduling.Schedule;
+import com.sitewhere.rest.model.scheduling.ScheduledJob;
+import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
+import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
 import com.sitewhere.rest.model.system.Version;
+import com.sitewhere.rest.model.tenant.Tenant;
+import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
+import com.sitewhere.rest.model.user.User;
+import com.sitewhere.rest.model.user.request.UserCreateRequest;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -47,15 +61,12 @@ import retrofit2.http.Path;
  * @author Derek
  */
 public interface SiteWhereRestRetrofit {
-
-    @GET("system/version")
-    Call<Version> getVersion();
-    
+        
     // ------------------------------------------------------------------------
     // Area Types 
     // ------------------------------------------------------------------------
     
-    @GET("/areatypes/{areaTypeToken}")
+    @GET("areatypes/{areaTypeToken}")
     Call<AreaType> getAreaTypeByToken(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
 
     @POST("areatypes")
@@ -72,7 +83,7 @@ public interface SiteWhereRestRetrofit {
     // Areas  
     // ------------------------------------------------------------------------
     
-    @GET("/areas/{areaToken}")
+    @GET("areas/{areaToken}")
     Call<Area> getAreaByToken(@Path("areaToken") String areaToken, @HeaderMap Map<String, String> headers);
 
     @POST("areas")
@@ -89,7 +100,7 @@ public interface SiteWhereRestRetrofit {
     // Asset Types  
     // ------------------------------------------------------------------------
     
-    @GET("/assettypes/{assetTypeToken}")
+    @GET("assettypes/{assetTypeToken}")
     Call<AssetType> getAssetTypeByToken(@Path("assetTypeToken") String assetTypeToken, @HeaderMap Map<String, String> headers);
 
     @POST("assettypes")
@@ -106,7 +117,7 @@ public interface SiteWhereRestRetrofit {
     // Asset  
     // ------------------------------------------------------------------------
     
-    @GET("/assets/{assetToken}")
+    @GET("assets/{assetToken}")
     Call<Asset> getAssetByToken(@Path("assetToken") String assetToken, @HeaderMap Map<String, String> headers);
 
     @POST("assets")
@@ -123,7 +134,7 @@ public interface SiteWhereRestRetrofit {
     // Assignments  
     // ------------------------------------------------------------------------
     
-    @GET("/assignments/{token}")
+    @GET("assignments/{token}")
     Call<DeviceAssignment> getDeviceAssignmentByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
     @POST("assignments")
@@ -141,7 +152,7 @@ public interface SiteWhereRestRetrofit {
     // Batch Operations  
     // ------------------------------------------------------------------------
 
-    @GET("/batch/{batchToken}")
+    @GET("batch/{batchToken}")
     Call<BatchOperation> getBatchOperationByToken(@Path("batchToken") String batchToken, @HeaderMap Map<String, String> headers);
 
     // ------------------------------------------------------------------------
@@ -152,7 +163,7 @@ public interface SiteWhereRestRetrofit {
     // Customer Types
     // ------------------------------------------------------------------------
 
-    @GET("/customertypes/{customerTypeToken}")
+    @GET("customertypes/{customerTypeToken}")
     Call<CustomerType> getCustomerTypeByToken(@Path("customerTypeToken") String customerTypeToken, @HeaderMap Map<String, String> headers);
 
     @POST("customertypes")
@@ -170,7 +181,7 @@ public interface SiteWhereRestRetrofit {
     // Customer
     // ------------------------------------------------------------------------
 
-    @GET("/customers/{customerToken}")
+    @GET("customers/{customerToken}")
     Call<Customer> getCustomerByToken(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
 
     @POST("customers")
@@ -188,7 +199,7 @@ public interface SiteWhereRestRetrofit {
     // Device Commands
     // ------------------------------------------------------------------------
     
-    @GET("/commands/{token}")
+    @GET("commands/{token}")
     Call<DeviceCommand> getDeviceCommandByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
     @POST("commands")
@@ -210,7 +221,7 @@ public interface SiteWhereRestRetrofit {
     // Device Groups
     // ------------------------------------------------------------------------
     
-    @GET("/devicegroups/{groupToken}")
+    @GET("devicegroups/{groupToken}")
     Call<DeviceGroup> getDeviceGroupByToken(@Path("groupToken") String groupToken, @HeaderMap Map<String, String> headers);
 
     @POST("devicegroups")
@@ -223,18 +234,161 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("devicegroups/{groupToken}")
     Call<DeviceGroup> deleteDeviceGroup(@Path("groupToken") String groupToken, @HeaderMap Map<String, String> headers);
-       
+
+    // ------------------------------------------------------------------------
+    // Device States
+    // ------------------------------------------------------------------------
+
+    // ------------------------------------------------------------------------
+    // Device Statuses
+    // ------------------------------------------------------------------------
+    
+    @GET("statuses/{token}")
+    Call<DeviceStatus> getDeviceStatusByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    @POST("statuses")
+    Call<DeviceStatus> createDeviceStatus(@Body DeviceStatusCreateRequest request, 
+	    @HeaderMap Map<String, String> headers);
+
+    @PUT("statuses/{token}")
+    Call<DeviceStatus> updateDeviceStatus(@Path("token") String token, @Body DeviceStatusCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("statuses/{token}")
+    Call<DeviceStatus> deleteDeviceStatus(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Device Types 
     // ------------------------------------------------------------------------
     
-    @POST("devicetypes")
-    Call<DeviceType> createDeviceType(@Body DeviceTypeCreateRequest request, @HeaderMap Map<String, String> headers);
-
     @GET("devicetypes/{token}")
     Call<DeviceType> getDeviceTypeByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    @POST("devicetypes")
+    Call<DeviceType> createDeviceType(@Body DeviceTypeCreateRequest request, @HeaderMap Map<String, String> headers);
 
     @PUT("devicetypes/{token}")
     Call<DeviceType> updateDeviceType(@Path("token") String token, @Body DeviceTypeCreateRequest request,
 	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("devicetypes/{token}")
+    Call<DeviceType> deleteDeviceType(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    // ------------------------------------------------------------------------
+    // Devices
+    // ------------------------------------------------------------------------
+
+    @GET("devices/{deviceToken}")
+    Call<Device> getDeviceByToken(@Path("deviceToken") String deviceToken, @HeaderMap Map<String, String> headers);
+
+    @POST("devices")
+    Call<Device> createDevice(@Body DeviceCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("devices/{deviceToken}")
+    Call<Device> updateDevice(@Path("deviceToken") String deviceToken, @Body DeviceCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("devices/{deviceToken}")
+    Call<Device> deleteDevice(@Path("deviceToken") String deviceToken, @HeaderMap Map<String, String> headers);
+    
+    // ------------------------------------------------------------------------
+    // External Search
+    // ------------------------------------------------------------------------
+    
+    // ------------------------------------------------------------------------
+    // Instance
+    // ------------------------------------------------------------------------
+    
+    // ------------------------------------------------------------------------
+    // Scheduled Jobs
+    // ------------------------------------------------------------------------
+
+    @GET("jobs/{token}")
+    Call<ScheduledJob> getScheduledJobByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    @POST("jobs")
+    Call<ScheduledJob> createScheduledJob(@Body ScheduledJobCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("jobs/{token}")
+    Call<ScheduledJob> updateScheduledJob(@Path("token") String token, @Body ScheduledJobCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("jobs/{token}")
+    Call<ScheduledJob> deleteScheduledJob(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    
+    // ------------------------------------------------------------------------
+    // Schedules
+    // ------------------------------------------------------------------------
+    
+    @GET("schedules/{token}")
+    Call<Schedule> getScheduleByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    @POST("schedules")
+    Call<Schedule> createSchedule(@Body ScheduleCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("schedules/{token}")
+    Call<Schedule> updateSchedule(@Path("token") String token, @Body ScheduleCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("schedules/{token}")
+    Call<Schedule> deleteSchedule(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    
+    // ------------------------------------------------------------------------
+    // System
+    // ------------------------------------------------------------------------
+
+    @GET("system/version")
+    Call<Version> getVersion();
+
+    // ------------------------------------------------------------------------
+    // Tenants
+    // ------------------------------------------------------------------------
+
+    @GET("tenants/{tenantToken}")
+    Call<Tenant> getTenantByToken(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);
+
+    @POST("tenants")
+    Call<Tenant> createTenant(@Body TenantCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("tenants/{tenantToken}")
+    Call<Tenant> updateTenant(@Path("tenantToken") String tenantToken, @Body TenantCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("tenants/{tenantToken}")
+    Call<Tenant> deleteTenant(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);
+    
+    // ------------------------------------------------------------------------
+    // Users
+    // ------------------------------------------------------------------------
+    
+    @GET("users/{username}")
+    Call<User> getUserByUsername(@Path("username") String username, @HeaderMap Map<String, String> headers);
+
+    @POST("users")
+    Call<User> createUser(@Body UserCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("users/{username}")
+    Call<User> updateUser(@Path("username") String username, @Body UserCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("users/{username}")
+    Call<User> deleteUser(@Path("username") String username, @HeaderMap Map<String, String> headers); 
+    
+    // ------------------------------------------------------------------------
+    // Zones
+    // ------------------------------------------------------------------------
+    
+    @GET("zones/{zoneToken}")
+    Call<Zone> getZoneByToken(@Path("zoneToken") String zoneToken, @HeaderMap Map<String, String> headers);
+
+    @POST("zones")
+    Call<Zone> createZone(@Body ZoneCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("zones/{zoneToken}")
+    Call<Zone> updateZone(@Path("zoneToken") String zoneToken, @Body ZoneCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("zones/{zoneToken}")
+    Call<Zone> deleteZone(@Path("zoneToken") String zoneToken, @HeaderMap Map<String, String> headers); 
+    
 }

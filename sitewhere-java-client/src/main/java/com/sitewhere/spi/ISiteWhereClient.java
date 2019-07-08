@@ -28,6 +28,7 @@ import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
+import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
@@ -46,9 +47,14 @@ import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupElementCreateRequest;
+import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStreamCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.device.streaming.DeviceStream;
+import com.sitewhere.rest.model.scheduling.Schedule;
+import com.sitewhere.rest.model.scheduling.ScheduledJob;
+import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
+import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
 import com.sitewhere.rest.model.search.AssetSearchResults;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.DeviceAlertSearchResults;
@@ -65,6 +71,10 @@ import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.system.Version;
+import com.sitewhere.rest.model.tenant.Tenant;
+import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
+import com.sitewhere.rest.model.user.User;
+import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.device.DeviceAssignmentStatus;
 import com.sitewhere.spi.device.event.IDeviceMeasurement;
 import com.sitewhere.spi.device.request.IDeviceAssignmentCreateRequest;
@@ -83,14 +93,6 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public ISiteWhereClient initialize() throws SiteWhereException;
-
-    /**
-     * Get SiteWhere version information.
-     * 
-     * @return
-     * @throws SiteWhereException
-     */
-    public Version getSiteWhereVersion() throws SiteWhereException;
 
     // ------------------------------------------------------------------------
     // Area Types 
@@ -538,6 +540,57 @@ public interface ISiteWhereClient {
     public DeviceGroup deleteDeviceGroup(ITenantAuthentication tenant, String groupToken) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
+    // Device States
+    // ------------------------------------------------------------------------
+
+    // ------------------------------------------------------------------------
+    // Device Statuses
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a device status by token.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceStatus getDeviceStatusByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
+    
+    /**
+     * Create a new device status.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceStatus createDeviceStatus(ITenantAuthentication tenant, DeviceStatusCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing device status.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceStatus updateDeviceStatus(ITenantAuthentication tenant, String token, DeviceStatusCreateRequest request)
+	    throws SiteWhereException;
+    
+    /**
+     * Delete an existing device status.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceStatus deleteDeviceStatus(ITenantAuthentication tenant, String token) throws SiteWhereException;
+    
+    // ------------------------------------------------------------------------
     // Device Types 
     // ------------------------------------------------------------------------
     
@@ -575,6 +628,319 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
 
     /**
+     * Delete an existing device type.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceType deleteDeviceType(ITenantAuthentication tenant, String token) throws SiteWhereException;
+    
+    // ------------------------------------------------------------------------
+    // Devices
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a device by token.
+     * 
+     * @param tenant
+     * @param deviceToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Device getDeviceByToken(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException;
+
+    /**
+     * Create a new device.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Device createDevice(ITenantAuthentication tenant, DeviceCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing device.
+     * 
+     * @param tenant
+     * @param deviceToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Device updateDevice(ITenantAuthentication tenant, String deviceToken, DeviceCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing device.
+     * 
+     * @param tenant
+     * @param deviceToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Device deleteDevice(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException;
+    
+    // ------------------------------------------------------------------------
+    // External Search
+    // ------------------------------------------------------------------------
+    
+    // ------------------------------------------------------------------------
+    // Instance
+    // ------------------------------------------------------------------------
+    
+    // ------------------------------------------------------------------------
+    // Scheduled Jobs
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a schedule job by token.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public ScheduledJob getScheduledJobByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
+    /**
+     * Create a new schedule job.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public ScheduledJob createScheduledJob(ITenantAuthentication tenant, ScheduledJobCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing schedule job.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public ScheduledJob updateScheduledJob(ITenantAuthentication tenant, String token, ScheduledJobCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing schedule job.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public ScheduledJob deleteScheduledJob(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
+    // ------------------------------------------------------------------------
+    // Schedules
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a schedule by token.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public Schedule getScheduleByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
+    /**
+     * Create a new schedule.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Schedule createSchedule(ITenantAuthentication tenant, ScheduleCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing schedule.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Schedule updateSchedule(ITenantAuthentication tenant, String token, ScheduleCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing schedule.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public Schedule deleteSchedule(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
+    // ------------------------------------------------------------------------
+    // System
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get SiteWhere version information.
+     * 
+     * @return
+     * @throws SiteWhereException
+     */
+    public Version getSiteWhereVersion() throws SiteWhereException;
+
+    // ------------------------------------------------------------------------
+    // Tenants
+    // ------------------------------------------------------------------------
+
+    /**
+     * Get a tenant by token.
+     * 
+     * @param tenant
+     * @param tenantToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Tenant getTenantByToken(String tenantToken) throws SiteWhereException;
+
+    /**
+     * Create a new tenant.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Tenant createTenant(TenantCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing tenant.
+     * 
+     * @param tenant
+     * @param tenantToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Tenant updateTenant(String tenantToken, TenantCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing tenant.
+     * 
+     * @param tenant
+     * @param tenantToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Tenant deleteTenant(String tenantToken) throws SiteWhereException;
+    
+    // ------------------------------------------------------------------------
+    // Users
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a user by username.
+     * 
+     * @param tenant
+     * @param username
+     * @return
+     * @throws SiteWhereException
+     */
+    public User getUserByUsername(ITenantAuthentication tenant, String username) throws SiteWhereException;
+
+    /**
+     * Create a new user.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public User createUser(ITenantAuthentication tenant, UserCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing user.
+     * 
+     * @param tenant
+     * @param username
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public User updateUser(ITenantAuthentication tenant, String username, UserCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing user.
+     * 
+     * @param tenant
+     * @param username
+     * @return
+     * @throws SiteWhereException
+     */
+    public User deleteUser(ITenantAuthentication tenant, String username) throws SiteWhereException;
+
+    // ------------------------------------------------------------------------
+    // Zones
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a zone by token.
+     * 
+     * @param tenant
+     * @param zoneToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Zone getZoneByToken(ITenantAuthentication tenant, String zoneToken) throws SiteWhereException;
+
+    /**
+     * Create a new zone.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Zone createZone(ITenantAuthentication tenant, ZoneCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing zone.
+     * 
+     * @param tenant
+     * @param zoneToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Zone updateZone(ITenantAuthentication tenant, String zoneToken, ZoneCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing zone.
+     * 
+     * @param tenant
+     * @param zoneToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public Zone deleteZone(ITenantAuthentication tenant, String zoneToken) throws SiteWhereException;
+    
+    // ------------------------------------------------------------------------
+    /**
      * List device types that meet the given criteria.
      * 
      * @param includeDeleted
@@ -585,16 +951,6 @@ public interface ISiteWhereClient {
      */
     public DeviceTypeSearchResults listDeviceTypes(boolean includeDeleted, boolean includeDetailedAssetInfo,
 	    SearchCriteria criteria) throws SiteWhereException;
-
-    /**
-     * Delete an existing device type.
-     * 
-     * @param token
-     * @param deletePermanently
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceType deleteDeviceType(String token, boolean deletePermanently) throws SiteWhereException;
 
     /**
      * Create a new device command for a specification.
@@ -619,18 +975,6 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
 
     /**
-     * Create a new zone associated with a site.
-     * 
-     * @param siteToken
-     *                      unique token for site
-     * @param request
-     *                      information for new zone
-     * @return zone that was created.
-     * @throws SiteWhereException
-     */
-    public Zone createZone(String siteToken, ZoneCreateRequest request) throws SiteWhereException;
-
-    /**
      * List zones associated with a given site.
      * 
      * @param siteToken
@@ -638,37 +982,6 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public ZoneSearchResults listZonesForSite(String siteToken) throws SiteWhereException;
-
-    /**
-     * Create a new device.
-     * 
-     * @param request
-     *                    information about device to be created
-     * @return the created device
-     * @throws SiteWhereException
-     */
-    public Device createDevice(DeviceCreateRequest request) throws SiteWhereException;
-
-    /**
-     * Get a device by its unique hardware id.
-     * 
-     * @param hardwareId
-     *                       hardware id of device to return
-     * @return device if found or null if not
-     * @throws SiteWhereException
-     */
-    public Device getDeviceByHardwareId(String hardwareId) throws SiteWhereException;
-
-    /**
-     * Update information for an existing device.
-     * 
-     * @param hardwareId
-     *                       hardware id of device to update
-     * @param request
-     *                       updated information
-     * @throws SiteWhereException
-     */
-    public Device updateDevice(String hardwareId, DeviceCreateRequest request) throws SiteWhereException;
 
     /**
      * List devices that meet the given criteria.
@@ -684,19 +997,6 @@ public interface ISiteWhereClient {
     public DeviceSearchResults listDevices(boolean includeDeleted, boolean excludeAssigned,
 	    boolean populateSpecification, boolean populateAssignment, DateRangeSearchCriteria criteria)
 	    throws SiteWhereException;
-
-    /**
-     * Delete a device.
-     * 
-     * @param hardwareId
-     *                       hardware id of device to delete
-     * @param force
-     *                       if true, data is deleted. if false, delete flag is set
-     *                       to true
-     * @return
-     * @throws SiteWhereException
-     */
-    public Device deleteDevice(String hardwareId, boolean force) throws SiteWhereException;
 
     /**
      * Get current device assignment for a device based on hardware id.
@@ -772,19 +1072,6 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public DeviceAssignmentSearchResults listAssignmentsForSite(String token) throws SiteWhereException;
-
-    /**
-     * Delete a device assignment based on its unique token.
-     * 
-     * @param assignmentToken
-     *                            unique assignment token
-     * @param force
-     *                            value of false sets deleted flag, true deletes
-     *                            data.
-     * @return assignment that was deleted
-     * @throws SiteWhereException
-     */
-    public DeviceAssignment deleteDeviceAssignment(String assignmentToken, boolean force) throws SiteWhereException;
 
     /**
      * Update the metadata for an existing device assignment.
@@ -965,33 +1252,6 @@ public interface ISiteWhereClient {
      */
     public BatchOperation createBatchCommandInvocation(String batchToken, String commandToken,
 	    Map<String, String> parameters, List<String> hardwareIds) throws SiteWhereException;
-
-    /**
-     * Create a new device group.
-     * 
-     * @param request
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceGroup createDeviceGroup(DeviceGroupCreateRequest request) throws SiteWhereException;
-
-    /**
-     * Get a device group by unique token.
-     * 
-     * @param token
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceGroup getDeviceGroupByToken(String token) throws SiteWhereException;
-
-    /**
-     * Delete a device group by unique token.
-     * 
-     * @param token
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceGroup deleteDeviceGroup(String token) throws SiteWhereException;
 
     /**
      * List device groups that meet the given criteria.
