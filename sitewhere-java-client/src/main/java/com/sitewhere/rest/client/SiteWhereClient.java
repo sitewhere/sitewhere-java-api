@@ -1087,31 +1087,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     }
     
     @Override
-    public Zone createZone(String siteToken, ZoneCreateRequest request) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
     public ZoneSearchResults listZonesForSite(String siteToken) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public Device createDevice(DeviceCreateRequest request) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public Device getDeviceByHardwareId(String hardwareId) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public Device updateDevice(String hardwareId, DeviceCreateRequest request) throws SiteWhereException {
 	// TODO Auto-generated method stub
 	return null;
     }
@@ -1120,12 +1096,6 @@ public class SiteWhereClient implements ISiteWhereClient {
     public DeviceSearchResults listDevices(boolean includeDeleted, boolean excludeAssigned,
 	    boolean populateSpecification, boolean populateAssignment, DateRangeSearchCriteria criteria)
 	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public Device deleteDevice(String hardwareId, boolean force) throws SiteWhereException {
 	// TODO Auto-generated method stub
 	return null;
     }
@@ -1170,12 +1140,6 @@ public class SiteWhereClient implements ISiteWhereClient {
 
     @Override
     public DeviceAssignmentSearchResults listAssignmentsForSite(String token) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceAssignment deleteDeviceAssignment(String assignmentToken, boolean force) throws SiteWhereException {
 	// TODO Auto-generated method stub
 	return null;
     }
@@ -1291,23 +1255,6 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return null;
     }
 
-    @Override
-    public DeviceGroup createDeviceGroup(DeviceGroupCreateRequest request) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceGroup getDeviceGroupByToken(String token) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceGroup deleteDeviceGroup(String token) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
 
     @Override
     public DeviceGroupSearchResults listDeviceGroups(String role, SearchCriteria criteria, boolean includeDeleted)

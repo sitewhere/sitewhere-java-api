@@ -975,18 +975,6 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
 
     /**
-     * Create a new zone associated with a site.
-     * 
-     * @param siteToken
-     *                      unique token for site
-     * @param request
-     *                      information for new zone
-     * @return zone that was created.
-     * @throws SiteWhereException
-     */
-    public Zone createZone(String siteToken, ZoneCreateRequest request) throws SiteWhereException;
-
-    /**
      * List zones associated with a given site.
      * 
      * @param siteToken
@@ -994,37 +982,6 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public ZoneSearchResults listZonesForSite(String siteToken) throws SiteWhereException;
-
-    /**
-     * Create a new device.
-     * 
-     * @param request
-     *                    information about device to be created
-     * @return the created device
-     * @throws SiteWhereException
-     */
-    public Device createDevice(DeviceCreateRequest request) throws SiteWhereException;
-
-    /**
-     * Get a device by its unique hardware id.
-     * 
-     * @param hardwareId
-     *                       hardware id of device to return
-     * @return device if found or null if not
-     * @throws SiteWhereException
-     */
-    public Device getDeviceByHardwareId(String hardwareId) throws SiteWhereException;
-
-    /**
-     * Update information for an existing device.
-     * 
-     * @param hardwareId
-     *                       hardware id of device to update
-     * @param request
-     *                       updated information
-     * @throws SiteWhereException
-     */
-    public Device updateDevice(String hardwareId, DeviceCreateRequest request) throws SiteWhereException;
 
     /**
      * List devices that meet the given criteria.
@@ -1040,19 +997,6 @@ public interface ISiteWhereClient {
     public DeviceSearchResults listDevices(boolean includeDeleted, boolean excludeAssigned,
 	    boolean populateSpecification, boolean populateAssignment, DateRangeSearchCriteria criteria)
 	    throws SiteWhereException;
-
-    /**
-     * Delete a device.
-     * 
-     * @param hardwareId
-     *                       hardware id of device to delete
-     * @param force
-     *                       if true, data is deleted. if false, delete flag is set
-     *                       to true
-     * @return
-     * @throws SiteWhereException
-     */
-    public Device deleteDevice(String hardwareId, boolean force) throws SiteWhereException;
 
     /**
      * Get current device assignment for a device based on hardware id.
@@ -1128,19 +1072,6 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public DeviceAssignmentSearchResults listAssignmentsForSite(String token) throws SiteWhereException;
-
-    /**
-     * Delete a device assignment based on its unique token.
-     * 
-     * @param assignmentToken
-     *                            unique assignment token
-     * @param force
-     *                            value of false sets deleted flag, true deletes
-     *                            data.
-     * @return assignment that was deleted
-     * @throws SiteWhereException
-     */
-    public DeviceAssignment deleteDeviceAssignment(String assignmentToken, boolean force) throws SiteWhereException;
 
     /**
      * Update the metadata for an existing device assignment.
@@ -1321,33 +1252,6 @@ public interface ISiteWhereClient {
      */
     public BatchOperation createBatchCommandInvocation(String batchToken, String commandToken,
 	    Map<String, String> parameters, List<String> hardwareIds) throws SiteWhereException;
-
-    /**
-     * Create a new device group.
-     * 
-     * @param request
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceGroup createDeviceGroup(DeviceGroupCreateRequest request) throws SiteWhereException;
-
-    /**
-     * Get a device group by unique token.
-     * 
-     * @param token
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceGroup getDeviceGroupByToken(String token) throws SiteWhereException;
-
-    /**
-     * Delete a device group by unique token.
-     * 
-     * @param token
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceGroup deleteDeviceGroup(String token) throws SiteWhereException;
 
     /**
      * List device groups that meet the given criteria.
