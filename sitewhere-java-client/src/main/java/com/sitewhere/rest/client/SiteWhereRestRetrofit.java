@@ -40,6 +40,7 @@ import com.sitewhere.rest.model.scheduling.Schedule;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
 import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
 import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
+import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -65,6 +66,13 @@ public interface SiteWhereRestRetrofit {
     // ------------------------------------------------------------------------
     // Area Types 
     // ------------------------------------------------------------------------
+    
+    @GET("areatypes")
+    Call<SearchResults<AreaType>> listAreaTypes(
+	    @Path("includeContainedAreaTypes") Boolean includeContainedAreaTypes, 
+	    @Path("page") Integer page, 
+	    @Path("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);    
     
     @GET("areatypes/{areaTypeToken}")
     Call<AreaType> getAreaTypeByToken(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);

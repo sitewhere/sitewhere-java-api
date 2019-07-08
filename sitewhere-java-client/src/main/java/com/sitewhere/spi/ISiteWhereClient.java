@@ -70,6 +70,7 @@ import com.sitewhere.rest.model.search.DeviceTypeSearchResults;
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
+import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -97,6 +98,17 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Area Types 
     // ------------------------------------------------------------------------
+
+    /**
+     * List area types matching criteria
+     * 
+     * @param tenant
+     * @param areaTypeToken
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<AreaType> listAreaTypes(ITenantAuthentication tenant, 
+	    AreaTypeSearchCriteria searchCriteria) throws SiteWhereException;
     
     /**
      * Get a area type by token.

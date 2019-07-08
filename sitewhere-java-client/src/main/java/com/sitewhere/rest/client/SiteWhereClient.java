@@ -73,6 +73,7 @@ import com.sitewhere.rest.model.search.DeviceTypeSearchResults;
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
+import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -167,6 +168,22 @@ public class SiteWhereClient implements ISiteWhereClient {
     // Area Types 
     // ------------------------------------------------------------------------
     
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listAreaTypes()
+     */
+    @Override
+    public SearchResults<AreaType> listAreaTypes(ITenantAuthentication tenant, AreaTypeSearchCriteria searchCriteria)
+	    throws SiteWhereException {
+	Call<SearchResults<AreaType>> call = getRestRetrofit().listAreaTypes(
+		searchCriteria.getIncludeContainedAreaTypes(),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     /*
      * (non-Javadoc)
      * 
