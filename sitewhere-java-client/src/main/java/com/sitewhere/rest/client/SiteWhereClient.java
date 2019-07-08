@@ -363,6 +363,24 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
     
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listCommandInvocationForArea()
+     */
+    @Override
+    public SearchResults<DeviceCommandInvocation> listCommandInvocationForArea(ITenantAuthentication tenant,
+	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceCommandInvocation>> call = getRestRetrofit().listCommandInvocationForArea(
+		areaToken, 
+		toISO8601(searchCriteria.getStartDate()),
+		toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     // ------------------------------------------------------------------------
     // Asset Types  
     // ------------------------------------------------------------------------

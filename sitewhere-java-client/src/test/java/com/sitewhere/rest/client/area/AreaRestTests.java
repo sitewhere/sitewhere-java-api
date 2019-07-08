@@ -18,6 +18,7 @@ import com.sitewhere.rest.client.AbstractCRUDRestClientTests;
 import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
+import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
@@ -126,6 +127,23 @@ public class AreaRestTests extends AbstractCRUDRestClientTests<Area, AreaCreateR
 		getClient().listDeviceAssignmentsForArea(
 			getTenatAuthentication(), parentToken, searchCriteria);
 	assertNotNull(assignments);
+    }
+    
+    @Test
+    public void testListCommandInvocations() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+	
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+	
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+	
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	SearchResults<DeviceCommandInvocation> commandInvocations = getClient()
+		.listCommandInvocationForArea(getTenatAuthentication(), parentToken, searchCriteria);
+	
+	assertNotNull(commandInvocations);
     }
     
 }

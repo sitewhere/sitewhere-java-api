@@ -30,6 +30,7 @@ import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
+import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
@@ -144,6 +145,15 @@ public interface SiteWhereRestRetrofit {
 	    @Query("includeCustomer") Boolean includeCustomer,
 	    @Query("includeArea") Boolean includeArea,
 	    @Query("includeAsset") Boolean includeAsset,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("areas/{areaToken}/invocations")
+    Call<SearchResults<DeviceCommandInvocation>> listCommandInvocationForArea(
+	    @Path("areaToken") String areaToken,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
 	    @Query("page") Integer page, 
 	    @Query("pageSize") Integer pageSize, 
 	    @HeaderMap Map<String, String> headers);

@@ -256,6 +256,20 @@ public interface ISiteWhereClient {
 	    String areaToken,
 	    DeviceAssignmentForAreaSearchCriteria searchCriteria) throws SiteWhereException;
 
+    /**
+     * List command invocations for an area
+     * 
+     * @param tenant
+     * @param areaToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceCommandInvocation> listCommandInvocationForArea(
+	    ITenantAuthentication tenant, 
+	    String areaToken, 
+	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Asset Types  
     // ------------------------------------------------------------------------
