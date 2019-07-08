@@ -7,9 +7,18 @@
  */
 package com.sitewhere.rest.client.area;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Calendar;
+import java.util.Date;
+
+import org.junit.Test;
+
 import com.sitewhere.rest.client.AbstractCRUDRestClientTests;
 import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
+import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
+import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.spi.SiteWhereException;
@@ -89,6 +98,23 @@ public class AreaRestTests extends AbstractCRUDRestClientTests<Area, AreaCreateR
     protected SearchResults<Area> listEntities() throws SiteWhereException {
 	AreaSearchCriteria searchCriteria = new AreaSearchCriteria(0, 10);
 	return getClient().listAreas(getTenatAuthentication(), searchCriteria);
+    }
+    
+    @Test
+    public void testListAlerts() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+	
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+	
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+	
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	SearchResults<DeviceAlertWithAsset> alerts = getClient()
+		.listAlertsForArea(getTenatAuthentication(), parentToken, searchCriteria);
+	
+	assertNotNull(alerts);
     }
 
 }

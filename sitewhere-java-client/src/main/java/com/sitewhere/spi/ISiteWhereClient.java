@@ -30,6 +30,7 @@ import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
+import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
@@ -177,7 +178,7 @@ public interface ISiteWhereClient {
      * List areas matching criteria
      * 
      * @param tenant
-     * @param areaTypeToken
+     * @param searchCriteria
      * @return
      * @throws SiteWhereException
      */
@@ -227,6 +228,18 @@ public interface ISiteWhereClient {
      */
     public Area deleteArea(ITenantAuthentication tenant, String areaToken) throws SiteWhereException;
     
+    /**
+     * List alerts for an area
+     * 
+     * @param tenant
+     * @param areaToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceAlertWithAsset> listAlertsForArea(ITenantAuthentication tenant, 
+	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Asset Types  
     // ------------------------------------------------------------------------

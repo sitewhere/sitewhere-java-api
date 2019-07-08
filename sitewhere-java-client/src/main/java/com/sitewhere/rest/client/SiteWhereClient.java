@@ -8,6 +8,8 @@
 package com.sitewhere.rest.client;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,7 @@ import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
+import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
@@ -105,6 +108,9 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
  * @author dadams
  */
 public class SiteWhereClient implements ISiteWhereClient {
+    
+    /** ISO 8601 Date Fromatter */
+    private static SimpleDateFormat iso8601DateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 
     /** Default protocol for REST services */
     public static final String DEFAULT_PROTOCOL = "http";
@@ -315,7 +321,25 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Call<Area> call = getRestRetrofit().deleteArea(areaToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listAlertsForArea()
+     */
+    @Override
+    public SearchResults<DeviceAlertWithAsset> listAlertsForArea(ITenantAuthentication tenant,
+	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceAlertWithAsset>> call = getRestRetrofit().listAlertsForArea(
+		areaToken, 
+		toISO8601(searchCriteria.getStartDate()),
+		toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     // ------------------------------------------------------------------------
     // Asset Types  
     // ------------------------------------------------------------------------
@@ -1394,12 +1418,14 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     @Override
     public ISiteWhereClient initialize() throws SiteWhereException {
+		
 	Retrofit authRetrofitSettings = new Retrofit.Builder().baseUrl(getAuthApiUrl()).client(buildBasicAuthClient())
 		.build();
 	this.authRetrofit = authRetrofitSettings.create(AuthenticationRetrofit.class);
 
 	Retrofit restRetrofitSettings = new Retrofit.Builder().baseUrl(getRestApiUrl()).client(buildGlobalClient())
-		.addConverterFactory(JacksonConverterFactory.create()).build();
+		.addConverterFactory(JacksonConverterFactory.create())
+		.build();
 	this.restRetrofit = restRetrofitSettings.create(SiteWhereRestRetrofit.class);
 
 	try {
@@ -1596,6 +1622,19 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return "Basic " + encoded;
     }
 
+    /**
+     * Convert date to ISO 8601 String
+     * @param startDate
+     * @return
+     */
+    protected String toISO8601(Date date) {
+	if(date == null)
+	    return "";
+	return iso8601DateFormat.format(date);
+    }
+
+
+    
     public AuthenticationRetrofit getAuthRetrofit() {
 	return authRetrofit;
     }

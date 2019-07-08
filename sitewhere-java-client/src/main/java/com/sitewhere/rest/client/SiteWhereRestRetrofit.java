@@ -28,6 +28,7 @@ import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
+import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
@@ -63,6 +64,7 @@ import retrofit2.http.Query;
  * Retrofit API for SiteWhere REST APIs.
  * 
  * @author Derek
+ * @author Jorge Villaverde
  */
 public interface SiteWhereRestRetrofit {
         
@@ -94,7 +96,7 @@ public interface SiteWhereRestRetrofit {
     Call<byte[]> getLabelForAreaType(@Path("areaTypeToken") String areaTypeToken,
 	    @Path("generatorId") String generatorId,
 	    @HeaderMap Map<String, String> headers);
-
+    
     // ------------------------------------------------------------------------
     // Areas  
     // ------------------------------------------------------------------------
@@ -123,6 +125,15 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("areas/{areaToken}")
     Call<Area> deleteArea(@Path("areaToken") String areaToken, @HeaderMap Map<String, String> headers);
+    
+    @GET("areas/{areaToken}/alerts")
+    Call<SearchResults<DeviceAlertWithAsset>> listAlertsForArea(
+	    @Path("areaToken") String areaToken,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Asset Types  
