@@ -41,6 +41,8 @@ import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
+import com.sitewhere.rest.model.user.User;
+import com.sitewhere.rest.model.user.request.UserCreateRequest;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -352,4 +354,22 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("tenants/{tenantToken}")
     Call<Tenant> deleteTenant(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);
+    
+    // ------------------------------------------------------------------------
+    // Users
+    // ------------------------------------------------------------------------
+    
+    @GET("users/{username}")
+    Call<User> getUserByToken(@Path("username") String username, @HeaderMap Map<String, String> headers);
+
+    @POST("users")
+    Call<User> createUser(@Body UserCreateRequest request, @HeaderMap Map<String, String> headers);
+
+    @PUT("users/{username}")
+    Call<User> updateUser(@Path("username") String username, @Body UserCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("users/{username}")
+    Call<User> deleteUser(@Path("username") String username, @HeaderMap Map<String, String> headers); 
+    
 }

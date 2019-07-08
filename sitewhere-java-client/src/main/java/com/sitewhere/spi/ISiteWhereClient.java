@@ -73,6 +73,8 @@ import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
+import com.sitewhere.rest.model.user.User;
+import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.device.DeviceAssignmentStatus;
 import com.sitewhere.spi.device.event.IDeviceMeasurement;
 import com.sitewhere.spi.device.request.IDeviceAssignmentCreateRequest;
@@ -808,7 +810,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Tenant getTenantByToken(ITenantAuthentication tenant, String tenantToken) throws SiteWhereException;
+    public Tenant getTenantByToken(String tenantToken) throws SiteWhereException;
 
     /**
      * Create a new tenant.
@@ -818,7 +820,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Tenant createTenant(ITenantAuthentication tenant, TenantCreateRequest request)
+    public Tenant createTenant(TenantCreateRequest request)
 	    throws SiteWhereException;
 
     /**
@@ -830,7 +832,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Tenant updateTenant(ITenantAuthentication tenant, String tenantToken, TenantCreateRequest request)
+    public Tenant updateTenant(String tenantToken, TenantCreateRequest request)
 	    throws SiteWhereException;
 
     /**
@@ -841,8 +843,54 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Tenant deleteTenant(ITenantAuthentication tenant, String tenantToken) throws SiteWhereException;
+    public Tenant deleteTenant(String tenantToken) throws SiteWhereException;
     
+    // ------------------------------------------------------------------------
+    // Users
+    // ------------------------------------------------------------------------
+    
+    /**
+     * Get a user by token.
+     * 
+     * @param tenant
+     * @param username
+     * @return
+     * @throws SiteWhereException
+     */
+    public User getUserByUsername(ITenantAuthentication tenant, String username) throws SiteWhereException;
+
+    /**
+     * Create a new tenant.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public User createUser(ITenantAuthentication tenant, UserCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Update an existing tenant.
+     * 
+     * @param tenant
+     * @param username
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public User updateUser(ITenantAuthentication tenant, String username, UserCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Delete an existing tenant.
+     * 
+     * @param tenant
+     * @param username
+     * @return
+     * @throws SiteWhereException
+     */
+    public User deleteUser(ITenantAuthentication tenant, String username) throws SiteWhereException;
         
     // ------------------------------------------------------------------------
     /**

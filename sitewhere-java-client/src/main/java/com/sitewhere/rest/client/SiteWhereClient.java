@@ -76,6 +76,8 @@ import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
+import com.sitewhere.rest.model.user.User;
+import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.ISiteWhereClient;
 import com.sitewhere.spi.ITenantAuthentication;
 import com.sitewhere.spi.SiteWhereException;
@@ -921,8 +923,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      * ITenantAuthentication, java.lang.String)
      */
     @Override
-    public Tenant getTenantByToken(ITenantAuthentication tenant, String tenantToken) throws SiteWhereException {
-	Call<Tenant> call = getRestRetrofit().getTenantByToken(tenantToken, createHeadersFor(tenant));
+    public Tenant getTenantByToken(String tenantToken) throws SiteWhereException {
+	Call<Tenant> call = getRestRetrofit().getTenantByToken(tenantToken, createDefaulHeaders());
 	return processRestCall(call);
     }
 
@@ -932,9 +934,9 @@ public class SiteWhereClient implements ISiteWhereClient {
      * com.sitewhere.rest.model.device.request.TenantCreateRequest)
      */
     @Override
-    public Tenant createTenant(ITenantAuthentication tenant, TenantCreateRequest request)
+    public Tenant createTenant(TenantCreateRequest request)
 	    throws SiteWhereException {
-	Call<Tenant> call = getRestRetrofit().createTenant(request, createHeadersFor(tenant));
+	Call<Tenant> call = getRestRetrofit().createTenant(request, createDefaulHeaders());
 	return processRestCall(call);
     }
 
@@ -944,9 +946,9 @@ public class SiteWhereClient implements ISiteWhereClient {
      * com.sitewhere.rest.model.device.request.TenantCreateRequest)
      */
     @Override
-    public Tenant updateTenant(ITenantAuthentication tenant, String tenantToken, TenantCreateRequest request)
+    public Tenant updateTenant(String tenantToken, TenantCreateRequest request)
 	    throws SiteWhereException {
-	Call<Tenant> call = getRestRetrofit().updateTenant(tenantToken, request, createHeadersFor(tenant));
+	Call<Tenant> call = getRestRetrofit().updateTenant(tenantToken, request, createDefaulHeaders());
 	return processRestCall(call);
     }
 
@@ -956,8 +958,58 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#deleteTenant()
      */
     @Override
-    public Tenant deleteTenant(ITenantAuthentication tenant, String tenantToken) throws SiteWhereException {
-	Call<Tenant > call = getRestRetrofit().deleteTenant(tenantToken, createHeadersFor(tenant));
+    public Tenant deleteTenant(String tenantToken) throws SiteWhereException {
+	Call<Tenant > call = getRestRetrofit().deleteTenant(tenantToken, createDefaulHeaders());
+	return processRestCall(call);
+    }
+
+    // ------------------------------------------------------------------------
+    // Users
+    // ------------------------------------------------------------------------
+
+    /*
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#getUserByUsername(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String)
+     */
+    @Override
+    public User getUserByUsername(ITenantAuthentication tenant, String username) throws SiteWhereException {
+	Call<User> call = getRestRetrofit().getUserByToken(username, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#createUser(com.sitewhere.spi.
+     * ITenantAuthentication,
+     * com.sitewhere.rest.model.device.request.UserCreateRequest)
+     */
+    @Override
+    public User createUser(ITenantAuthentication tenant, UserCreateRequest request)
+	    throws SiteWhereException {
+	Call<User> call = getRestRetrofit().createUser(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#updateUser(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String,
+     * com.sitewhere.rest.model.device.request.UserCreateRequest)
+     */
+    @Override
+    public User updateUser(ITenantAuthentication tenant, String username, UserCreateRequest request)
+	    throws SiteWhereException {
+	Call<User> call = getRestRetrofit().updateUser(username, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteUser()
+     */
+    @Override
+    public User deleteUser(ITenantAuthentication tenant, String username) throws SiteWhereException {
+	Call<User > call = getRestRetrofit().deleteUser(username, createHeadersFor(tenant));
 	return processRestCall(call);
     }
     
@@ -1382,6 +1434,15 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return headers;
     }
 
+    /**
+     * Create default headers.
+     * @return
+     */
+    protected Map<String, String> createDefaulHeaders() {
+	Map<String, String> headers = new HashMap<>();
+	return headers;
+    }
+    
     /**
      * Builder class.
      */
