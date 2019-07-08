@@ -18,9 +18,11 @@ import com.sitewhere.rest.client.AbstractCRUDRestClientTests;
 import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
+import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.spi.SiteWhereException;
 
 /**
@@ -117,4 +119,13 @@ public class AreaRestTests extends AbstractCRUDRestClientTests<Area, AreaCreateR
 	assertNotNull(alerts);
     }
 
+    @Test
+    public void testListAssignments() throws SiteWhereException {
+	DeviceAssignmentForAreaSearchCriteria searchCriteria = new DeviceAssignmentForAreaSearchCriteria(1, 1);
+	SearchResults<MarshaledDeviceAssignment> assignments = 
+		getClient().listDeviceAssignmentsForArea(
+			getTenatAuthentication(), parentToken, searchCriteria);
+	assertNotNull(assignments);
+    }
+    
 }

@@ -50,6 +50,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequ
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
+import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
@@ -80,6 +81,7 @@ import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -340,6 +342,27 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceAssignmentsForArea()
+     */
+    @Override
+    public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForArea(ITenantAuthentication tenant, String areaToken,
+	    DeviceAssignmentForAreaSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<MarshaledDeviceAssignment>> call = getRestRetrofit().listDeviceAssignmentsForArea(
+		areaToken, 
+		searchCriteria.getStatus() == null ? null : searchCriteria.getStatus().toString(),
+		searchCriteria.getIncludeDevice(),
+		searchCriteria.getIncludeCustomer(),
+		searchCriteria.getIncludeArea(),
+		searchCriteria.getIncludeAsset(),		
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     // ------------------------------------------------------------------------
     // Asset Types  
     // ------------------------------------------------------------------------
@@ -1706,4 +1729,6 @@ public class SiteWhereClient implements ISiteWhereClient {
     public void setJwt(String jwt) {
 	this.jwt = jwt;
     }
+
+
 }
