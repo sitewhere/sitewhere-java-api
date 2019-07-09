@@ -36,6 +36,7 @@ import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
@@ -400,6 +401,24 @@ public class SiteWhereClient implements ISiteWhereClient {
 	} catch (IOException e) {
 	    throw new SiteWhereException(e);
 	}
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listCommandInvocationForArea()
+     */
+    @Override
+    public SearchResults<DeviceLocationWithAsset> listLocationsForArea(ITenantAuthentication tenant,
+	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceLocationWithAsset>> call = getRestRetrofit().listLocationsForArea(
+		areaToken, 
+		toISO8601(searchCriteria.getStartDate()),
+		toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
     }
 
     // ------------------------------------------------------------------------
