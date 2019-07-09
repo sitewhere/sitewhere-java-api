@@ -32,6 +32,7 @@ import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
@@ -266,7 +267,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<DeviceCommandInvocation> listCommandInvocationForArea(
+    public SearchResults<DeviceCommandInvocation> listCommandInvocationsForArea(
 	    ITenantAuthentication tenant, 
 	    String areaToken, 
 	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
@@ -294,6 +295,20 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public SearchResults<DeviceLocationWithAsset> listLocationsForArea(
+	    ITenantAuthentication tenant, 
+	    String areaToken, 
+	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+    
+    /**
+     * List locations for an area
+     * 
+     * @param tenant
+     * @param areaToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceMeasurementWithAsset> listMeasurementsForArea(
 	    ITenantAuthentication tenant, 
 	    String areaToken, 
 	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;

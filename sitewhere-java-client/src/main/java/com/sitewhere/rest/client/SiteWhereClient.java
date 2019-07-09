@@ -37,6 +37,7 @@ import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
@@ -372,12 +373,12 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#listCommandInvocationForArea()
+     * @see com.sitewhere.spi.ISiteWhereClient#listCommandInvocationsForArea()
      */
     @Override
-    public SearchResults<DeviceCommandInvocation> listCommandInvocationForArea(ITenantAuthentication tenant,
+    public SearchResults<DeviceCommandInvocation> listCommandInvocationsForArea(ITenantAuthentication tenant,
 	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
-	Call<SearchResults<DeviceCommandInvocation>> call = getRestRetrofit().listCommandInvocationForArea(
+	Call<SearchResults<DeviceCommandInvocation>> call = getRestRetrofit().listCommandInvocationsForArea(
 		areaToken, 
 		toISO8601(searchCriteria.getStartDate()),
 		toISO8601(searchCriteria.getEndDate()),
@@ -406,7 +407,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#listCommandInvocationForArea()
+     * @see com.sitewhere.spi.ISiteWhereClient#listLocationsForArea()
      */
     @Override
     public SearchResults<DeviceLocationWithAsset> listLocationsForArea(ITenantAuthentication tenant,
@@ -421,6 +422,24 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listMeasurementsForArea()
+     */
+    @Override
+    public SearchResults<DeviceMeasurementWithAsset> listMeasurementsForArea(ITenantAuthentication tenant,
+	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceMeasurementWithAsset>> call = getRestRetrofit().listMeasurementsForArea(
+		areaToken, 
+		toISO8601(searchCriteria.getStartDate()),
+		toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     // ------------------------------------------------------------------------
     // Asset Types  
     // ------------------------------------------------------------------------

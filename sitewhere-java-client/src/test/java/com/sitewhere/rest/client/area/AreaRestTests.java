@@ -19,6 +19,7 @@ import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
@@ -28,7 +29,8 @@ import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCrite
 import com.sitewhere.spi.SiteWhereException;
 
 /**
- *
+ * Automated test for Area.
+ * 
  * @author Jorge Villaverde
  *
  */
@@ -156,7 +158,7 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
 	
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceCommandInvocation> commandInvocations = getClient()
-		.listCommandInvocationForArea(getTenatAuthentication(), parentToken, searchCriteria);
+		.listCommandInvocationsForArea(getTenatAuthentication(), parentToken, searchCriteria);
 	
 	assertNotNull(commandInvocations);
     }
@@ -176,5 +178,22 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
 		.listLocationsForArea(getTenatAuthentication(), parentToken, searchCriteria);
 	
 	assertNotNull(locations);
+    }    
+
+    @Test
+    public void testListMeasurements() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+	
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+	
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+	
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	SearchResults<DeviceMeasurementWithAsset> measurements = getClient()
+		.listMeasurementsForArea(getTenatAuthentication(), parentToken, searchCriteria);
+	
+	assertNotNull(measurements);
     }    
 }
