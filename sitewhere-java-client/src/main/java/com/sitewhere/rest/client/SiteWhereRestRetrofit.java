@@ -29,6 +29,7 @@ import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
@@ -177,6 +178,15 @@ public interface SiteWhereRestRetrofit {
     
     @GET("areas/{areaToken}/measurements")
     Call<SearchResults<DeviceMeasurementWithAsset>> listMeasurementsForArea(
+	    @Path("areaToken") String areaToken,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("areas/{areaToken}/responses")
+    Call<SearchResults<DeviceCommandResponseWithAsset>> listCommandResponsesForArea(
 	    @Path("areaToken") String areaToken,
 	    @Query("startDate") String startDate,
 	    @Query("endDate") String endDate,
