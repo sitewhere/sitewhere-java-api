@@ -42,5 +42,5 @@ public interface ITreeNode extends IMetadataProvider {
      * 
      * @return
      */
-    public List<ITreeNode> getChildren();
+    public List<? extends ITreeNode> getChildren();
 }

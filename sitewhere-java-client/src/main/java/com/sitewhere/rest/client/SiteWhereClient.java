@@ -82,6 +82,7 @@ import com.sitewhere.rest.model.search.DeviceStreamSearchResults;
 import com.sitewhere.rest.model.search.DeviceTypeSearchResults;
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
+import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
@@ -477,7 +478,19 @@ public class SiteWhereClient implements ISiteWhereClient {
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#areaTree()
+     */
+    @Override
+    public List<TreeNode> areaTree(ITenantAuthentication tenant) throws SiteWhereException {
+	Call<List<TreeNode>> call = getRestRetrofit().areaTree(createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     // ------------------------------------------------------------------------
     // Asset Types  
     // ------------------------------------------------------------------------
@@ -1844,6 +1857,5 @@ public class SiteWhereClient implements ISiteWhereClient {
     public void setJwt(String jwt) {
 	this.jwt = jwt;
     }
-
 
 }

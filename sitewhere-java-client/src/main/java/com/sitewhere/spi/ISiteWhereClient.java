@@ -77,6 +77,7 @@ import com.sitewhere.rest.model.search.DeviceStreamSearchResults;
 import com.sitewhere.rest.model.search.DeviceTypeSearchResults;
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
+import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
@@ -342,6 +343,15 @@ public interface ISiteWhereClient {
 	    ITenantAuthentication tenant, 
 	    String areaToken, 
 	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
+     * List all areas in tree format
+     * 
+     * @param tenant
+     * @return
+     * @throws SiteWhereException
+     */
+    public List<TreeNode> areaTree(ITenantAuthentication tenant) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Asset Types  

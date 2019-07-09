@@ -7,6 +7,7 @@
  */
 package com.sitewhere.rest.client;
 
+import java.util.List;
 import java.util.Map;
 
 import com.sitewhere.rest.model.area.Area;
@@ -50,6 +51,7 @@ import com.sitewhere.rest.model.scheduling.ScheduledJob;
 import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
 import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
 import com.sitewhere.rest.model.search.SearchResults;
+import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -203,6 +205,9 @@ public interface SiteWhereRestRetrofit {
 	    @Query("page") Integer page, 
 	    @Query("pageSize") Integer pageSize, 
 	    @HeaderMap Map<String, String> headers);
+
+    @GET("areas/tree")
+    Call<List<TreeNode>> areaTree(@HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Asset Types  

@@ -11,6 +11,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -26,6 +27,7 @@ import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
+import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.spi.SiteWhereException;
@@ -231,5 +233,11 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
 		.listStateChangesForArea(getTenatAuthentication(), parentToken, searchCriteria);
 	
 	assertNotNull(stateChanges);
+    }    
+
+    @Test
+    public void testTree() throws SiteWhereException {
+	List<TreeNode> tree = getClient().areaTree(getTenatAuthentication());
+	assertNotNull(tree);
     }    
 }

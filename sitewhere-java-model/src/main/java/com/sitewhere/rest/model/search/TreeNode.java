@@ -33,7 +33,7 @@ public class TreeNode extends MetadataProvider implements ITreeNode {
     private String icon;
 
     /** Node children */
-    private List<ITreeNode> children;
+    private List<TreeNode> children;
 
     /*
      * @see com.sitewhere.spi.search.ITreeNode#getToken()
@@ -75,11 +75,11 @@ public class TreeNode extends MetadataProvider implements ITreeNode {
      * @see com.sitewhere.spi.search.ITreeNode#getChildren()
      */
     @Override
-    public List<ITreeNode> getChildren() {
+    public List<TreeNode> getChildren() {
 	return children;
     }
 
-    public void setChildren(List<ITreeNode> children) {
+    public void setChildren(List<TreeNode> children) {
 	this.children = children;
     }
 }
