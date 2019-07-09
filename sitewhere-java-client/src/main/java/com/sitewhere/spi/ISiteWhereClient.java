@@ -34,6 +34,7 @@ import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
@@ -324,6 +325,20 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public SearchResults<DeviceCommandResponseWithAsset> listCommandResponsesForArea(
+	    ITenantAuthentication tenant, 
+	    String areaToken, 
+	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
+     * List state changes for an area
+     * 
+     * @param tenant
+     * @param areaToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceStateChangeWithAsset> listStateChangesForArea(
 	    ITenantAuthentication tenant, 
 	    String areaToken, 
 	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;

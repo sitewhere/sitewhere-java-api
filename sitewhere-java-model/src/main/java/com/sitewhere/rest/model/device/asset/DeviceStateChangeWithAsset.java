@@ -7,19 +7,19 @@
  */
 package com.sitewhere.rest.model.device.asset;
 
-import com.sitewhere.rest.model.device.event.DeviceMeasurement;
+import com.sitewhere.rest.model.device.event.DeviceStateChange;
 import com.sitewhere.spi.device.asset.IDeviceEventWithAsset;
 
 /**
- * Model object for device measurement with asset.
- *
+ * Model object for device state change with asset.
+ * 
  * @author Jorge Villaverde
  */
-public class DeviceMeasurementWithAsset extends DeviceMeasurement implements IDeviceEventWithAsset {
+public class DeviceStateChangeWithAsset extends DeviceStateChange implements IDeviceEventWithAsset {
 
     /** Serialization version identifier */
-    private static final long serialVersionUID = 2505526959429621669L;
-    
+    private static final long serialVersionUID = -7240669600220337960L;
+
     /** Name of the asset */
     private String assetName;
     

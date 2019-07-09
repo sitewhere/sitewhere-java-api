@@ -39,6 +39,7 @@ import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
@@ -444,12 +445,30 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#listMeasurementsForArea()
+     * @see com.sitewhere.spi.ISiteWhereClient#listCommandResponsesForArea()
      */
     @Override
     public SearchResults<DeviceCommandResponseWithAsset> listCommandResponsesForArea(ITenantAuthentication tenant,
 	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
 	Call<SearchResults<DeviceCommandResponseWithAsset>> call = getRestRetrofit().listCommandResponsesForArea(
+		areaToken, 
+		toISO8601(searchCriteria.getStartDate()),
+		toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listStateChangesForArea()
+     */
+    @Override
+    public SearchResults<DeviceStateChangeWithAsset> listStateChangesForArea(ITenantAuthentication tenant,
+	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit().listStateChangesForArea(
 		areaToken, 
 		toISO8601(searchCriteria.getStartDate()),
 		toISO8601(searchCriteria.getEndDate()),

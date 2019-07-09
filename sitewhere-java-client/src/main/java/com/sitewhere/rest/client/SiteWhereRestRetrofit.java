@@ -32,6 +32,7 @@ import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
@@ -194,6 +195,15 @@ public interface SiteWhereRestRetrofit {
 	    @Query("pageSize") Integer pageSize, 
 	    @HeaderMap Map<String, String> headers);
 
+    @GET("areas/{areaToken}/statechanges")
+    Call<SearchResults<DeviceStateChangeWithAsset>> listStateChangesForArea(
+	    @Path("areaToken") String areaToken,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Asset Types  
     // ------------------------------------------------------------------------

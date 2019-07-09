@@ -21,6 +21,7 @@ import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
@@ -213,5 +214,22 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
 		.listCommandResponsesForArea(getTenatAuthentication(), parentToken, searchCriteria);
 	
 	assertNotNull(commandResponses);
+    }    
+
+    @Test
+    public void testListStateChanges() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+	
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+	
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+	
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	SearchResults<DeviceStateChangeWithAsset> stateChanges = getClient()
+		.listStateChangesForArea(getTenatAuthentication(), parentToken, searchCriteria);
+	
+	assertNotNull(stateChanges);
     }    
 }
