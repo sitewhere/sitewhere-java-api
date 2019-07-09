@@ -99,6 +99,7 @@ import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -249,8 +250,12 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public byte[] getLabelForAreaType(ITenantAuthentication tenant, String areaTypeToken, String generatorId)
 	    throws SiteWhereException {
-	Call<byte[]> call = getRestRetrofit().getLabelForAreaType(areaTypeToken, generatorId, createHeadersFor(tenant));
-	return processRestCall(call);
+	Call<ResponseBody> call = getRestRetrofit().getLabelForAreaType(areaTypeToken, generatorId, createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}
     }
     
     // ------------------------------------------------------------------------
@@ -379,6 +384,22 @@ public class SiteWhereClient implements ISiteWhereClient {
 		searchCriteria.getPageSize(),
 		createHeadersFor(tenant));
 	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForArea()
+     */
+    @Override
+    public byte[] getLabelForArea(ITenantAuthentication tenant, String areaToken, String generatorId)
+	    throws SiteWhereException {
+	Call<ResponseBody> call = getRestRetrofit().getLabelForArea(areaToken, generatorId, createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}
     }
 
     // ------------------------------------------------------------------------

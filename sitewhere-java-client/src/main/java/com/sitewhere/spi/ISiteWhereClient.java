@@ -270,6 +270,19 @@ public interface ISiteWhereClient {
 	    String areaToken, 
 	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
     
+    /**
+     * Get label for area.
+     * 
+     * @param tenant
+     * @param areaToken
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForArea(ITenantAuthentication tenant, 
+	    String areaToken,
+	    String generatorId) throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Asset Types  
     // ------------------------------------------------------------------------

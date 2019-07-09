@@ -14,7 +14,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import com.sitewhere.rest.client.AbstractCRUDRestClientTests;
+import com.sitewhere.rest.client.AbstractWithLabelCRUDRestTest;
 import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.request.AreaCreateRequest;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
@@ -31,13 +31,18 @@ import com.sitewhere.spi.SiteWhereException;
  * @author Jorge Villaverde
  *
  */
-public class AreaRestTests extends AbstractCRUDRestClientTests<Area, AreaCreateRequest> {
+public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreateRequest> {
 
     private String areaTypeToken = "construction";
 
     private String parentToken = "southeast";
 
     private String name = "Test Area Name";
+    
+    @Override
+    protected String knownEntityToken() {
+	return parentToken;
+    }
     
     // ------------------------------------------------------------------------
     // CREATE
@@ -102,6 +107,15 @@ public class AreaRestTests extends AbstractCRUDRestClientTests<Area, AreaCreateR
 	AreaSearchCriteria searchCriteria = new AreaSearchCriteria(0, 10);
 	return getClient().listAreas(getTenatAuthentication(), searchCriteria);
     }
+
+    // ------------------------------------------------------------------------
+    // LABEL
+    // ------------------------------------------------------------------------
+    
+    @Override
+    protected byte[] getLabelForEntity(String token, String generatorId) throws SiteWhereException {
+	return getClient().getLabelForArea(getTenatAuthentication(), token, generatorId);
+    }
     
     @Test
     public void testListAlerts() throws SiteWhereException {
@@ -145,5 +159,7 @@ public class AreaRestTests extends AbstractCRUDRestClientTests<Area, AreaCreateR
 	
 	assertNotNull(commandInvocations);
     }
+
+
     
 }

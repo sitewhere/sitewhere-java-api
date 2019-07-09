@@ -7,7 +7,7 @@
  */
 package com.sitewhere.rest.client.area;
 
-import com.sitewhere.rest.client.AbstractCRUDRestClientTests;
+import com.sitewhere.rest.client.AbstractWithLabelCRUDRestTest;
 import com.sitewhere.rest.model.area.AreaType;
 import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.search.SearchResults;
@@ -19,9 +19,14 @@ import com.sitewhere.spi.SiteWhereException;
  * @author Jorge Villaverde
  *
  */
-public class AreaTypeRestTests extends AbstractCRUDRestClientTests<AreaType, AreaTypeCreateRequest> {
+public class AreaTypeRestTests extends AbstractWithLabelCRUDRestTest<AreaType, AreaTypeCreateRequest> {
 
     private String areaTypeName = "Test Area Type Name";
+    
+    @Override
+    protected String knownEntityToken() {
+	return "construction";
+    }
 
     // ------------------------------------------------------------------------
     // CREATE
@@ -85,6 +90,15 @@ public class AreaTypeRestTests extends AbstractCRUDRestClientTests<AreaType, Are
     protected SearchResults<AreaType> listEntities() throws SiteWhereException {
 	AreaTypeSearchCriteria searchCriteria = new AreaTypeSearchCriteria(0, 10);
 	return getClient().listAreaTypes(getTenatAuthentication(), searchCriteria);
+    }
+
+    // ------------------------------------------------------------------------
+    // LABEL
+    // ------------------------------------------------------------------------
+
+    @Override
+    protected byte[] getLabelForEntity(String token, String generatorId) throws SiteWhereException {
+	return getClient().getLabelForAreaType(getTenatAuthentication(), token, generatorId);
     }
 
 }

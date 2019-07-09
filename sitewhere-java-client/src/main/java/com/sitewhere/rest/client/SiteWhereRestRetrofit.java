@@ -52,6 +52,7 @@ import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -95,7 +96,7 @@ public interface SiteWhereRestRetrofit {
     Call<AreaType> deleteAreaType(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
     
     @GET("areatypes/{areaTypeToken}/label/{generatorId}")
-    Call<byte[]> getLabelForAreaType(@Path("areaTypeToken") String areaTypeToken,
+    Call<ResponseBody> getLabelForAreaType(@Path("areaTypeToken") String areaTypeToken,
 	    @Path("generatorId") String generatorId,
 	    @HeaderMap Map<String, String> headers);
     
@@ -156,6 +157,11 @@ public interface SiteWhereRestRetrofit {
 	    @Query("endDate") String endDate,
 	    @Query("page") Integer page, 
 	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+
+    @GET("areas/{areaToken}/label/{generatorId}")
+    Call<ResponseBody> getLabelForArea(@Path("areaToken") String areaToken,
+	    @Path("generatorId") String generatorId,
 	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------

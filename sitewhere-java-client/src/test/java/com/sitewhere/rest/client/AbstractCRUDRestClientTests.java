@@ -93,6 +93,8 @@ public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR
     
     // Abstract Methods -------------------------------------------------------
     
+    protected abstract String knownEntityToken();
+    
     protected abstract CR buildCreateRequest(String token);
     
     protected abstract T createEntity(CR createRequest) throws SiteWhereException;
