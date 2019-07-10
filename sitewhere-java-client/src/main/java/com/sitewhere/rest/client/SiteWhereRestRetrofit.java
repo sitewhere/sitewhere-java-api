@@ -36,6 +36,7 @@ import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
+import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
@@ -302,6 +303,21 @@ public interface SiteWhereRestRetrofit {
     @GET("assignments/{token}/label/{generatorId}")
     Call<ResponseBody> getLabelForDeviceAssignment(@Path("token") String token,
 	    @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("assignments/{token}/alerts")
+    Call<SearchResults<DeviceAlertWithAsset>> listAlertsForDeviceAssignment(
+	    @Path("token") String token,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+
+    @POST("assignments/{token}/alerts")
+    Call<DeviceAlertWithAsset> createAlertForDeviceAssignment(
+	    @Path("token") String token,
+	    @Body DeviceAlertCreateRequest request, 
 	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------

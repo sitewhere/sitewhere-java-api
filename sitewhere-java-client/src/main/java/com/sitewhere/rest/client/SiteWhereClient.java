@@ -749,6 +749,39 @@ public class SiteWhereClient implements ISiteWhereClient {
 	}
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listAlertsForDeviceAssignment()
+     */
+    @Override
+    public SearchResults<DeviceAlertWithAsset> listAlertsForDeviceAssignment(ITenantAuthentication tenant,
+	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceAlertWithAsset>> call = getRestRetrofit().listAlertsForDeviceAssignment(
+		areaToken, 
+		toISO8601(searchCriteria.getStartDate()),
+		toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createAlertForDeviceAssignment()
+     */
+    @Override
+    public DeviceAlertWithAsset createAlertForDeviceAssignment(
+	    ITenantAuthentication tenant, String token, 
+	    DeviceAlertCreateRequest request)
+	    throws SiteWhereException {
+	Call<DeviceAlertWithAsset> call = getRestRetrofit().createAlertForDeviceAssignment(
+		token, request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------

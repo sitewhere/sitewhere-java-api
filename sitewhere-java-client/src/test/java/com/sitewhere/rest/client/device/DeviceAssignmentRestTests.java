@@ -7,9 +7,19 @@
  */
 package com.sitewhere.rest.client.device;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Calendar;
+import java.util.Date;
+
+import org.junit.Test;
+
 import com.sitewhere.rest.client.AbstractWithLabelCRUDRestTest;
+import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
+import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
+import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.spi.SiteWhereException;
@@ -31,7 +41,7 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 
     @Override
     protected String knownEntityToken() {
-	return "193aa75b-5f2e-40ed-8261-cb5f662b6f7a";
+	return "e37ece83-c16d-4086-bfed-7fa9bfaadfb9";
     }
 
     // ------------------------------------------------------------------------
@@ -107,4 +117,32 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 	return getClient().getLabelForDeviceAssignment(getTenatAuthentication(), token, generatorId);
     }
 
+    @Test
+    public void testListAlerts() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+	
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+	
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+	
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	SearchResults<DeviceAlertWithAsset> alerts = getClient()
+		.listAlertsForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), searchCriteria);
+	
+	assertNotNull(alerts);
+    }
+
+    @Test
+    public void testCreateAlert() throws SiteWhereException {
+	DeviceAlertCreateRequest.Builder builder = new DeviceAlertCreateRequest.Builder("egine.overhat", "Engine Overheat");
+	
+	DeviceAlertCreateRequest request = builder.error().trackState().build();
+	
+	DeviceAlertWithAsset alert = getClient().createAlertForDeviceAssignment(
+		getTenatAuthentication(), knownEntityToken(), request);
+	
+	assertNotNull(alert);
+    }
 }
