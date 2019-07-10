@@ -19,16 +19,16 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
 
     /** Only return areas of the given type */
     private String areaTypeToken;
-    
+
     /** Include Area Type */
     private Boolean includeAreaType;
-    
+
     /** Include assignments */
     private Boolean includeAssignments;
 
     /** Include zones */
     private Boolean includeZones;
-    
+
     /** Only return areas with the given parent */
     private String parentAreaToken;
 
@@ -47,7 +47,7 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
 	return areaTypeToken;
     }
 
-    public void setAreaTypeTokeb(String areaTypeToken) {
+    public void setAreaTypeToken(String areaTypeToken) {
 	this.areaTypeToken = areaTypeToken;
     }
 
@@ -64,7 +64,8 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
     }
 
     /*
-     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getIncludeAssignments()
+     * @see
+     * com.sitewhere.spi.search.area.IAreaSearchCriteria#getIncludeAssignments()
      */
     @Override
     public Boolean getIncludeAssignments() {
@@ -74,7 +75,7 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
     public void setIncludeAssignments(Boolean includeAssignments) {
 	this.includeAssignments = includeAssignments;
     }
-    
+
     /*
      * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getIncludeZones()
      */
@@ -90,7 +91,7 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
     /*
      * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getParentAreaToken()
      */
-    @Override    
+    @Override
     public String getParentAreaToken() {
 	return parentAreaToken;
     }
@@ -98,7 +99,7 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
     public void setParentAreaToken(String parentAreaToken) {
 	this.parentAreaToken = parentAreaToken;
     }
-    
+
     /*
      * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getRootOnly()
      */

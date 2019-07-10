@@ -9,6 +9,7 @@ package com.sitewhere.spi.search.device;
 
 import java.util.List;
 
+import com.sitewhere.spi.device.DeviceAssignmentStatus;
 import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
@@ -19,18 +20,18 @@ import com.sitewhere.spi.search.ISearchCriteria;
 public interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
 
     /**
+     * Limits search the given list of device assignment statuses.
+     * 
+     * @return
+     */
+    public List<DeviceAssignmentStatus> getAssignmentStatuses();
+
+    /**
      * Limits search the given list of areas tokens.
      * 
      * @return
      */
     public List<String> getAreaTokens();
-    
-    /**
-     * Indicates if the area are to be returned.
-     * 
-     * @return
-     */
-    public Boolean getIncludeArea();
 
     /**
      * Limits search the given list of asset tokens.
@@ -40,26 +41,12 @@ public interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
     public List<String> getAssetTokens();
 
     /**
-     * Indicates if the asset are to be returned.
-     * 
-     * @return
-     */
-    public Boolean getIncludeAsset();
-
-    /**
      * Limits search the given list of customer tokens.
      * 
      * @return
      */
     public List<String> getCustomerTokens();
 
-    /**
-     * Indicates if the customer are to be returned.
-     * 
-     * @return
-     */
-    public Boolean getIncludeCustomer();
-    
     /**
      * Limits search the given list of device tokens.
      * 
@@ -68,10 +55,9 @@ public interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
     public List<String> getDeviceTokens();
 
     /**
-     * Indicates if the device are to be returned.
+     * Limits search the given list of device type tokens.
      * 
      * @return
      */
-    public Boolean getIncludeDevice();
-    
+    public List<String> getDeviceTypeTokens();
 }

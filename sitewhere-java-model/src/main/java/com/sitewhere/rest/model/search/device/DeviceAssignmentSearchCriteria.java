@@ -10,6 +10,7 @@ package com.sitewhere.rest.model.search.device;
 import java.util.List;
 
 import com.sitewhere.rest.model.search.SearchCriteria;
+import com.sitewhere.spi.device.DeviceAssignmentStatus;
 import com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria;
 
 /**
@@ -19,135 +20,104 @@ import com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria;
  */
 public class DeviceAssignmentSearchCriteria extends SearchCriteria implements IDeviceAssignmentSearchCriteria {
 
-    /** Filter by area tokens */ 
+    /** Filter by area tokens */
+    private List<DeviceAssignmentStatus> assignmentStatuses;
+
+    /** Filter by area tokens */
     private List<String> areaTokens;
-    
-    /** Indicates if area are to be included */
-    private Boolean includeArea;
-    
+
     /** Filter by asset tokens */
     private List<String> assetTokens;
-    
-    /** Indicates of asset are to be included */
-    private Boolean includeAsset;
-    
+
     /** Filter by customer tokens */
     private List<String> customerTokens;
-    
-    /** Indicates if customer are to be included */
-    private Boolean includeCustomer;
-    
+
     /** Filter by device tokens */
     private List<String> deviceTokens;
-    
-    /** Indicates if device are to be included */
-    private Boolean includeDevice;
+
+    /** Filter by device type tokens */
+    private List<String> deviceTypeTokens;
 
     public DeviceAssignmentSearchCriteria(int pageNumber, int pageSize) {
 	super(pageNumber, pageSize);
     }
-    
+
+    /*
+     * @see com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#
+     * getAssignmentStatuses()
+     */
+    @Override
+    public List<DeviceAssignmentStatus> getAssignmentStatuses() {
+	return assignmentStatuses;
+    }
+
+    public void setAssignmentStatuses(List<DeviceAssignmentStatus> assignmentStatuses) {
+	this.assignmentStatuses = assignmentStatuses;
+    }
+
     /*
      * @see
-     * com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#getAreaTokens()
+     * com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#getAreaTokens
+     * ()
      */
     @Override
     public List<String> getAreaTokens() {
-	return this.areaTokens;
+	return areaTokens;
     }
 
     public void setAreaTokens(List<String> areaTokens) {
-        this.areaTokens = areaTokens;
+	this.areaTokens = areaTokens;
     }
 
     /*
-     * @see
-     * com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#getIncludeArea()
-     */
-    @Override
-    public Boolean getIncludeArea() {
-	return this.includeArea;
-    }
-
-    public void setIncludeArea(Boolean includeArea) {
-        this.includeArea = includeArea;
-    }
-
-    /*
-     * @see
-     * com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#getAssetTokens()
+     * @see com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#
+     * getAssetTokens()
      */
     @Override
     public List<String> getAssetTokens() {
-	return this.assetTokens;
+	return assetTokens;
     }
 
     public void setAssetTokens(List<String> assetTokens) {
-        this.assetTokens = assetTokens;
-    }
-    
-    /*
-     * @see
-     * com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#getIncludeAsset()
-     */
-    @Override
-    public Boolean getIncludeAsset() {
-	return this.includeAsset;
+	this.assetTokens = assetTokens;
     }
 
-    public void setIncludeAsset(Boolean includeAsset) {
-        this.includeAsset = includeAsset;
-    }
-    
     /*
-     * @see
-     * com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#getCustomerTokens()
+     * @see com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#
+     * getCustomerTokens()
      */
     @Override
     public List<String> getCustomerTokens() {
-	return this.customerTokens;
+	return customerTokens;
     }
 
     public void setCustomerTokens(List<String> customerTokens) {
-        this.customerTokens = customerTokens;
-    }
-    
-    /*
-     * @see
-     * com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#getIncludeCustomer()
-     */
-    @Override
-    public Boolean getIncludeCustomer() {
-	return this.includeCustomer;
-    }
-
-    public void setIncludeCustomer(Boolean includeCustomer) {
-        this.includeCustomer = includeCustomer;
+	this.customerTokens = customerTokens;
     }
 
     /*
-     * @see
-     * com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#getDeviceTokens()
+     * @see com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#
+     * getDeviceTokens()
      */
     @Override
     public List<String> getDeviceTokens() {
-	return this.deviceTokens;
+	return deviceTokens;
     }
 
     public void setDeviceTokens(List<String> deviceTokens) {
-        this.deviceTokens = deviceTokens;
+	this.deviceTokens = deviceTokens;
     }
 
     /*
-     * @see
-     * com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#getIncludeDevice()
+     * @see com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria#
+     * getDeviceTypeTokens()
      */
     @Override
-    public Boolean getIncludeDevice() {
-	return this.includeDevice;
+    public List<String> getDeviceTypeTokens() {
+	return deviceTypeTokens;
     }
 
-    public void setIncludeDevice(Boolean includeDevice) {
-        this.includeDevice = includeDevice;
+    public void setDeviceTypeTokens(List<String> deviceTypeTokens) {
+	this.deviceTypeTokens = deviceTypeTokens;
     }
 }
