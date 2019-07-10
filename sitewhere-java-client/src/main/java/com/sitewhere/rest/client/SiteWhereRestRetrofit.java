@@ -37,6 +37,7 @@ import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
@@ -323,6 +324,22 @@ public interface SiteWhereRestRetrofit {
     @POST("assignments/{token}/end")
     Call<MarshaledDeviceAssignment> releaseDeviceAssignment(
 	    @Path("token") String token, @HeaderMap Map<String, String> headers);
+    
+    @GET("assignments/{token}/invocations")
+    Call<SearchResults<DeviceCommandInvocation>> listCommandInvocationsForDeviceAssignment(
+	    @Path("token") String token, 
+	    @Query("includeCommand") Boolean includeCommand,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @POST("assignments/{token}/invocations")
+    Call<DeviceCommandInvocation> createCommandInvocationForDeviceAssignment(
+	    @Path("token") String token,
+	    @Body DeviceCommandInvocationCreateRequest request, 
+	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Batch Operations  
