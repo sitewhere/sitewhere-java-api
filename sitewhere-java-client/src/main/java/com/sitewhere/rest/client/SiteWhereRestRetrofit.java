@@ -18,6 +18,7 @@ import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
 import com.sitewhere.rest.model.asset.Asset;
 import com.sitewhere.rest.model.asset.AssetType;
+import com.sitewhere.rest.model.asset.marshaling.MarshaledAsset;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
@@ -240,9 +241,17 @@ public interface SiteWhereRestRetrofit {
     // ------------------------------------------------------------------------
     // Asset  
     // ------------------------------------------------------------------------
+
+    @GET("assets")
+    Call<SearchResults<Asset>> listAssets(
+	    @Query("assetTypeToken") String assetTypeToken,
+	    @Query("includeAssetType") Boolean includeAssetType,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
     
     @GET("assets/{assetToken}")
-    Call<Asset> getAssetByToken(@Path("assetToken") String assetToken, @HeaderMap Map<String, String> headers);
+    Call<MarshaledAsset> getAssetByToken(@Path("assetToken") String assetToken, @HeaderMap Map<String, String> headers);
 
     @POST("assets")
     Call<Asset> createAsset(@Body AssetCreateRequest request, @HeaderMap Map<String, String> headers);
@@ -253,7 +262,12 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("assets/{assetToken}")
     Call<Asset> deleteAsset(@Path("assetToken") String assetToken, @HeaderMap Map<String, String> headers);
-    
+
+    @GET("assets/{assetToken}/label/{generatorId}")
+    Call<ResponseBody> getLabelForAsset(@Path("assetToken") String assetToken,
+	    @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);    
+
     // ------------------------------------------------------------------------
     // Assignments  
     // ------------------------------------------------------------------------

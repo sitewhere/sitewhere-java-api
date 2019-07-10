@@ -8,7 +8,7 @@
 package com.sitewhere.rest.model.asset.marshaling;
 
 import com.sitewhere.rest.model.asset.Asset;
-import com.sitewhere.spi.asset.IAssetType;
+import com.sitewhere.rest.model.asset.AssetType;
 
 /**
  * Extends {@link Asset} to support fields that can be included on REST calls.
@@ -21,13 +21,13 @@ public class MarshaledAsset extends Asset {
     private static final long serialVersionUID = 6394550253455081960L;
 
     /** Asset type */
-    private IAssetType assetType;
+    private AssetType assetType;
 
-    public IAssetType getAssetType() {
+    public AssetType getAssetType() {
 	return assetType;
     }
 
-    public void setAssetType(IAssetType assetType) {
+    public void setAssetType(AssetType assetType) {
 	this.assetType = assetType;
     }
 }

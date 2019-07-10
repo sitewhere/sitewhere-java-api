@@ -7,8 +7,6 @@
  */
 package com.sitewhere.rest.model.search.asset;
 
-import java.util.UUID;
-
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.spi.search.asset.IAssetSearchCriteria;
 
@@ -18,23 +16,38 @@ import com.sitewhere.spi.search.asset.IAssetSearchCriteria;
  * @author Derek
  */
 public class AssetSearchCriteria extends SearchCriteria implements IAssetSearchCriteria {
-
+    
     /** Filter by asset type */
-    private UUID assetTypeId;
+    private String assetTypeToken;
+    
+    /** Include asset type */
+    private Boolean includeAssetType;
 
     public AssetSearchCriteria(int pageNumber, int pageSize) {
 	super(pageNumber, pageSize);
     }
 
     /*
-     * @see com.sitewhere.spi.search.asset.IAssetSearchCriteria#getAssetTypeId()
+     * @see com.sitewhere.spi.search.asset.IAssetSearchCriteria#getAssetTypeToken()
      */
     @Override
-    public UUID getAssetTypeId() {
-	return assetTypeId;
+    public String getAssetTypeToken() {
+        return assetTypeToken;
     }
 
-    public void setAssetTypeId(UUID assetTypeId) {
-	this.assetTypeId = assetTypeId;
+    public void setAssetTypeToken(String assetTypeToken) {
+        this.assetTypeToken = assetTypeToken;
+    }
+
+    /*
+     * @see com.sitewhere.spi.search.asset.IAssetSearchCriteria#getIncludeAssetType()
+     */
+    @Override
+    public Boolean getIncludeAssetType() {
+        return includeAssetType;
+    }
+
+    public void setIncludeAssetType(Boolean includeAssetType) {
+        this.includeAssetType = includeAssetType;
     }
 }

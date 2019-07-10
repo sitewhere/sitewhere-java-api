@@ -64,6 +64,7 @@ public class AssetCreateRequest extends BrandedEntityCreateRequest implements IA
 	    request.setToken(token);
 	    request.setAssetTypeToken(assetTypeToken);
 	    request.setName(name);
+	    request.setImageUrl("https://s3.amazonaws.com/sitewhere-demo/broken-link.png");
 	}
 
 	public Builder withImageUrl(String imageUrl) {

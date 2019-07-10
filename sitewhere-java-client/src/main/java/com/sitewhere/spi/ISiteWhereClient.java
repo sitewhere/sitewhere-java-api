@@ -18,6 +18,7 @@ import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
 import com.sitewhere.rest.model.asset.Asset;
 import com.sitewhere.rest.model.asset.AssetType;
+import com.sitewhere.rest.model.asset.marshaling.MarshaledAsset;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
@@ -81,6 +82,7 @@ import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
+import com.sitewhere.rest.model.search.asset.AssetSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
@@ -430,6 +432,17 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
+     * List assets matching criteria
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<Asset> listAssets(ITenantAuthentication tenant, 
+	    AssetSearchCriteria searchCriteria) throws SiteWhereException;
+    
+    /**
      * Get a asset by token.
      * 
      * @param tenant
@@ -437,7 +450,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Asset getAssetByToken(ITenantAuthentication tenant, String assetToken) throws SiteWhereException;
+    public MarshaledAsset getAssetByToken(ITenantAuthentication tenant, String assetToken) throws SiteWhereException;
     
     /**
      * Create a new asset.
@@ -471,7 +484,20 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public Asset deleteAsset(ITenantAuthentication tenant, String assetToken) throws SiteWhereException;
-    
+
+    /**
+     * Get label for asset.
+     * 
+     * @param tenant
+     * @param assetToken
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForAsset(ITenantAuthentication tenant, 
+	    String assetToken,
+	    String generatorId) throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Assignments  
     // ------------------------------------------------------------------------

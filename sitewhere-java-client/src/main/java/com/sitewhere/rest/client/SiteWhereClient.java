@@ -22,6 +22,7 @@ import com.sitewhere.rest.model.area.request.AreaTypeCreateRequest;
 import com.sitewhere.rest.model.area.request.ZoneCreateRequest;
 import com.sitewhere.rest.model.asset.Asset;
 import com.sitewhere.rest.model.asset.AssetType;
+import com.sitewhere.rest.model.asset.marshaling.MarshaledAsset;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchOperation;
@@ -86,6 +87,7 @@ import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
+import com.sitewhere.rest.model.search.asset.AssetSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
@@ -576,15 +578,32 @@ public class SiteWhereClient implements ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Asset  
     // ------------------------------------------------------------------------
-    
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listAssets()
+     */
+    @Override
+    public SearchResults<Asset> listAssets(ITenantAuthentication tenant, AssetSearchCriteria searchCriteria)
+	    throws SiteWhereException {
+	Call<SearchResults<Asset>> call = getRestRetrofit().listAssets(
+		searchCriteria.getAssetTypeToken(),
+		searchCriteria.getIncludeAssetType(),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     /*
      * (non-Javadoc)
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#getAssetByToken()
      */
     @Override
-    public Asset getAssetByToken(ITenantAuthentication tenant, String assetToken) throws SiteWhereException {
-	Call<Asset > call = getRestRetrofit().getAssetByToken(assetToken, createHeadersFor(tenant));
+    public MarshaledAsset getAssetByToken(ITenantAuthentication tenant, String assetToken) throws SiteWhereException {
+	Call<MarshaledAsset> call = getRestRetrofit().getAssetByToken(assetToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -596,7 +615,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public Asset createAsset(ITenantAuthentication tenant, AssetCreateRequest request)
 	    throws SiteWhereException {
-	Call<Asset > call = getRestRetrofit().createAsset(request, createHeadersFor(tenant));
+	Call<Asset> call = getRestRetrofit().createAsset(request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
     
@@ -608,7 +627,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public Asset updateAsset(ITenantAuthentication tenant, String assetToken, AssetCreateRequest request)
 	    throws SiteWhereException {
-	Call<Asset > call = getRestRetrofit().updateAsset(assetToken, request, createHeadersFor(tenant));
+	Call<Asset> call = getRestRetrofit().updateAsset(assetToken, request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -619,8 +638,24 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     @Override
     public Asset deleteAsset(ITenantAuthentication tenant, String assetToken) throws SiteWhereException {
-	Call<Asset > call = getRestRetrofit().deleteAsset (assetToken, createHeadersFor(tenant));
+	Call<Asset> call = getRestRetrofit().deleteAsset (assetToken, createHeadersFor(tenant));
 	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForAsset()
+     */
+    @Override
+    public byte[] getLabelForAsset(ITenantAuthentication tenant, String assetToken, String generatorId)
+	    throws SiteWhereException {
+	Call<ResponseBody> call = getRestRetrofit().getLabelForAsset(assetToken, generatorId, createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}
     }
 
     // ------------------------------------------------------------------------
