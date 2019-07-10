@@ -7,6 +7,7 @@
  */
 package com.sitewhere.rest.client.device;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Calendar;
@@ -23,6 +24,7 @@ import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.spi.SiteWhereException;
+import com.sitewhere.spi.device.DeviceAssignmentStatus;
 
 /**
  *
@@ -136,7 +138,7 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 
     @Test
     public void testCreateAlert() throws SiteWhereException {
-	DeviceAlertCreateRequest.Builder builder = new DeviceAlertCreateRequest.Builder("egine.overhat", "Engine Overheat");
+	DeviceAlertCreateRequest.Builder builder = new DeviceAlertCreateRequest.Builder("egine.overheat", "Engine Overheat");
 	
 	DeviceAlertCreateRequest request = builder.error().trackState().build();
 	
@@ -144,5 +146,12 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 		getTenatAuthentication(), knownEntityToken(), request);
 	
 	assertNotNull(alert);
+    }
+
+    @Test
+    public void testReleaseAssignmebt() throws SiteWhereException {
+	MarshaledDeviceAssignment assignment = getClient().releaseDeviceAssignment(getTenatAuthentication(), knownEntityToken());
+	assertNotNull(assignment);
+	assertEquals(DeviceAssignmentStatus.Released, assignment.getStatus());
     }
 }

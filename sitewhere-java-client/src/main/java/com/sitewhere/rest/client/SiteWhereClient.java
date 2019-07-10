@@ -781,7 +781,21 @@ public class SiteWhereClient implements ISiteWhereClient {
 		token, request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#releaseDeviceAssignment()
+     */
+    @Override
+    public MarshaledDeviceAssignment releaseDeviceAssignment(
+	    ITenantAuthentication tenant, String token)
+	    throws SiteWhereException {
+	Call<MarshaledDeviceAssignment> call = getRestRetrofit().releaseDeviceAssignment(
+		token, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------

@@ -319,6 +319,10 @@ public interface SiteWhereRestRetrofit {
 	    @Path("token") String token,
 	    @Body DeviceAlertCreateRequest request, 
 	    @HeaderMap Map<String, String> headers);
+
+    @POST("assignments/{token}/end")
+    Call<MarshaledDeviceAssignment> releaseDeviceAssignment(
+	    @Path("token") String token, @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Batch Operations  

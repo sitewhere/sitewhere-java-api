@@ -606,8 +606,21 @@ public interface ISiteWhereClient {
      */
     public DeviceAlertWithAsset createAlertForDeviceAssignment(
 	    ITenantAuthentication tenant, String token, 
-	    DeviceAlertCreateRequest request) throws SiteWhereException;
+	    DeviceAlertCreateRequest request) 
+		    throws SiteWhereException;
 
+    /**
+     * Release an active device assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public MarshaledDeviceAssignment releaseDeviceAssignment(
+	    ITenantAuthentication tenant, String token) 
+		    throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------
