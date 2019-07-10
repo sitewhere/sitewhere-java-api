@@ -86,6 +86,7 @@ import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
+import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
@@ -498,6 +499,21 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listAssetTypes()
+     */
+    @Override
+    public SearchResults<AssetType> listAssetTypes(ITenantAuthentication tenant, AssetTypeSearchCriteria searchCriteria)
+	    throws SiteWhereException {
+	Call<SearchResults<AssetType>> call = getRestRetrofit().listAssetTypes(
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.sitewhere.spi.ISiteWhereClient#getAssetTypeByToken()
      */
     @Override
@@ -539,6 +555,22 @@ public class SiteWhereClient implements ISiteWhereClient {
     public AssetType deleteAssetType(ITenantAuthentication tenant, String assetTypeToken) throws SiteWhereException {
 	Call<AssetType > call = getRestRetrofit().deleteAssetType (assetTypeToken, createHeadersFor(tenant));
 	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForAssetType()
+     */
+    @Override
+    public byte[] getLabelForAssetType(ITenantAuthentication tenant, String assetTypeToken, String generatorId)
+	    throws SiteWhereException {
+	Call<ResponseBody> call = getRestRetrofit().getLabelForAssetType(assetTypeToken, generatorId, createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}
     }
 
     // ------------------------------------------------------------------------

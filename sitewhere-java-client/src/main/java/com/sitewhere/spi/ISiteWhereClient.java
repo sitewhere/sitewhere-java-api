@@ -81,6 +81,7 @@ import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
+import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
@@ -114,7 +115,7 @@ public interface ISiteWhereClient {
      * List area types matching criteria
      * 
      * @param tenant
-     * @param areaTypeToken
+     * @param searchCriteria
      * @return
      * @throws SiteWhereException
      */
@@ -358,6 +359,17 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
+     * List asset types matching criteria
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<AssetType> listAssetTypes(ITenantAuthentication tenant, 
+	    AssetTypeSearchCriteria searchCriteria) throws SiteWhereException;
+    
+    /**
      * Get a asset type by token.
      * 
      * @param tenant
@@ -399,7 +411,20 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public AssetType deleteAssetType(ITenantAuthentication tenant, String assetTypeToken) throws SiteWhereException;
-    
+
+    /**
+     * Get label for asset type
+     * 
+     * @param tenant
+     * @param assetTypeToken
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForAssetType(ITenantAuthentication tenant, 
+	    String assetTypeToken,
+	    String generatorId) throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Asset  
     // ------------------------------------------------------------------------

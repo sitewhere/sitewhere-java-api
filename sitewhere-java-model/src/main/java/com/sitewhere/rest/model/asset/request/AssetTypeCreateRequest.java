@@ -81,6 +81,7 @@ public class AssetTypeCreateRequest extends BrandedEntityCreateRequest implement
 	    request.setToken(token);
 	    request.setName(name);
 	    request.setAssetCategory(AssetCategory.Hardware);
+	    request.setImageUrl("https://s3.amazonaws.com/sitewhere-demo/broken-link.png");
 	}
 
 	public Builder asHardware() {

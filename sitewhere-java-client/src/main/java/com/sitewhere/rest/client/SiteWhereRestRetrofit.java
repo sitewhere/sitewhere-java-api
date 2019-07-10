@@ -213,6 +213,12 @@ public interface SiteWhereRestRetrofit {
     // Asset Types  
     // ------------------------------------------------------------------------
     
+    @GET("assettypes")
+    Call<SearchResults<AssetType>> listAssetTypes(
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
     @GET("assettypes/{assetTypeToken}")
     Call<AssetType> getAssetTypeByToken(@Path("assetTypeToken") String assetTypeToken, @HeaderMap Map<String, String> headers);
 
@@ -225,6 +231,11 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("assettypes/{assetTypeToken}")
     Call<AssetType> deleteAssetType(@Path("assetTypeToken") String assetTypeToken, @HeaderMap Map<String, String> headers);
+
+    @GET("assettypes/{assetTypeToken}/label/{generatorId}")
+    Call<ResponseBody> getLabelForAssetType(@Path("assetTypeToken") String assetTypeToken,
+	    @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Asset  
