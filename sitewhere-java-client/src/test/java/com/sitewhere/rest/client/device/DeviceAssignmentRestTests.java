@@ -24,6 +24,7 @@ import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
+import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.spi.SiteWhereException;
 import com.sitewhere.spi.device.DeviceAssignmentStatus;
@@ -110,7 +111,8 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
     @Override
     protected SearchResults<? extends MarshaledDeviceAssignment> listEntities() throws SiteWhereException {
 	DeviceAssignmentSearchCriteria searchCriteria = new DeviceAssignmentSearchCriteria(1, 1);
-	return getClient().listDeviceAssignments(getTenatAuthentication(), searchCriteria);
+	DeviceAssignmentResponseFormat format = new DeviceAssignmentResponseFormat();
+	return getClient().listDeviceAssignments(getTenatAuthentication(), searchCriteria, format);
     }
 
     // ------------------------------------------------------------------------
