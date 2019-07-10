@@ -76,7 +76,7 @@ public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR
     
     @Test
     public void testList() throws SiteWhereException {
-	SearchResults<T> results = listEntities();
+	SearchResults<? extends T> results = listEntities();
 	assertNotNull(results);
 	assertNotEquals(0, results.getNumResults());
     }
@@ -107,6 +107,6 @@ public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR
 
     protected abstract T deleteEntity(String token) throws SiteWhereException;
 
-    protected abstract SearchResults<T> listEntities() throws SiteWhereException;
+    protected abstract SearchResults<? extends T> listEntities() throws SiteWhereException;
     
 }

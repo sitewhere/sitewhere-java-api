@@ -90,6 +90,7 @@ import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -661,15 +662,39 @@ public class SiteWhereClient implements ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Assignments  
     // ------------------------------------------------------------------------
-    
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceAssignments()
+     */
+    @Override
+    public SearchResults<MarshaledDeviceAssignment> listDeviceAssignments(
+	    ITenantAuthentication tenant, DeviceAssignmentSearchCriteria searchCriteria)
+	    throws SiteWhereException {
+	Call<SearchResults<MarshaledDeviceAssignment>> call = getRestRetrofit().listDeviceAssignments(
+		assembleTokenList(searchCriteria.getAreaTokens()),
+		searchCriteria.getIncludeArea(),
+		assembleTokenList(searchCriteria.getAssetTokens()),
+		searchCriteria.getIncludeAsset(),
+		assembleTokenList(searchCriteria.getCustomerTokens()),
+		searchCriteria.getIncludeCustomer(),
+		assembleTokenList(searchCriteria.getDeviceTokens()),
+		searchCriteria.getIncludeDevice(),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     /*
      * (non-Javadoc)
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#getDeviceAssignmentByToken()
      */
     @Override
-    public DeviceAssignment getDeviceAssignmentByToken(ITenantAuthentication tenant, String token) throws SiteWhereException {
-	Call<DeviceAssignment > call = getRestRetrofit().getDeviceAssignmentByToken(token, createHeadersFor(tenant));
+    public MarshaledDeviceAssignment getDeviceAssignmentByToken(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<MarshaledDeviceAssignment> call = getRestRetrofit().getDeviceAssignmentByToken(token, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -679,9 +704,9 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#createDeviceAssignment()
      */
     @Override
-    public DeviceAssignment createDeviceAssignment(ITenantAuthentication tenant, DeviceAssignmentCreateRequest request)
+    public MarshaledDeviceAssignment createDeviceAssignment(ITenantAuthentication tenant, DeviceAssignmentCreateRequest request)
 	    throws SiteWhereException {
-	Call<DeviceAssignment > call = getRestRetrofit().createDeviceAssignment(request, createHeadersFor(tenant));
+	Call<MarshaledDeviceAssignment> call = getRestRetrofit().createDeviceAssignment(request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
     
@@ -691,9 +716,9 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#updateDeviceAssignment()
      */
     @Override
-    public DeviceAssignment updateDeviceAssignment(ITenantAuthentication tenant, String token, DeviceAssignmentCreateRequest request)
+    public MarshaledDeviceAssignment updateDeviceAssignment(ITenantAuthentication tenant, String token, DeviceAssignmentCreateRequest request)
 	    throws SiteWhereException {
-	Call<DeviceAssignment > call = getRestRetrofit().updateDeviceAssignment(token, request, createHeadersFor(tenant));
+	Call<MarshaledDeviceAssignment> call = getRestRetrofit().updateDeviceAssignment(token, request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -703,11 +728,27 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#deleteDeviceAssignment()
      */
     @Override
-    public DeviceAssignment deleteDeviceAssignment(ITenantAuthentication tenant, String token) throws SiteWhereException {
-	Call<DeviceAssignment > call = getRestRetrofit().deleteDeviceAssignment (token, createHeadersFor(tenant));
+    public MarshaledDeviceAssignment deleteDeviceAssignment(ITenantAuthentication tenant, String token) throws SiteWhereException {
+	Call<MarshaledDeviceAssignment> call = getRestRetrofit().deleteDeviceAssignment (token, createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForDeviceAssignment()
+     */
+    @Override
+    public byte[] getLabelForDeviceAssignment(ITenantAuthentication tenant, String token, String generatorId)
+	    throws SiteWhereException {
+	Call<ResponseBody> call = getRestRetrofit().getLabelForDeviceAssignment(token, generatorId, createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}
+    }
+
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------
@@ -1851,6 +1892,18 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return iso8601DateFormat.format(date);
     }
 
+    protected static String assembleTokenList(List<String> tokenList) {
+	if (tokenList == null || tokenList.isEmpty())
+	    return null;
+	StringBuilder builder = new StringBuilder();
+	String sep = "";
+	for(String token : tokenList) {
+	    builder.append(sep);
+	    builder.append(token);
+	    sep = ", ";
+	}
+	return builder.toString();
+    }
 
     
     public AuthenticationRetrofit getAuthRetrofit() {

@@ -27,7 +27,6 @@ import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.Device;
-import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
@@ -266,25 +265,44 @@ public interface SiteWhereRestRetrofit {
     @GET("assets/{assetToken}/label/{generatorId}")
     Call<ResponseBody> getLabelForAsset(@Path("assetToken") String assetToken,
 	    @Path("generatorId") String generatorId,
-	    @HeaderMap Map<String, String> headers);    
+	    @HeaderMap Map<String, String> headers);
 
     // ------------------------------------------------------------------------
     // Assignments  
     // ------------------------------------------------------------------------
+
+    @GET("assignments")
+    Call<SearchResults<MarshaledDeviceAssignment>> listDeviceAssignments(
+	    @Query("areaToken") String areaToken,
+	    @Query("includeArea") Boolean includeArea,
+	    @Query("assetToken") String assetToken,
+	    @Query("includeAsset") Boolean includeAsset,
+	    @Query("customerToken") String customerToken,
+	    @Query("includeCustomer") Boolean includeCustomer,
+	    @Query("deviceToken") String deviceToken,
+	    @Query("includeDevice") Boolean includeDevice,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
     
     @GET("assignments/{token}")
-    Call<DeviceAssignment> getDeviceAssignmentByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    Call<MarshaledDeviceAssignment> getDeviceAssignmentByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
     @POST("assignments")
-    Call<DeviceAssignment> createDeviceAssignment(@Body DeviceAssignmentCreateRequest request, 
+    Call<MarshaledDeviceAssignment> createDeviceAssignment(@Body DeviceAssignmentCreateRequest request, 
 	    @HeaderMap Map<String, String> headers);
 
     @PUT("assignments/{token}")
-    Call<DeviceAssignment> updateDeviceAssignment(@Path("token") String token, @Body DeviceAssignmentCreateRequest request,
+    Call<MarshaledDeviceAssignment> updateDeviceAssignment(@Path("token") String token, @Body DeviceAssignmentCreateRequest request,
 	    @HeaderMap Map<String, String> headers);
 
     @DELETE("assignments/{token}")
-    Call<DeviceAssignment> deleteDeviceAssignment(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    Call<MarshaledDeviceAssignment> deleteDeviceAssignment(@Path("token") String token, @HeaderMap Map<String, String> headers);
+
+    @GET("assignments/{token}/label/{generatorId}")
+    Call<ResponseBody> getLabelForDeviceAssignment(@Path("token") String token,
+	    @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Batch Operations  

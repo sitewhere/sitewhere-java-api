@@ -85,6 +85,7 @@ import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -503,6 +504,18 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
+     * List device assignment matching criteria.
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<MarshaledDeviceAssignment> listDeviceAssignments(
+	    ITenantAuthentication tenant, 
+	    DeviceAssignmentSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
      * Get a device assignment by token.
      * 
      * @param tenant
@@ -510,7 +523,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public DeviceAssignment getDeviceAssignmentByToken(ITenantAuthentication tenant, String token) throws SiteWhereException;
+    public MarshaledDeviceAssignment getDeviceAssignmentByToken(
+	    ITenantAuthentication tenant, String token) throws SiteWhereException;
     
     /**
      * Create a new device assignment.
@@ -520,7 +534,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public DeviceAssignment createDeviceAssignment(ITenantAuthentication tenant, DeviceAssignmentCreateRequest request)
+    public MarshaledDeviceAssignment createDeviceAssignment(
+	    ITenantAuthentication tenant, DeviceAssignmentCreateRequest request)
 	    throws SiteWhereException;
 
     /**
@@ -532,7 +547,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public DeviceAssignment updateDeviceAssignment(ITenantAuthentication tenant, String token, DeviceAssignmentCreateRequest request)
+    public MarshaledDeviceAssignment updateDeviceAssignment(ITenantAuthentication tenant, String token, DeviceAssignmentCreateRequest request)
 	    throws SiteWhereException;
     
     /**
@@ -543,7 +558,20 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public DeviceAssignment deleteDeviceAssignment(ITenantAuthentication tenant, String token) throws SiteWhereException;
+    public MarshaledDeviceAssignment deleteDeviceAssignment(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
+    /**
+     * Get label for device assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForDeviceAssignment(ITenantAuthentication tenant, 
+	    String token,
+	    String generatorId) throws SiteWhereException;
 
     // ------------------------------------------------------------------------
     // Batch Operations  

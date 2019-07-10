@@ -7,11 +7,8 @@
  */
 package com.sitewhere.rest.model.device.marshaling;
 
+import com.sitewhere.rest.model.asset.marshaling.MarshaledAsset;
 import com.sitewhere.rest.model.device.DeviceAssignment;
-import com.sitewhere.spi.area.IArea;
-import com.sitewhere.spi.asset.IAsset;
-import com.sitewhere.spi.customer.ICustomer;
-import com.sitewhere.spi.device.IDevice;
 
 /**
  * Extends {@link DeviceAssignment} to support fields that can be included on
@@ -25,16 +22,16 @@ public class MarshaledDeviceAssignment extends DeviceAssignment {
     private static final long serialVersionUID = -6149550465354186892L;
 
     /** Device being assigned */
-    private IDevice device;
+    private MarshaledDevice device;
 
     /** Assigned customer */
-    private ICustomer customer;
+    private MarshaledCustomer customer;
 
     /** Assigned area */
-    private IArea area;
+    private MarshaledArea area;
 
     /** Associated asset */
-    private IAsset asset;
+    private MarshaledAsset asset;
 
     /** Associated asset name */
     private String assetName;
@@ -42,35 +39,35 @@ public class MarshaledDeviceAssignment extends DeviceAssignment {
     /** Associated asset image */
     private String assetImageUrl;
 
-    public IDevice getDevice() {
+    public MarshaledDevice getDevice() {
 	return device;
     }
 
-    public void setDevice(IDevice device) {
+    public void setDevice(MarshaledDevice device) {
 	this.device = device;
     }
 
-    public ICustomer getCustomer() {
+    public MarshaledCustomer getCustomer() {
 	return customer;
     }
 
-    public void setCustomer(ICustomer customer) {
+    public void setCustomer(MarshaledCustomer customer) {
 	this.customer = customer;
     }
 
-    public IArea getArea() {
+    public MarshaledArea getArea() {
 	return area;
     }
 
-    public void setArea(IArea area) {
+    public void setArea(MarshaledArea area) {
 	this.area = area;
     }
 
-    public IAsset getAsset() {
+    public MarshaledAsset getAsset() {
 	return asset;
     }
 
-    public void setAsset(IAsset asset) {
+    public void setAsset(MarshaledAsset asset) {
 	this.asset = asset;
     }
 

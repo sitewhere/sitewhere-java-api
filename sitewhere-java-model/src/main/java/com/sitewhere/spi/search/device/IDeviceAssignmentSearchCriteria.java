@@ -8,9 +8,7 @@
 package com.sitewhere.spi.search.device;
 
 import java.util.List;
-import java.util.UUID;
 
-import com.sitewhere.spi.device.DeviceAssignmentStatus;
 import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
@@ -21,44 +19,59 @@ import com.sitewhere.spi.search.ISearchCriteria;
 public interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
 
     /**
-     * Only return assignments with the given status.
+     * Limits search the given list of areas tokens.
      * 
      * @return
      */
-    public DeviceAssignmentStatus getStatus();
+    public List<String> getAreaTokens();
+    
+    /**
+     * Indicates if the area are to be returned.
+     * 
+     * @return
+     */
+    public Boolean getIncludeArea();
 
     /**
-     * Limits search to a given device.
+     * Limits search the given list of asset tokens.
      * 
      * @return
      */
-    public UUID getDeviceId();
+    public List<String> getAssetTokens();
 
     /**
-     * Limits search the given list of device types.
+     * Indicates if the asset are to be returned.
      * 
      * @return
      */
-    public List<UUID> getDeviceTypeIds();
+    public Boolean getIncludeAsset();
 
     /**
-     * Limits search the given list of customers.
+     * Limits search the given list of customer tokens.
      * 
      * @return
      */
-    public List<UUID> getCustomerIds();
+    public List<String> getCustomerTokens();
 
     /**
-     * Limits search the given list of areas.
+     * Indicates if the customer are to be returned.
      * 
      * @return
      */
-    public List<UUID> getAreaIds();
+    public Boolean getIncludeCustomer();
+    
+    /**
+     * Limits search the given list of device tokens.
+     * 
+     * @return
+     */
+    public List<String> getDeviceTokens();
 
     /**
-     * Limits search to a given list of assets.
+     * Indicates if the device are to be returned.
      * 
      * @return
      */
-    public List<UUID> getAssetIds();
+    public Boolean getIncludeDevice();
+    
 }
