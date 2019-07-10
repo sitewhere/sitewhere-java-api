@@ -592,6 +592,32 @@ public interface ISiteWhereClient {
     public MarshaledDeviceAssignment releaseDeviceAssignment(ITenantAuthentication tenant, String token)
 	    throws SiteWhereException;
 
+    /**
+     * List command invocations for a device assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param includeCommand
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceCommandInvocation> listCommandInvocationsForDeviceAssignment(
+	    ITenantAuthentication tenant, String token, Boolean includeCommand, DateRangeSearchCriteria searchCriteria)
+	    throws SiteWhereException;
+
+    /**
+     * Create command invocation event for assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceCommandInvocation createCommandInvocationForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DeviceCommandInvocationCreateRequest request) throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

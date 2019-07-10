@@ -17,7 +17,9 @@ import org.junit.Test;
 
 import com.sitewhere.rest.client.AbstractWithLabelCRUDRestTest;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
+import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
@@ -26,6 +28,7 @@ import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.spi.SiteWhereException;
 import com.sitewhere.spi.device.DeviceAssignmentStatus;
+import com.sitewhere.spi.device.event.CommandInitiator;
 
 /**
  *
@@ -155,5 +158,41 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 	MarshaledDeviceAssignment assignment = getClient().releaseDeviceAssignment(getTenatAuthentication(), knownEntityToken());
 	assertNotNull(assignment);
 	assertEquals(DeviceAssignmentStatus.Released, assignment.getStatus());
+    }
+
+    @Test
+    public void testListCommandInvocations() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+	
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+	
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+	
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	SearchResults<DeviceCommandInvocation> commandInvocations = getClient()
+		.listCommandInvocationsForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), false, searchCriteria);
+	
+	assertNotNull(commandInvocations);
+    }
+
+    @Test
+    public void testCreateCommandInvocations() throws SiteWhereException {
+	String commandToken = "ping";
+	String target = "Assignment";
+	String initiatorId = "REST";
+
+	DeviceCommandInvocationCreateRequest.Builder builder = 
+		new DeviceCommandInvocationCreateRequest.Builder(commandToken, target);
+	DeviceCommandInvocationCreateRequest request = builder.build();
+	
+	request.setInitiatorId(initiatorId);
+	request.setInitiator(CommandInitiator.REST);
+	
+	DeviceCommandInvocation commandInvocation = getClient()
+		.createCommandInvocationForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
+	
+	assertNotNull(commandInvocation);
     }
 }
