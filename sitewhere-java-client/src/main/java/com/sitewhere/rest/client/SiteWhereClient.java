@@ -99,6 +99,7 @@ import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
+import com.sitewhere.rest.model.user.GrantedAuthority;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.ISiteWhereClient;
@@ -1036,6 +1037,20 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit()
 		.bulkListStateChangesForDeviceAssignments(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    // ------------------------------------------------------------------------
+    // Authorities
+    // ------------------------------------------------------------------------
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listAuthorities()
+     */
+    public SearchResults<GrantedAuthority> listAuthorities(ITenantAuthentication tenant) throws SiteWhereException {
+	Call<SearchResults<GrantedAuthority>> call = getRestRetrofit().listAuthorities(createHeadersFor(tenant));
 	return processRestCall(call);
     }
 

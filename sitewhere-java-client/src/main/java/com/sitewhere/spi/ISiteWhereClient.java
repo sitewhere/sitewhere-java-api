@@ -94,6 +94,7 @@ import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
+import com.sitewhere.rest.model.user.GrantedAuthority;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.device.DeviceAssignmentStatus;
@@ -837,6 +838,18 @@ public interface ISiteWhereClient {
      */
     public SearchResults<DeviceStateChangeWithAsset> bulkListStateChangesForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException;
+    
+    // ------------------------------------------------------------------------
+    // Authorities
+    // ------------------------------------------------------------------------
+    
+    /**
+     * List authorities that match criteria.
+     * 
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<GrantedAuthority> listAuthorities(ITenantAuthentication tenant) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Batch Operations

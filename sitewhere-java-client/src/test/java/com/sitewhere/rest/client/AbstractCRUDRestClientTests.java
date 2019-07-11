@@ -13,39 +13,25 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.UUID;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import com.sitewhere.rest.model.common.PersistentEntity;
 import com.sitewhere.rest.model.common.request.PersistentEntityCreateRequest;
 import com.sitewhere.rest.model.search.SearchResults;
-import com.sitewhere.spi.ISiteWhereClient;
-import com.sitewhere.spi.ITenantAuthentication;
 import com.sitewhere.spi.SiteWhereException;
 
 /**
+ * 
  * @author Jorge Villaverde
- *
  */
-public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR extends PersistentEntityCreateRequest> {
+public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR extends PersistentEntityCreateRequest> 
+	extends AbstractRestClient {
     
-    /** SiteWhere Client */
-    private ISiteWhereClient client;
-    
-    /** Tenant Authentication */
-    private ITenantAuthentication tenantAuthentication;
-
     /** Entity token */
     private String token = UUID.randomUUID().toString();
     
     /** Entity */
     private T entity;
-
-    @Before
-    public void init() throws SiteWhereException {
-	this.client = SiteWhereClient.newBuilder().build().initialize();
-	this.tenantAuthentication = SiteWhereClient.defaultTenant();
-    }
 
     // Tests ------------------------------------------------------------------
     
@@ -80,17 +66,7 @@ public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR
 	assertNotNull(results);
 	assertNotEquals(0, results.getNumResults());
     }
-    
-    // Getters/Setters --------------------------------------------------------
-    
-    protected ISiteWhereClient getClient() {
-	return client;
-    }
-   
-    protected ITenantAuthentication getTenatAuthentication() {
-	return tenantAuthentication;
-    }
-    
+        
     // Abstract Methods -------------------------------------------------------
     
     protected abstract String knownEntityToken();

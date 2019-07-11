@@ -63,6 +63,7 @@ import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
+import com.sitewhere.rest.model.user.GrantedAuthority;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
 
@@ -438,6 +439,13 @@ public interface SiteWhereRestRetrofit {
     @POST("assignments/bulk/statechanges")
     Call<SearchResults<DeviceStateChangeWithAsset>> bulkListStateChangesForDeviceAssignments(
 	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
+    
+    // ------------------------------------------------------------------------
+    // Authorities
+    // ------------------------------------------------------------------------
+    
+    @GET("authorities")
+    Call<SearchResults<GrantedAuthority>> listAuthorities(@HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Batch Operations  
