@@ -785,6 +785,19 @@ public class SiteWhereClient implements ISiteWhereClient {
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#scheduleCommandInvocation()
+     */
+    @Override
+    public ScheduledJob scheduleCommandInvocation(ITenantAuthentication tenant, String token, String scheduleToken,
+	    DeviceCommandInvocationCreateRequest request) throws SiteWhereException {
+	Call<ScheduledJob> call = getRestRetrofit().scheduleCommandInvocation(token, scheduleToken, request,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
     
     // ------------------------------------------------------------------------
     // Batch Operations

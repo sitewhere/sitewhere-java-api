@@ -22,6 +22,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
+import com.sitewhere.rest.model.scheduling.ScheduledJob;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
@@ -194,5 +195,25 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 		.createCommandInvocationForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
 	
 	assertNotNull(commandInvocation);
+    }
+    
+    @Test
+    public void testScheduleCommandInvocation() throws SiteWhereException {
+	String commandToken = "ping";
+	String target = "Assignment";
+	String initiatorId = "REST";
+	String scheduleToken = "de305d54-75b4-431b-adb2-eb6b9e546014";
+
+	DeviceCommandInvocationCreateRequest.Builder builder = 
+		new DeviceCommandInvocationCreateRequest.Builder(commandToken, target);
+	DeviceCommandInvocationCreateRequest request = builder.build();
+	
+	request.setInitiatorId(initiatorId);
+	request.setInitiator(CommandInitiator.REST);
+	
+	ScheduledJob scheduleJob = getClient()
+		.scheduleCommandInvocation(getTenatAuthentication(), knownEntityToken(), scheduleToken, request);
+	
+	assertNotNull(scheduleJob);
     }
 }

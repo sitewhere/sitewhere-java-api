@@ -341,6 +341,13 @@ public interface SiteWhereRestRetrofit {
 	    @Body DeviceCommandInvocationCreateRequest request, 
 	    @HeaderMap Map<String, String> headers);
     
+    @POST("assignments/{token}/invocations/schedules/{scheduleToken}")
+    Call<ScheduledJob> scheduleCommandInvocation(
+	    @Path("token") String token,
+	    @Path("scheduleToken") String scheduleToken,
+	    @Body DeviceCommandInvocationCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------

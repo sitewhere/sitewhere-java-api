@@ -617,7 +617,20 @@ public interface ISiteWhereClient {
      */
     public DeviceCommandInvocation createCommandInvocationForDeviceAssignment(ITenantAuthentication tenant,
 	    String token, DeviceCommandInvocationCreateRequest request) throws SiteWhereException;
-
+    
+    /**
+     * Schedule command invocation.
+     * 
+     * @param tenant
+     * @param token
+     * @param scheduleToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public ScheduledJob scheduleCommandInvocation(ITenantAuthentication tenant, String token, String scheduleToken,
+	    DeviceCommandInvocationCreateRequest request) throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------
