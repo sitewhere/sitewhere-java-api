@@ -31,5 +31,5 @@ public interface IChartSeries<T> extends Serializable {
      * 
      * @return
      */
-    public List<IChartEntry<T>> getEntries();
+    public List<? extends IChartEntry<T>> getEntries();
 }

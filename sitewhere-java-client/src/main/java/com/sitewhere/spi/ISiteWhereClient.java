@@ -36,6 +36,7 @@ import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
+import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
@@ -678,6 +679,18 @@ public interface ISiteWhereClient {
      */
     public DeviceMeasurementWithAsset createMeasurementForDeviceAssignment(ITenantAuthentication tenant, String token,
 	    DeviceMeasurementCreateRequest request) throws SiteWhereException;
+
+    /**
+     * List assignment measurements as chart series.
+     * 
+     * @param tenant
+     * @param token
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public List<ChartSeries<Double>> listMeasurementsForDeviceAssignmentAsChartSeries(ITenantAuthentication tenant,
+	    String token, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Batch Operations

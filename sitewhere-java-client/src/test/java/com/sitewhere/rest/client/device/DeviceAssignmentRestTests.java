@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -19,6 +20,7 @@ import com.sitewhere.rest.client.AbstractWithLabelCRUDRestTest;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
+import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
@@ -277,4 +279,23 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 
 	assertNotNull(measurement);
     }
+    
+    @Test
+    public void testListMeasurementsSeries() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	
+	List<ChartSeries<Double>> series = getClient()
+		.listMeasurementsForDeviceAssignmentAsChartSeries(getTenatAuthentication(), knownEntityToken(), searchCriteria);
+
+	assertNotNull(series);
+    }
+    
 }

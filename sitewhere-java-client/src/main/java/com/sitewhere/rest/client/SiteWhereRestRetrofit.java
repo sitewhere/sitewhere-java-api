@@ -34,6 +34,7 @@ import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
+import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
@@ -378,6 +379,15 @@ public interface SiteWhereRestRetrofit {
     Call<DeviceMeasurementWithAsset> createMeasurementForDeviceAssignment(
 	    @Path("token") String token,
 	    @Body DeviceMeasurementCreateRequest request, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("assignments/{token}/measurements/series")
+    Call<List<ChartSeries<Double>>> listMeasurementsForDeviceAssignmentAsChartSeries(
+	    @Path("token") String token,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
 	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------

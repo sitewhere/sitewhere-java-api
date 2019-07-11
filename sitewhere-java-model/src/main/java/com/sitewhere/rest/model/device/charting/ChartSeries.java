@@ -10,7 +10,6 @@ package com.sitewhere.rest.model.device.charting;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sitewhere.spi.device.charting.IChartEntry;
 import com.sitewhere.spi.device.charting.IChartSeries;
 
 /**
@@ -27,7 +26,7 @@ public class ChartSeries<T> implements IChartSeries<T> {
     private String measurementId;
 
     /** Entries for the chart series */
-    private List<IChartEntry<T>> entries = new ArrayList<IChartEntry<T>>();
+    private List<ChartEntry<T>> entries = new ArrayList<ChartEntry<T>>();
 
     /*
      * (non-Javadoc)
@@ -49,11 +48,11 @@ public class ChartSeries<T> implements IChartSeries<T> {
      * @see com.sitewhere.spi.device.charting.IChartSeries#getEntries()
      */
     @Override
-    public List<IChartEntry<T>> getEntries() {
+    public List<ChartEntry<T>> getEntries() {
 	return entries;
     }
 
-    public void setEntries(List<IChartEntry<T>> entries) {
+    public void setEntries(List<ChartEntry<T>> entries) {
 	this.entries = entries;
     }
 }

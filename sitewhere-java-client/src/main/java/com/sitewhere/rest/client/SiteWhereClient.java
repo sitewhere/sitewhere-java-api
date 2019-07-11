@@ -41,6 +41,7 @@ import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
+import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
@@ -854,6 +855,21 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    DeviceMeasurementCreateRequest request) throws SiteWhereException {
 	Call<DeviceMeasurementWithAsset> call = getRestRetrofit().createMeasurementForDeviceAssignment(token, request,
 		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#
+     * listMeasurementsForDeviceAssignmentAsChartSeries()
+     */
+    @Override
+    public List<ChartSeries<Double>> listMeasurementsForDeviceAssignmentAsChartSeries(ITenantAuthentication tenant,
+	    String token, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<List<ChartSeries<Double>>> call = getRestRetrofit().listMeasurementsForDeviceAssignmentAsChartSeries(token,
+		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
     
