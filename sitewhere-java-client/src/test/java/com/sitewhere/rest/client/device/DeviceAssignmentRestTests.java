@@ -395,4 +395,28 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 		getClient().bulkListCommandInvocationsForDeviceAssignments(getTenatAuthentication(), request);
 	assertNotNull(bulk);	
     }
+
+    @Test
+    public void testBulkListLocationsForDeviceAssignments() throws SiteWhereException {
+	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
+	
+	request.setDeviceAssignmentTokens(new ArrayList<String>());
+	request.getDeviceAssignmentTokens().add(knownEntityToken());
+	
+	SearchResults<DeviceLocationWithAsset> bulk = 
+		getClient().bulkListLocationsForDeviceAssignments(getTenatAuthentication(), request);
+	assertNotNull(bulk);	
+    }
+
+    @Test
+    public void testBulkListMeasurementsForDeviceAssignments() throws SiteWhereException {
+	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
+	
+	request.setDeviceAssignmentTokens(new ArrayList<String>());
+	request.getDeviceAssignmentTokens().add(knownEntityToken());
+	
+	SearchResults<DeviceMeasurementWithAsset> bulk = 
+		getClient().bulkListMeasurementsForDeviceAssignments(getTenatAuthentication(), request);
+	assertNotNull(bulk);	
+    }
 }

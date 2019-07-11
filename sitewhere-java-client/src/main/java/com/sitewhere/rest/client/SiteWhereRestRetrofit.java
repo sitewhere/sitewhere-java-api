@@ -419,6 +419,14 @@ public interface SiteWhereRestRetrofit {
     Call<SearchResults<DeviceCommandInvocation>> bulkListCommandInvocationsForDeviceAssignments(
 	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
     
+    @POST("assignments/bulk/locations")
+    Call<SearchResults<DeviceLocationWithAsset>> bulkListLocationsForDeviceAssignments(
+	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
+    
+    @POST("assignments/bulk/measurements")
+    Call<SearchResults<DeviceMeasurementWithAsset>> bulkListMeasurementsForDeviceAssignments(
+	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------

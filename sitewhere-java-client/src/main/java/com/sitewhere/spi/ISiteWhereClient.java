@@ -783,6 +783,28 @@ public interface ISiteWhereClient {
     public SearchResults<DeviceCommandInvocation> bulkListCommandInvocationsForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException;
 
+    /**
+     * List location events for device assignment.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceLocationWithAsset> bulkListLocationsForDeviceAssignments(
+	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException;
+
+    /**
+     * List measurement events for multiple assignments.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceMeasurementWithAsset> bulkListMeasurementsForDeviceAssignments(
+	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------
