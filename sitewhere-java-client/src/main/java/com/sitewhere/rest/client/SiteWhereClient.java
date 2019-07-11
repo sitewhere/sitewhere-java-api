@@ -59,6 +59,7 @@ import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
+import com.sitewhere.rest.model.device.request.DeviceAssignmentBulkRequest;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
@@ -948,6 +949,30 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
     
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#bulkListAlertsForDeviceAssignments()
+     */
+    public SearchResults<DeviceAlertWithAsset> bulkListAlertsForDeviceAssignments(ITenantAuthentication tenant,
+	    DeviceAssignmentBulkRequest request) throws SiteWhereException {
+	Call<SearchResults<DeviceAlertWithAsset>> call = getRestRetrofit().bulkListAlertsForDeviceAssignments(request,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#
+     * bulkListCommandInvocationsForDeviceAssignments()
+     */
+    public SearchResults<DeviceCommandInvocation> bulkListCommandInvocationsForDeviceAssignments(
+	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
+	Call<SearchResults<DeviceCommandInvocation>> call = getRestRetrofit()
+		.bulkListCommandInvocationsForDeviceAssignments(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
 
     // ------------------------------------------------------------------------
     // Batch Operations

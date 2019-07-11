@@ -10,6 +10,7 @@ package com.sitewhere.rest.client.device;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +33,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceStateChangeCreateRequest;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
+import com.sitewhere.rest.model.device.request.DeviceAssignmentBulkRequest;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
@@ -368,5 +370,29 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 		.createStateChangeForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
 
 	assertNotNull(stateChange);
+    }
+    
+    @Test
+    public void testBulkListAlertsForDeviceAssignments() throws SiteWhereException {
+	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
+	
+	request.setDeviceAssignmentTokens(new ArrayList<String>());
+	request.getDeviceAssignmentTokens().add(knownEntityToken());
+	
+	SearchResults<DeviceAlertWithAsset> bulk = 
+		getClient().bulkListAlertsForDeviceAssignments(getTenatAuthentication(), request);
+	assertNotNull(bulk);	
+    }
+    
+    @Test
+    public void testBulkListCommandInvocationsForDeviceAssignments() throws SiteWhereException {
+	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
+	
+	request.setDeviceAssignmentTokens(new ArrayList<String>());
+	request.getDeviceAssignmentTokens().add(knownEntityToken());
+	
+	SearchResults<DeviceCommandInvocation> bulk = 
+		getClient().bulkListCommandInvocationsForDeviceAssignments(getTenatAuthentication(), request);
+	assertNotNull(bulk);	
     }
 }

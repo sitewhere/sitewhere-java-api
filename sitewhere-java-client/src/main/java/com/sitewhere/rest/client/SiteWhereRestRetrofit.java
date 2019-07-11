@@ -47,6 +47,7 @@ import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
+import com.sitewhere.rest.model.device.request.DeviceAssignmentBulkRequest;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
@@ -409,6 +410,14 @@ public interface SiteWhereRestRetrofit {
     @POST("assignments/{token}/statechanges")
     Call<DeviceStateChangeWithAsset> createStateChangeForDeviceAssignment(@Path("token") String token,
 	    @Body DeviceStateChangeCreateRequest request, @HeaderMap Map<String, String> headers);
+    
+    @POST("assignments/bulk/alerts")
+    Call<SearchResults<DeviceAlertWithAsset>> bulkListAlertsForDeviceAssignments(
+	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
+    
+    @POST("assignments/bulk/invocations")
+    Call<SearchResults<DeviceCommandInvocation>> bulkListCommandInvocationsForDeviceAssignments(
+	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Batch Operations  
