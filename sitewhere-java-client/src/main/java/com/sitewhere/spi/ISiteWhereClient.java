@@ -703,6 +703,18 @@ public interface ISiteWhereClient {
     public MarshaledDeviceAssignment markMissingDeviceAssignment(ITenantAuthentication tenant, String token)
 	    throws SiteWhereException;
     
+    /**
+     * List command response events for assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    SearchResults<DeviceCommandResponseWithAsset> listCommandResponsesForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import com.sitewhere.rest.client.AbstractWithLabelCRUDRestTest;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.charting.ChartSeries;
@@ -303,6 +304,23 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 	MarshaledDeviceAssignment assignment = getClient().markMissingDeviceAssignment(getTenatAuthentication(), knownEntityToken());
 	assertNotNull(assignment);
 	assertEquals(DeviceAssignmentStatus.Missing, assignment.getStatus());
+    }
+
+    @Test
+    public void testListCommandResponses() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	SearchResults<DeviceCommandResponseWithAsset> commandResponses = getClient()
+		.listCommandResponsesForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), searchCriteria);
+
+	assertNotNull(commandResponses);
     }
 
 }

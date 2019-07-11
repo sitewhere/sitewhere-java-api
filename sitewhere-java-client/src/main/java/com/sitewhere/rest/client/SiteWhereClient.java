@@ -886,6 +886,23 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#listCommandResponsesForDeviceAssignment()
+     */
+    @Override
+    public SearchResults<DeviceCommandResponseWithAsset> listCommandResponsesForDeviceAssignment(
+	    ITenantAuthentication tenant, String token, DateRangeSearchCriteria searchCriteria)
+	    throws SiteWhereException {
+	Call<SearchResults<DeviceCommandResponseWithAsset>> call = getRestRetrofit()
+		.listCommandResponsesForDeviceAssignment(token, toISO8601(searchCriteria.getStartDate()),
+			toISO8601(searchCriteria.getEndDate()), searchCriteria.getPageNumber(),
+			searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

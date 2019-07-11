@@ -390,6 +390,11 @@ public interface SiteWhereRestRetrofit {
     Call<MarshaledDeviceAssignment> markMissingDeviceAssignment(@Path("token") String token,
 	    @HeaderMap Map<String, String> headers);
 
+    @GET("assignments/{token}/responses")
+    Call<SearchResults<DeviceCommandResponseWithAsset>> listCommandResponsesForDeviceAssignment(
+	    @Path("token") String token, @Query("startDate") String startDate, @Query("endDate") String endDate,
+	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------
