@@ -427,6 +427,10 @@ public interface SiteWhereRestRetrofit {
     Call<SearchResults<DeviceMeasurementWithAsset>> bulkListMeasurementsForDeviceAssignments(
 	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
     
+    @POST("assignments/bulk/measurements/series")
+    Call<Map<String, List<ChartSeries<Double>>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(
+	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------

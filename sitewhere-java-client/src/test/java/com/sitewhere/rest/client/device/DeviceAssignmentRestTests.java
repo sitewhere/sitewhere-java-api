@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.junit.Test;
@@ -419,4 +420,18 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 		getClient().bulkListMeasurementsForDeviceAssignments(getTenatAuthentication(), request);
 	assertNotNull(bulk);	
     }
+    
+    @Test
+    public void testBulkListMeasurementsForDeviceAssignmentsAsChartSeries() throws SiteWhereException {
+	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
+	
+	request.setDeviceAssignmentTokens(new ArrayList<String>());
+	request.getDeviceAssignmentTokens().add(knownEntityToken());
+	
+	Map<String, List<ChartSeries<Double>>> series = getClient()
+		.bulkListMeasurementsForDeviceAssignmentsAsChartSeries(getTenatAuthentication(), request);
+
+	assertNotNull(series);
+    }
+    
 }

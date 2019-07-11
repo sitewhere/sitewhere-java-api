@@ -805,6 +805,17 @@ public interface ISiteWhereClient {
     public SearchResults<DeviceMeasurementWithAsset> bulkListMeasurementsForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException;
 
+    /**
+     * List measurements for multiple assignments as chart series.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Map<String, List<ChartSeries<Double>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(ITenantAuthentication tenant,
+	    DeviceAssignmentBulkRequest request) throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

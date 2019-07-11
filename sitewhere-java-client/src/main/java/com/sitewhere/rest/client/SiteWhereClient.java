@@ -999,6 +999,19 @@ public class SiteWhereClient implements ISiteWhereClient {
 		.bulkListMeasurementsForDeviceAssignments(request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#
+     * bulkListMeasurementsForDeviceAssignmentsAsChartSeries()
+     */
+    public Map<String, List<ChartSeries<Double>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(ITenantAuthentication tenant,
+	    DeviceAssignmentBulkRequest request) throws SiteWhereException {	
+	Call<Map<String, List<ChartSeries<Double>>>> call = getRestRetrofit()
+		.bulkListMeasurementsForDeviceAssignmentsAsChartSeries(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
 
     // ------------------------------------------------------------------------
     // Batch Operations
