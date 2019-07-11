@@ -830,6 +830,33 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listMeasurementsForDeviceAssignment()
+     */
+    @Override
+    public SearchResults<DeviceMeasurementWithAsset> listMeasurementsForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceMeasurementWithAsset>> call = getRestRetrofit().listMeasurementsForDeviceAssignment(
+		token, toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createLocationForDeviceAssignment()
+     */
+    @Override
+    public DeviceMeasurementWithAsset createMeasurementForDeviceAssignment(ITenantAuthentication tenant, String token,
+	    DeviceMeasurementCreateRequest request) throws SiteWhereException {
+	Call<DeviceMeasurementWithAsset> call = getRestRetrofit().createMeasurementForDeviceAssignment(token, request,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

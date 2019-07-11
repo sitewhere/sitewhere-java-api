@@ -18,10 +18,12 @@ import org.junit.Test;
 import com.sitewhere.rest.client.AbstractWithLabelCRUDRestTest;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
@@ -237,7 +239,7 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
     }
     
     @Test
-    public void testCreateLocations() throws SiteWhereException {
+    public void testCreateLocation() throws SiteWhereException {
 	DeviceLocationCreateRequest.Builder builder = new DeviceLocationCreateRequest.Builder(-27.3313291,-58.961281);
 	DeviceLocationCreateRequest request = builder.build();
 	
@@ -245,5 +247,34 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 		.createLocationForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
 
 	assertNotNull(location);
+    }
+
+    @Test
+    public void testListMeasurements() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	SearchResults<DeviceMeasurementWithAsset> measurements = getClient()
+		.listMeasurementsForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), searchCriteria);
+
+	assertNotNull(measurements);
+    }
+    
+    @Test
+    public void testCreateMeasurement() throws SiteWhereException {
+	DeviceMeasurementCreateRequest.Builder builder = new DeviceMeasurementCreateRequest.Builder();
+	builder.measurement("engine.temp", 50.0);
+	DeviceMeasurementCreateRequest request = builder.build();
+	
+	DeviceMeasurementWithAsset measurement = getClient()
+		.createMeasurementForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
+
+	assertNotNull(measurement);
     }
 }

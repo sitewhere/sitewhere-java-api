@@ -655,6 +655,30 @@ public interface ISiteWhereClient {
     public DeviceLocationWithAsset createLocationForDeviceAssignment(ITenantAuthentication tenant, String token,
 	    DeviceLocationCreateRequest request) throws SiteWhereException;
 
+    /**
+     * List measurement events for device assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceMeasurementWithAsset> listMeasurementsForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
+     * Create location event for assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceMeasurementWithAsset createMeasurementForDeviceAssignment(ITenantAuthentication tenant, String token,
+	    DeviceMeasurementCreateRequest request) throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

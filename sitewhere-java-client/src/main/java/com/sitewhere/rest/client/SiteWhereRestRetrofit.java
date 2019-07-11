@@ -39,6 +39,7 @@ import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
@@ -362,6 +363,21 @@ public interface SiteWhereRestRetrofit {
     Call<DeviceLocationWithAsset> createLocationForDeviceAssignment(
 	    @Path("token") String token,
 	    @Body DeviceLocationCreateRequest request, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("assignments/{token}/measurements")
+    Call<SearchResults<DeviceMeasurementWithAsset>> listMeasurementsForDeviceAssignment(
+	    @Path("token") String token,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+
+    @POST("assignments/{token}/measurements")
+    Call<DeviceMeasurementWithAsset> createMeasurementForDeviceAssignment(
+	    @Path("token") String token,
+	    @Body DeviceMeasurementCreateRequest request, 
 	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
