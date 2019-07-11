@@ -100,7 +100,9 @@ import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
 import com.sitewhere.rest.model.user.GrantedAuthority;
+import com.sitewhere.rest.model.user.GrantedAuthorityHierarchyNode;
 import com.sitewhere.rest.model.user.User;
+import com.sitewhere.rest.model.user.request.GrantedAuthorityCreateRequest;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.ISiteWhereClient;
 import com.sitewhere.spi.ITenantAuthentication;
@@ -1054,6 +1056,38 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getAuthorityByName()
+     */
+    public GrantedAuthority getAuthorityByName(ITenantAuthentication tenant, String name) throws SiteWhereException {
+	Call<GrantedAuthority> call = getRestRetrofit().getAuthorityByName(name, createHeadersFor(tenant));
+	return processRestCall(call);	
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createAuthority()
+     */
+    public GrantedAuthority createAuthority(ITenantAuthentication tenant, GrantedAuthorityCreateRequest request)
+	    throws SiteWhereException {
+	Call<GrantedAuthority> call = getRestRetrofit().createAuthority(request, createHeadersFor(tenant));
+	return processRestCall(call);		
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getAuthoritiesHierarchy()
+     */
+    public List<GrantedAuthorityHierarchyNode> getAuthoritiesHierarchy(ITenantAuthentication tenant)
+	    throws SiteWhereException {
+	Call<List<GrantedAuthorityHierarchyNode>> call = getRestRetrofit().getAuthoritiesHierarchy(createHeadersFor(tenant));
+	return processRestCall(call);			
+    }
+    
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

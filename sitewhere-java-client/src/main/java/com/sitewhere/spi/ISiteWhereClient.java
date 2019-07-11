@@ -95,7 +95,9 @@ import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
 import com.sitewhere.rest.model.user.GrantedAuthority;
+import com.sitewhere.rest.model.user.GrantedAuthorityHierarchyNode;
 import com.sitewhere.rest.model.user.User;
+import com.sitewhere.rest.model.user.request.GrantedAuthorityCreateRequest;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.device.DeviceAssignmentStatus;
 import com.sitewhere.spi.device.event.IDeviceMeasurement;
@@ -850,7 +852,38 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public SearchResults<GrantedAuthority> listAuthorities(ITenantAuthentication tenant) throws SiteWhereException;
+
+    /**
+     * Get authority by name.
+     * 
+     * @param tenant
+     * @param name
+     * @return
+     * @throws SiteWhereException
+     */
+    public GrantedAuthority getAuthorityByName(ITenantAuthentication tenant, String name) throws SiteWhereException;
     
+    /**
+     * Create a new authority.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public GrantedAuthority createAuthority(ITenantAuthentication tenant, GrantedAuthorityCreateRequest request)
+	    throws SiteWhereException;
+
+    /**
+     * Get authorities hierarchy.
+     * 
+     * @param tenant
+     * @return
+     * @throws SiteWhereException
+     */
+    public List<GrantedAuthorityHierarchyNode> getAuthoritiesHierarchy(ITenantAuthentication tenant)
+	    throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

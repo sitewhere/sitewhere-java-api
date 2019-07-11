@@ -9,11 +9,16 @@ package com.sitewhere.rest.client.user;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.junit.Test;
 
 import com.sitewhere.rest.client.AbstractRestClient;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.user.GrantedAuthority;
+import com.sitewhere.rest.model.user.GrantedAuthorityHierarchyNode;
+import com.sitewhere.rest.model.user.request.GrantedAuthorityCreateRequest;
 import com.sitewhere.spi.SiteWhereException;
 
 /**
@@ -28,4 +33,27 @@ public class AuthoritiesRestTest extends AbstractRestClient {
 	assertNotNull(auths);
     }
     
+    @Test
+    public void testGetAutorityByName() throws SiteWhereException {
+	GrantedAuthority auth = getClient().getAuthorityByName(getTenatAuthentication(), "GRP_SERVER");
+	assertNotNull(auth);
+    }
+
+    @Test
+    public void testCreateAutority() throws SiteWhereException {
+	GrantedAuthorityCreateRequest request = new GrantedAuthorityCreateRequest();
+	
+	request.setAuthority(UUID.randomUUID().toString());
+	request.setDescription("Some description");
+	request.setGroup(false);
+	
+	GrantedAuthority auth = getClient().createAuthority(getTenatAuthentication(), request);
+	assertNotNull(auth);
+    }
+
+    @Test
+    public void testAutorityHierarchy() throws SiteWhereException {
+	List<GrantedAuthorityHierarchyNode> hierarchy = getClient().getAuthoritiesHierarchy(getTenatAuthentication());
+	assertNotNull(hierarchy);
+    }
 }

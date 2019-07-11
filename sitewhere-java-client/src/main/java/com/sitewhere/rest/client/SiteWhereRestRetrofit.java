@@ -64,7 +64,9 @@ import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
 import com.sitewhere.rest.model.user.GrantedAuthority;
+import com.sitewhere.rest.model.user.GrantedAuthorityHierarchyNode;
 import com.sitewhere.rest.model.user.User;
+import com.sitewhere.rest.model.user.request.GrantedAuthorityCreateRequest;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
 
 import okhttp3.ResponseBody;
@@ -446,6 +448,17 @@ public interface SiteWhereRestRetrofit {
     
     @GET("authorities")
     Call<SearchResults<GrantedAuthority>> listAuthorities(@HeaderMap Map<String, String> headers);
+
+    @POST("authorities")
+    Call<GrantedAuthority> createAuthority(
+	    @Body GrantedAuthorityCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("authorities/{name}")
+    Call<GrantedAuthority> getAuthorityByName(@Path("name") String name, @HeaderMap Map<String, String> headers);
+    
+    @GET("authorities/hierarchy")
+    Call<List<GrantedAuthorityHierarchyNode>> getAuthoritiesHierarchy(@HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Batch Operations  
