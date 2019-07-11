@@ -38,6 +38,7 @@ import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
@@ -300,11 +301,6 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("assignments/{token}")
     Call<MarshaledDeviceAssignment> deleteDeviceAssignment(@Path("token") String token, @HeaderMap Map<String, String> headers);
-
-    @GET("assignments/{token}/label/{generatorId}")
-    Call<ResponseBody> getLabelForDeviceAssignment(@Path("token") String token,
-	    @Path("generatorId") String generatorId,
-	    @HeaderMap Map<String, String> headers);
     
     @GET("assignments/{token}/alerts")
     Call<SearchResults<DeviceAlertWithAsset>> listAlertsForDeviceAssignment(
@@ -346,6 +342,26 @@ public interface SiteWhereRestRetrofit {
 	    @Path("token") String token,
 	    @Path("scheduleToken") String scheduleToken,
 	    @Body DeviceCommandInvocationCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("assignments/{token}/label/{generatorId}")
+    Call<ResponseBody> getLabelForDeviceAssignment(@Path("token") String token,
+	    @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);
+
+    @GET("assignments/{token}/locations")
+    Call<SearchResults<DeviceLocationWithAsset>> listLocationsForDeviceAssignment(
+	    @Path("token") String token,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+
+    @POST("assignments/{token}/locations")
+    Call<DeviceLocationWithAsset> createLocationForDeviceAssignment(
+	    @Path("token") String token,
+	    @Body DeviceLocationCreateRequest request, 
 	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------

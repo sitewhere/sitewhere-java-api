@@ -546,18 +546,6 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
 
     /**
-     * Get label for device assignment.
-     * 
-     * @param tenant
-     * @param token
-     * @param generatorId
-     * @return
-     * @throws SiteWhereException
-     */
-    public byte[] getLabelForDeviceAssignment(ITenantAuthentication tenant, String token, String generatorId)
-	    throws SiteWhereException;
-
-    /**
      * List alerts for a device assignment.
      * 
      * @param tenant
@@ -630,7 +618,43 @@ public interface ISiteWhereClient {
      */
     public ScheduledJob scheduleCommandInvocation(ITenantAuthentication tenant, String token, String scheduleToken,
 	    DeviceCommandInvocationCreateRequest request) throws SiteWhereException;
-    
+
+    /**
+     * Get label for device assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForDeviceAssignment(ITenantAuthentication tenant, String token, String generatorId)
+	    throws SiteWhereException;
+
+    /**
+     * List location events for device assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceLocationWithAsset> listLocationsForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
+     * Create location event for assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceLocationWithAsset createLocationForDeviceAssignment(ITenantAuthentication tenant, String token,
+	    DeviceLocationCreateRequest request) throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

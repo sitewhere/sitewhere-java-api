@@ -695,23 +695,6 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForDeviceAssignment()
-     */
-    @Override
-    public byte[] getLabelForDeviceAssignment(ITenantAuthentication tenant, String token, String generatorId)
-	    throws SiteWhereException {
-	Call<ResponseBody> call = getRestRetrofit().getLabelForDeviceAssignment(token, generatorId,
-		createHeadersFor(tenant));
-	try {
-	    return processRestCall(call).bytes();
-	} catch (IOException e) {
-	    throw new SiteWhereException(e);
-	}
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
      * @see com.sitewhere.spi.ISiteWhereClient#listAlertsForDeviceAssignment()
      */
     @Override
@@ -798,7 +781,55 @@ public class SiteWhereClient implements ISiteWhereClient {
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForDeviceAssignment()
+     */
+    @Override
+    public byte[] getLabelForDeviceAssignment(ITenantAuthentication tenant, String token, String generatorId)
+	    throws SiteWhereException {
+	Call<ResponseBody> call = getRestRetrofit().getLabelForDeviceAssignment(token, generatorId,
+		createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listLocationsForDeviceAssignment()
+     */
+    @Override
+    public SearchResults<DeviceLocationWithAsset> listLocationsForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceLocationWithAsset>> call = getRestRetrofit().listLocationsForDeviceAssignment(token,
+		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createLocationForDeviceAssignment()
+     */
+    @Override
+    public DeviceLocationWithAsset createLocationForDeviceAssignment(
+	    ITenantAuthentication tenant, String token, 
+	    DeviceLocationCreateRequest request) 
+		    throws SiteWhereException {
+	Call<DeviceLocationWithAsset> call = getRestRetrofit().createLocationForDeviceAssignment(
+		token, 
+		request,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

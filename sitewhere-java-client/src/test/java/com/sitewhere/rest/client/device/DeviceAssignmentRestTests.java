@@ -17,9 +17,11 @@ import org.junit.Test;
 
 import com.sitewhere.rest.client.AbstractWithLabelCRUDRestTest;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
@@ -215,5 +217,33 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 		.scheduleCommandInvocation(getTenatAuthentication(), knownEntityToken(), scheduleToken, request);
 	
 	assertNotNull(scheduleJob);
+    }
+    
+    @Test
+    public void testListLocations() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	SearchResults<DeviceLocationWithAsset> locations = getClient()
+		.listLocationsForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), searchCriteria);
+
+	assertNotNull(locations);
+    }
+    
+    @Test
+    public void testCreateLocations() throws SiteWhereException {
+	DeviceLocationCreateRequest.Builder builder = new DeviceLocationCreateRequest.Builder(-27.3313291,-58.961281);
+	DeviceLocationCreateRequest request = builder.build();
+	
+	DeviceLocationWithAsset location = getClient()
+		.createLocationForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
+
+	assertNotNull(location);
     }
 }
