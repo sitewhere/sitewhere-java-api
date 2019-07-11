@@ -1013,6 +1013,32 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#
+     * bulkListCommandResponsesForDeviceAssignments()
+     */
+    public SearchResults<DeviceCommandResponseWithAsset> bulkListCommandResponsesForDeviceAssignments(
+	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
+	Call<SearchResults<DeviceCommandResponseWithAsset>> call = getRestRetrofit()
+		.bulkListCommandResponsesForDeviceAssignments(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#
+     * bulkListStateChangesForDeviceAssignments()
+     */
+    public SearchResults<DeviceStateChangeWithAsset> bulkListStateChangesForDeviceAssignments(
+	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
+	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit()
+		.bulkListStateChangesForDeviceAssignments(request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

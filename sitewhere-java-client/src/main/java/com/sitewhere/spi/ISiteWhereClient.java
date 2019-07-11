@@ -815,6 +815,28 @@ public interface ISiteWhereClient {
      */
     public Map<String, List<ChartSeries<Double>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(ITenantAuthentication tenant,
 	    DeviceAssignmentBulkRequest request) throws SiteWhereException;
+
+    /**
+     * List command response events for assignment.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceCommandResponseWithAsset> bulkListCommandResponsesForDeviceAssignments(
+	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException;
+
+    /**
+     * List state change events for a device assignment.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceStateChangeWithAsset> bulkListStateChangesForDeviceAssignments(
+	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Batch Operations
