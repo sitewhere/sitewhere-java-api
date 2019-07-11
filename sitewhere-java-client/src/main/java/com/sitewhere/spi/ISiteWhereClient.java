@@ -49,6 +49,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCrea
 import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceStateChangeCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
@@ -733,6 +734,31 @@ public interface ISiteWhereClient {
      */
     public DeviceCommandResponseWithAsset createCommandResponseForDeviceAssignment(ITenantAuthentication tenant,
 	    String token, DeviceCommandResponseCreateRequest request) throws SiteWhereException;
+    
+    /**
+     * List state change events for assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceStateChangeWithAsset> listStateChangesForDeviceAssignment(
+	    ITenantAuthentication tenant, String token, DateRangeSearchCriteria searchCriteria)
+	    throws SiteWhereException;
+
+    /**
+     * Create state chage event for assignment.
+     * 
+     * @param tenant
+     * @param token
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceStateChangeWithAsset createStateChangeForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DeviceStateChangeCreateRequest request) throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Batch Operations

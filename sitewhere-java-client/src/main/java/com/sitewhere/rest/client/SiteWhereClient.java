@@ -54,6 +54,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCrea
 import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceStateChangeCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
@@ -916,7 +917,38 @@ public class SiteWhereClient implements ISiteWhereClient {
 		request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#listStateChangesForDeviceAssignment()
+     */
+    @Override
+    public SearchResults<DeviceStateChangeWithAsset> listStateChangesForDeviceAssignment(
+	    ITenantAuthentication tenant, String token, DateRangeSearchCriteria searchCriteria)
+	    throws SiteWhereException {
+	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit()
+		.listStateChangesForDeviceAssignment(token, toISO8601(searchCriteria.getStartDate()),
+			toISO8601(searchCriteria.getEndDate()), searchCriteria.getPageNumber(),
+			searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
     
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#createStateChangeForDeviceAssignment()
+     */
+    public DeviceStateChangeWithAsset createStateChangeForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DeviceStateChangeCreateRequest request) throws SiteWhereException {
+	Call<DeviceStateChangeWithAsset> call = getRestRetrofit().createStateChangeForDeviceAssignment(token,
+		request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

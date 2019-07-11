@@ -22,6 +22,7 @@ import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
@@ -29,6 +30,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCrea
 import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceStateChangeCreateRequest;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
@@ -337,4 +339,34 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 	assertNotNull(commandResponse);
     }
 
+    @Test
+    public void testListStateChanges() throws SiteWhereException {
+	Calendar cal = Calendar.getInstance();
+
+	cal.setTime(new Date());
+	cal.add(Calendar.YEAR, -1);
+
+	Date startDate = cal.getTime();
+	Date endDate = new Date();
+
+	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
+	SearchResults<DeviceStateChangeWithAsset> stateChanges = getClient()
+		.listStateChangesForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), searchCriteria);
+
+	assertNotNull(stateChanges);
+    }
+
+    @Test
+    public void testCreateStateChange() throws SiteWhereException {
+	DeviceStateChangeCreateRequest request = new DeviceStateChangeCreateRequest();
+	request.setNewState("PRESENT");
+	request.setAttribute("Attr");
+	request.setType("t1");
+	request.setUpdateState(true);
+	
+	DeviceStateChangeWithAsset stateChange = getClient()
+		.createStateChangeForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
+
+	assertNotNull(stateChange);
+    }
 }
