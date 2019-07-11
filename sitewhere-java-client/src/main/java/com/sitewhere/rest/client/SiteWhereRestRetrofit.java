@@ -382,14 +382,14 @@ public interface SiteWhereRestRetrofit {
 	    @HeaderMap Map<String, String> headers);
     
     @GET("assignments/{token}/measurements/series")
-    Call<List<ChartSeries<Double>>> listMeasurementsForDeviceAssignmentAsChartSeries(
-	    @Path("token") String token,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
+    Call<List<ChartSeries<Double>>> listMeasurementsForDeviceAssignmentAsChartSeries(@Path("token") String token,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
+    @POST("assignments/{token}/missing")
+    Call<MarshaledDeviceAssignment> markMissingDeviceAssignment(@Path("token") String token,
 	    @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------

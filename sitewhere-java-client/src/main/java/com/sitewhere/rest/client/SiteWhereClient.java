@@ -872,7 +872,20 @@ public class SiteWhereClient implements ISiteWhereClient {
 		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#markMissingDeviceAssignment()
+     */
+    @Override
+    public MarshaledDeviceAssignment markMissingDeviceAssignment(ITenantAuthentication tenant, String token)
+	    throws SiteWhereException {
+	Call<MarshaledDeviceAssignment> call = getRestRetrofit().markMissingDeviceAssignment(token,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

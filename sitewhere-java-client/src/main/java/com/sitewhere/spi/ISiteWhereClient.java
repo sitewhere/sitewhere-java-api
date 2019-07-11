@@ -691,6 +691,17 @@ public interface ISiteWhereClient {
      */
     public List<ChartSeries<Double>> listMeasurementsForDeviceAssignmentAsChartSeries(ITenantAuthentication tenant,
 	    String token, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
+     * Mark device assignment as missing.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public MarshaledDeviceAssignment markMissingDeviceAssignment(ITenantAuthentication tenant, String token)
+	    throws SiteWhereException;
     
     // ------------------------------------------------------------------------
     // Batch Operations

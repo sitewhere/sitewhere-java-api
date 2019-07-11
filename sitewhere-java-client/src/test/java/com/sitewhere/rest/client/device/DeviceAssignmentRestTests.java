@@ -161,7 +161,7 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
     }
 
     @Test
-    public void testReleaseAssignmebt() throws SiteWhereException {
+    public void testReleaseAssignment() throws SiteWhereException {
 	MarshaledDeviceAssignment assignment = getClient().releaseDeviceAssignment(getTenatAuthentication(), knownEntityToken());
 	assertNotNull(assignment);
 	assertEquals(DeviceAssignmentStatus.Released, assignment.getStatus());
@@ -297,5 +297,12 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 
 	assertNotNull(series);
     }
-    
+
+    @Test
+    public void testMarkMissingAssignment() throws SiteWhereException {
+	MarshaledDeviceAssignment assignment = getClient().markMissingDeviceAssignment(getTenatAuthentication(), knownEntityToken());
+	assertNotNull(assignment);
+	assertEquals(DeviceAssignmentStatus.Missing, assignment.getStatus());
+    }
+
 }
