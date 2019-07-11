@@ -39,6 +39,7 @@ import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
@@ -394,7 +395,13 @@ public interface SiteWhereRestRetrofit {
     Call<SearchResults<DeviceCommandResponseWithAsset>> listCommandResponsesForDeviceAssignment(
 	    @Path("token") String token, @Query("startDate") String startDate, @Query("endDate") String endDate,
 	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
-
+    
+    @POST("assignments/{token}/responses")
+    Call<DeviceCommandResponseWithAsset> createCommandResponseForDeviceAssignment(
+	    @Path("token") String token,
+	    @Body DeviceCommandResponseCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------

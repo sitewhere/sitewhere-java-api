@@ -51,6 +51,7 @@ import com.sitewhere.rest.model.device.event.DeviceLocation;
 import com.sitewhere.rest.model.device.event.DeviceMeasurement;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
@@ -902,7 +903,20 @@ public class SiteWhereClient implements ISiteWhereClient {
 			searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
-
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#createCommandResponseForDeviceAssignment()
+     */
+    public DeviceCommandResponseWithAsset createCommandResponseForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DeviceCommandResponseCreateRequest request) throws SiteWhereException {
+	Call<DeviceCommandResponseWithAsset> call = getRestRetrofit().createCommandResponseForDeviceAssignment(token,
+		request, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------

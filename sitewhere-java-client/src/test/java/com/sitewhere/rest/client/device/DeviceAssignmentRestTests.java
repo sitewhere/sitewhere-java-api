@@ -13,6 +13,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.junit.Test;
 
@@ -25,6 +26,7 @@ import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
+import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
@@ -321,6 +323,18 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 		.listCommandResponsesForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), searchCriteria);
 
 	assertNotNull(commandResponses);
+    }
+
+    @Test
+    public void testCreateCommandResponse() throws SiteWhereException {
+	DeviceCommandResponseCreateRequest request = new DeviceCommandResponseCreateRequest();
+	request.setResponse("ok");
+	request.setOriginatingEventId(UUID.randomUUID());
+	
+	DeviceCommandResponseWithAsset commandResponse = getClient()
+		.createCommandResponseForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
+
+	assertNotNull(commandResponse);
     }
 
 }
