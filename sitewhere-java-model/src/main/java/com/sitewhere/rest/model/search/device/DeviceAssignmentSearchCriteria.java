@@ -38,6 +38,9 @@ public class DeviceAssignmentSearchCriteria extends SearchCriteria implements ID
     /** Filter by device type tokens */
     private List<String> deviceTypeTokens;
 
+    public DeviceAssignmentSearchCriteria() {
+    }
+
     public DeviceAssignmentSearchCriteria(int pageNumber, int pageSize) {
 	super(pageNumber, pageSize);
     }
