@@ -21,7 +21,10 @@ import com.sitewhere.rest.model.asset.AssetType;
 import com.sitewhere.rest.model.asset.marshaling.MarshaledAsset;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
+import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
+import com.sitewhere.rest.model.batch.request.BatchCommandForCriteriaRequest;
+import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
 import com.sitewhere.rest.model.common.MetadataProvider;
 import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
@@ -88,6 +91,7 @@ import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
+import com.sitewhere.rest.model.search.batch.BatchOperationSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
@@ -889,6 +893,17 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
+     * List batch operations.
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<BatchOperation> listBatchOperations(ITenantAuthentication tenant,
+	    BatchOperationSearchCriteria searchCriteria) throws SiteWhereException;
+    
+    /**
      * Get a batch operation by token.
      * 
      * @param tenant
@@ -898,7 +913,39 @@ public interface ISiteWhereClient {
      */
     public BatchOperation getBatchOperationByToken(ITenantAuthentication tenant, String batchToken)
 	    throws SiteWhereException;
+    
+    /**
+     * List batch operation elements.
+     * 
+     * @param tenant
+     * @param operationToken
+     * @return
+     */
+    public SearchResults<BatchElement> listBatchOperationElements(ITenantAuthentication tenant, String operationToken)
+	    throws SiteWhereException;
+    
+    /**
+     * Create new batch command invocation.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public BatchOperation createBatchCommandInvocation(ITenantAuthentication tenant,
+	    BatchCommandInvocationRequest request) throws SiteWhereException;
 
+    /**
+     * Create batch command operation based on criteria.
+     * 
+     * @param tenant
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public Object createBatchCommandOperationForCriteria(ITenantAuthentication tenant,
+	      BatchCommandForCriteriaRequest request) throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Command Invocations
     // ------------------------------------------------------------------------

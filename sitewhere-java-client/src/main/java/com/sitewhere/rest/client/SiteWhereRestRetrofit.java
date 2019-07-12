@@ -21,7 +21,10 @@ import com.sitewhere.rest.model.asset.AssetType;
 import com.sitewhere.rest.model.asset.marshaling.MarshaledAsset;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
+import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
+import com.sitewhere.rest.model.batch.request.BatchCommandForCriteriaRequest;
+import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
 import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
@@ -463,10 +466,28 @@ public interface SiteWhereRestRetrofit {
     // ------------------------------------------------------------------------
     // Batch Operations  
     // ------------------------------------------------------------------------
+    
+    @GET("batch")
+    Call<SearchResults<BatchOperation>> listBatchOperations(@Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
 
     @GET("batch/{batchToken}")
-    Call<BatchOperation> getBatchOperationByToken(@Path("batchToken") String batchToken, @HeaderMap Map<String, String> headers);
+    Call<BatchOperation> getBatchOperationByToken(@Path("batchToken") String batchToken,
+	    @HeaderMap Map<String, String> headers);
 
+    @GET("batch/{operationToken}/elements")
+    Call<SearchResults<BatchElement>> listBatchOperationElements(@Path("operationToken") String operationToken,
+	    @HeaderMap Map<String, String> headers);
+
+    @POST("batch/command")
+    Call<BatchOperation> createBatchCommandInvocation(@Body BatchCommandInvocationRequest request,
+	    @HeaderMap Map<String, String> headers);
+    
+    @POST("batch/command/criteria")
+    Call<Object> createBatchCommandOperationForCriteria(
+	    @Body  BatchCommandForCriteriaRequest request, 
+	    @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Command Invocations
     // ------------------------------------------------------------------------
