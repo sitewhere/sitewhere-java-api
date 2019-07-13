@@ -25,7 +25,10 @@ import com.sitewhere.rest.model.asset.AssetType;
 import com.sitewhere.rest.model.asset.marshaling.MarshaledAsset;
 import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
+import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
+import com.sitewhere.rest.model.batch.request.BatchCommandForCriteriaRequest;
+import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
 import com.sitewhere.rest.model.common.MetadataProvider;
 import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
@@ -93,6 +96,7 @@ import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
+import com.sitewhere.rest.model.search.batch.BatchOperationSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
@@ -1095,6 +1099,19 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listBatchOperations()
+     */
+    @Override
+    public SearchResults<BatchOperation> listBatchOperations(ITenantAuthentication tenant,
+	    BatchOperationSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<BatchOperation>> call = getRestRetrofit().listBatchOperations(searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.sitewhere.spi.ISiteWhereClient#getBatchOperationByToken()
      */
     @Override
@@ -1103,7 +1120,42 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Call<BatchOperation> call = getRestRetrofit().getBatchOperationByToken(batchToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listBatchOperationElements()
+     */
+    @Override
+    public SearchResults<BatchElement> listBatchOperationElements(ITenantAuthentication tenant, String operationToken) throws SiteWhereException {
+	Call<SearchResults<BatchElement>> call = getRestRetrofit().listBatchOperationElements(operationToken, createHeadersFor(tenant));
+	return processRestCall(call);	
+    }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createBatchCommandInvocation()
+     */
+    @Override
+    public BatchOperation createBatchCommandInvocation(ITenantAuthentication tenant,
+	    BatchCommandInvocationRequest request) throws SiteWhereException {
+	Call<BatchOperation> call = getRestRetrofit().createBatchCommandInvocation(request, createHeadersFor(tenant));
+	return processRestCall(call);	
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createBatchCommandOperationForCriteria()
+     */
+    @Override
+    public Object createBatchCommandOperationForCriteria(ITenantAuthentication tenant,
+	      BatchCommandForCriteriaRequest request) throws SiteWhereException {
+	Call<Object> call = getRestRetrofit().createBatchCommandOperationForCriteria(request, createHeadersFor(tenant));
+	return processRestCall(call);	
+    } 
+    
     // ------------------------------------------------------------------------
     // Command Invocations
     // ------------------------------------------------------------------------
