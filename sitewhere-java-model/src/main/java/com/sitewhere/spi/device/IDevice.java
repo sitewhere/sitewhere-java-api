@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.element.IDeviceElementSchema;
 
 /**
  * Interface for a SiteWhere device.
- * 
- * @author Derek
  */
 public interface IDevice extends IPersistentEntity {
 
@@ -32,7 +30,7 @@ public interface IDevice extends IPersistentEntity {
      * 
      * @return
      */
-    public UUID getDeviceAssignmentId();
+    public List<UUID> getActiveDeviceAssignmentIds();
 
     /**
      * If contained by a parent device, returns the parent device id.
