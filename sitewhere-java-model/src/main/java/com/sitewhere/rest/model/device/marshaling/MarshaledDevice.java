@@ -7,14 +7,14 @@
  */
 package com.sitewhere.rest.model.device.marshaling;
 
+import java.util.List;
+
 import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceType;
 
 /**
  * Extends {@link Device} to support fields that can be included on REST calls.
- * 
- * @author Derek
  */
 public class MarshaledDevice extends Device {
 
@@ -25,7 +25,7 @@ public class MarshaledDevice extends Device {
     private DeviceType deviceType;
 
     /** Current device assignment */
-    private DeviceAssignment assignment;
+    private List<DeviceAssignment> activeAssignments;
 
     public DeviceType getDeviceType() {
 	return deviceType;
@@ -35,11 +35,11 @@ public class MarshaledDevice extends Device {
 	this.deviceType = deviceType;
     }
 
-    public DeviceAssignment getAssignment() {
-	return assignment;
+    public List<DeviceAssignment> getActiveAssignments() {
+	return activeAssignments;
     }
 
-    public void setAssignment(DeviceAssignment assignment) {
-	this.assignment = assignment;
+    public void setActiveAssignments(List<DeviceAssignment> activeAssignments) {
+	this.activeAssignments = activeAssignments;
     }
 }
