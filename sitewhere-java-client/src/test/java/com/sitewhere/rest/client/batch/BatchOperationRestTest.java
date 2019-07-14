@@ -16,7 +16,6 @@ import org.junit.Test;
 import com.sitewhere.rest.client.AbstractRestClient;
 import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
-import com.sitewhere.rest.model.batch.request.BatchCommandForCriteriaRequest;
 import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.batch.BatchOperationSearchCriteria;

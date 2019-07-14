@@ -25,7 +25,7 @@ public class MarshaledDevice extends Device {
     private DeviceType deviceType;
 
     /** Current device assignment */
-    private List<DeviceAssignment> activeAssignments;
+    private List<DeviceAssignment> activeDeviceAssignments;
 
     public DeviceType getDeviceType() {
 	return deviceType;
@@ -35,11 +35,11 @@ public class MarshaledDevice extends Device {
 	this.deviceType = deviceType;
     }
 
-    public List<DeviceAssignment> getActiveAssignments() {
-	return activeAssignments;
+    public List<DeviceAssignment> getActiveDeviceAssignments() {
+	return activeDeviceAssignments;
     }
 
-    public void setActiveAssignments(List<DeviceAssignment> activeAssignments) {
-	this.activeAssignments = activeAssignments;
+    public void setActiveDeviceAssignments(List<DeviceAssignment> activeDeviceAssignments) {
+	this.activeDeviceAssignments = activeDeviceAssignments;
     }
 }
