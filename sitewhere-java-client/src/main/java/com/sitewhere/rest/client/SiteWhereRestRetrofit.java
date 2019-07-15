@@ -51,6 +51,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequ
 import com.sitewhere.rest.model.device.event.request.DeviceStateChangeCreateRequest;
 import com.sitewhere.rest.model.device.event.view.DeviceCommandInvocationSummary;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
+import com.sitewhere.rest.model.device.group.DeviceGroupElement;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.marshaling.MarshaledCustomer;
@@ -60,6 +61,7 @@ import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCommandCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
+import com.sitewhere.rest.model.device.request.DeviceGroupElementCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.scheduling.Schedule;
@@ -686,6 +688,10 @@ public interface SiteWhereRestRetrofit {
     // Device Groups
     // ------------------------------------------------------------------------
     
+    @GET("devicegroups")
+    Call<SearchResults<DeviceGroup>> listDeviceGroups(@Query("role") String role, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+    
     @GET("devicegroups/{groupToken}")
     Call<DeviceGroup> getDeviceGroupByToken(@Path("groupToken") String groupToken, @HeaderMap Map<String, String> headers);
 
@@ -700,6 +706,33 @@ public interface SiteWhereRestRetrofit {
     @DELETE("devicegroups/{groupToken}")
     Call<DeviceGroup> deleteDeviceGroup(@Path("groupToken") String groupToken, @HeaderMap Map<String, String> headers);
 
+    @GET("devicegroups/{groupToken}/elements")
+    Call<SearchResults<DeviceGroupElement>> listDeviceGroupElements(@Path("groupToken") String groupToken,
+	    @Query("includeDetails") Boolean includeDetails, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+    
+    @PUT("devicegroups/{groupToken}/elements")
+    Call<SearchResults<DeviceGroupElement>> addElementsToDdeviceGroup(
+	    @Path("groupToken") String groupToken, 
+	    @Body List<DeviceGroupElementCreateRequest> elements,
+	    @HeaderMap Map<String, String> headers);   
+
+    @DELETE("devicegroups/{groupToken}/elements")
+    Call<SearchResults<DeviceGroupElement>> deleteDeviceGroupElements(@Path("groupToken") String groupToken, 
+	    @Body List<String> elementIds,
+	    @HeaderMap Map<String, String> headers);
+
+    @DELETE("devicegroups/{groupToken}/elements/{elementId}")
+    Call<SearchResults<DeviceGroupElement>> deleteDeviceGroupElement(
+	    @Path("groupToken") String groupToken, 
+	    @Path("elementId") String elementId,
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("devicegroups/{groupToken}/label/{generatorId}")
+    Call<ResponseBody> getLabelForDeviceGroup(@Path("groupToken") String groupToken,
+	    @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Device States
     // ------------------------------------------------------------------------
