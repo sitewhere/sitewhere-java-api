@@ -41,6 +41,7 @@ import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceEventWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
@@ -1568,6 +1569,30 @@ public class SiteWhereClient implements ISiteWhereClient {
     // Device Events
     // ------------------------------------------------------------------------
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getDeviceEventByAlternateId()
+     */
+    @Override
+    public DeviceEventWithAsset getDeviceEventByAlternateId(ITenantAuthentication tenant, String alternateId)
+	    throws SiteWhereException {
+	Call<DeviceEventWithAsset> call = getRestRetrofit().getDeviceEventByAlternateId(alternateId, createHeadersFor(tenant));
+	return processRestCall(call);	
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getDeviceEventById()
+     */
+    @Override
+    public DeviceEventWithAsset getDeviceEventById(ITenantAuthentication tenant, String eventId)
+	    throws SiteWhereException {	
+	Call<DeviceEventWithAsset> call = getRestRetrofit().getDeviceEventById(eventId, createHeadersFor(tenant));
+	return processRestCall(call);	
+    }
+    
     // ------------------------------------------------------------------------
     // Device Groups
     // ------------------------------------------------------------------------

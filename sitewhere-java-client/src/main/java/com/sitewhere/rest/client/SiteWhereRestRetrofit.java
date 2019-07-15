@@ -34,6 +34,7 @@ import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceEventWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
@@ -672,6 +673,14 @@ public interface SiteWhereRestRetrofit {
     // ------------------------------------------------------------------------
     // Device Events
     // ------------------------------------------------------------------------
+    
+    @GET("events/alternate/{alternateId}")
+    Call<DeviceEventWithAsset> getDeviceEventByAlternateId(@Path("alternateId") String alternateId,
+	    @HeaderMap Map<String, String> headers);
+
+    @GET("events/id/{eventId}")
+    Call<DeviceEventWithAsset> getDeviceEventById(@Path("eventId") String eventId,
+	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Device Groups

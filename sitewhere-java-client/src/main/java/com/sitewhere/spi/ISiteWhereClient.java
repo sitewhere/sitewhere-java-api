@@ -36,6 +36,7 @@ import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceCommandResponseWithAsset;
+import com.sitewhere.rest.model.device.asset.DeviceEventWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceLocationWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
@@ -1306,6 +1307,28 @@ public interface ISiteWhereClient {
     // Device Events
     // ------------------------------------------------------------------------
 
+    /**
+     * Get a device event by alternate Id.
+     * 
+     * @param tenant
+     * @param alternateId
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceEventWithAsset getDeviceEventByAlternateId(ITenantAuthentication tenant, String alternateId)
+	    throws SiteWhereException;
+
+    /**
+     * Get a device event by Id.
+     * 
+     * @param tenant
+     * @param eventId
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceEventWithAsset getDeviceEventById(ITenantAuthentication tenant, String eventId)
+	    throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Device Groups
     // ------------------------------------------------------------------------
