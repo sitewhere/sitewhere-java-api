@@ -39,6 +39,7 @@ import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
+import com.sitewhere.rest.model.device.command.DeviceCommandNamespace;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.DeviceCommandResponse;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
@@ -644,6 +645,10 @@ public interface SiteWhereRestRetrofit {
     // ------------------------------------------------------------------------
     // Device Commands
     // ------------------------------------------------------------------------
+
+    @GET("commands")
+    Call<SearchResults<DeviceCommand>> listDeviceCommands(@Query("deviceTypeToken") String deviceTypeToken,
+	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
     
     @GET("commands/{token}")
     Call<DeviceCommand> getDeviceCommandByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
@@ -658,6 +663,11 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("commands/{token}")
     Call<DeviceCommand> deleteDeviceCommand(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    
+    @GET("commands/namespaces")
+    Call<SearchResults<DeviceCommandNamespace>> listDeviceCommandsByNamesapce(
+	    @Query("deviceTypeToken") String deviceTypeToken,
+	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Device Events

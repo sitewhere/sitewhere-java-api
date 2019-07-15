@@ -40,7 +40,7 @@ import com.sitewhere.spi.SiteWhereException;
  * @author Jorge Villaverde
  *
  */
-public class CustomerRestTest extends AbstractWithLabelCRUDRestTest<Customer, CustomerCreateRequest> {
+public class CustomerRestTests extends AbstractWithLabelCRUDRestTest<Customer, CustomerCreateRequest> {
 
     @Override
     protected String knownEntityToken() {

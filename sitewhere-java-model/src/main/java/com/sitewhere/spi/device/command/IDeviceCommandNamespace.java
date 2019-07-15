@@ -29,5 +29,5 @@ public interface IDeviceCommandNamespace extends Serializable {
      * 
      * @return
      */
-    public List<IDeviceCommand> getCommands();
+    public List<? extends IDeviceCommand> getCommands();
 }

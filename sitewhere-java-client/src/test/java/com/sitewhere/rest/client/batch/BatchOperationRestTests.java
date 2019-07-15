@@ -26,7 +26,7 @@ import com.sitewhere.spi.SiteWhereException;
  * 
  * @author Jorge Villaverde
  */
-public class BatchOperationRestTest extends AbstractRestClient {
+public class BatchOperationRestTests extends AbstractRestClient {
 
     private String batchOperationToken = "someBatchOperationToken";
 

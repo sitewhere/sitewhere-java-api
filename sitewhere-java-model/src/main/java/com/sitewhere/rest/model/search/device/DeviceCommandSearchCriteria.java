@@ -7,8 +7,6 @@
  */
 package com.sitewhere.rest.model.search.device;
 
-import java.util.UUID;
-
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.spi.search.device.IDeviceCommandSearchCriteria;
 
@@ -20,7 +18,7 @@ import com.sitewhere.spi.search.device.IDeviceCommandSearchCriteria;
 public class DeviceCommandSearchCriteria extends SearchCriteria implements IDeviceCommandSearchCriteria {
 
     /** Filter by device type */
-    private UUID deviceTypeId;
+    private String deviceTypeToken;
 
     public DeviceCommandSearchCriteria(int pageNumber, int pageSize) {
 	super(pageNumber, pageSize);
@@ -32,11 +30,11 @@ public class DeviceCommandSearchCriteria extends SearchCriteria implements IDevi
      * )
      */
     @Override
-    public UUID getDeviceTypeId() {
-	return deviceTypeId;
+    public String getDeviceTypeToken() {
+	return deviceTypeToken;
     }
 
-    public void setDeviceTypeId(UUID deviceTypeId) {
-	this.deviceTypeId = deviceTypeId;
+    public void setDeviceTypeToken(String deviceTypeToken) {
+	this.deviceTypeToken = deviceTypeToken;
     }
 }

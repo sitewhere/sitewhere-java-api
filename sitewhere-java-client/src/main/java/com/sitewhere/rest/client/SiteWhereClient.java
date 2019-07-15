@@ -46,6 +46,7 @@ import com.sitewhere.rest.model.device.asset.DeviceMeasurementWithAsset;
 import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
+import com.sitewhere.rest.model.device.command.DeviceCommandNamespace;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.DeviceCommandResponse;
@@ -107,6 +108,7 @@ import com.sitewhere.rest.model.search.customer.CustomerTypeResponseFormat;
 import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceCommandSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -1491,6 +1493,20 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceCommands()
+     */
+    @Override
+    public SearchResults<DeviceCommand> listDeviceCommands(ITenantAuthentication tenant,
+	    DeviceCommandSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceCommand>> call = getRestRetrofit().listDeviceCommands(
+		searchCriteria.getDeviceTypeToken(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.sitewhere.spi.ISiteWhereClient#getDeviceCommandByToken()
      */
     @Override
@@ -1534,6 +1550,20 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceCommands()
+     */
+    @Override
+    public SearchResults<DeviceCommandNamespace> listDeviceCommandsByNamesapce(ITenantAuthentication tenant,
+	    DeviceCommandSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceCommandNamespace>> call = getRestRetrofit().listDeviceCommandsByNamesapce(
+		searchCriteria.getDeviceTypeToken(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     // ------------------------------------------------------------------------
     // Device Events
     // ------------------------------------------------------------------------
