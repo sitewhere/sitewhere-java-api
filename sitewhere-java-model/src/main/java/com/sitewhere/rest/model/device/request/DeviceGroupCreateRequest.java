@@ -102,6 +102,7 @@ public class DeviceGroupCreateRequest extends BrandedEntityCreateRequest impleme
 	public Builder(String token, String name) {
 	    request.setToken(token);
 	    request.setName(name);
+	    request.setImageUrl("https://s3.amazonaws.com/sitewhere-demo/broken-link.png");
 	}
 
 	public Builder withDescription(String description) {

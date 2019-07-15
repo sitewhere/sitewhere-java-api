@@ -58,6 +58,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequ
 import com.sitewhere.rest.model.device.event.request.DeviceStateChangeCreateRequest;
 import com.sitewhere.rest.model.device.event.view.DeviceCommandInvocationSummary;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
+import com.sitewhere.rest.model.device.group.DeviceGroupElement;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.marshaling.MarshaledCustomer;
@@ -105,6 +106,9 @@ import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceCommandSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceGroupElementResponseFormat;
+import com.sitewhere.rest.model.search.device.DeviceGroupElementSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceGroupSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -1334,6 +1338,18 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
+     * List device groups matching criteria.
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceGroup> listDeviceGroups(ITenantAuthentication tenant,
+	    DeviceGroupSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
      * Get a device group by token.
      * 
      * @param tenant
@@ -1376,6 +1392,31 @@ public interface ISiteWhereClient {
      */
     public DeviceGroup deleteDeviceGroup(ITenantAuthentication tenant, String groupToken) throws SiteWhereException;
 
+    /**
+     * Get label for device group.
+     * 
+     * @param tenant
+     * @param groupToken
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForDeviceGroup(ITenantAuthentication tenant, String groupToken, String generatorId)
+	    throws SiteWhereException;
+        
+    /**
+     * List elements in a device group.
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceGroupElement> listDeviceGroupElements(ITenantAuthentication tenant,
+	    DeviceGroupElementSearchCriteria searchCriteria, DeviceGroupElementResponseFormat responseFormat)
+	    throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Device States
     // ------------------------------------------------------------------------

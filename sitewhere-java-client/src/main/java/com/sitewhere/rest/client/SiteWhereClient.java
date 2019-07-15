@@ -63,6 +63,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequ
 import com.sitewhere.rest.model.device.event.request.DeviceStateChangeCreateRequest;
 import com.sitewhere.rest.model.device.event.view.DeviceCommandInvocationSummary;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
+import com.sitewhere.rest.model.device.group.DeviceGroupElement;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.marshaling.MarshaledCustomer;
@@ -110,6 +111,9 @@ import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceCommandSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceGroupElementResponseFormat;
+import com.sitewhere.rest.model.search.device.DeviceGroupElementSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceGroupSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -1600,6 +1604,22 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceGroups()
+     */
+    @Override
+    public SearchResults<DeviceGroup> listDeviceGroups(ITenantAuthentication tenant,
+	    DeviceGroupSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceGroup>> call = getRestRetrofit().listDeviceGroups(
+		searchCriteria.getRole(),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);	
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.sitewhere.spi.ISiteWhereClient#getDeviceGroupByToken()
      */
     @Override
@@ -1641,6 +1661,41 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public DeviceGroup deleteDeviceGroup(ITenantAuthentication tenant, String groupToken) throws SiteWhereException {
 	Call<DeviceGroup> call = getRestRetrofit().deleteDeviceGroup(groupToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForDeviceGroup()
+     */
+    @Override
+    public byte[] getLabelForDeviceGroup(ITenantAuthentication tenant, String groupToken, String generatorId)
+	    throws SiteWhereException {	
+	Call<ResponseBody> call = getRestRetrofit().getLabelForDeviceGroup(groupToken, generatorId,
+		createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceGroupElements()
+     */
+    @Override
+    public SearchResults<DeviceGroupElement> listDeviceGroupElements(ITenantAuthentication tenant,
+	    DeviceGroupElementSearchCriteria searchCriteria, DeviceGroupElementResponseFormat responseFormat)
+	    throws SiteWhereException {
+	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().listDeviceGroupElements(
+		searchCriteria.getGroupToken(),
+		responseFormat.getIncludeDetails(),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
