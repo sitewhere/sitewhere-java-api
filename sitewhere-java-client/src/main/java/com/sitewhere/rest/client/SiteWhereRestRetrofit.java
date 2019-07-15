@@ -40,12 +40,14 @@ import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
+import com.sitewhere.rest.model.device.event.DeviceCommandResponse;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceStateChangeCreateRequest;
+import com.sitewhere.rest.model.device.event.view.DeviceCommandInvocationSummary;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
@@ -492,10 +494,30 @@ public interface SiteWhereRestRetrofit {
     // Command Invocations
     // ------------------------------------------------------------------------
 
+    @GET("invocations/id/{id}")
+    Call<DeviceCommandInvocation> getDeviceCommandInvocation(@Path("id") String id,
+	    @HeaderMap Map<String, String> headers);
+     
+    @GET("invocations/id/{id}/summary")
+    Call<DeviceCommandInvocationSummary> getDeviceCommandInvocationSummary(@Path("id") String id,
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("invocations/id/{invocationId}/responses")
+    Call<SearchResults<DeviceCommandResponse>> listCommandResponsesForCommandInvocation(
+	    @Path("invocationId") String invocationId,
+	    @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Customer Types
     // ------------------------------------------------------------------------
 
+    @GET("customertypes")
+    Call<SearchResults<CustomerType>> listCustomerTypes(
+	    @Query("includeContainedCustomerTypes") Boolean includeContainedCustomerTypes,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
     @GET("customertypes/{customerTypeToken}")
     Call<CustomerType> getCustomerTypeByToken(@Path("customerTypeToken") String customerTypeToken, @HeaderMap Map<String, String> headers);
 
@@ -510,6 +532,11 @@ public interface SiteWhereRestRetrofit {
     @DELETE("customertypes/{customerTypeToken}")
     Call<CustomerType> deleteCustomerType(@Path("customerTypeToken") String customerTypeToken, @HeaderMap Map<String, String> headers);
     
+    @GET("customertypes/{customerTypeToken}/label/{generatorId}")
+    Call<ResponseBody> getLabelForCustomerType(@Path("customerTypeToken") String customerTypeToken,
+	    @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);
+
     // ------------------------------------------------------------------------
     // Customer
     // ------------------------------------------------------------------------

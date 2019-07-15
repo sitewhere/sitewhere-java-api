@@ -43,6 +43,7 @@ import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
+import com.sitewhere.rest.model.device.event.DeviceCommandResponse;
 import com.sitewhere.rest.model.device.event.DeviceEventBatch;
 import com.sitewhere.rest.model.device.event.DeviceEventBatchResponse;
 import com.sitewhere.rest.model.device.event.DeviceLocation;
@@ -53,6 +54,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreate
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceStateChangeCreateRequest;
+import com.sitewhere.rest.model.device.event.view.DeviceCommandInvocationSummary;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
@@ -92,6 +94,8 @@ import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
 import com.sitewhere.rest.model.search.batch.BatchOperationSearchCriteria;
+import com.sitewhere.rest.model.search.customer.CustomerTypeResponseFormat;
+import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
@@ -132,7 +136,7 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
-     * List area types matching criteria
+     * List area types matching criteria.
      * 
      * @param tenant
      * @param searchCriteria
@@ -187,7 +191,7 @@ public interface ISiteWhereClient {
     public AreaType deleteAreaType(ITenantAuthentication tenant, String areaTypeToken) throws SiteWhereException;
 
     /**
-     * Get label for area type
+     * Get label for area type.
      * 
      * @param tenant
      * @param areaTypeToken
@@ -203,7 +207,7 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
-     * List areas matching criteria
+     * List areas matching criteria.
      * 
      * @param tenant
      * @param searchCriteria
@@ -256,7 +260,7 @@ public interface ISiteWhereClient {
     public Area deleteArea(ITenantAuthentication tenant, String areaToken) throws SiteWhereException;
 
     /**
-     * List alerts for an area
+     * List alerts for an area.
      * 
      * @param tenant
      * @param areaToken
@@ -268,7 +272,7 @@ public interface ISiteWhereClient {
 	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
 
     /**
-     * List device assignments for an area
+     * List device assignments for an area.
      * 
      * @param tenant
      * @param areaToken
@@ -280,7 +284,7 @@ public interface ISiteWhereClient {
 	    String areaToken, DeviceAssignmentForAreaSearchCriteria searchCriteria) throws SiteWhereException;
 
     /**
-     * List command invocations for an area
+     * List command invocations for an area.
      * 
      * @param tenant
      * @param areaToken
@@ -304,7 +308,7 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
 
     /**
-     * List locations for an area
+     * List locations for an area.
      * 
      * @param tenant
      * @param areaToken
@@ -316,7 +320,7 @@ public interface ISiteWhereClient {
 	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
 
     /**
-     * List locations for an area
+     * List locations for an area.
      * 
      * @param tenant
      * @param areaToken
@@ -328,7 +332,7 @@ public interface ISiteWhereClient {
 	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
 
     /**
-     * List command responses for an area
+     * List command responses for an area.
      * 
      * @param tenant
      * @param areaToken
@@ -340,7 +344,7 @@ public interface ISiteWhereClient {
 	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
 
     /**
-     * List state changes for an area
+     * List state changes for an area.
      * 
      * @param tenant
      * @param areaToken
@@ -352,7 +356,7 @@ public interface ISiteWhereClient {
 	    String areaToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
 
     /**
-     * List all areas in tree format
+     * List all areas in tree format.
      * 
      * @param tenant
      * @return
@@ -365,7 +369,7 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
-     * List asset types matching criteria
+     * List asset types matching criteria.
      * 
      * @param tenant
      * @param searchCriteria
@@ -419,7 +423,7 @@ public interface ISiteWhereClient {
     public AssetType deleteAssetType(ITenantAuthentication tenant, String assetTypeToken) throws SiteWhereException;
 
     /**
-     * Get label for asset type
+     * Get label for asset type.
      * 
      * @param tenant
      * @param assetTypeToken
@@ -435,7 +439,7 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
-     * List assets matching criteria
+     * List assets matching criteria.
      * 
      * @param tenant
      * @param searchCriteria
@@ -757,7 +761,7 @@ public interface ISiteWhereClient {
 	    throws SiteWhereException;
 
     /**
-     * Create state chage event for assignment.
+     * Create state change event for assignment.
      * 
      * @param tenant
      * @param token
@@ -950,10 +954,56 @@ public interface ISiteWhereClient {
     // Command Invocations
     // ------------------------------------------------------------------------
 
+    /**
+     * Get command invocation by unique id.
+     * 
+     * @param tenant
+     * @param id
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceCommandInvocation getDeviceCommandInvocation(ITenantAuthentication tenant, String id)
+	    throws SiteWhereException;
+
+    /**
+     * Get command invocation summary.
+     * 
+     * @param tenant
+     * @param id
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceCommandInvocationSummary getDeviceCommandInvocationSummary(ITenantAuthentication tenant, String id)
+	    throws SiteWhereException;
+
+    /**
+     * List responses for command invocation.
+     * 
+     * @param tenant
+     * @param id
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceCommandResponse> listCommandResponsesForCommandInvocation(ITenantAuthentication tenant,
+	    String id) throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Customer Types
     // ------------------------------------------------------------------------
 
+    /**
+     * List customer types matching criteria.
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<CustomerType> listCustomerTypes(ITenantAuthentication tenant,
+	    CustomerTypeSearchCriteria searchCriteria, CustomerTypeResponseFormat responseFormat)
+	    throws SiteWhereException;	    
+    
     /**
      * Get a customer type by token.
      * 
@@ -999,6 +1049,18 @@ public interface ISiteWhereClient {
     public CustomerType deleteCustomerType(ITenantAuthentication tenant, String customerTypeToken)
 	    throws SiteWhereException;
 
+    /**
+     * Get label for customer type.
+     * 
+     * @param tenant
+     * @param customerTypeToken
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForCustomerType(ITenantAuthentication tenant, String customerTypeToken, String generatorId)
+	    throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Customer
     // ------------------------------------------------------------------------

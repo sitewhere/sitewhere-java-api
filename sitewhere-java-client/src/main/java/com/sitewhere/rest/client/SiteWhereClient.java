@@ -48,6 +48,7 @@ import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
+import com.sitewhere.rest.model.device.event.DeviceCommandResponse;
 import com.sitewhere.rest.model.device.event.DeviceEventBatch;
 import com.sitewhere.rest.model.device.event.DeviceEventBatchResponse;
 import com.sitewhere.rest.model.device.event.DeviceLocation;
@@ -58,6 +59,7 @@ import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreate
 import com.sitewhere.rest.model.device.event.request.DeviceLocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceMeasurementCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceStateChangeCreateRequest;
+import com.sitewhere.rest.model.device.event.view.DeviceCommandInvocationSummary;
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
@@ -97,6 +99,8 @@ import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
 import com.sitewhere.rest.model.search.batch.BatchOperationSearchCriteria;
+import com.sitewhere.rest.model.search.customer.CustomerTypeResponseFormat;
+import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
@@ -1160,9 +1164,63 @@ public class SiteWhereClient implements ISiteWhereClient {
     // Command Invocations
     // ------------------------------------------------------------------------
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getDeviceCommandInvocation()
+     */
+    @Override
+    public DeviceCommandInvocation getDeviceCommandInvocation(ITenantAuthentication tenant, String id)
+	    throws SiteWhereException {
+	Call<DeviceCommandInvocation> call = getRestRetrofit().getDeviceCommandInvocation(id, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getDeviceCommandInvocationSummary()
+     */
+    @Override
+    public DeviceCommandInvocationSummary getDeviceCommandInvocationSummary(ITenantAuthentication tenant, String id)
+	    throws SiteWhereException {
+	Call<DeviceCommandInvocationSummary> call = getRestRetrofit().getDeviceCommandInvocationSummary(id,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#listCommandResponsesForCommandInvocation()
+     */
+    @Override
+    public SearchResults<DeviceCommandResponse> listCommandResponsesForCommandInvocation(ITenantAuthentication tenant,
+	    String id) throws SiteWhereException {
+	Call<SearchResults<DeviceCommandResponse>> call = getRestRetrofit().listCommandResponsesForCommandInvocation(id,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     // ------------------------------------------------------------------------
     // Customer Types
     // ------------------------------------------------------------------------
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listCustomerTypes()
+     */
+    @Override
+    public SearchResults<CustomerType> listCustomerTypes(ITenantAuthentication tenant,
+	    CustomerTypeSearchCriteria searchCriteria, CustomerTypeResponseFormat responseFormat)
+	    throws SiteWhereException {
+	Call<SearchResults<CustomerType>> call = getRestRetrofit().listCustomerTypes(
+		responseFormat.getIncludeContainedCustomerTypes(), searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
 
     /*
      * (non-Javadoc)
@@ -1211,6 +1269,23 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    throws SiteWhereException {
 	Call<CustomerType> call = getRestRetrofit().deleteCustomerType(customerTypeToken, createHeadersFor(tenant));
 	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForCustomerType()
+     */
+    @Override
+    public byte[] getLabelForCustomerType(ITenantAuthentication tenant, String customerTypeToken, String generatorId)
+	    throws SiteWhereException {
+	Call<ResponseBody> call = getRestRetrofit().getLabelForCustomerType(customerTypeToken, generatorId,
+		createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}
     }
 
     // ------------------------------------------------------------------------
