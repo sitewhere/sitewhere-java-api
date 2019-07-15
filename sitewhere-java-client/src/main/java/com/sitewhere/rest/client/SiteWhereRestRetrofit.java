@@ -714,7 +714,7 @@ public interface SiteWhereRestRetrofit {
     @PUT("devicegroups/{groupToken}/elements")
     Call<SearchResults<DeviceGroupElement>> addElementsToDdeviceGroup(
 	    @Path("groupToken") String groupToken, 
-	    @Body List<DeviceGroupElementCreateRequest> elements,
+	    @Body List<DeviceGroupElementCreateRequest> requests,
 	    @HeaderMap Map<String, String> headers);   
 
     @DELETE("devicegroups/{groupToken}/elements")

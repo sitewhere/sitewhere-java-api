@@ -1393,18 +1393,6 @@ public interface ISiteWhereClient {
     public DeviceGroup deleteDeviceGroup(ITenantAuthentication tenant, String groupToken) throws SiteWhereException;
 
     /**
-     * Get label for device group.
-     * 
-     * @param tenant
-     * @param groupToken
-     * @param generatorId
-     * @return
-     * @throws SiteWhereException
-     */
-    public byte[] getLabelForDeviceGroup(ITenantAuthentication tenant, String groupToken, String generatorId)
-	    throws SiteWhereException;
-        
-    /**
      * List elements in a device group.
      * 
      * @param tenant
@@ -1417,6 +1405,54 @@ public interface ISiteWhereClient {
 	    DeviceGroupElementSearchCriteria searchCriteria, DeviceGroupElementResponseFormat responseFormat)
 	    throws SiteWhereException;
     
+    /**
+     * Add elements to device group.
+     * 
+     * @param tenant
+     * @param groupToken
+     * @param requests
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceGroupElement> addElementsToDdeviceGroup(ITenantAuthentication tenant,
+	    String groupToken, List<DeviceGroupElementCreateRequest> requests) throws SiteWhereException;
+    
+    /**
+     * Delete elements from device group.
+     * 
+     * @param tenant
+     * @param groupToken
+     * @param elementIds
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceGroupElement> deleteDeviceGroupElements(ITenantAuthentication tenant,
+	    String groupToken, List<String> elementIds) throws SiteWhereException;
+    
+    /**
+     * Delete elements from device group.
+     * 
+     * @param tenant
+     * @param groupToken
+     * @param elementId
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceGroupElement> deleteDeviceGroupElement(ITenantAuthentication tenant,
+	    String groupToken, String elementId) throws SiteWhereException;
+    
+    /**
+     * Get label for device group.
+     * 
+     * @param tenant
+     * @param groupToken
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForDeviceGroup(ITenantAuthentication tenant, String groupToken, String generatorId)
+	    throws SiteWhereException;        
+
     // ------------------------------------------------------------------------
     // Device States
     // ------------------------------------------------------------------------

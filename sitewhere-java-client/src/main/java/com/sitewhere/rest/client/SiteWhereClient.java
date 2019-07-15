@@ -1667,23 +1667,6 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForDeviceGroup()
-     */
-    @Override
-    public byte[] getLabelForDeviceGroup(ITenantAuthentication tenant, String groupToken, String generatorId)
-	    throws SiteWhereException {	
-	Call<ResponseBody> call = getRestRetrofit().getLabelForDeviceGroup(groupToken, generatorId,
-		createHeadersFor(tenant));
-	try {
-	    return processRestCall(call).bytes();
-	} catch (IOException e) {
-	    throw new SiteWhereException(e);
-	}
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
      * @see com.sitewhere.spi.ISiteWhereClient#listDeviceGroupElements()
      */
     @Override
@@ -1697,6 +1680,62 @@ public class SiteWhereClient implements ISiteWhereClient {
 		searchCriteria.getPageSize(),
 		createHeadersFor(tenant));
 	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#addElementsToDdeviceGroup()
+     */
+    @Override
+    public SearchResults<DeviceGroupElement> addElementsToDdeviceGroup(ITenantAuthentication tenant, String groupToken,
+	    List<DeviceGroupElementCreateRequest> requests) throws SiteWhereException {
+	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().addElementsToDdeviceGroup(
+		groupToken, requests, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteDeviceGroupElements()
+     */
+    @Override
+    public SearchResults<DeviceGroupElement> deleteDeviceGroupElements(ITenantAuthentication tenant, String groupToken,
+	    List<String> elementIds) throws SiteWhereException {
+	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().deleteDeviceGroupElements(
+		groupToken, elementIds, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteDeviceGroupElement()
+     */
+    @Override
+    public SearchResults<DeviceGroupElement> deleteDeviceGroupElement(ITenantAuthentication tenant, String groupToken,
+	    String elementId) throws SiteWhereException {
+	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().deleteDeviceGroupElement(
+		groupToken, elementId, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForDeviceGroup()
+     */
+    @Override
+    public byte[] getLabelForDeviceGroup(ITenantAuthentication tenant, String groupToken, String generatorId)
+	    throws SiteWhereException {	
+	Call<ResponseBody> call = getRestRetrofit().getLabelForDeviceGroup(groupToken, generatorId,
+		createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}
     }
 
     // ------------------------------------------------------------------------
