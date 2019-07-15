@@ -14,7 +14,7 @@ import java.util.UUID;
 
 import org.junit.Test;
 
-import com.sitewhere.rest.client.AbstractRestClient;
+import com.sitewhere.rest.client.AbstractRestTest;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.user.GrantedAuthority;
 import com.sitewhere.rest.model.user.GrantedAuthorityHierarchyNode;
@@ -25,7 +25,7 @@ import com.sitewhere.spi.SiteWhereException;
  * Authorities API tests.
  * @author Jorge Villaverde
  */
-public class AuthoritiesRestTest extends AbstractRestClient {
+public class AuthoritiesRestTest extends AbstractRestTest {
 
     @Test
     public void testListAutorities() throws SiteWhereException {

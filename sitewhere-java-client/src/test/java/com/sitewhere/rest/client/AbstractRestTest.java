@@ -17,7 +17,7 @@ import com.sitewhere.spi.SiteWhereException;
  * Base Tenant Test class.
  * @author Jorge Villaverde
  */
-public abstract class AbstractRestClient {
+public abstract class AbstractRestTest {
 
     /** SiteWhere Client */
     private ISiteWhereClient client;

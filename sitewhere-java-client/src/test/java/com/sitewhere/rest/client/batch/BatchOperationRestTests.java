@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import com.sitewhere.rest.client.AbstractRestClient;
+import com.sitewhere.rest.client.AbstractRestTest;
 import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
@@ -26,7 +26,7 @@ import com.sitewhere.spi.SiteWhereException;
  * 
  * @author Jorge Villaverde
  */
-public class BatchOperationRestTests extends AbstractRestClient {
+public class BatchOperationRestTests extends AbstractRestTest {
 
     private String batchOperationToken = "someBatchOperationToken";
 

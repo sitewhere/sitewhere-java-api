@@ -64,12 +64,14 @@ import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupElementCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
+import com.sitewhere.rest.model.device.state.DeviceState;
 import com.sitewhere.rest.model.scheduling.Schedule;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
 import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
 import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.TreeNode;
+import com.sitewhere.rest.model.search.device.DeviceStateSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -737,6 +739,14 @@ public interface SiteWhereRestRetrofit {
     // Device States
     // ------------------------------------------------------------------------
 
+    @POST("devicestates/search")
+    Call<SearchResults<DeviceState>> listDeviceStates(@Body DeviceStateSearchCriteria criteria,
+	    @Query("includeArea") Boolean includeArea, @Query("includeAsset") Boolean includeAsset,
+	    @Query("includeCustomer") Boolean includeCustomer, @Query("includeDevice") Boolean includeDevice,
+	    @Query("includeDeviceAssignment") Boolean includeDeviceAssignment,
+	    @Query("includeDeviceType") Boolean includeDeviceType,
+	    @Query("includeEventDetails") Boolean includeEventDetails, @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Device Statuses
     // ------------------------------------------------------------------------

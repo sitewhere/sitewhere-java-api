@@ -25,7 +25,7 @@ import com.sitewhere.spi.SiteWhereException;
  * @author Jorge Villaverde
  */
 public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR extends PersistentEntityCreateRequest> 
-	extends AbstractRestClient {
+	extends AbstractRestTest {
     
     /** Entity token */
     private String token = UUID.randomUUID().toString();

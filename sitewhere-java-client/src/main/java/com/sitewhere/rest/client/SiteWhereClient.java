@@ -77,6 +77,7 @@ import com.sitewhere.rest.model.device.request.DeviceGroupElementCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStreamCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
+import com.sitewhere.rest.model.device.state.DeviceState;
 import com.sitewhere.rest.model.device.streaming.DeviceStream;
 import com.sitewhere.rest.model.scheduling.Schedule;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
@@ -114,6 +115,8 @@ import com.sitewhere.rest.model.search.device.DeviceCommandSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceGroupElementResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceGroupElementSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceGroupSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceStateResponseFormat;
+import com.sitewhere.rest.model.search.device.DeviceStateSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -1742,6 +1745,23 @@ public class SiteWhereClient implements ISiteWhereClient {
     // Device States
     // ------------------------------------------------------------------------
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceStates()
+     */
+    @Override
+    public SearchResults<DeviceState> listDeviceStates(ITenantAuthentication tenant,
+	    DeviceStateSearchCriteria searchCriteria, DeviceStateResponseFormat responseFormat)
+	    throws SiteWhereException {
+	Call<SearchResults<DeviceState>> call = getRestRetrofit().listDeviceStates(searchCriteria,
+		responseFormat.getIncludeArea(), responseFormat.getIncludeAsset(), responseFormat.getIncludeCustomer(),
+		responseFormat.getIncludeDevice(), responseFormat.getIncludeDeviceAssignment(),
+		responseFormat.getIncludeDeviceType(), responseFormat.getIncludeEventDetails(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     // ------------------------------------------------------------------------
     // Device Statuses
     // ------------------------------------------------------------------------
