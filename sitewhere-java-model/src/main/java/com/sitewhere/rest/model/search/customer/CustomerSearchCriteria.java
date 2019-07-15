@@ -17,6 +17,9 @@ import com.sitewhere.spi.search.customer.ICustomerSearchCriteria;
  */
 public class CustomerSearchCriteria extends SearchCriteria implements ICustomerSearchCriteria {
 
+    /** Only return root customers */
+    private Boolean rootOnly;
+
     /** Only return customers with the given parent */
     private String parentCustomerToken;
 
@@ -28,9 +31,20 @@ public class CustomerSearchCriteria extends SearchCriteria implements ICustomerS
     }
 
     /*
-     * @see
-     * com.sitewhere.spi.search.customer.ICustomerSearchCriteria#getParentCustomerToken
-     * ()
+     * @see com.sitewhere.spi.search.customer.ICustomerSearchCriteria#getRootOnly()
+     */
+    @Override
+    public Boolean getRootOnly() {
+	return rootOnly;
+    }
+
+    public void setRootOnly(Boolean rootOnly) {
+	this.rootOnly = rootOnly;
+    }
+
+    /*
+     * @see com.sitewhere.spi.search.customer.ICustomerSearchCriteria#
+     * getParentCustomerToken ()
      */
     @Override
     public String getParentCustomerToken() {
@@ -42,8 +56,8 @@ public class CustomerSearchCriteria extends SearchCriteria implements ICustomerS
     }
 
     /*
-     * @see
-     * com.sitewhere.spi.search.customer.ICustomerSearchCriteria#getCustomerTypeToken()
+     * @see com.sitewhere.spi.search.customer.ICustomerSearchCriteria#
+     * getCustomerTypeToken()
      */
     @Override
     public String getCustomerTypeToken() {

@@ -10,12 +10,11 @@ package com.sitewhere.rest.model.device.command;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sitewhere.spi.device.command.IDeviceCommand;
 import com.sitewhere.spi.device.command.IDeviceCommandNamespace;
 
 /**
  * Used to group device commands that use the same namespace.
- * 
- * @author Derek
  */
 public class DeviceCommandNamespace implements IDeviceCommandNamespace {
 
@@ -26,7 +25,7 @@ public class DeviceCommandNamespace implements IDeviceCommandNamespace {
     private String value;
 
     /** List of commands */
-    private List<DeviceCommand> commands = new ArrayList<DeviceCommand>();
+    private List<? extends IDeviceCommand> commands = new ArrayList<>();
 
     /*
      * (non-Javadoc)
@@ -45,12 +44,12 @@ public class DeviceCommandNamespace implements IDeviceCommandNamespace {
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * com.sitewhere.spi.device.command.IDeviceCommandNamespace#getCommands()
+     * @see com.sitewhere.spi.device.command.IDeviceCommandNamespace#getCommands()
      */
     @Override
-    public List<DeviceCommand> getCommands() {
-	return commands;
+    @SuppressWarnings("unchecked")
+    public List<IDeviceCommand> getCommands() {
+	return (List<IDeviceCommand>) (List<? extends IDeviceCommand>) commands;
     }
 
     public void setCommands(List<DeviceCommand> commands) {

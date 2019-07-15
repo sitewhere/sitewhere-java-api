@@ -12,10 +12,11 @@ import com.sitewhere.spi.search.area.IAreaSearchCriteria;
 
 /**
  * Model object for properties used in area searches.
- * 
- * @author Derek
  */
 public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCriteria {
+
+    /** Only return root areas */
+    private Boolean rootOnly;
 
     /** Only return areas of the given type */
     private String areaTypeToken;
@@ -25,6 +26,18 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
 
     public AreaSearchCriteria(int pageNumber, int pageSize) {
 	super(pageNumber, pageSize);
+    }
+
+    /*
+     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getRootOnly()
+     */
+    @Override
+    public Boolean getRootOnly() {
+	return rootOnly;
+    }
+
+    public void setRootOnly(Boolean rootOnly) {
+	this.rootOnly = rootOnly;
     }
 
     /*

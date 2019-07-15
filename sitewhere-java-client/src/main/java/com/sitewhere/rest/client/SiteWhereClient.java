@@ -303,7 +303,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Call<SearchResults<Area>> call = getRestRetrofit().listAreas(searchCriteria.getAreaTypeToken(),
 		responseFormat.getIncludeAreaType(), responseFormat.getIncludeAssignments(),
 		responseFormat.getIncludeZones(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
-		searchCriteria.getParentAreaToken(), responseFormat.getRootOnly(), createHeadersFor(tenant));
+		searchCriteria.getParentAreaToken(), searchCriteria.getRootOnly(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1309,7 +1309,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    CustomerResponseFormat responseFormat) throws SiteWhereException {
 	Call<SearchResults<Customer>> call = getRestRetrofit().listCustomers(searchCriteria.getCustomerTypeToken(),
 		searchCriteria.getParentCustomerToken(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
-		responseFormat.getIncludeCustomerType(), responseFormat.getRootOnly(), createHeadersFor(tenant));
+		responseFormat.getIncludeCustomerType(), searchCriteria.getRootOnly(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
     
