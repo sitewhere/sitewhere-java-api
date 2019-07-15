@@ -566,10 +566,80 @@ public interface SiteWhereRestRetrofit {
     @DELETE("customers/{customerToken}")
     Call<Customer> deleteCustomer(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
     
+    @GET("customers/{customerToken}/alerts")
+    Call<SearchResults<DeviceAlertWithAsset>> listAlertsForCustomer(
+	    @Path("customerToken") String customerToken,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("customers/{customerToken}/assignments")
+    Call<SearchResults<MarshaledDeviceAssignment>> listDeviceAssignmentsForCustomer(
+	    @Path("customerToken") String customerToken,
+	    @Query("status") String status,
+	    @Query("includeDevice") Boolean includeDevice,
+	    @Query("includeCustomer") Boolean includeCustomer,
+	    @Query("includeArea") Boolean includeArea,
+	    @Query("includeAsset") Boolean includeAsset,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("customers/{customerToken}/invocations")
+    Call<SearchResults<DeviceCommandInvocation>> listCommandInvocationsForCustomer(
+	    @Path("customerToken") String customerToken,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+
     @GET("customers/{customerToken}/label/{generatorId}")
     Call<ResponseBody> getLabelForCustomer(@Path("customerToken") String customerToken,
 	    @Path("generatorId") String generatorId,
 	    @HeaderMap Map<String, String> headers);
+
+    @GET("customers/{customerToken}/locations")
+    Call<SearchResults<DeviceLocationWithAsset>> listLocationsForCustomer(
+	    @Path("customerToken") String customerToken,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("customers/{customerToken}/measurements")
+    Call<SearchResults<DeviceMeasurementWithAsset>> listMeasurementsForCustomer(
+	    @Path("customerToken") String customerToken,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("customers/{customerToken}/responses")
+    Call<SearchResults<DeviceCommandResponseWithAsset>> listCommandResponsesForCustomer(
+	    @Path("customerToken") String customerToken,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+
+    @GET("customers/{customerToken}/statechanges")
+    Call<SearchResults<DeviceStateChangeWithAsset>> listStateChangesForCustomer(
+	    @Path("customerToken") String customerToken,
+	    @Query("startDate") String startDate,
+	    @Query("endDate") String endDate,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+
+    @GET("customers/tree")
+    Call<List<TreeNode>> customerTree(@HeaderMap Map<String, String> headers);
+    
     
     // ------------------------------------------------------------------------
     // Device Commands

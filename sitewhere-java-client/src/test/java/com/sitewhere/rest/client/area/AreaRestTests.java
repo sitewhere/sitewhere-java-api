@@ -30,7 +30,8 @@ import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.area.AreaResponseFormat;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
-import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
+import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.spi.SiteWhereException;
 
 /**
@@ -126,6 +127,10 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
 	return getClient().getLabelForArea(getTenatAuthentication(), token, generatorId);
     }
     
+    // ------------------------------------------------------------------------
+    // OTHER TESTS
+    // ------------------------------------------------------------------------
+    
     @Test
     public void testListAlerts() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
@@ -145,10 +150,11 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
 
     @Test
     public void testListAssignments() throws SiteWhereException {
-	DeviceAssignmentForAreaSearchCriteria searchCriteria = new DeviceAssignmentForAreaSearchCriteria(1, 1);
+	DeviceAssignmentSearchCriteria searchCriteria = new DeviceAssignmentSearchCriteria();
+	DeviceAssignmentResponseFormat responseFormat = new DeviceAssignmentResponseFormat();
 	SearchResults<MarshaledDeviceAssignment> assignments = 
 		getClient().listDeviceAssignmentsForArea(
-			getTenatAuthentication(), parentToken, searchCriteria);
+			getTenatAuthentication(), parentToken, searchCriteria, responseFormat);
 	assertNotNull(assignments);
     }
     

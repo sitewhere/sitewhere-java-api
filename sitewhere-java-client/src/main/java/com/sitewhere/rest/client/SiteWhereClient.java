@@ -105,7 +105,6 @@ import com.sitewhere.rest.model.search.customer.CustomerResponseFormat;
 import com.sitewhere.rest.model.search.customer.CustomerSearchCriteria;
 import com.sitewhere.rest.model.search.customer.CustomerTypeResponseFormat;
 import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
-import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
@@ -371,11 +370,12 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     @Override
     public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForArea(ITenantAuthentication tenant,
-	    String areaToken, DeviceAssignmentForAreaSearchCriteria searchCriteria) throws SiteWhereException {
+	    String areaToken, DeviceAssignmentSearchCriteria searchCriteria,
+	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException {
 	Call<SearchResults<MarshaledDeviceAssignment>> call = getRestRetrofit().listDeviceAssignmentsForArea(areaToken,
-		searchCriteria.getStatus() == null ? null : searchCriteria.getStatus().toString(),
-		searchCriteria.getIncludeDevice(), searchCriteria.getIncludeCustomer(), searchCriteria.getIncludeArea(),
-		searchCriteria.getIncludeAsset(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
+		assembleList(searchCriteria.getAssignmentStatuses()),
+			responseFormat.getIncludeDevice(), responseFormat.getIncludeCustomer(), responseFormat.getIncludeArea(),
+			responseFormat.getIncludeAsset(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
@@ -1359,18 +1359,129 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForCustomerType()
+     */
+    @Override
+    public SearchResults<DeviceAlertWithAsset> listAlertsForCustomer(ITenantAuthentication tenant, String customerToken,
+	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceAlertWithAsset>> call = getRestRetrofit().listAlertsForCustomer(customerToken,
+		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceAssignmentsForCustomer()
+     */
+    @Override
+    public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DeviceAssignmentSearchCriteria searchCriteria,
+	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException {
+	Call<SearchResults<MarshaledDeviceAssignment>> call = getRestRetrofit().listDeviceAssignmentsForCustomer(customerToken,
+		assembleList(searchCriteria.getAssignmentStatuses()),
+			responseFormat.getIncludeDevice(), responseFormat.getIncludeCustomer(), responseFormat.getIncludeArea(),
+			responseFormat.getIncludeAsset(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listCommandInvocationsForCustomer()
+     */
+    @Override
+    public SearchResults<DeviceCommandInvocation> listCommandInvocationsForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceCommandInvocation>> call = getRestRetrofit().listCommandInvocationsForCustomer(customerToken,
+		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.sitewhere.spi.ISiteWhereClient#getLabelForCustomer()
      */
     @Override
     public byte[] getLabelForCustomer(ITenantAuthentication tenant, String customerToken, String generatorId)
 	    throws SiteWhereException {
-	Call<ResponseBody> call = getRestRetrofit().getLabelForCustomer(customerToken, generatorId,
-		createHeadersFor(tenant));
+	Call<ResponseBody> call = getRestRetrofit().getLabelForCustomer(customerToken, generatorId, createHeadersFor(tenant));
 	try {
 	    return processRestCall(call).bytes();
 	} catch (IOException e) {
 	    throw new SiteWhereException(e);
 	}
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listLocationsForCustomer()
+     */
+    @Override
+    public SearchResults<DeviceLocationWithAsset> listLocationsForCustomer(ITenantAuthentication tenant, String customerToken,
+	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceLocationWithAsset>> call = getRestRetrofit().listLocationsForCustomer(customerToken,
+		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listMeasurementsForCustomer()
+     */
+    @Override
+    public SearchResults<DeviceMeasurementWithAsset> listMeasurementsForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceMeasurementWithAsset>> call = getRestRetrofit().listMeasurementsForCustomer(customerToken,
+		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listCommandResponsesForCustomer()
+     */
+    @Override
+    public SearchResults<DeviceCommandResponseWithAsset> listCommandResponsesForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceCommandResponseWithAsset>> call = getRestRetrofit().listCommandResponsesForCustomer(
+		customerToken, toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listStateChangesForCustomer()
+     */
+    @Override
+    public SearchResults<DeviceStateChangeWithAsset> listStateChangesForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit().listStateChangesForCustomer(customerToken,
+		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#customerTree()
+     */
+    @Override
+    public List<TreeNode> customerTree(ITenantAuthentication tenant) throws SiteWhereException {
+	Call<List<TreeNode>> call = getRestRetrofit().areaTree(createHeadersFor(tenant));
+	return processRestCall(call);
     }
 
     // ------------------------------------------------------------------------
@@ -2401,6 +2512,19 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return builder.toString();
     }
 
+    protected static <T> String assembleList(List<T> list) {
+	if (list == null || list.isEmpty())
+	    return null;
+	StringBuilder builder = new StringBuilder();
+	String sep = "";
+	for (T token : list) {
+	    builder.append(sep);
+	    builder.append(token.toString());
+	    sep = ", ";
+	}
+	return builder.toString();
+    }
+    
     public AuthenticationRetrofit getAuthRetrofit() {
 	return authRetrofit;
     }

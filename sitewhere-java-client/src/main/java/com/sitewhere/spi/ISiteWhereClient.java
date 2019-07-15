@@ -100,7 +100,6 @@ import com.sitewhere.rest.model.search.customer.CustomerResponseFormat;
 import com.sitewhere.rest.model.search.customer.CustomerSearchCriteria;
 import com.sitewhere.rest.model.search.customer.CustomerTypeResponseFormat;
 import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
-import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
@@ -283,7 +282,8 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForArea(ITenantAuthentication tenant,
-	    String areaToken, DeviceAssignmentForAreaSearchCriteria searchCriteria) throws SiteWhereException;
+	    String areaToken, DeviceAssignmentSearchCriteria searchCriteria, 
+	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException;
 
     /**
      * List command invocations for an area.
@@ -1124,6 +1124,43 @@ public interface ISiteWhereClient {
     public Customer deleteCustomer(ITenantAuthentication tenant, String customerToken) throws SiteWhereException;
 
     /**
+     * List alerts for a customer.
+     * 
+     * @param tenant
+     * @param customerToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceAlertWithAsset> listAlertsForCustomer(ITenantAuthentication tenant, String customerToken,
+	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
+     * List device assignments for a customer.
+     * 
+     * @param tenant
+     * @param customerToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DeviceAssignmentSearchCriteria searchCriteria, 
+	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException;
+
+    /**
+     * List command invocations for a customer.
+     * 
+     * @param tenant
+     * @param customerToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceCommandInvocation> listCommandInvocationsForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
      * Get label for customer.
      * 
      * @param tenant
@@ -1134,6 +1171,63 @@ public interface ISiteWhereClient {
      */
     public byte[] getLabelForCustomer(ITenantAuthentication tenant, String customerTypeToken, String generatorId)
 	    throws SiteWhereException;
+
+    /**
+     * List locations for a customer.
+     * 
+     * @param tenant
+     * @param customerToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceLocationWithAsset> listLocationsForCustomer(ITenantAuthentication tenant, String customerToken,
+	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
+     * List locations for a customer.
+     * 
+     * @param tenant
+     * @param customerToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceMeasurementWithAsset> listMeasurementsForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
+     * List command responses for a customer.
+     * 
+     * @param tenant
+     * @param customerToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceCommandResponseWithAsset> listCommandResponsesForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
+     * List state changes for a customer.
+     * 
+     * @param tenant
+     * @param customerToken
+     * @param searchCriteria
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceStateChangeWithAsset> listStateChangesForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+
+    /**
+     * List all customer in tree format.
+     * 
+     * @param tenant
+     * @return
+     * @throws SiteWhereException
+     */
+    public List<TreeNode> customerTree(ITenantAuthentication tenant) throws SiteWhereException;
 
     // ------------------------------------------------------------------------
     // Device Commands
