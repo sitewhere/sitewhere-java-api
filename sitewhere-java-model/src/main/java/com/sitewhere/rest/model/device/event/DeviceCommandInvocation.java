@@ -10,6 +10,7 @@ package com.sitewhere.rest.model.device.event;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -43,8 +44,8 @@ public class DeviceCommandInvocation extends DeviceEvent implements IDeviceComma
     /** Id of actor that will receive the command */
     private String targetId;
 
-    /** Unique token of command to execute */
-    private String commandToken;
+    /** Unique id of command to execute */
+    private UUID deviceCommandId;
 
     /** Values to use for command parameters */
     private Map<String, String> parameterValues = new HashMap<String, String>();
@@ -58,6 +59,7 @@ public class DeviceCommandInvocation extends DeviceEvent implements IDeviceComma
      * 
      * @see com.sitewhere.spi.device.event.IDeviceCommandInvocation#getInitiator()
      */
+    @Override
     public CommandInitiator getInitiator() {
 	return initiator;
     }
@@ -71,6 +73,7 @@ public class DeviceCommandInvocation extends DeviceEvent implements IDeviceComma
      * 
      * @see com.sitewhere.spi.device.event.IDeviceCommandInvocation#getInitiatorId()
      */
+    @Override
     public String getInitiatorId() {
 	return initiatorId;
     }
@@ -84,6 +87,7 @@ public class DeviceCommandInvocation extends DeviceEvent implements IDeviceComma
      * 
      * @see com.sitewhere.spi.device.event.IDeviceCommandInvocation#getTarget()
      */
+    @Override
     public CommandTarget getTarget() {
 	return target;
     }
@@ -97,6 +101,7 @@ public class DeviceCommandInvocation extends DeviceEvent implements IDeviceComma
      * 
      * @see com.sitewhere.spi.device.event.IDeviceCommandInvocation#getTargetId()
      */
+    @Override
     public String getTargetId() {
 	return targetId;
     }
@@ -106,17 +111,16 @@ public class DeviceCommandInvocation extends DeviceEvent implements IDeviceComma
     }
 
     /*
-     * (non-Javadoc)
-     * 
      * @see
-     * com.sitewhere.spi.device.event.IDeviceCommandInvocation#getCommandToken()
+     * com.sitewhere.spi.device.event.IDeviceCommandInvocation#getDeviceCommandId()
      */
-    public String getCommandToken() {
-	return commandToken;
+    @Override
+    public UUID getDeviceCommandId() {
+	return deviceCommandId;
     }
 
-    public void setCommandToken(String commandToken) {
-	this.commandToken = commandToken;
+    public void setDeviceCommandId(UUID deviceCommandId) {
+	this.deviceCommandId = deviceCommandId;
     }
 
     /*
@@ -125,6 +129,7 @@ public class DeviceCommandInvocation extends DeviceEvent implements IDeviceComma
      * @see com.sitewhere.spi.device.event.IDeviceCommandInvocation#
      * getParameterValues()
      */
+    @Override
     public Map<String, String> getParameterValues() {
 	return parameterValues;
     }
