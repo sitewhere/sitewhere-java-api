@@ -13,18 +13,11 @@ package com.sitewhere.spi.search.customer;
  * @author Jorge Villaverde
  */
 public interface ICustomerResponseFormat {
-    
+
     /**
      * Indicates if customer type is to be returned.
      * 
      * @return
      */
     public Boolean getIncludeCustomerType();
-
-    /**
-     * Indicates if only root elements are to be returned.
-     * 
-     * @return
-     */
-    public Boolean getRootOnly();
 }

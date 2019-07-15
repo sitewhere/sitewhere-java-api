@@ -20,26 +20,18 @@ public interface IAreaResponseFormat {
      * @return
      */
     public Boolean getIncludeAreaType();
-    
+
     /**
      * Indicates if assignments are to be returned.
      * 
      * @return
      */
     public Boolean getIncludeAssignments();
-    
+
     /**
      * Indicates if zones are to be returned.
      * 
      * @return
      */
     public Boolean getIncludeZones();
-
-    /**
-     * Indicates if only root elements are to be returned.
-     * 
-     * @return
-     */
-    public Boolean getRootOnly();
-
 }

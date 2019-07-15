@@ -25,9 +25,6 @@ public class AreaResponseFormat implements IAreaResponseFormat {
     /** Include zones */
     private Boolean includeZones;
 
-    /** Only return root areas */
-    private Boolean rootOnly;
-
     /*
      * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getIncludeAreaType()
      */
@@ -64,16 +61,4 @@ public class AreaResponseFormat implements IAreaResponseFormat {
     public void setIncludeZones(Boolean includeZones) {
 	this.includeZones = includeZones;
     }
-
-    /*
-     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getRootOnly()
-     */
-    @Override
-    public Boolean getRootOnly() {
-	return rootOnly;
-    }
-
-    public void setRootOnly(Boolean rootOnly) {
-	this.rootOnly = rootOnly;
-    }    
 }

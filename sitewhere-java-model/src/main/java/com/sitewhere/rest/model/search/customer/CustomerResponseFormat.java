@@ -16,26 +16,12 @@ import com.sitewhere.spi.search.customer.ICustomerResponseFormat;
  */
 public class CustomerResponseFormat implements ICustomerResponseFormat {
 
-    /** Only return root customers */
-    private Boolean rootOnly;
-    
     /** Indicates if customer type is to be returned */
     private Boolean includeCustomerType;
-    
-    /*
-     * @see com.sitewhere.spi.search.customer.ICustomerResponseFormat#getRootOnly()
-     */
-    @Override
-    public Boolean getRootOnly() {
-	return rootOnly;
-    }
-
-    public void setRootOnly(Boolean rootOnly) {
-	this.rootOnly = rootOnly;
-    }
 
     /*
-     * @see com.sitewhere.spi.search.customer.ICustomerResponseFormat#getIncludeCustomerType()
+     * @see com.sitewhere.spi.search.customer.ICustomerResponseFormat#
+     * getIncludeCustomerType()
      */
     @Override
     public Boolean getIncludeCustomerType() {
@@ -43,7 +29,7 @@ public class CustomerResponseFormat implements ICustomerResponseFormat {
     }
 
     public void setIncludeCustomerType(Boolean includeCustomerType) {
-        this.includeCustomerType = includeCustomerType;
+	this.includeCustomerType = includeCustomerType;
     }
 
 }

@@ -11,10 +11,15 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Specifies criteria used to find matching areas.
- * 
- * @author Derek
  */
 public interface IAreaSearchCriteria extends ISearchCriteria {
+
+    /**
+     * Indicates if only root elements are to be returned.
+     * 
+     * @return
+     */
+    public Boolean getRootOnly();
 
     /**
      * Only match areas of the given type.
@@ -22,12 +27,11 @@ public interface IAreaSearchCriteria extends ISearchCriteria {
      * @return
      */
     public String getAreaTypeToken();
-    
+
     /**
      * Requires that areas have the given area as a parent.
      * 
      * @return
      */
     public String getParentAreaToken();
-    
 }
