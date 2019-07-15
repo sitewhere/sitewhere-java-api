@@ -22,27 +22,6 @@ public interface IAreaSearchCriteria extends ISearchCriteria {
      * @return
      */
     public String getAreaTypeToken();
-
-    /**
-     * Indicates if included area type are to be returned.
-     * 
-     * @return
-     */
-    public Boolean getIncludeAreaType();
-    
-    /**
-     * Indicates if assignments are to be returned.
-     * 
-     * @return
-     */
-    public Boolean getIncludeAssignments();
-    
-    /**
-     * Indicates if zones are to be returned.
-     * 
-     * @return
-     */
-    public Boolean getIncludeZones();
     
     /**
      * Requires that areas have the given area as a parent.
@@ -51,11 +30,4 @@ public interface IAreaSearchCriteria extends ISearchCriteria {
      */
     public String getParentAreaToken();
     
-    /**
-     * Indicates if only root elements are to be returned.
-     * 
-     * @return
-     */
-    public Boolean getRootOnly();
-
 }

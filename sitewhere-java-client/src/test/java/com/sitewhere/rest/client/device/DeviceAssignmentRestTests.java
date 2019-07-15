@@ -62,7 +62,7 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 
     @Override
     protected String knownEntityToken() {
-	return "e37ece83-c16d-4086-bfed-7fa9bfaadfb9";
+	return "0afa0529-120d-447e-926f-d08bf818e820";
     }
 
     // ------------------------------------------------------------------------

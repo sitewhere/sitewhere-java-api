@@ -7,8 +7,6 @@
  */
 package com.sitewhere.rest.model.search.customer;
 
-import java.util.UUID;
-
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.spi.search.customer.ICustomerSearchCriteria;
 
@@ -19,55 +17,41 @@ import com.sitewhere.spi.search.customer.ICustomerSearchCriteria;
  */
 public class CustomerSearchCriteria extends SearchCriteria implements ICustomerSearchCriteria {
 
-    /** Only return root customers */
-    private Boolean rootOnly;
-
     /** Only return customers with the given parent */
-    private UUID parentCustomerId;
+    private String parentCustomerToken;
 
     /** Only return customers of the given type */
-    private UUID customerTypeId;
+    private String customerTypeToken;
 
     public CustomerSearchCriteria(int pageNumber, int pageSize) {
 	super(pageNumber, pageSize);
     }
 
     /*
-     * @see com.sitewhere.spi.search.customer.ICustomerSearchCriteria#getRootOnly()
-     */
-    @Override
-    public Boolean getRootOnly() {
-	return rootOnly;
-    }
-
-    public void setRootOnly(Boolean rootOnly) {
-	this.rootOnly = rootOnly;
-    }
-
-    /*
      * @see
-     * com.sitewhere.spi.search.customer.ICustomerSearchCriteria#getParentCustomerId
+     * com.sitewhere.spi.search.customer.ICustomerSearchCriteria#getParentCustomerToken
      * ()
      */
     @Override
-    public UUID getParentCustomerId() {
-	return parentCustomerId;
+    public String getParentCustomerToken() {
+	return parentCustomerToken;
     }
 
-    public void setParentCustomerId(UUID parentCustomerId) {
-	this.parentCustomerId = parentCustomerId;
+    public void setParentCustomerToken(String parentCustomerToken) {
+	this.parentCustomerToken = parentCustomerToken;
     }
 
     /*
      * @see
-     * com.sitewhere.spi.search.customer.ICustomerSearchCriteria#getCustomerTypeId()
+     * com.sitewhere.spi.search.customer.ICustomerSearchCriteria#getCustomerTypeToken()
      */
     @Override
-    public UUID getCustomerTypeId() {
-	return customerTypeId;
+    public String getCustomerTypeToken() {
+	return customerTypeToken;
     }
 
-    public void setCustomerTypeId(UUID customerTypeId) {
-	this.customerTypeId = customerTypeId;
+    public void setCustomerTypeToken(String customerTypeToken) {
+	this.customerTypeToken = customerTypeToken;
     }
+
 }

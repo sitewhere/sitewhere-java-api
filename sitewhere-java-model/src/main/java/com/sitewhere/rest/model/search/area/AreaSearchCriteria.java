@@ -20,20 +20,8 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
     /** Only return areas of the given type */
     private String areaTypeToken;
 
-    /** Include Area Type */
-    private Boolean includeAreaType;
-
-    /** Include assignments */
-    private Boolean includeAssignments;
-
-    /** Include zones */
-    private Boolean includeZones;
-
     /** Only return areas with the given parent */
     private String parentAreaToken;
-
-    /** Only return root areas */
-    private Boolean rootOnly;
 
     public AreaSearchCriteria(int pageNumber, int pageSize) {
 	super(pageNumber, pageSize);
@@ -52,43 +40,6 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
     }
 
     /*
-     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getIncludeAreaType()
-     */
-    @Override
-    public Boolean getIncludeAreaType() {
-	return includeAreaType;
-    }
-
-    public void setIncludeAreaType(Boolean includeAreaType) {
-	this.includeAreaType = includeAreaType;
-    }
-
-    /*
-     * @see
-     * com.sitewhere.spi.search.area.IAreaSearchCriteria#getIncludeAssignments()
-     */
-    @Override
-    public Boolean getIncludeAssignments() {
-	return includeAssignments;
-    }
-
-    public void setIncludeAssignments(Boolean includeAssignments) {
-	this.includeAssignments = includeAssignments;
-    }
-
-    /*
-     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getIncludeZones()
-     */
-    @Override
-    public Boolean getIncludeZones() {
-	return includeZones;
-    }
-
-    public void setIncludeZones(Boolean includeZones) {
-	this.includeZones = includeZones;
-    }
-
-    /*
      * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getParentAreaToken()
      */
     @Override
@@ -98,17 +49,5 @@ public class AreaSearchCriteria extends SearchCriteria implements IAreaSearchCri
 
     public void setParentAreaToken(String parentAreaToken) {
 	this.parentAreaToken = parentAreaToken;
-    }
-
-    /*
-     * @see com.sitewhere.spi.search.area.IAreaSearchCriteria#getRootOnly()
-     */
-    @Override
-    public Boolean getRootOnly() {
-	return rootOnly;
-    }
-
-    public void setRootOnly(Boolean rootOnly) {
-	this.rootOnly = rootOnly;
     }
 }

@@ -10,9 +10,8 @@ package com.sitewhere.rest.model.device.marshaling;
 import java.util.List;
 
 import com.sitewhere.rest.model.customer.Customer;
+import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.device.DeviceAssignment;
-import com.sitewhere.spi.customer.ICustomer;
-import com.sitewhere.spi.customer.ICustomerType;
 
 /**
  * Extends {@link Customer} to support fields that can be included on REST
@@ -26,27 +25,27 @@ public class MarshaledCustomer extends Customer {
     private static final long serialVersionUID = -359588909786939167L;
 
     /** Customer type */
-    private ICustomerType customerType;
+    private CustomerType customerType;
 
     /** Parent customer information */
-    private ICustomer parentCustomer;
+    private Customer parentCustomer;
 
     /** List of assignments for area */
     private List<DeviceAssignment> deviceAssignments;
 
-    public ICustomerType getCustomerType() {
+    public CustomerType getCustomerType() {
 	return customerType;
     }
 
-    public void setCustomerType(ICustomerType customerType) {
+    public void setCustomerType(CustomerType customerType) {
 	this.customerType = customerType;
     }
 
-    public ICustomer getParentCustomer() {
+    public Customer getParentCustomer() {
 	return parentCustomer;
     }
 
-    public void setParentCustomer(ICustomer parentCustomer) {
+    public void setParentCustomer(Customer parentCustomer) {
 	this.parentCustomer = parentCustomer;
     }
 

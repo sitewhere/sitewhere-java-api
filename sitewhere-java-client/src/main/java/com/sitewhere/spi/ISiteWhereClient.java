@@ -58,6 +58,7 @@ import com.sitewhere.rest.model.device.event.view.DeviceCommandInvocationSummary
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
+import com.sitewhere.rest.model.device.marshaling.MarshaledCustomer;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentBulkRequest;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
@@ -89,11 +90,14 @@ import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
+import com.sitewhere.rest.model.search.area.AreaResponseFormat;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
 import com.sitewhere.rest.model.search.batch.BatchOperationSearchCriteria;
+import com.sitewhere.rest.model.search.customer.CustomerResponseFormat;
+import com.sitewhere.rest.model.search.customer.CustomerSearchCriteria;
 import com.sitewhere.rest.model.search.customer.CustomerTypeResponseFormat;
 import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
@@ -115,9 +119,6 @@ import com.sitewhere.spi.device.request.IDeviceAssignmentCreateRequest;
  * Interface for SiteWhere client calls.
  * 
  * @author Derek Adams
- */
-/**
- *
  * @author Jorge Villaverde
  *
  */
@@ -211,11 +212,12 @@ public interface ISiteWhereClient {
      * 
      * @param tenant
      * @param searchCriteria
+     * @param responseFormat
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<Area> listAreas(ITenantAuthentication tenant, AreaSearchCriteria searchCriteria)
-	    throws SiteWhereException;
+    public SearchResults<Area> listAreas(ITenantAuthentication tenant, AreaSearchCriteria searchCriteria,
+	    AreaResponseFormat responseFormat) throws SiteWhereException;
 
     /**
      * Get a area by token.
@@ -1064,6 +1066,19 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Customer
     // ------------------------------------------------------------------------
+    
+    /**
+     * List customers matching criteria.
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<Customer> listCustomers(ITenantAuthentication tenant,
+	    CustomerSearchCriteria searchCriteria, CustomerResponseFormat responseFormat)
+	    throws SiteWhereException;	    
 
     /**
      * Get a customer by token.
@@ -1073,7 +1088,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Customer getCustomerByToken(ITenantAuthentication tenant, String customerToken) throws SiteWhereException;
+    public MarshaledCustomer getCustomerByToken(ITenantAuthentication tenant, String customerToken) throws SiteWhereException;
 
     /**
      * Create a new customer.
@@ -1107,6 +1122,18 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public Customer deleteCustomer(ITenantAuthentication tenant, String customerToken) throws SiteWhereException;
+
+    /**
+     * Get label for customer.
+     * 
+     * @param tenant
+     * @param customerTypeToken
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForCustomer(ITenantAuthentication tenant, String customerTypeToken, String generatorId)
+	    throws SiteWhereException;
 
     // ------------------------------------------------------------------------
     // Device Commands

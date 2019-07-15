@@ -7,8 +7,6 @@
  */
 package com.sitewhere.spi.search.customer;
 
-import java.util.UUID;
-
 import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
@@ -19,23 +17,16 @@ import com.sitewhere.spi.search.ISearchCriteria;
 public interface ICustomerSearchCriteria extends ISearchCriteria {
 
     /**
-     * Indicates if only root elements are to be returned.
-     * 
-     * @return
-     */
-    public Boolean getRootOnly();
-
-    /**
      * Requires that customers have the given customer as a parent.
      * 
      * @return
      */
-    public UUID getParentCustomerId();
+    public String getParentCustomerToken();
 
     /**
      * Require that customers have the given customer type.
      * 
      * @return
      */
-    public UUID getCustomerTypeId();
+    public String getCustomerTypeToken();
 }

@@ -51,6 +51,7 @@ import com.sitewhere.rest.model.device.event.view.DeviceCommandInvocationSummary
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
+import com.sitewhere.rest.model.device.marshaling.MarshaledCustomer;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentBulkRequest;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
@@ -541,8 +542,18 @@ public interface SiteWhereRestRetrofit {
     // Customer
     // ------------------------------------------------------------------------
 
+    @GET("customers")
+    Call<SearchResults<Customer>> listCustomers(
+	    @Query("customerTypeToken") String customerTypeToken,
+	    @Query("parentCustomerToken") String parentCustomerToken,	    
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize,
+	    @Query("includeCustomerType") Boolean includeCustomerType,
+	    @Query("rootOnly") Boolean rootOnly,
+	    @HeaderMap Map<String, String> headers);
+    
     @GET("customers/{customerToken}")
-    Call<Customer> getCustomerByToken(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
+    Call<MarshaledCustomer> getCustomerByToken(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
 
     @POST("customers")
     Call<Customer> createCustomer(@Body CustomerCreateRequest request, 
@@ -554,6 +565,11 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("customers/{customerToken}")
     Call<Customer> deleteCustomer(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
+    
+    @GET("customers/{customerToken}/label/{generatorId}")
+    Call<ResponseBody> getLabelForCustomer(@Path("customerToken") String customerToken,
+	    @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Device Commands

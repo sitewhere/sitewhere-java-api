@@ -28,6 +28,7 @@ import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.TreeNode;
+import com.sitewhere.rest.model.search.area.AreaResponseFormat;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
 import com.sitewhere.spi.SiteWhereException;
@@ -112,7 +113,8 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
     @Override
     protected SearchResults<Area> listEntities() throws SiteWhereException {
 	AreaSearchCriteria searchCriteria = new AreaSearchCriteria(0, 10);
-	return getClient().listAreas(getTenatAuthentication(), searchCriteria);
+	AreaResponseFormat responseFormat = new AreaResponseFormat();
+	return getClient().listAreas(getTenatAuthentication(), searchCriteria, responseFormat);
     }
 
     // ------------------------------------------------------------------------

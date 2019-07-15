@@ -63,6 +63,7 @@ import com.sitewhere.rest.model.device.event.view.DeviceCommandInvocationSummary
 import com.sitewhere.rest.model.device.group.DeviceGroup;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
+import com.sitewhere.rest.model.device.marshaling.MarshaledCustomer;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentBulkRequest;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
@@ -94,11 +95,14 @@ import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.ZoneSearchResults;
+import com.sitewhere.rest.model.search.area.AreaResponseFormat;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetSearchCriteria;
 import com.sitewhere.rest.model.search.asset.AssetTypeSearchCriteria;
 import com.sitewhere.rest.model.search.batch.BatchOperationSearchCriteria;
+import com.sitewhere.rest.model.search.customer.CustomerResponseFormat;
+import com.sitewhere.rest.model.search.customer.CustomerSearchCriteria;
 import com.sitewhere.rest.model.search.customer.CustomerTypeResponseFormat;
 import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentForAreaSearchCriteria;
@@ -292,12 +296,12 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#listAreas()
      */
     @Override
-    public SearchResults<Area> listAreas(ITenantAuthentication tenant, AreaSearchCriteria searchCriteria)
+    public SearchResults<Area> listAreas(ITenantAuthentication tenant, AreaSearchCriteria searchCriteria, AreaResponseFormat responseFormat)
 	    throws SiteWhereException {
 	Call<SearchResults<Area>> call = getRestRetrofit().listAreas(searchCriteria.getAreaTypeToken(),
-		searchCriteria.getIncludeAreaType(), searchCriteria.getIncludeAssignments(),
-		searchCriteria.getIncludeZones(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
-		searchCriteria.getParentAreaToken(), searchCriteria.getRootOnly(), createHeadersFor(tenant));
+		responseFormat.getIncludeAreaType(), responseFormat.getIncludeAssignments(),
+		responseFormat.getIncludeZones(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
+		searchCriteria.getParentAreaToken(), responseFormat.getRootOnly(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1295,11 +1299,25 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listCustomers()
+     */
+    @Override
+    public SearchResults<Customer> listCustomers(ITenantAuthentication tenant, CustomerSearchCriteria searchCriteria,
+	    CustomerResponseFormat responseFormat) throws SiteWhereException {
+	Call<SearchResults<Customer>> call = getRestRetrofit().listCustomers(searchCriteria.getCustomerTypeToken(),
+		searchCriteria.getParentCustomerToken(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
+		responseFormat.getIncludeCustomerType(), responseFormat.getRootOnly(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.sitewhere.spi.ISiteWhereClient#getCustomerByToken()
      */
     @Override
-    public Customer getCustomerByToken(ITenantAuthentication tenant, String customerToken) throws SiteWhereException {
-	Call<Customer> call = getRestRetrofit().getCustomerByToken(customerToken, createHeadersFor(tenant));
+    public MarshaledCustomer getCustomerByToken(ITenantAuthentication tenant, String customerToken) throws SiteWhereException {
+	Call<MarshaledCustomer> call = getRestRetrofit().getCustomerByToken(customerToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1336,6 +1354,23 @@ public class SiteWhereClient implements ISiteWhereClient {
     public Customer deleteCustomer(ITenantAuthentication tenant, String customerToken) throws SiteWhereException {
 	Call<Customer> call = getRestRetrofit().deleteCustomer(customerToken, createHeadersFor(tenant));
 	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForCustomer()
+     */
+    @Override
+    public byte[] getLabelForCustomer(ITenantAuthentication tenant, String customerToken, String generatorId)
+	    throws SiteWhereException {
+	Call<ResponseBody> call = getRestRetrofit().getLabelForCustomer(customerToken, generatorId,
+		createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}
     }
 
     // ------------------------------------------------------------------------
