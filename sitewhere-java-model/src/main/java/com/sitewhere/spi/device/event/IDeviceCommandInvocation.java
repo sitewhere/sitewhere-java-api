@@ -8,6 +8,7 @@
 package com.sitewhere.spi.device.event;
 
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Captures information about the invocation of a command.
@@ -45,11 +46,11 @@ public interface IDeviceCommandInvocation extends IDeviceEvent {
     public String getTargetId();
 
     /**
-     * Get the unique token of the command to be executed.
+     * Get unique id of device command being invoked.
      * 
      * @return
      */
-    public String getCommandToken();
+    public UUID getDeviceCommandId();
 
     /**
      * Get the list of parameter names mapped to values.
