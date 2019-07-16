@@ -30,6 +30,7 @@ import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.Device;
+import com.sitewhere.rest.model.device.DeviceElementMapping;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
@@ -43,6 +44,8 @@ import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.command.DeviceCommandNamespace;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.DeviceCommandResponse;
+import com.sitewhere.rest.model.device.event.DeviceEventBatch;
+import com.sitewhere.rest.model.device.event.DeviceEventBatchResponse;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreateRequest;
@@ -55,6 +58,7 @@ import com.sitewhere.rest.model.device.group.DeviceGroupElement;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.marshaling.MarshaledCustomer;
+import com.sitewhere.rest.model.device.marshaling.MarshaledDevice;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentBulkRequest;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
@@ -792,34 +796,97 @@ public interface SiteWhereRestRetrofit {
     Call<DeviceType> deleteDeviceType(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
     @GET("devicetypes/{token}/label/{generatorId}")
-    Call<ResponseBody> getLabelForDeviceType(@Path("token") String token,
-	    @Path("generatorId") String generatorId,
+    Call<ResponseBody> getLabelForDeviceType(@Path("token") String token, @Path("generatorId") String generatorId,
 	    @HeaderMap Map<String, String> headers);
 
     @GET("devicetypes/{token}/proto")
-    Call<ResponseBody> getDeviceTypeGPBSpecification(
-	    @Path("token") String token, @HeaderMap Map<String, String> headers);
-    
+    Call<ResponseBody> getDeviceTypeGPBSpecification(@Path("token") String token,
+	    @HeaderMap Map<String, String> headers);
+
     @GET("devicetypes/{token}/spec.proto")
-    Call<ResponseBody> downlaodDeviceTypeGPBSpecification(
-	    @Path("token") String token, @HeaderMap Map<String, String> headers);
-    
+    Call<ResponseBody> downlaodDeviceTypeGPBSpecification(@Path("token") String token,
+	    @HeaderMap Map<String, String> headers);
+
     // ------------------------------------------------------------------------
     // Devices
     // ------------------------------------------------------------------------
 
+    @GET("devices")
+    Call<SearchResults<Device>> listDevices(@Query("deviceType") String deviceType,
+	    @Query("excludeAssigned") Boolean excludeAssigned, @Query("includeAssignment") Boolean includeAssignment,
+	    @Query("includeDeviceType") Boolean includeDeviceType, @Query("startDate") String startDate,
+	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
+	    @HeaderMap Map<String, String> headers);
+    
     @GET("devices/{deviceToken}")
-    Call<Device> getDeviceByToken(@Path("deviceToken") String deviceToken, @HeaderMap Map<String, String> headers);
+    Call<MarshaledDevice> getDeviceByToken(@Path("deviceToken") String deviceToken, @HeaderMap Map<String, String> headers);
 
     @POST("devices")
-    Call<Device> createDevice(@Body DeviceCreateRequest request, @HeaderMap Map<String, String> headers);
+    Call<MarshaledDevice> createDevice(@Body DeviceCreateRequest request, @HeaderMap Map<String, String> headers);
 
     @PUT("devices/{deviceToken}")
-    Call<Device> updateDevice(@Path("deviceToken") String deviceToken, @Body DeviceCreateRequest request,
+    Call<MarshaledDevice> updateDevice(@Path("deviceToken") String deviceToken, @Body DeviceCreateRequest request,
 	    @HeaderMap Map<String, String> headers);
 
     @DELETE("devices/{deviceToken}")
-    Call<Device> deleteDevice(@Path("deviceToken") String deviceToken, @HeaderMap Map<String, String> headers);
+    Call<MarshaledDevice> deleteDevice(@Path("deviceToken") String deviceToken, @HeaderMap Map<String, String> headers);
+    
+    @GET("devices/{deviceToken}/assignments")
+    Call<SearchResults<MarshaledDeviceAssignment>> listDeviceAssignmentsForDevice(
+	    @Path("deviceToken") String deviceToken,
+	    @Query("includeArea") Boolean includeArea,
+	    @Query("includeAsset") Boolean includeAsset,
+	    @Query("includeCustomer") Boolean includeCustomer,
+	    @Query("includeDevice") Boolean includeDevice,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("devices/{deviceToken}/assignments/active")
+    Call<List<MarshaledDeviceAssignment>> getActiveAssignmentsForDevice(
+	    @Path("deviceToken") String deviceToken,
+	    @Query("includeArea") Boolean includeArea,
+	    @Query("includeAsset") Boolean includeAsset,
+	    @Query("includeCustomer") Boolean includeCustomer,
+	    @Query("includeDevice") Boolean includeDevice,
+	    @Query("page") Integer page, 
+	    @Query("pageSize") Integer pageSize, 
+	    @HeaderMap Map<String, String> headers);
+    
+    @POST("devices/{deviceToken}/batch")
+    Call<DeviceEventBatchResponse> addMultipleEventsForDevice(@Path("deviceToken") String deviceToken,
+	    @Body DeviceEventBatch batch, @HeaderMap Map<String, String> headers);
+    	
+    @GET("devices/{deviceToken}/label/{generatorId}")
+    Call<ResponseBody> getLabelForDevice(@Path("deviceToken") String deviceToken, @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);
+
+    @POST("devices/{deviceToken}/mappings")
+    Call<MarshaledDevice> createDeviceMappings(@Path("deviceToken") String deviceToken,
+	    @Body DeviceElementMapping request, @HeaderMap Map<String, String> headers);
+
+    @DELETE("devices/{deviceToken}/mappings")
+    Call<MarshaledDevice> deleteDeviceMappings(@Path("deviceToken") String deviceToken, 
+	    @Path("path") String path, @HeaderMap Map<String, String> headers);
+
+    //@GET("devices/{hardwareId}/symbol")
+    //Call<ResponseBody> getDeviceHardwareSymbol(@Path("hardwareId") String hardwareId, @HeaderMap Map<String, String> headers);
+    
+    @GET("devices/group/{groupToken}")
+    Call<SearchResults<Device>> listDevicesByDeviceGroup(@Path("groupToken") String groupToken,
+	    @Query("deviceType") String deviceType, @Query("excludeAssigned") Boolean excludeAssigned,
+	    @Query("includeAssignment") Boolean includeAssignment, @Query("includeDeleted") Boolean includeDeleted,
+	    @Query("includeDeviceType") Boolean includeDeviceType, @Query("startDate") String startDate,
+	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
+	    @HeaderMap Map<String, String> headers);
+    
+    @GET("devices/grouprole/{role}")
+    Call<SearchResults<Device>> listDevicesByDeviceGroupWithRole(@Path("role") String role,
+	    @Query("deviceType") String deviceType, @Query("excludeAssigned") Boolean excludeAssigned,
+	    @Query("includeAssignment") Boolean includeAssignment, @Query("includeDeleted") Boolean includeDeleted,
+	    @Query("includeDeviceType") Boolean includeDeviceType, @Query("startDate") String startDate,
+	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
+	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // External Search

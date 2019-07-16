@@ -39,6 +39,7 @@ import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
+import com.sitewhere.rest.model.device.DeviceElementMapping;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
@@ -69,6 +70,7 @@ import com.sitewhere.rest.model.device.group.DeviceGroupElement;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.marshaling.MarshaledCustomer;
+import com.sitewhere.rest.model.device.marshaling.MarshaledDevice;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentBulkRequest;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
@@ -113,10 +115,13 @@ import com.sitewhere.rest.model.search.customer.CustomerTypeResponseFormat;
 import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceByGroupResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceCommandSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceGroupElementResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceGroupElementSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceGroupSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceResponseFormat;
+import com.sitewhere.rest.model.search.device.DeviceSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStateResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceStateSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStatusSearchCriteria;
@@ -1957,12 +1962,28 @@ public class SiteWhereClient implements ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDevices()
+     */
+    @Override
+    public SearchResults<Device> listDevices(ITenantAuthentication tenant, DeviceSearchCriteria searchCriteria,
+	    DeviceResponseFormat responseFormat) throws SiteWhereException {
+	Call<SearchResults<Device>> call = getRestRetrofit().listDevices(searchCriteria.getDeviceTypeToken(),
+		searchCriteria.isExcludeAssigned(), responseFormat.getIncludeAssignment(),
+		responseFormat.getIncludeDeviceType(), toISO8601(searchCriteria.getStartDate()),
+		toISO8601(searchCriteria.getEndDate()), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
      * @see com.sitewhere.spi.ISiteWhereClient#getDeviceByToken(com.sitewhere.spi.
      * ITenantAuthentication, java.lang.String)
      */
     @Override
-    public Device getDeviceByToken(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException {
-	Call<Device> call = getRestRetrofit().getDeviceByToken(deviceToken, createHeadersFor(tenant));
+    public MarshaledDevice getDeviceByToken(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException {
+	Call<MarshaledDevice> call = getRestRetrofit().getDeviceByToken(deviceToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1972,8 +1993,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      * com.sitewhere.rest.model.device.request.DeviceCreateRequest)
      */
     @Override
-    public Device createDevice(ITenantAuthentication tenant, DeviceCreateRequest request) throws SiteWhereException {
-	Call<Device> call = getRestRetrofit().createDevice(request, createHeadersFor(tenant));
+    public MarshaledDevice createDevice(ITenantAuthentication tenant, DeviceCreateRequest request) throws SiteWhereException {
+	Call<MarshaledDevice> call = getRestRetrofit().createDevice(request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1983,9 +2004,9 @@ public class SiteWhereClient implements ISiteWhereClient {
      * com.sitewhere.rest.model.device.request.DeviceCreateRequest)
      */
     @Override
-    public Device updateDevice(ITenantAuthentication tenant, String deviceToken, DeviceCreateRequest request)
+    public MarshaledDevice updateDevice(ITenantAuthentication tenant, String deviceToken, DeviceCreateRequest request)
 	    throws SiteWhereException {
-	Call<Device> call = getRestRetrofit().updateDevice(deviceToken, request, createHeadersFor(tenant));
+	Call<MarshaledDevice> call = getRestRetrofit().updateDevice(deviceToken, request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1995,8 +2016,119 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#deleteDevice()
      */
     @Override
-    public Device deleteDevice(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException {
-	Call<Device> call = getRestRetrofit().deleteDevice(deviceToken, createHeadersFor(tenant));
+    public MarshaledDevice deleteDevice(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException {
+	Call<MarshaledDevice> call = getRestRetrofit().deleteDevice(deviceToken, createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#addMultipleEventsForDevice()
+     */
+    @Override
+    public DeviceEventBatchResponse addMultipleEventsForDevice(ITenantAuthentication tenant, String deviceToken,
+	    DeviceEventBatch batch) throws SiteWhereException {
+	Call<DeviceEventBatchResponse> call = getRestRetrofit().addMultipleEventsForDevice(deviceToken, batch,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceAssignmentsForDevice()
+     */
+    @Override
+    public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForDevice(ITenantAuthentication tenant,
+	    String deviceToken, DeviceAssignmentSearchCriteria searchCriteria,
+	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException {
+	Call<SearchResults<MarshaledDeviceAssignment>> call = getRestRetrofit().listDeviceAssignmentsForDevice(
+		deviceToken, 
+		responseFormat.getIncludeArea(),
+		responseFormat.getIncludeAsset(),
+		responseFormat.getIncludeCustomer(),
+		responseFormat.getIncludeDevice(),
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);	
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForDevice()
+     */
+    @Override
+    public byte[] getLabelForDevice(ITenantAuthentication tenant, String deviceToken, String generatorId)
+	    throws SiteWhereException {
+	Call<ResponseBody> call = getRestRetrofit().getLabelForDevice(deviceToken, generatorId,
+		createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}	
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#createDeviceMappings()
+     */
+    @Override
+    public MarshaledDevice createDeviceMappings(ITenantAuthentication tenant, String deviceToken,
+	    DeviceElementMapping request) throws SiteWhereException {
+	Call<MarshaledDevice> call = getRestRetrofit().createDeviceMappings(deviceToken, request,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#deleteDeviceMappings()
+     */
+    @Override
+    public MarshaledDevice deleteDeviceMappings(ITenantAuthentication tenant, String deviceToken,
+	    String path) throws SiteWhereException {
+	Call<MarshaledDevice> call = getRestRetrofit().deleteDeviceMappings(deviceToken, path,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDevicesByDeviceGroup()
+     */
+    @Override
+    public SearchResults<Device> listDevicesByDeviceGroup(ITenantAuthentication tenant, String groupToken,
+	    DeviceSearchCriteria searchCriteria, DeviceByGroupResponseFormat responseFormat) throws SiteWhereException {
+	Call<SearchResults<Device>> call = getRestRetrofit().listDevicesByDeviceGroup(groupToken,
+		searchCriteria.getDeviceTypeToken(), searchCriteria.isExcludeAssigned(),
+		responseFormat.getIncludeAssignment(), responseFormat.getIncludeDeleted(),
+		responseFormat.getIncludeDeviceType(), toISO8601(searchCriteria.getStartDate()),
+		toISO8601(searchCriteria.getEndDate()), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDevicesByDeviceGroupWithRole()
+     */
+    @Override
+    public SearchResults<Device> listDevicesByDeviceGroupWithRole(ITenantAuthentication tenant, String role,
+	    DeviceSearchCriteria searchCriteria, DeviceByGroupResponseFormat responseFormat) throws SiteWhereException {
+	Call<SearchResults<Device>> call = getRestRetrofit().listDevicesByDeviceGroupWithRole(role,
+		searchCriteria.getDeviceTypeToken(), searchCriteria.isExcludeAssigned(),
+		responseFormat.getIncludeAssignment(), responseFormat.getIncludeDeleted(),
+		responseFormat.getIncludeDeviceType(), toISO8601(searchCriteria.getStartDate()),
+		toISO8601(searchCriteria.getEndDate()), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
 	return processRestCall(call);
     }
 

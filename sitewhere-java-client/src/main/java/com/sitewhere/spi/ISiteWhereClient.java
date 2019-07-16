@@ -33,6 +33,7 @@ import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceAssignment;
+import com.sitewhere.rest.model.device.DeviceElementMapping;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset;
@@ -63,6 +64,7 @@ import com.sitewhere.rest.model.device.group.DeviceGroupElement;
 import com.sitewhere.rest.model.device.marshaling.MarshaledArea;
 import com.sitewhere.rest.model.device.marshaling.MarshaledAreaType;
 import com.sitewhere.rest.model.device.marshaling.MarshaledCustomer;
+import com.sitewhere.rest.model.device.marshaling.MarshaledDevice;
 import com.sitewhere.rest.model.device.marshaling.MarshaledDeviceAssignment;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentBulkRequest;
 import com.sitewhere.rest.model.device.request.DeviceAssignmentCreateRequest;
@@ -107,10 +109,13 @@ import com.sitewhere.rest.model.search.customer.CustomerTypeResponseFormat;
 import com.sitewhere.rest.model.search.customer.CustomerTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceAssignmentSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceByGroupResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceCommandSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceGroupElementResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceGroupElementSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceGroupSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceResponseFormat;
+import com.sitewhere.rest.model.search.device.DeviceSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStateResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceStateSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStatusSearchCriteria;
@@ -1634,6 +1639,18 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
+     * List devices that match criteria..
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<Device> listDevices(ITenantAuthentication tenant, DeviceSearchCriteria searchCriteria,
+	    DeviceResponseFormat responseFormat) throws SiteWhereException;
+
+    /**
      * Get a device by token.
      * 
      * @param tenant
@@ -1641,7 +1658,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Device getDeviceByToken(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException;
+    public MarshaledDevice getDeviceByToken(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException;
 
     /**
      * Create a new device.
@@ -1651,7 +1668,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Device createDevice(ITenantAuthentication tenant, DeviceCreateRequest request) throws SiteWhereException;
+    public MarshaledDevice createDevice(ITenantAuthentication tenant, DeviceCreateRequest request) throws SiteWhereException;
 
     /**
      * Update an existing device.
@@ -1662,7 +1679,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Device updateDevice(ITenantAuthentication tenant, String deviceToken, DeviceCreateRequest request)
+    public MarshaledDevice updateDevice(ITenantAuthentication tenant, String deviceToken, DeviceCreateRequest request)
 	    throws SiteWhereException;
 
     /**
@@ -1673,7 +1690,95 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Device deleteDevice(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException;
+    public MarshaledDevice deleteDevice(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException;
+    
+    /**
+     * List assignment history for device.
+     * 
+     * @param tenant
+     * @param deviceToken
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForDevice(ITenantAuthentication tenant,
+	    String deviceToken, DeviceAssignmentSearchCriteria searchCriteria,
+	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException;
+    
+    /**
+     * Add multiple events for device.
+     *  
+     * @param tenant
+     * @param deviceToken
+     * @param batch
+     * @return
+     * @throws SiteWhereException
+     */
+    public DeviceEventBatchResponse addMultipleEventsForDevice(ITenantAuthentication tenant,
+	    String deviceToken, DeviceEventBatch batch) throws SiteWhereException;
+    
+    /**
+     * Get label for device.
+     * 
+     * @param tenant
+     * @param deviceToken
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForDevice(ITenantAuthentication tenant, String deviceToken, String generatorId)
+	    throws SiteWhereException;   
+    
+    /**
+     * Create new device element mapping.
+     * 
+     * @param tenant
+     * @param deviceToken
+     * @param request
+     * @return
+     * @throws SiteWhereException
+     */
+    public MarshaledDevice createDeviceMappings(ITenantAuthentication tenant, String deviceToken,
+	    DeviceElementMapping request) throws SiteWhereException;
+    
+    /**
+     * Delete existing device element mapping.
+     * 
+     * @param tenant
+     * @param deviceToken
+     * @param path
+     * @return
+     * @throws SiteWhereException
+     */
+    public MarshaledDevice deleteDeviceMappings(ITenantAuthentication tenant, String deviceToken,
+	    String path) throws SiteWhereException;
+    
+    /**
+     * List devices in device group.
+     * 
+     * @param tenant
+     * @param groupToken
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<Device> listDevicesByDeviceGroup(ITenantAuthentication tenant, String groupToken,
+	    DeviceSearchCriteria searchCriteria, DeviceByGroupResponseFormat responseFormat) throws SiteWhereException;
+
+    /**
+     * List devices in device group with role.
+     * 
+     * @param tenant
+     * @param role
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<Device> listDevicesByDeviceGroupWithRole(ITenantAuthentication tenant, String role,
+	    DeviceSearchCriteria searchCriteria, DeviceByGroupResponseFormat responseFormat) throws SiteWhereException;
 
     // ------------------------------------------------------------------------
     // External Search
