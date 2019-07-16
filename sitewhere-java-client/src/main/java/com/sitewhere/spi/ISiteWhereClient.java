@@ -112,6 +112,7 @@ import com.sitewhere.rest.model.search.device.DeviceGroupElementSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceGroupSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStateResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceStateSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceStatusSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -1476,6 +1477,18 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Device Statuses
     // ------------------------------------------------------------------------
+
+    /**
+     * List device statuses that match criteria..
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceStatus> listDeviceStatuses(ITenantAuthentication tenant,
+	    DeviceStatusSearchCriteria searchCriteria) throws SiteWhereException;
 
     /**
      * Get a device status by token.

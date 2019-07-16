@@ -751,6 +751,11 @@ public interface SiteWhereRestRetrofit {
     // Device Statuses
     // ------------------------------------------------------------------------
     
+    @GET("statuses")
+    Call<SearchResults<DeviceStatus>> listDeviceStatuses(@Query("code") String code,
+	    @Query("deviceTypeToken") String deviceTypeToken, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("statuses/{token}")
     Call<DeviceStatus> getDeviceStatusByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 

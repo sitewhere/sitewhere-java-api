@@ -117,6 +117,7 @@ import com.sitewhere.rest.model.search.device.DeviceGroupElementSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceGroupSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStateResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceStateSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceStatusSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -1766,6 +1767,20 @@ public class SiteWhereClient implements ISiteWhereClient {
     // Device Statuses
     // ------------------------------------------------------------------------
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceStatuses()
+     */
+    @Override
+    public SearchResults<DeviceStatus> listDeviceStatuses(ITenantAuthentication tenant,
+	    DeviceStatusSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceStatus>> call = getRestRetrofit().listDeviceStatuses(searchCriteria.getCode(),
+		searchCriteria.getDeviceTypeToken(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     /*
      * (non-Javadoc)
      * 

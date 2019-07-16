@@ -7,8 +7,6 @@
  */
 package com.sitewhere.spi.search.device;
 
-import java.util.UUID;
-
 import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
@@ -19,11 +17,11 @@ import com.sitewhere.spi.search.ISearchCriteria;
 public interface IDeviceStatusSearchCriteria extends ISearchCriteria {
 
     /**
-     * Limit results by device type id.
+     * Limit results by device type token.
      * 
      * @return
      */
-    public UUID getDeviceTypeId();
+    public String getDeviceTypeToken();
 
     /**
      * Limit results by code.
