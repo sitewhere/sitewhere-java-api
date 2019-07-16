@@ -773,7 +773,11 @@ public interface SiteWhereRestRetrofit {
     // ------------------------------------------------------------------------
     // Device Types 
     // ------------------------------------------------------------------------
-    
+
+    @GET("devicetypes")
+    Call<SearchResults<DeviceType>> listDeviceTypes(@Query("includeAsset") Boolean includeAsset,
+	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("devicetypes/{token}")
     Call<DeviceType> getDeviceTypeByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
@@ -787,6 +791,19 @@ public interface SiteWhereRestRetrofit {
     @DELETE("devicetypes/{token}")
     Call<DeviceType> deleteDeviceType(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
+    @GET("devicetypes/{token}/label/{generatorId}")
+    Call<ResponseBody> getLabelForDeviceType(@Path("token") String token,
+	    @Path("generatorId") String generatorId,
+	    @HeaderMap Map<String, String> headers);
+
+    @GET("devicetypes/{token}/proto")
+    Call<ResponseBody> getDeviceTypeGPBSpecification(
+	    @Path("token") String token, @HeaderMap Map<String, String> headers);
+    
+    @GET("devicetypes/{token}/spec.proto")
+    Call<ResponseBody> downlaodDeviceTypeGPBSpecification(
+	    @Path("token") String token, @HeaderMap Map<String, String> headers);
+    
     // ------------------------------------------------------------------------
     // Devices
     // ------------------------------------------------------------------------

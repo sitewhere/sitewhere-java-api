@@ -7,6 +7,7 @@
  */
 package com.sitewhere.spi;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -113,6 +114,8 @@ import com.sitewhere.rest.model.search.device.DeviceGroupSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStateResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceStateSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStatusSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceTypeResponseFormat;
+import com.sitewhere.rest.model.search.device.DeviceTypeSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -1538,6 +1541,18 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
+     * List device types that match criteria..
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<DeviceType> listDeviceTypes(ITenantAuthentication tenant,
+	    DeviceTypeSearchCriteria searchCriteria, DeviceTypeResponseFormat responseFormat) throws SiteWhereException;
+
+    /**
      * Get a device type by token.
      * 
      * @param tenant
@@ -1580,6 +1595,40 @@ public interface ISiteWhereClient {
      */
     public DeviceType deleteDeviceType(ITenantAuthentication tenant, String token) throws SiteWhereException;
 
+    /**
+     * Get label for device type.
+     * 
+     * @param tenant
+     * @param token
+     * @param generatorId
+     * @return
+     * @throws SiteWhereException
+     */
+    public byte[] getLabelForDeviceType(ITenantAuthentication tenant, String token, String generatorId)
+	    throws SiteWhereException;        
+
+    /**
+     * Get device type specification GPB by unique token.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public String getDeviceTypeGPBSpecification(ITenantAuthentication tenant, String token)
+	    throws SiteWhereException;
+    
+    /**
+     * Download device type specification GPB by unique token.
+     * 
+     * @param tenant
+     * @param token
+     * @return
+     * @throws SiteWhereException
+     */
+    public File downlaodDeviceTypeGPBSpecification(ITenantAuthentication tenant, String token)
+	    throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Devices
     // ------------------------------------------------------------------------

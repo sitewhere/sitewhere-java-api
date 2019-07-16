@@ -103,6 +103,7 @@ public class DeviceTypeCreateRequest extends BrandedEntityCreateRequest implemen
 	    request.setToken(token);
 	    request.setName(name);
 	    request.setContainerPolicy(DeviceContainerPolicy.Standalone);
+	    request.setImageUrl("https://s3.amazonaws.com/sitewhere-demo/broken-link.png");
 	}
 
 	public Builder withDescription(String description) {

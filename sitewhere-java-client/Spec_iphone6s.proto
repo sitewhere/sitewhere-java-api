@@ -1,0 +1,22 @@
+option optimize_for = LITE_RUNTIME;
+
+// Google Protocol Buffer for 'Apple iPhone 6S'.
+// Generated on 2019.07.16 12:34:26 GMT
+message Spec_iphone6s {
+
+	enum Command {PING = 1; TESTEVENTS = 2; }
+
+	message _Header {
+		required Command command = 1;
+		optional string originator = 2;
+		optional string nestedPath = 3;
+		optional string nestedSpec = 4;
+	}
+
+	message ping {
+	}
+
+	message testEvents {
+	}
+
+}

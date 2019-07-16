@@ -7,7 +7,9 @@
  */
 package com.sitewhere.rest.client;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -118,6 +120,8 @@ import com.sitewhere.rest.model.search.device.DeviceGroupSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStateResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceStateSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStatusSearchCriteria;
+import com.sitewhere.rest.model.search.device.DeviceTypeResponseFormat;
+import com.sitewhere.rest.model.search.device.DeviceTypeSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -178,6 +182,9 @@ public class SiteWhereClient implements ISiteWhereClient {
     /** Default connection timeout in milliseconds */
     public static final int DEFAULT_CONNECT_TIMEOUT = 3 * 1000;
 
+    /** HTTP Content-Disposition Header */
+    private static final String CONTENT_DISPOSITION_HEADER = "content-disposition";
+    
     /** Protocol used */
     private String protocol = DEFAULT_PROTOCOL;
 
@@ -1832,6 +1839,18 @@ public class SiteWhereClient implements ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /*
+     * @see com.sitewhere.spi.ISiteWhereClient#listDeviceTypes()
+     */
+    @Override
+    public SearchResults<DeviceType> listDeviceTypes(ITenantAuthentication tenant,
+	    DeviceTypeSearchCriteria searchCriteria, DeviceTypeResponseFormat responseFormat)
+	    throws SiteWhereException {
+	Call<SearchResults<DeviceType>> call = getRestRetrofit().listDeviceTypes(responseFormat.getIncludeAsset(),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
+    /*
      * @see
      * com.sitewhere.spi.ISiteWhereClient#getDeviceTypeByToken(com.sitewhere.spi.
      * ITenantAuthentication, java.lang.String)
@@ -1877,6 +1896,62 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getLabelForDeviceType()
+     */
+    @Override
+    public byte[] getLabelForDeviceType(ITenantAuthentication tenant, String token, String generatorId)
+	    throws SiteWhereException {
+	Call<ResponseBody> call = getRestRetrofit().getLabelForDeviceType(token, generatorId,
+		createHeadersFor(tenant));
+	try {
+	    return processRestCall(call).bytes();
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}	
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#getDeviceTypeGPBSpecification()
+     */
+    @Override
+    public String getDeviceTypeGPBSpecification(ITenantAuthentication tenant, String token)
+	    throws SiteWhereException {	
+	Call<ResponseBody> call = getRestRetrofit().getDeviceTypeGPBSpecification(token, createHeadersFor(tenant));
+	try {
+	    return new String(processRestCall(call).bytes());
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}	
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#downlaodDeviceTypeGPBSpecification()
+     */
+    @Override
+    public File downlaodDeviceTypeGPBSpecification(ITenantAuthentication tenant, String token)
+	    throws SiteWhereException {
+	Call<ResponseBody> call = getRestRetrofit().downlaodDeviceTypeGPBSpecification(token, createHeadersFor(tenant));
+	try {
+	    Response<ResponseBody> response = call.execute();
+	    if (response.isSuccessful()) {
+		String fileName = extractFileName(response.headers().get(CONTENT_DISPOSITION_HEADER));
+		
+		return Files.write(new File(fileName).toPath(), response.body().bytes()).toFile();
+	    } else {
+		throw new SiteWhereException(response.toString());
+	    }
+	} catch (IOException e) {
+	    throw new SiteWhereException(e);
+	}	
+    }
+    
     // ------------------------------------------------------------------------
     // Devices
     // ------------------------------------------------------------------------
@@ -2709,6 +2784,16 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return builder.toString();
     }
     
+    private static String extractFileName(String content) {
+	if(content == null || content.isEmpty())
+	    return "file.name";
+	int index = content.indexOf("filename=");
+	if (index == -1)
+	    return "file.name";
+	String filename = content.substring(index + 9);
+	return filename;
+    }
+
     public AuthenticationRetrofit getAuthRetrofit() {
 	return authRetrofit;
     }
