@@ -958,6 +958,9 @@ public interface SiteWhereRestRetrofit {
     // Users
     // ------------------------------------------------------------------------
     
+    @GET("users")
+    Call<SearchResults<User>> listUsers(@HeaderMap Map<String, String> headers);
+    
     @GET("users/{username}")
     Call<User> getUserByUsername(@Path("username") String username, @HeaderMap Map<String, String> headers);
 
@@ -970,6 +973,10 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("users/{username}")
     Call<User> deleteUser(@Path("username") String username, @HeaderMap Map<String, String> headers); 
+    
+    @GET("users/{username}/authorities")
+    Call<SearchResults<GrantedAuthority>> listUserAuthorities(@Path("username") String username,
+	    @HeaderMap Map<String, String> headers);
     
     // ------------------------------------------------------------------------
     // Zones

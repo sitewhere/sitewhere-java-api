@@ -43,19 +43,19 @@ public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR
 	
 	assertNotNull("Entity is null", entity);
 
-	T foundEntity = findEntityByToken(token);
+	T foundEntity = findEntityByToken(getToken());
 	
 	assertEquals("Entity are not equals", 
 		this.entity.getToken(), 
 		foundEntity.getToken());
 	
-	CR updateRequest = buildUpdateRequest(token);
+	CR updateRequest = buildUpdateRequest(getToken());
 	
-	T updatedEntity = updateEntity(token, updateRequest);
+	T updatedEntity = updateEntity(getToken(), updateRequest);
 	
 	assertNotNull("Updated entity is null", updatedEntity);
 	
-	T deleteEntity = deleteEntity(token);
+	T deleteEntity = deleteEntity(getToken());
 
 	assertNotNull("Deleted entity is null", deleteEntity);
     }
@@ -65,6 +65,10 @@ public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR
 	SearchResults<? extends T> results = listEntities();
 	assertNotNull(results);
 	assertNotEquals(0, results.getNumResults());
+    }
+    
+    protected String getToken() {
+	return this.token;
     }
         
     // Abstract Methods -------------------------------------------------------

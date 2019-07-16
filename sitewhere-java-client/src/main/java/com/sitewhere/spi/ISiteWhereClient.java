@@ -1943,6 +1943,15 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Users
     // ------------------------------------------------------------------------
+    
+    /**
+     * List users matching criteria. 
+     * 
+     * @param tenant
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<User> listUsers(ITenantAuthentication tenant) throws SiteWhereException;
 
     /**
      * Get a user by username.
@@ -1985,7 +1994,18 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public User deleteUser(ITenantAuthentication tenant, String username) throws SiteWhereException;
-
+    
+    /**
+     * Get authorities for user.
+     * 
+     * @param tenant
+     * @param username
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<GrantedAuthority> listUserAuthorities(ITenantAuthentication tenant, String username)
+	    throws SiteWhereException;
+    
     // ------------------------------------------------------------------------
     // Zones
     // ------------------------------------------------------------------------

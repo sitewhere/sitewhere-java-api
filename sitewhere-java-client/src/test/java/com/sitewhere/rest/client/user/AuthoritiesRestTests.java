@@ -25,7 +25,7 @@ import com.sitewhere.spi.SiteWhereException;
  * Authorities API tests.
  * @author Jorge Villaverde
  */
-public class AuthoritiesRestTest extends AbstractRestTest {
+public class AuthoritiesRestTests extends AbstractRestTest {
 
     @Test
     public void testListAutorities() throws SiteWhereException {

@@ -2305,6 +2305,15 @@ public class SiteWhereClient implements ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Users
     // ------------------------------------------------------------------------
+    
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#listUsers()
+     */
+    @Override
+    public SearchResults<User> listUsers(ITenantAuthentication tenant) throws SiteWhereException {
+	Call<SearchResults<User>> call = getRestRetrofit().listUsers(createHeadersFor(tenant));
+	return processRestCall(call);	
+    }
 
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#getUserByUsername(com.sitewhere.spi.
@@ -2350,6 +2359,19 @@ public class SiteWhereClient implements ISiteWhereClient {
 	return processRestCall(call);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.ISiteWhereClient#listUserAuthorities()
+     */
+    @Override
+    public SearchResults<GrantedAuthority> listUserAuthorities(ITenantAuthentication tenant, String username)
+	    throws SiteWhereException {
+	Call<SearchResults<GrantedAuthority>> call = getRestRetrofit().listUserAuthorities(username,
+		createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+	    
     // ------------------------------------------------------------------------
     // Zones
     // ------------------------------------------------------------------------
