@@ -7,8 +7,6 @@
  */
 package com.sitewhere.rest.model.search.device;
 
-import java.util.UUID;
-
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.spi.search.device.IZoneSearchCriteria;
 
@@ -20,7 +18,7 @@ import com.sitewhere.spi.search.device.IZoneSearchCriteria;
 public class ZoneSearchCriteria extends SearchCriteria implements IZoneSearchCriteria {
 
     /** Id for area zone belongs to */
-    private UUID areaId;
+    private String areaToken;
 
     public ZoneSearchCriteria(int pageNumber, int pageSize) {
 	super(pageNumber, pageSize);
@@ -30,11 +28,11 @@ public class ZoneSearchCriteria extends SearchCriteria implements IZoneSearchCri
      * @see com.sitewhere.spi.search.device.IZoneSearchCriteria#getAreaId()
      */
     @Override
-    public UUID getAreaId() {
-	return areaId;
+    public String getAreaToken() {
+	return areaToken;
     }
 
-    public void setAreaId(UUID areaId) {
-	this.areaId = areaId;
+    public void setAreaId(String areaToken) {
+	this.areaToken = areaToken;
     }
 }

@@ -974,6 +974,10 @@ public interface SiteWhereRestRetrofit {
     // ------------------------------------------------------------------------
     // Zones
     // ------------------------------------------------------------------------
+
+    @GET("zones")
+    Call<SearchResults<Zone>> listZones(@Query("areaToken") String areaToken, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
     
     @GET("zones/{zoneToken}")
     Call<Zone> getZoneByToken(@Path("zoneToken") String zoneToken, @HeaderMap Map<String, String> headers);

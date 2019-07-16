@@ -127,6 +127,7 @@ import com.sitewhere.rest.model.search.device.DeviceStateSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceStatusSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceTypeResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceTypeSearchCriteria;
+import com.sitewhere.rest.model.search.device.ZoneSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -2353,6 +2354,19 @@ public class SiteWhereClient implements ISiteWhereClient {
     // Zones
     // ------------------------------------------------------------------------
 
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#listZones()
+     */
+    @Override
+    public SearchResults<Zone> listZones(ITenantAuthentication tenant, ZoneSearchCriteria searchCriteria)
+	    throws SiteWhereException {
+	Call<SearchResults<Zone>> call = getRestRetrofit().listZones(
+		searchCriteria.getAreaToken(), 
+		searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);	
+    }
+    
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#getZoneByToken(com.sitewhere.spi.
      * ITenantAuthentication, java.lang.String)
