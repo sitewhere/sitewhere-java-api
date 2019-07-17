@@ -7,11 +7,13 @@
  */
 package com.sitewhere.spi.search.scheduling;
 
+import com.sitewhere.spi.search.ISearchCriteria;
+
 /**
- * Determines which content is returned for schedule responses.
+ * Search criteria for Scheduled Job.
  * 
  * @author Jorge Villaverde
  */
-public interface IScheduleResponseFormat {
+public interface IScheduledJobSearchCriteria extends ISearchCriteria {
 
 }

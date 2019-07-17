@@ -900,6 +900,10 @@ public interface SiteWhereRestRetrofit {
     // Scheduled Jobs
     // ------------------------------------------------------------------------
 
+    @GET("jobs")
+    Call<SearchResults<ScheduledJob>> listScheduledJobs(@Query("includeContext") Boolean includeContext,
+	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("jobs/{token}")
     Call<ScheduledJob> getScheduledJobByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 

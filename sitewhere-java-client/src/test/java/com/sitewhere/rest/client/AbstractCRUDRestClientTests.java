@@ -8,8 +8,8 @@
 package com.sitewhere.rest.client;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.UUID;
 
@@ -64,7 +64,7 @@ public abstract class AbstractCRUDRestClientTests<T extends PersistentEntity, CR
     public void testList() throws SiteWhereException {
 	SearchResults<? extends T> results = listEntities();
 	assertNotNull(results);
-	assertNotEquals(0, results.getNumResults());
+	assertTrue(results.getNumResults() >= 0);
     }
     
     protected String getToken() {
