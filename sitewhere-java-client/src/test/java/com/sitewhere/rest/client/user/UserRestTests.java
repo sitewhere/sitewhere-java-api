@@ -62,7 +62,7 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
 
     @Override
     protected User createEntity(UserCreateRequest createRequest) throws SiteWhereException {
-	return getClient().createUser(getTenatAuthentication(), createRequest);
+	return getClient().createUser(createRequest);
     }
 
     // ------------------------------------------------------------------------
@@ -71,7 +71,7 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
 
     @Override
     protected User findEntityByToken(String token) throws SiteWhereException {
-	return getClient().getUserByUsername(getTenatAuthentication(), "johndoe");
+	return getClient().getUserByUsername("johndoe");
     }
 
     // ------------------------------------------------------------------------
@@ -95,7 +95,7 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
 
     @Override
     protected User updateEntity(String token, UserCreateRequest updateRequest) throws SiteWhereException {
-	return getClient().updateUser(getTenatAuthentication(), token, updateRequest);
+	return getClient().updateUser(token, updateRequest);
     }
 
     // ------------------------------------------------------------------------
@@ -104,7 +104,7 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
 
     @Override
     protected User deleteEntity(String token) throws SiteWhereException {
-	return getClient().deleteUser(getTenatAuthentication(), token);
+	return getClient().deleteUser(token);
     }
 
     // ------------------------------------------------------------------------
@@ -113,12 +113,12 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
     
     @Override
     protected SearchResults<User> listEntities() throws SiteWhereException {
-	return getClient().listUsers(getTenatAuthentication());
+	return getClient().listUsers();
     }
     
     @Test
     public void testListUserAuthorities() throws SiteWhereException {
-	SearchResults<GrantedAuthority> auths = getClient().listUserAuthorities(getTenatAuthentication(), knownEntityToken());
+	SearchResults<GrantedAuthority> auths = getClient().listUserAuthorities(knownEntityToken());
 	assertNotNull(auths);
     }
 

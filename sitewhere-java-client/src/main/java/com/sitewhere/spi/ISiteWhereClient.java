@@ -122,6 +122,7 @@ import com.sitewhere.rest.model.search.device.DeviceStatusSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceTypeResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.ZoneSearchCriteria;
+import com.sitewhere.rest.model.search.tenant.TenantSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
@@ -1900,6 +1901,16 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
 
     /**
+     * List tenants that match criteria.
+     * 
+     * @param tenant
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<Tenant> listTenants(TenantSearchCriteria searchCriteria)
+	    throws SiteWhereException;
+    
+    /**
      * Get a tenant by token.
      * 
      * @param tenant
@@ -1951,7 +1962,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<User> listUsers(ITenantAuthentication tenant) throws SiteWhereException;
+    public SearchResults<User> listUsers() throws SiteWhereException;
 
     /**
      * Get a user by username.
@@ -1961,7 +1972,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public User getUserByUsername(ITenantAuthentication tenant, String username) throws SiteWhereException;
+    public User getUserByUsername(String username) throws SiteWhereException;
 
     /**
      * Create a new user.
@@ -1971,7 +1982,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public User createUser(ITenantAuthentication tenant, UserCreateRequest request) throws SiteWhereException;
+    public User createUser(UserCreateRequest request) throws SiteWhereException;
 
     /**
      * Update an existing user.
@@ -1982,7 +1993,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public User updateUser(ITenantAuthentication tenant, String username, UserCreateRequest request)
+    public User updateUser(String username, UserCreateRequest request)
 	    throws SiteWhereException;
 
     /**
@@ -1993,7 +2004,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public User deleteUser(ITenantAuthentication tenant, String username) throws SiteWhereException;
+    public User deleteUser(String username) throws SiteWhereException;
     
     /**
      * Get authorities for user.
@@ -2003,7 +2014,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<GrantedAuthority> listUserAuthorities(ITenantAuthentication tenant, String username)
+    public SearchResults<GrantedAuthority> listUserAuthorities(String username)
 	    throws SiteWhereException;
     
     // ------------------------------------------------------------------------

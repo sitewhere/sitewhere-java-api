@@ -941,6 +941,11 @@ public interface SiteWhereRestRetrofit {
     // Tenants
     // ------------------------------------------------------------------------
 
+    @GET("tenants")
+    Call<SearchResults<Tenant>> listTenants(@Query("authUserId") String authUserId,
+	    @Query("textSearch") String textSearch, @Query("includeRuntimeInfo") Boolean includeRuntimeInfo,
+	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+   
     @GET("tenants/{tenantToken}")
     Call<Tenant> getTenantByToken(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);
 
