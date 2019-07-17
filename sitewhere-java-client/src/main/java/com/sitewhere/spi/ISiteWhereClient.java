@@ -122,6 +122,8 @@ import com.sitewhere.rest.model.search.device.DeviceStatusSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceTypeResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.ZoneSearchCriteria;
+import com.sitewhere.rest.model.search.scheduling.ScheduleResponseFormat;
+import com.sitewhere.rest.model.search.scheduling.ScheduleSearchCriteria;
 import com.sitewhere.rest.model.search.tenant.TenantSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
@@ -1840,6 +1842,18 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Schedules
     // ------------------------------------------------------------------------
+
+    /**
+     * List schedules matching criteria.
+     * 
+     * @param tenant
+     * @param searchCriteria
+     * @param responseFormat
+     * @return
+     * @throws SiteWhereException
+     */
+    public SearchResults<Schedule> listSchedules(ITenantAuthentication tenant,
+	    ScheduleSearchCriteria searchCriteria, ScheduleResponseFormat responseFormat) throws SiteWhereException;
 
     /**
      * Get a schedule by token.

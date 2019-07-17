@@ -917,6 +917,10 @@ public interface SiteWhereRestRetrofit {
     // Schedules
     // ------------------------------------------------------------------------
     
+    @GET("schedules")
+    Call<SearchResults<Schedule>> listSchedules(@Query("page") Integer page, @Query("pageSize") Integer pageSize,
+	    @HeaderMap Map<String, String> headers);
+    
     @GET("schedules/{token}")
     Call<Schedule> getScheduleByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 

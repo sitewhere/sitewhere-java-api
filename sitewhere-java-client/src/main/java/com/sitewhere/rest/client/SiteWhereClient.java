@@ -128,6 +128,8 @@ import com.sitewhere.rest.model.search.device.DeviceStatusSearchCriteria;
 import com.sitewhere.rest.model.search.device.DeviceTypeResponseFormat;
 import com.sitewhere.rest.model.search.device.DeviceTypeSearchCriteria;
 import com.sitewhere.rest.model.search.device.ZoneSearchCriteria;
+import com.sitewhere.rest.model.search.scheduling.ScheduleResponseFormat;
+import com.sitewhere.rest.model.search.scheduling.ScheduleSearchCriteria;
 import com.sitewhere.rest.model.search.tenant.TenantSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
@@ -2195,7 +2197,19 @@ public class SiteWhereClient implements ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Schedules
     // ------------------------------------------------------------------------
-
+    
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#getScheduleByToken(com.sitewhere.spi.
+     * ITenantAuthentication, java.lang.String)
+     */
+    @Override
+    public SearchResults<Schedule> listSchedules(ITenantAuthentication tenant, ScheduleSearchCriteria searchCriteria,
+	    ScheduleResponseFormat responseFormat) throws SiteWhereException {
+	Call<SearchResults<Schedule>> call = getRestRetrofit().listSchedules(searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
+    }
+    
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#getScheduleByToken(com.sitewhere.spi.
      * ITenantAuthentication, java.lang.String)
