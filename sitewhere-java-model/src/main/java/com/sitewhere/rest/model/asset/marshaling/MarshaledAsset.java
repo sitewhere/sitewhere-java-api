@@ -12,8 +12,6 @@ import com.sitewhere.rest.model.asset.AssetType;
 
 /**
  * Extends {@link Asset} to support fields that can be included on REST calls.
- * 
- * @author Derek
  */
 public class MarshaledAsset extends Asset {
 

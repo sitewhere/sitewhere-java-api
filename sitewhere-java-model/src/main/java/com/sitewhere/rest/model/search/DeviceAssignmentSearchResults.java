@@ -14,8 +14,6 @@ import com.sitewhere.rest.model.device.DeviceAssignment;
 
 /**
  * Search results that contain device assignments.
- * 
- * @author dadams
  */
 public class DeviceAssignmentSearchResults extends SearchResults<DeviceAssignment> {
 

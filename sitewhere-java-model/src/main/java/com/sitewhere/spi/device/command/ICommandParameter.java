@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.command;
 
 /**
  * A parameter assocaiated with a {@link IDeviceCommand}.
- * 
- * @author Derek
  */
 public interface ICommandParameter {
 

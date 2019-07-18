@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.streaming.IDeviceStream;
 
 /**
  * Model object for a stream of binary data received from a device.
- * 
- * @author Derek
  */
 public class DeviceStream extends PersistentEntity implements IDeviceStream {
 

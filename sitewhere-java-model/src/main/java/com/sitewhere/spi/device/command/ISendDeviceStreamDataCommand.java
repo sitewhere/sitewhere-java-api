@@ -12,8 +12,6 @@ import java.util.UUID;
 
 /**
  * Sends a chunk of device stream data to a device.
- * 
- * @author Derek
  */
 public interface ISendDeviceStreamDataCommand extends ISystemCommand, Serializable {
 

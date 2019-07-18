@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * Holds interpolated locations for an assignment in one-minute intervals.
- * 
- * @author Derek Adams
  */
 public class InterpolatedAssignmentHistory {
 

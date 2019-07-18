@@ -9,8 +9,6 @@ package com.sitewhere.spi.search.device;
 
 /**
  * Determines which content is returned for device group element responses.
- *
- * @author Jorge Villaverde
  */
 public interface IDeviceGroupElementResponseFormat {
 
@@ -20,5 +18,5 @@ public interface IDeviceGroupElementResponseFormat {
      * @return
      */
     public Boolean getIncludeDetails();
-    
+
 }

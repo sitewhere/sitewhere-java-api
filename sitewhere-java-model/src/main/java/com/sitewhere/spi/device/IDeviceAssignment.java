@@ -15,8 +15,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 /**
  * Assigns a device to a customer, area, and/or asset so that events may be
  * associated with those entities.
- * 
- * @author Derek
  */
 public interface IDeviceAssignment extends IPersistentEntity {
 

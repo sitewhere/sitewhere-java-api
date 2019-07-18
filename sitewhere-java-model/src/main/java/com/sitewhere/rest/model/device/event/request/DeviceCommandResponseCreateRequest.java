@@ -19,8 +19,6 @@ import com.sitewhere.spi.device.event.request.IDeviceCommandResponseCreateReques
 /**
  * Model object used to create a new {@link IDeviceCommandResponse} via REST
  * APIs.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceCommandResponseCreateRequest extends DeviceEventCreateRequest

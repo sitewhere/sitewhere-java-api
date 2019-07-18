@@ -16,8 +16,6 @@ import com.sitewhere.spi.common.IBrandedEntity;
 /**
  * Represents a domain-specific area type that can be used for building a
  * hierarchical area model.
- * 
- * @author Derek
  */
 public interface IAreaType extends IBrandedEntity, IAccessible {
 

@@ -13,8 +13,6 @@ import com.sitewhere.spi.search.tenant.ITenantSearchCriteria;
 /**
  * Default implementation of {@link ITenantSearchCriteria} used by REST
  * services.
- * 
- * @author Derek
  */
 public class TenantSearchCriteria extends SearchCriteria implements ITenantSearchCriteria {
 
@@ -61,8 +59,7 @@ public class TenantSearchCriteria extends SearchCriteria implements ITenantSearc
      * (non-Javadoc)
      * 
      * @see
-     * com.sitewhere.spi.search.user.ITenantSearchCriteria#isIncludeRuntimeInfo(
-     * )
+     * com.sitewhere.spi.search.user.ITenantSearchCriteria#isIncludeRuntimeInfo( )
      */
     public boolean isIncludeRuntimeInfo() {
 	return includeRuntimeInfo;

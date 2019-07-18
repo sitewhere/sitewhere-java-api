@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.IBrandedEntity;
 
 /**
  * Item that represents a tangible object (person, place, thing) in the world.
- * 
- * @author Derek
  */
 public interface IAsset extends IBrandedEntity {
 

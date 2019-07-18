@@ -17,8 +17,6 @@ import com.sitewhere.spi.device.event.IDeviceEventContext;
  * Model object for device event context information. This information augments
  * the existing event information to provide extra context for processing
  * operations.
- * 
- * @author Derek
  */
 public class DeviceEventContext implements IDeviceEventContext {
 

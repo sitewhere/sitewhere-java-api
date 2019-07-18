@@ -15,8 +15,6 @@ import com.sitewhere.spi.scheduling.TriggerType;
 
 /**
  * Supplies information needed to create or update a schedule.
- * 
- * @author Derek
  */
 public interface IScheduleCreateRequest extends IPersistentEntityCreateRequest {
 

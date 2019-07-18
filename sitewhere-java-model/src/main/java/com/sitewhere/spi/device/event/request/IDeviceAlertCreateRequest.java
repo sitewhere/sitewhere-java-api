@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.event.AlertSource;
 
 /**
  * Interface for arguments needed to create a device alert.
- * 
- * @author Derek
  */
 public interface IDeviceAlertCreateRequest extends IDeviceEventCreateRequest {
 

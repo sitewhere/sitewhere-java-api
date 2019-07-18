@@ -16,8 +16,6 @@ import com.sitewhere.spi.device.state.request.IDeviceStateCreateRequest;
 
 /**
  * Model object for information required to create device state.
- * 
- * @author Derek
  */
 public class DeviceStateCreateRequest implements IDeviceStateCreateRequest {
 

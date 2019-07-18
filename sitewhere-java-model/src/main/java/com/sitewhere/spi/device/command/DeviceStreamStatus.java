@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.command;
 
 /**
  * Enumerates possible status values for {@link IDeviceStreamAckCommand}.
- * 
- * @author Derek
  */
 public enum DeviceStreamStatus {
 

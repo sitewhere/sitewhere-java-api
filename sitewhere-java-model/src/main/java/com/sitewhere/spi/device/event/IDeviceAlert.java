@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event;
 
 /**
  * Interface for an event from a device indiacating and exceptional condition.
- * 
- * @author dadams
  */
 public interface IDeviceAlert extends IDeviceEvent {
 

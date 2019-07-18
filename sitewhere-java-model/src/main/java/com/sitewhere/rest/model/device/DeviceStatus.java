@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.IDeviceStatus;
 
 /**
  * Model implementation of {@link IDeviceStatus}.
- * 
- * @author Derek
  */
 public class DeviceStatus extends PersistentEntity implements IDeviceStatus {
 

@@ -14,8 +14,6 @@ import java.util.UUID;
 
 /**
  * Provides data required to create device assignment state.
- * 
- * @author Derek
  */
 public interface IDeviceStateCreateRequest extends Serializable {
 

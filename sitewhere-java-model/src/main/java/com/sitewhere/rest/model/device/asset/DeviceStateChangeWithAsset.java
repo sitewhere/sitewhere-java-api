@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.asset.IDeviceEventWithAsset;
 
 /**
  * Model object for device state change with asset.
- * 
- * @author Jorge Villaverde
  */
 public class DeviceStateChangeWithAsset extends DeviceStateChange implements IDeviceEventWithAsset {
 
@@ -22,9 +20,11 @@ public class DeviceStateChangeWithAsset extends DeviceStateChange implements IDe
 
     /** Name of the asset */
     private String assetName;
-    
+
     /*
-     * @see com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset.getAssetName()#getAssetName()
+     * @see
+     * com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset.getAssetName()#
+     * getAssetName()
      */
     @Override
     public String getAssetName() {
@@ -34,5 +34,4 @@ public class DeviceStateChangeWithAsset extends DeviceStateChange implements IDe
     public void setAssetName(String assetName) {
 	this.assetName = assetName;
     }
-
 }

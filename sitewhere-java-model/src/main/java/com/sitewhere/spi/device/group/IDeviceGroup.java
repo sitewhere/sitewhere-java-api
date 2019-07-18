@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.IBrandedEntity;
 
 /**
  * Interface for a group of related devices.
- * 
- * @author Derek
  */
 public interface IDeviceGroup extends IBrandedEntity, IAccessible {
 

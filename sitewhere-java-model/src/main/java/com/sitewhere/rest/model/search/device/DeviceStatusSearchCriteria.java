@@ -12,8 +12,6 @@ import com.sitewhere.spi.search.device.IDeviceStatusSearchCriteria;
 
 /**
  * Provides extra information for searching device statuses.
- * 
- * @author Derek
  */
 public class DeviceStatusSearchCriteria extends SearchCriteria implements IDeviceStatusSearchCriteria {
 
@@ -28,8 +26,8 @@ public class DeviceStatusSearchCriteria extends SearchCriteria implements IDevic
     }
 
     /*
-     * @see
-     * com.sitewhere.spi.search.device.IDeviceStatusSearchCriteria#getDeviceTypeToken()
+     * @see com.sitewhere.spi.search.device.IDeviceStatusSearchCriteria#
+     * getDeviceTypeToken()
      */
     @Override
     public String getDeviceTypeToken() {

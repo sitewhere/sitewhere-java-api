@@ -9,8 +9,6 @@ package com.sitewhere.spi.device;
 
 /**
  * Used as a clear indicator of the current status of a device assignment.
- * 
- * @author dadams
  */
 public enum DeviceAssignmentStatus {
 

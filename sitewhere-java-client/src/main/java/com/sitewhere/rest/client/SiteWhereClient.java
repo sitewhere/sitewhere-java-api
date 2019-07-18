@@ -161,8 +161,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
  * Client for interacting with SiteWhere REST services.
- * 
- * @author dadams
  */
 public class SiteWhereClient implements ISiteWhereClient {
 
@@ -195,7 +193,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 
     /** HTTP Content-Disposition Header */
     private static final String CONTENT_DISPOSITION_HEADER = "content-disposition";
-    
+
     /** Protocol used */
     private String protocol = DEFAULT_PROTOCOL;
 
@@ -324,8 +322,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#listAreas()
      */
     @Override
-    public SearchResults<Area> listAreas(ITenantAuthentication tenant, AreaSearchCriteria searchCriteria, AreaResponseFormat responseFormat)
-	    throws SiteWhereException {
+    public SearchResults<Area> listAreas(ITenantAuthentication tenant, AreaSearchCriteria searchCriteria,
+	    AreaResponseFormat responseFormat) throws SiteWhereException {
 	Call<SearchResults<Area>> call = getRestRetrofit().listAreas(searchCriteria.getAreaTypeToken(),
 		responseFormat.getIncludeAreaType(), responseFormat.getIncludeAssignments(),
 		responseFormat.getIncludeZones(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
@@ -402,10 +400,9 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    String areaToken, DeviceAssignmentSearchCriteria searchCriteria,
 	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException {
 	Call<SearchResults<MarshaledDeviceAssignment>> call = getRestRetrofit().listDeviceAssignmentsForArea(areaToken,
-		assembleList(searchCriteria.getAssignmentStatuses()),
-			responseFormat.getIncludeDevice(), responseFormat.getIncludeCustomer(), responseFormat.getIncludeArea(),
-			responseFormat.getIncludeAsset(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
-		createHeadersFor(tenant));
+		assembleList(searchCriteria.getAssignmentStatuses()), responseFormat.getIncludeDevice(),
+		responseFormat.getIncludeCustomer(), responseFormat.getIncludeArea(), responseFormat.getIncludeAsset(),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -786,34 +783,27 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#listCommandInvocationsForArea()
      */
     @Override
-    public SearchResults<DeviceCommandInvocation> listCommandInvocationsForDeviceAssignment(ITenantAuthentication tenant,
-	    String token, Boolean includeCommand,
-	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+    public SearchResults<DeviceCommandInvocation> listCommandInvocationsForDeviceAssignment(
+	    ITenantAuthentication tenant, String token, Boolean includeCommand, DateRangeSearchCriteria searchCriteria)
+	    throws SiteWhereException {
 	Call<SearchResults<DeviceCommandInvocation>> call = getRestRetrofit().listCommandInvocationsForDeviceAssignment(
-		token, 
-		includeCommand,
-		toISO8601(searchCriteria.getStartDate()),
-		toISO8601(searchCriteria.getEndDate()),
-		searchCriteria.getPageNumber(),
-		searchCriteria.getPageSize(),
-		createHeadersFor(tenant));
+		token, includeCommand, toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#createCommandInvocationForDeviceAssignment()
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#createCommandInvocationForDeviceAssignment
+     * ()
      */
     @Override
-    public DeviceCommandInvocation createCommandInvocationForDeviceAssignment(
-	    ITenantAuthentication tenant, String token, 
-	    DeviceCommandInvocationCreateRequest request) 
-		    throws SiteWhereException {
-	Call<DeviceCommandInvocation> call = getRestRetrofit().createCommandInvocationForDeviceAssignment(
-		token, 
-		request,
-		createHeadersFor(tenant));
+    public DeviceCommandInvocation createCommandInvocationForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DeviceCommandInvocationCreateRequest request) throws SiteWhereException {
+	Call<DeviceCommandInvocation> call = getRestRetrofit().createCommandInvocationForDeviceAssignment(token,
+		request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -867,13 +857,9 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#createLocationForDeviceAssignment()
      */
     @Override
-    public DeviceLocationWithAsset createLocationForDeviceAssignment(
-	    ITenantAuthentication tenant, String token, 
-	    DeviceLocationCreateRequest request) 
-		    throws SiteWhereException {
-	Call<DeviceLocationWithAsset> call = getRestRetrofit().createLocationForDeviceAssignment(
-		token, 
-		request,
+    public DeviceLocationWithAsset createLocationForDeviceAssignment(ITenantAuthentication tenant, String token,
+	    DeviceLocationCreateRequest request) throws SiteWhereException {
+	Call<DeviceLocationWithAsset> call = getRestRetrofit().createLocationForDeviceAssignment(token, request,
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
@@ -949,7 +935,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 			searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -966,33 +952,30 @@ public class SiteWhereClient implements ISiteWhereClient {
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * com.sitewhere.spi.ISiteWhereClient#listStateChangesForDeviceAssignment()
+     * @see com.sitewhere.spi.ISiteWhereClient#listStateChangesForDeviceAssignment()
      */
     @Override
-    public SearchResults<DeviceStateChangeWithAsset> listStateChangesForDeviceAssignment(
-	    ITenantAuthentication tenant, String token, DateRangeSearchCriteria searchCriteria)
-	    throws SiteWhereException {
-	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit()
-		.listStateChangesForDeviceAssignment(token, toISO8601(searchCriteria.getStartDate()),
-			toISO8601(searchCriteria.getEndDate()), searchCriteria.getPageNumber(),
-			searchCriteria.getPageSize(), createHeadersFor(tenant));
+    public SearchResults<DeviceStateChangeWithAsset> listStateChangesForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit().listStateChangesForDeviceAssignment(
+		token, toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
      * @see
      * com.sitewhere.spi.ISiteWhereClient#createStateChangeForDeviceAssignment()
      */
-    public DeviceStateChangeWithAsset createStateChangeForDeviceAssignment(ITenantAuthentication tenant,
-	    String token, DeviceStateChangeCreateRequest request) throws SiteWhereException {
-	Call<DeviceStateChangeWithAsset> call = getRestRetrofit().createStateChangeForDeviceAssignment(token,
-		request, createHeadersFor(tenant));
+    public DeviceStateChangeWithAsset createStateChangeForDeviceAssignment(ITenantAuthentication tenant, String token,
+	    DeviceStateChangeCreateRequest request) throws SiteWhereException {
+	Call<DeviceStateChangeWithAsset> call = getRestRetrofit().createStateChangeForDeviceAssignment(token, request,
+		createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1043,15 +1026,15 @@ public class SiteWhereClient implements ISiteWhereClient {
 		.bulkListMeasurementsForDeviceAssignments(request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListMeasurementsForDeviceAssignmentsAsChartSeries()
      */
-    public Map<String, List<ChartSeries<Double>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(ITenantAuthentication tenant,
-	    DeviceAssignmentBulkRequest request) throws SiteWhereException {	
+    public Map<String, List<ChartSeries<Double>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(
+	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<Map<String, List<ChartSeries<Double>>>> call = getRestRetrofit()
 		.bulkListMeasurementsForDeviceAssignmentsAsChartSeries(request, createHeadersFor(tenant));
 	return processRestCall(call);
@@ -1086,7 +1069,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Authorities
     // ------------------------------------------------------------------------
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1104,7 +1087,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     public GrantedAuthority getAuthorityByName(ITenantAuthentication tenant, String name) throws SiteWhereException {
 	Call<GrantedAuthority> call = getRestRetrofit().getAuthorityByName(name, createHeadersFor(tenant));
-	return processRestCall(call);	
+	return processRestCall(call);
     }
 
     /*
@@ -1115,9 +1098,9 @@ public class SiteWhereClient implements ISiteWhereClient {
     public GrantedAuthority createAuthority(ITenantAuthentication tenant, GrantedAuthorityCreateRequest request)
 	    throws SiteWhereException {
 	Call<GrantedAuthority> call = getRestRetrofit().createAuthority(request, createHeadersFor(tenant));
-	return processRestCall(call);		
+	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1125,10 +1108,11 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     public List<GrantedAuthorityHierarchyNode> getAuthoritiesHierarchy(ITenantAuthentication tenant)
 	    throws SiteWhereException {
-	Call<List<GrantedAuthorityHierarchyNode>> call = getRestRetrofit().getAuthoritiesHierarchy(createHeadersFor(tenant));
-	return processRestCall(call);			
+	Call<List<GrantedAuthorityHierarchyNode>> call = getRestRetrofit()
+		.getAuthoritiesHierarchy(createHeadersFor(tenant));
+	return processRestCall(call);
     }
-    
+
     // ------------------------------------------------------------------------
     // Batch Operations
     // ------------------------------------------------------------------------
@@ -1145,7 +1129,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 		searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1157,16 +1141,18 @@ public class SiteWhereClient implements ISiteWhereClient {
 	Call<BatchOperation> call = getRestRetrofit().getBatchOperationByToken(batchToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#listBatchOperationElements()
      */
     @Override
-    public SearchResults<BatchElement> listBatchOperationElements(ITenantAuthentication tenant, String operationToken) throws SiteWhereException {
-	Call<SearchResults<BatchElement>> call = getRestRetrofit().listBatchOperationElements(operationToken, createHeadersFor(tenant));
-	return processRestCall(call);	
+    public SearchResults<BatchElement> listBatchOperationElements(ITenantAuthentication tenant, String operationToken)
+	    throws SiteWhereException {
+	Call<SearchResults<BatchElement>> call = getRestRetrofit().listBatchOperationElements(operationToken,
+		createHeadersFor(tenant));
+	return processRestCall(call);
     }
 
     /*
@@ -1178,21 +1164,22 @@ public class SiteWhereClient implements ISiteWhereClient {
     public BatchOperation createBatchCommandInvocation(ITenantAuthentication tenant,
 	    BatchCommandInvocationRequest request) throws SiteWhereException {
 	Call<BatchOperation> call = getRestRetrofit().createBatchCommandInvocation(request, createHeadersFor(tenant));
-	return processRestCall(call);	
+	return processRestCall(call);
     }
 
     /*
      * (non-Javadoc)
      * 
-     * @see com.sitewhere.spi.ISiteWhereClient#createBatchCommandOperationForCriteria()
+     * @see
+     * com.sitewhere.spi.ISiteWhereClient#createBatchCommandOperationForCriteria()
      */
     @Override
     public Object createBatchCommandOperationForCriteria(ITenantAuthentication tenant,
-	      BatchCommandForCriteriaRequest request) throws SiteWhereException {
+	    BatchCommandForCriteriaRequest request) throws SiteWhereException {
 	Call<Object> call = getRestRetrofit().createBatchCommandOperationForCriteria(request, createHeadersFor(tenant));
-	return processRestCall(call);	
-    } 
-    
+	return processRestCall(call);
+    }
+
     // ------------------------------------------------------------------------
     // Command Invocations
     // ------------------------------------------------------------------------
@@ -1235,11 +1222,11 @@ public class SiteWhereClient implements ISiteWhereClient {
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     // ------------------------------------------------------------------------
     // Customer Types
     // ------------------------------------------------------------------------
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1338,14 +1325,15 @@ public class SiteWhereClient implements ISiteWhereClient {
 		responseFormat.getIncludeCustomerType(), searchCriteria.getRootOnly(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#getCustomerByToken()
      */
     @Override
-    public MarshaledCustomer getCustomerByToken(ITenantAuthentication tenant, String customerToken) throws SiteWhereException {
+    public MarshaledCustomer getCustomerByToken(ITenantAuthentication tenant, String customerToken)
+	    throws SiteWhereException {
 	Call<MarshaledCustomer> call = getRestRetrofit().getCustomerByToken(customerToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
@@ -1408,11 +1396,10 @@ public class SiteWhereClient implements ISiteWhereClient {
     public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForCustomer(ITenantAuthentication tenant,
 	    String customerToken, DeviceAssignmentSearchCriteria searchCriteria,
 	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException {
-	Call<SearchResults<MarshaledDeviceAssignment>> call = getRestRetrofit().listDeviceAssignmentsForCustomer(customerToken,
-		assembleList(searchCriteria.getAssignmentStatuses()),
-			responseFormat.getIncludeDevice(), responseFormat.getIncludeCustomer(), responseFormat.getIncludeArea(),
-			responseFormat.getIncludeAsset(), searchCriteria.getPageNumber(), searchCriteria.getPageSize(),
-		createHeadersFor(tenant));
+	Call<SearchResults<MarshaledDeviceAssignment>> call = getRestRetrofit().listDeviceAssignmentsForCustomer(
+		customerToken, assembleList(searchCriteria.getAssignmentStatuses()), responseFormat.getIncludeDevice(),
+		responseFormat.getIncludeCustomer(), responseFormat.getIncludeArea(), responseFormat.getIncludeAsset(),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1424,8 +1411,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public SearchResults<DeviceCommandInvocation> listCommandInvocationsForCustomer(ITenantAuthentication tenant,
 	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
-	Call<SearchResults<DeviceCommandInvocation>> call = getRestRetrofit().listCommandInvocationsForCustomer(customerToken,
-		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+	Call<SearchResults<DeviceCommandInvocation>> call = getRestRetrofit().listCommandInvocationsForCustomer(
+		customerToken, toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
 		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
@@ -1438,7 +1425,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public byte[] getLabelForCustomer(ITenantAuthentication tenant, String customerToken, String generatorId)
 	    throws SiteWhereException {
-	Call<ResponseBody> call = getRestRetrofit().getLabelForCustomer(customerToken, generatorId, createHeadersFor(tenant));
+	Call<ResponseBody> call = getRestRetrofit().getLabelForCustomer(customerToken, generatorId,
+		createHeadersFor(tenant));
 	try {
 	    return processRestCall(call).bytes();
 	} catch (IOException e) {
@@ -1452,8 +1440,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#listLocationsForCustomer()
      */
     @Override
-    public SearchResults<DeviceLocationWithAsset> listLocationsForCustomer(ITenantAuthentication tenant, String customerToken,
-	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
+    public SearchResults<DeviceLocationWithAsset> listLocationsForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
 	Call<SearchResults<DeviceLocationWithAsset>> call = getRestRetrofit().listLocationsForCustomer(customerToken,
 		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
 		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
@@ -1468,8 +1456,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public SearchResults<DeviceMeasurementWithAsset> listMeasurementsForCustomer(ITenantAuthentication tenant,
 	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
-	Call<SearchResults<DeviceMeasurementWithAsset>> call = getRestRetrofit().listMeasurementsForCustomer(customerToken,
-		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+	Call<SearchResults<DeviceMeasurementWithAsset>> call = getRestRetrofit().listMeasurementsForCustomer(
+		customerToken, toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
 		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
@@ -1496,8 +1484,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public SearchResults<DeviceStateChangeWithAsset> listStateChangesForCustomer(ITenantAuthentication tenant,
 	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
-	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit().listStateChangesForCustomer(customerToken,
-		toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
+	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit().listStateChangesForCustomer(
+		customerToken, toISO8601(searchCriteria.getStartDate()), toISO8601(searchCriteria.getEndDate()),
 		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
@@ -1530,7 +1518,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1590,7 +1578,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     // ------------------------------------------------------------------------
     // Device Events
     // ------------------------------------------------------------------------
@@ -1603,8 +1591,9 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public DeviceEventWithAsset getDeviceEventByAlternateId(ITenantAuthentication tenant, String alternateId)
 	    throws SiteWhereException {
-	Call<DeviceEventWithAsset> call = getRestRetrofit().getDeviceEventByAlternateId(alternateId, createHeadersFor(tenant));
-	return processRestCall(call);	
+	Call<DeviceEventWithAsset> call = getRestRetrofit().getDeviceEventByAlternateId(alternateId,
+		createHeadersFor(tenant));
+	return processRestCall(call);
     }
 
     /*
@@ -1614,11 +1603,11 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     @Override
     public DeviceEventWithAsset getDeviceEventById(ITenantAuthentication tenant, String eventId)
-	    throws SiteWhereException {	
+	    throws SiteWhereException {
 	Call<DeviceEventWithAsset> call = getRestRetrofit().getDeviceEventById(eventId, createHeadersFor(tenant));
-	return processRestCall(call);	
+	return processRestCall(call);
     }
-    
+
     // ------------------------------------------------------------------------
     // Device Groups
     // ------------------------------------------------------------------------
@@ -1631,14 +1620,11 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public SearchResults<DeviceGroup> listDeviceGroups(ITenantAuthentication tenant,
 	    DeviceGroupSearchCriteria searchCriteria) throws SiteWhereException {
-	Call<SearchResults<DeviceGroup>> call = getRestRetrofit().listDeviceGroups(
-		searchCriteria.getRole(),
-		searchCriteria.getPageNumber(),
-		searchCriteria.getPageSize(),
-		createHeadersFor(tenant));
-	return processRestCall(call);	
+	Call<SearchResults<DeviceGroup>> call = getRestRetrofit().listDeviceGroups(searchCriteria.getRole(),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1696,14 +1682,11 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    DeviceGroupElementSearchCriteria searchCriteria, DeviceGroupElementResponseFormat responseFormat)
 	    throws SiteWhereException {
 	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().listDeviceGroupElements(
-		searchCriteria.getGroupToken(),
-		responseFormat.getIncludeDetails(),
-		searchCriteria.getPageNumber(),
-		searchCriteria.getPageSize(),
-		createHeadersFor(tenant));
+		searchCriteria.getGroupToken(), responseFormat.getIncludeDetails(), searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1712,8 +1695,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public SearchResults<DeviceGroupElement> addElementsToDdeviceGroup(ITenantAuthentication tenant, String groupToken,
 	    List<DeviceGroupElementCreateRequest> requests) throws SiteWhereException {
-	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().addElementsToDdeviceGroup(
-		groupToken, requests, createHeadersFor(tenant));
+	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().addElementsToDdeviceGroup(groupToken, requests,
+		createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1725,8 +1708,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public SearchResults<DeviceGroupElement> deleteDeviceGroupElements(ITenantAuthentication tenant, String groupToken,
 	    List<String> elementIds) throws SiteWhereException {
-	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().deleteDeviceGroupElements(
-		groupToken, elementIds, createHeadersFor(tenant));
+	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().deleteDeviceGroupElements(groupToken,
+		elementIds, createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1738,8 +1721,8 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public SearchResults<DeviceGroupElement> deleteDeviceGroupElement(ITenantAuthentication tenant, String groupToken,
 	    String elementId) throws SiteWhereException {
-	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().deleteDeviceGroupElement(
-		groupToken, elementId, createHeadersFor(tenant));
+	Call<SearchResults<DeviceGroupElement>> call = getRestRetrofit().deleteDeviceGroupElement(groupToken, elementId,
+		createHeadersFor(tenant));
 	return processRestCall(call);
     }
 
@@ -1750,7 +1733,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     @Override
     public byte[] getLabelForDeviceGroup(ITenantAuthentication tenant, String groupToken, String generatorId)
-	    throws SiteWhereException {	
+	    throws SiteWhereException {
 	Call<ResponseBody> call = getRestRetrofit().getLabelForDeviceGroup(groupToken, generatorId,
 		createHeadersFor(tenant));
 	try {
@@ -1780,7 +1763,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     // ------------------------------------------------------------------------
     // Device Statuses
     // ------------------------------------------------------------------------
@@ -1798,7 +1781,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1860,7 +1843,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * @see
      * com.sitewhere.spi.ISiteWhereClient#getDeviceTypeByToken(com.sitewhere.spi.
@@ -1915,31 +1898,29 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public byte[] getLabelForDeviceType(ITenantAuthentication tenant, String token, String generatorId)
 	    throws SiteWhereException {
-	Call<ResponseBody> call = getRestRetrofit().getLabelForDeviceType(token, generatorId,
-		createHeadersFor(tenant));
+	Call<ResponseBody> call = getRestRetrofit().getLabelForDeviceType(token, generatorId, createHeadersFor(tenant));
 	try {
 	    return processRestCall(call).bytes();
 	} catch (IOException e) {
 	    throw new SiteWhereException(e);
-	}	
+	}
     }
-    
+
     /*
      * (non-Javadoc)
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#getDeviceTypeGPBSpecification()
      */
     @Override
-    public String getDeviceTypeGPBSpecification(ITenantAuthentication tenant, String token)
-	    throws SiteWhereException {	
+    public String getDeviceTypeGPBSpecification(ITenantAuthentication tenant, String token) throws SiteWhereException {
 	Call<ResponseBody> call = getRestRetrofit().getDeviceTypeGPBSpecification(token, createHeadersFor(tenant));
 	try {
 	    return new String(processRestCall(call).bytes());
 	} catch (IOException e) {
 	    throw new SiteWhereException(e);
-	}	
+	}
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1953,16 +1934,16 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    Response<ResponseBody> response = call.execute();
 	    if (response.isSuccessful()) {
 		String fileName = extractFileName(response.headers().get(CONTENT_DISPOSITION_HEADER));
-		
+
 		return Files.write(new File(fileName).toPath(), response.body().bytes()).toFile();
 	    } else {
 		throw new SiteWhereException(response.toString());
 	    }
 	} catch (IOException e) {
 	    throw new SiteWhereException(e);
-	}	
+	}
     }
-    
+
     // ------------------------------------------------------------------------
     // Devices
     // ------------------------------------------------------------------------
@@ -1982,13 +1963,14 @@ public class SiteWhereClient implements ISiteWhereClient {
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#getDeviceByToken(com.sitewhere.spi.
      * ITenantAuthentication, java.lang.String)
      */
     @Override
-    public MarshaledDevice getDeviceByToken(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException {
+    public MarshaledDevice getDeviceByToken(ITenantAuthentication tenant, String deviceToken)
+	    throws SiteWhereException {
 	Call<MarshaledDevice> call = getRestRetrofit().getDeviceByToken(deviceToken, createHeadersFor(tenant));
 	return processRestCall(call);
     }
@@ -1999,7 +1981,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      * com.sitewhere.rest.model.device.request.DeviceCreateRequest)
      */
     @Override
-    public MarshaledDevice createDevice(ITenantAuthentication tenant, DeviceCreateRequest request) throws SiteWhereException {
+    public MarshaledDevice createDevice(ITenantAuthentication tenant, DeviceCreateRequest request)
+	    throws SiteWhereException {
 	Call<MarshaledDevice> call = getRestRetrofit().createDevice(request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
@@ -2039,7 +2022,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 		createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -2050,15 +2033,10 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    String deviceToken, DeviceAssignmentSearchCriteria searchCriteria,
 	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException {
 	Call<SearchResults<MarshaledDeviceAssignment>> call = getRestRetrofit().listDeviceAssignmentsForDevice(
-		deviceToken, 
-		responseFormat.getIncludeArea(),
-		responseFormat.getIncludeAsset(),
-		responseFormat.getIncludeCustomer(),
-		responseFormat.getIncludeDevice(),
-		searchCriteria.getPageNumber(),
-		searchCriteria.getPageSize(),
-		createHeadersFor(tenant));
-	return processRestCall(call);	
+		deviceToken, responseFormat.getIncludeArea(), responseFormat.getIncludeAsset(),
+		responseFormat.getIncludeCustomer(), responseFormat.getIncludeDevice(), searchCriteria.getPageNumber(),
+		searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
     }
 
     /*
@@ -2075,7 +2053,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 	    return processRestCall(call).bytes();
 	} catch (IOException e) {
 	    throw new SiteWhereException(e);
-	}	
+	}
     }
 
     /*
@@ -2097,8 +2075,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#deleteDeviceMappings()
      */
     @Override
-    public MarshaledDevice deleteDeviceMappings(ITenantAuthentication tenant, String deviceToken,
-	    String path) throws SiteWhereException {
+    public MarshaledDevice deleteDeviceMappings(ITenantAuthentication tenant, String deviceToken, String path)
+	    throws SiteWhereException {
 	Call<MarshaledDevice> call = getRestRetrofit().deleteDeviceMappings(deviceToken, path,
 		createHeadersFor(tenant));
 	return processRestCall(call);
@@ -2161,7 +2139,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * @see
      * com.sitewhere.spi.ISiteWhereClient#getScheduledJobByToken(com.sitewhere.spi.
@@ -2211,7 +2189,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Schedules
     // ------------------------------------------------------------------------
-    
+
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#getScheduleByToken(com.sitewhere.spi.
      * ITenantAuthentication, java.lang.String)
@@ -2223,7 +2201,7 @@ public class SiteWhereClient implements ISiteWhereClient {
 		searchCriteria.getPageSize(), createHeadersFor(tenant));
 	return processRestCall(call);
     }
-    
+
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#getScheduleByToken(com.sitewhere.spi.
      * ITenantAuthentication, java.lang.String)
@@ -2292,14 +2270,13 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#listTenants()
      */
     @Override
-    public SearchResults<Tenant> listTenants(TenantSearchCriteria searchCriteria)
-	    throws SiteWhereException {
+    public SearchResults<Tenant> listTenants(TenantSearchCriteria searchCriteria) throws SiteWhereException {
 	Call<SearchResults<Tenant>> call = getRestRetrofit().listTenants(searchCriteria.getUserId(),
 		searchCriteria.getTextSearch(), searchCriteria.isIncludeRuntimeInfo(), searchCriteria.getPageNumber(),
 		searchCriteria.getPageSize(), createDefaulHeaders());
 	return processRestCall(call);
     }
-    
+
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#getTenantByToken()
      */
@@ -2343,14 +2320,14 @@ public class SiteWhereClient implements ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Users
     // ------------------------------------------------------------------------
-    
+
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#listUsers()
      */
     @Override
     public SearchResults<User> listUsers() throws SiteWhereException {
 	Call<SearchResults<User>> call = getRestRetrofit().listUsers(createDefaulHeaders());
-	return processRestCall(call);	
+	return processRestCall(call);
     }
 
     /*
@@ -2380,8 +2357,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * com.sitewhere.rest.model.device.request.UserCreateRequest)
      */
     @Override
-    public User updateUser(String username, UserCreateRequest request)
-	    throws SiteWhereException {
+    public User updateUser(String username, UserCreateRequest request) throws SiteWhereException {
 	Call<User> call = getRestRetrofit().updateUser(username, request, createDefaulHeaders());
 	return processRestCall(call);
     }
@@ -2403,13 +2379,12 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#listUserAuthorities()
      */
     @Override
-    public SearchResults<GrantedAuthority> listUserAuthorities(String username)
-	    throws SiteWhereException {
+    public SearchResults<GrantedAuthority> listUserAuthorities(String username) throws SiteWhereException {
 	Call<SearchResults<GrantedAuthority>> call = getRestRetrofit().listUserAuthorities(username,
 		createDefaulHeaders());
 	return processRestCall(call);
     }
-	    
+
     // ------------------------------------------------------------------------
     // Zones
     // ------------------------------------------------------------------------
@@ -2420,13 +2395,11 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public SearchResults<Zone> listZones(ITenantAuthentication tenant, ZoneSearchCriteria searchCriteria)
 	    throws SiteWhereException {
-	Call<SearchResults<Zone>> call = getRestRetrofit().listZones(
-		searchCriteria.getAreaToken(), 
-		searchCriteria.getPageNumber(),
-		searchCriteria.getPageSize(), createHeadersFor(tenant));
-	return processRestCall(call);	
+	Call<SearchResults<Zone>> call = getRestRetrofit().listZones(searchCriteria.getAreaToken(),
+		searchCriteria.getPageNumber(), searchCriteria.getPageSize(), createHeadersFor(tenant));
+	return processRestCall(call);
     }
-    
+
     /*
      * @see com.sitewhere.spi.ISiteWhereClient#getZoneByToken(com.sitewhere.spi.
      * ITenantAuthentication, java.lang.String)
@@ -2989,9 +2962,9 @@ public class SiteWhereClient implements ISiteWhereClient {
 	}
 	return builder.toString();
     }
-    
+
     private static String extractFileName(String content) {
-	if(content == null || content.isEmpty())
+	if (content == null || content.isEmpty())
 	    return "file.name";
 	int index = content.indexOf("filename=");
 	if (index == -1)

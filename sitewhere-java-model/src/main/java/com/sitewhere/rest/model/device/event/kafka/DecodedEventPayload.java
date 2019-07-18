@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.event.request.IDeviceEventCreateRequest;
 
 /**
  * Model object for event payload received from event sources from a tenant.
- * 
- * @author Derek
  */
 public class DecodedEventPayload implements IDecodedEventPayload {
 

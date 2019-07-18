@@ -14,8 +14,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Encapsulates paging functionality.
- * 
- * @author Derek
  */
 public class Pager<T> {
 

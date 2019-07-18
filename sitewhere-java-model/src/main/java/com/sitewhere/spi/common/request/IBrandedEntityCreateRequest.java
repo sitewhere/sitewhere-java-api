@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.IImageProvider;
 
 /**
  * Contains base fields for creating an entity with branding information.
- * 
- * @author Derek
  */
 public interface IBrandedEntityCreateRequest
 	extends IPersistentEntityCreateRequest, IColorProvider, IIconProvider, IImageProvider {

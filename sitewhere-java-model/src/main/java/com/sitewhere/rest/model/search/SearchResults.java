@@ -14,8 +14,6 @@ import com.sitewhere.spi.search.ISearchResults;
 
 /**
  * Used to return search result metadata in response to AJAX calls.
- * 
- * @author dadams
  */
 public class SearchResults<T> implements ISearchResults<T> {
 
@@ -28,7 +26,7 @@ public class SearchResults<T> implements ISearchResults<T> {
     public SearchResults() {
 	this(Collections.emptyList());
     }
-    
+
     public SearchResults(List<T> all) {
 	super();
 	setNumResults(all.size());

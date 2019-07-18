@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event.state;
 
 /**
  * Enumerates possible system presence states.
- * 
- * @author Derek
  */
 public enum PresenceState {
 

@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.streaming.IDeviceStream;
 
 /**
  * Information needed to create a new {@link IDeviceStream}.
- * 
- * @author Derek
  */
 public interface IDeviceStreamCreateRequest extends IPersistentEntityCreateRequest {
 

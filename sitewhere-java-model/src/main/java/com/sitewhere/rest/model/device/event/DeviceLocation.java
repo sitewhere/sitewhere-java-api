@@ -17,8 +17,6 @@ import com.sitewhere.spi.device.event.IDeviceLocation;
 
 /**
  * Represents the location of a device at a moment in time.
- * 
- * @author dadams
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceLocation extends DeviceEvent implements IDeviceLocation, Serializable {

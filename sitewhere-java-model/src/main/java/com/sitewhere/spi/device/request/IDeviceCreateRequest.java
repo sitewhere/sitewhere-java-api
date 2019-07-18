@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.IDeviceElementMapping;
 
 /**
  * Interface for arguments needed to create a device.
- * 
- * @author Derek
  */
 public interface IDeviceCreateRequest extends IPersistentEntityCreateRequest {
 

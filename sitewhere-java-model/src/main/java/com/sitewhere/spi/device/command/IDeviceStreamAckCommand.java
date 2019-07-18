@@ -12,8 +12,6 @@ import java.util.UUID;
 
 /**
  * Acknowledges device stream create request.
- * 
- * @author Derek
  */
 public interface IDeviceStreamAckCommand extends ISystemCommand, Serializable {
 

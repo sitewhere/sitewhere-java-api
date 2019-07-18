@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.command;
 
 /**
  * Enumerates reasons registration was successful.
- * 
- * @author Derek
  */
 public enum RegistrationSuccessReason {
 

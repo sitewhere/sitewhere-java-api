@@ -13,8 +13,6 @@ import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 /**
  * Extends {@link DeviceCommandInvocation} to support fields that can be
  * included on REST calls.
- * 
- * @author Derek
  */
 public class MarshaledDeviceCommandInvocation extends DeviceCommandInvocation {
 

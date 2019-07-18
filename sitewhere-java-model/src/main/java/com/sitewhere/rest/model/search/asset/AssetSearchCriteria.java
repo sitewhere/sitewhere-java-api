@@ -12,14 +12,12 @@ import com.sitewhere.spi.search.asset.IAssetSearchCriteria;
 
 /**
  * Model object for properties used in asset searches.
- * 
- * @author Derek
  */
 public class AssetSearchCriteria extends SearchCriteria implements IAssetSearchCriteria {
-    
+
     /** Filter by asset type */
     private String assetTypeToken;
-    
+
     /** Include asset type */
     private Boolean includeAssetType;
 
@@ -32,22 +30,23 @@ public class AssetSearchCriteria extends SearchCriteria implements IAssetSearchC
      */
     @Override
     public String getAssetTypeToken() {
-        return assetTypeToken;
+	return assetTypeToken;
     }
 
     public void setAssetTypeToken(String assetTypeToken) {
-        this.assetTypeToken = assetTypeToken;
+	this.assetTypeToken = assetTypeToken;
     }
 
     /*
-     * @see com.sitewhere.spi.search.asset.IAssetSearchCriteria#getIncludeAssetType()
+     * @see
+     * com.sitewhere.spi.search.asset.IAssetSearchCriteria#getIncludeAssetType()
      */
     @Override
     public Boolean getIncludeAssetType() {
-        return includeAssetType;
+	return includeAssetType;
     }
 
     public void setIncludeAssetType(Boolean includeAssetType) {
-        this.includeAssetType = includeAssetType;
+	this.includeAssetType = includeAssetType;
     }
 }

@@ -12,8 +12,6 @@ import com.sitewhere.spi.search.batch.IBatchOperationSearchCriteria;
 
 /**
  * Model object for batch operation search criteria.
- * 
- * @author Derek
  */
 public class BatchOperationSearchCriteria extends SearchCriteria implements IBatchOperationSearchCriteria {
 

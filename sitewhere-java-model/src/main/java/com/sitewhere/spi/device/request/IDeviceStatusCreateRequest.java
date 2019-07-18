@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.request.IPersistentEntityCreateRequest;
 
 /**
  * Information needed to create a device status.
- * 
- * @author Derek
  */
 public interface IDeviceStatusCreateRequest extends IPersistentEntityCreateRequest, IColorProvider, IIconProvider {
 

@@ -9,8 +9,6 @@ package com.sitewhere.spi.common;
 
 /**
  * Interface for entities that describe themselves in a human-friendly way.
- * 
- * @author Derek
  */
 public interface IAccessible {
 

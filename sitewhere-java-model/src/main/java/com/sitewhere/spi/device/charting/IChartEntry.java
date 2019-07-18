@@ -13,8 +13,6 @@ import java.util.Date;
 /**
  * Specifies a single measurement entry for a chart.
  * 
- * @author Derek
- * 
  * @param <T>
  */
 public interface IChartEntry<T> extends Comparable<IChartEntry<T>>, Serializable {

@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.command.ICommandParameter;
 
 /**
  * Interface for arguments needed to create a device command.
- * 
- * @author Derek
  */
 public interface IDeviceCommandCreateRequest extends IPersistentEntityCreateRequest {
 

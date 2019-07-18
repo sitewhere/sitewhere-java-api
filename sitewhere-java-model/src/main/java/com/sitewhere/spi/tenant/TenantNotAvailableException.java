@@ -12,8 +12,6 @@ import com.sitewhere.spi.SiteWhereException;
 /**
  * Thrown when attempting to access a tenant that is defined in the system, but
  * is not started or is otherwise unavailable.
- * 
- * @author Derek
  */
 public class TenantNotAvailableException extends SiteWhereException {
 

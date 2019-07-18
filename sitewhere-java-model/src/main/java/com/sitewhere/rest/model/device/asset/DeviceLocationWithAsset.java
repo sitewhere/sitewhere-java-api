@@ -12,19 +12,19 @@ import com.sitewhere.spi.device.asset.IDeviceEventWithAsset;
 
 /**
  * Model object for device location with asset.
- *
- * @author Jorge Villaverde
  */
 public class DeviceLocationWithAsset extends DeviceLocation implements IDeviceEventWithAsset {
 
     /** Serialization version identifier */
     private static final long serialVersionUID = 2804024536576860607L;
-    
+
     /** Name of the asset */
     private String assetName;
-    
+
     /*
-     * @see com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset.getAssetName()#getAssetName()
+     * @see
+     * com.sitewhere.rest.model.device.asset.DeviceAlertWithAsset.getAssetName()#
+     * getAssetName()
      */
     @Override
     public String getAssetName() {
@@ -34,5 +34,4 @@ public class DeviceLocationWithAsset extends DeviceLocation implements IDeviceEv
     public void setAssetName(String assetName) {
 	this.assetName = assetName;
     }
-
 }

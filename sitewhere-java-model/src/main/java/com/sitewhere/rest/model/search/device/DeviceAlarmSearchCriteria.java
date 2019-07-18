@@ -15,8 +15,6 @@ import com.sitewhere.spi.search.device.IDeviceAlarmSearchCriteria;
 
 /**
  * Search criteria for device alarms.
- * 
- * @author Derek
  */
 public class DeviceAlarmSearchCriteria extends SearchCriteria implements IDeviceAlarmSearchCriteria {
 

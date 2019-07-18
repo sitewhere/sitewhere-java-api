@@ -21,8 +21,6 @@ import com.sitewhere.spi.scheduling.TriggerType;
 
 /**
  * Model object for a schedule.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class Schedule extends PersistentEntity implements ISchedule {

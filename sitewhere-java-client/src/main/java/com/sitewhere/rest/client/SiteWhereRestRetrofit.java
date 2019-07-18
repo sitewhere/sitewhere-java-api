@@ -98,25 +98,20 @@ import retrofit2.http.Query;
 
 /**
  * Retrofit API for SiteWhere REST APIs.
- * 
- * @author Derek
- * @author Jorge Villaverde
  */
 public interface SiteWhereRestRetrofit {
-        
+
     // ------------------------------------------------------------------------
-    // Area Types 
+    // Area Types
     // ------------------------------------------------------------------------
-    
+
     @GET("areatypes")
-    Call<SearchResults<AreaType>> listAreaTypes(
-	    @Query("includeContainedAreaTypes") Boolean includeContainedAreaTypes, 
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);    
-    
+    Call<SearchResults<AreaType>> listAreaTypes(@Query("includeContainedAreaTypes") Boolean includeContainedAreaTypes,
+	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("areatypes/{areaTypeToken}")
-    Call<MarshaledAreaType> getAreaTypeByToken(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
+    Call<MarshaledAreaType> getAreaTypeByToken(@Path("areaTypeToken") String areaTypeToken,
+	    @HeaderMap Map<String, String> headers);
 
     @POST("areatypes")
     Call<AreaType> createAreaType(@Body AreaTypeCreateRequest request, @HeaderMap Map<String, String> headers);
@@ -127,28 +122,22 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("areatypes/{areaTypeToken}")
     Call<AreaType> deleteAreaType(@Path("areaTypeToken") String areaTypeToken, @HeaderMap Map<String, String> headers);
-    
+
     @GET("areatypes/{areaTypeToken}/label/{generatorId}")
     Call<ResponseBody> getLabelForAreaType(@Path("areaTypeToken") String areaTypeToken,
-	    @Path("generatorId") String generatorId,
-	    @HeaderMap Map<String, String> headers);
-    
+	    @Path("generatorId") String generatorId, @HeaderMap Map<String, String> headers);
+
     // ------------------------------------------------------------------------
-    // Areas  
+    // Areas
     // ------------------------------------------------------------------------
 
     @GET("areas")
-    Call<SearchResults<Area>> listAreas(
-	    @Query("areaTypeToken") String areaTypeToken,
-	    @Query("includeAreaType") Boolean includeAreaType, 
-	    @Query("includeAssignments") Boolean includeAssignments, 
-	    @Query("includeZones") Boolean includeZones, 	    
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @Query("parentAreaToken") String parentAreaToken,
-	    @Query("rootOnly") Boolean rootOnly, 
-	    @HeaderMap Map<String, String> headers);    
-    
+    Call<SearchResults<Area>> listAreas(@Query("areaTypeToken") String areaTypeToken,
+	    @Query("includeAreaType") Boolean includeAreaType, @Query("includeAssignments") Boolean includeAssignments,
+	    @Query("includeZones") Boolean includeZones, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @Query("parentAreaToken") String parentAreaToken,
+	    @Query("rootOnly") Boolean rootOnly, @HeaderMap Map<String, String> headers);
+
     @GET("areas/{areaToken}")
     Call<MarshaledArea> getAreaByToken(@Path("areaToken") String areaToken, @HeaderMap Map<String, String> headers);
 
@@ -161,93 +150,62 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("areas/{areaToken}")
     Call<Area> deleteArea(@Path("areaToken") String areaToken, @HeaderMap Map<String, String> headers);
-    
+
     @GET("areas/{areaToken}/alerts")
-    Call<SearchResults<DeviceAlertWithAsset>> listAlertsForArea(
-	    @Path("areaToken") String areaToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<SearchResults<DeviceAlertWithAsset>> listAlertsForArea(@Path("areaToken") String areaToken,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("areas/{areaToken}/assignments")
-    Call<SearchResults<MarshaledDeviceAssignment>> listDeviceAssignmentsForArea(
-	    @Path("areaToken") String areaToken,
-	    @Query("status") String status,
-	    @Query("includeDevice") Boolean includeDevice,
-	    @Query("includeCustomer") Boolean includeCustomer,
-	    @Query("includeArea") Boolean includeArea,
-	    @Query("includeAsset") Boolean includeAsset,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<SearchResults<MarshaledDeviceAssignment>> listDeviceAssignmentsForArea(@Path("areaToken") String areaToken,
+	    @Query("status") String status, @Query("includeDevice") Boolean includeDevice,
+	    @Query("includeCustomer") Boolean includeCustomer, @Query("includeArea") Boolean includeArea,
+	    @Query("includeAsset") Boolean includeAsset, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("areas/{areaToken}/invocations")
-    Call<SearchResults<DeviceCommandInvocation>> listCommandInvocationsForArea(
-	    @Path("areaToken") String areaToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
+    Call<SearchResults<DeviceCommandInvocation>> listCommandInvocationsForArea(@Path("areaToken") String areaToken,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
 
     @GET("areas/{areaToken}/label/{generatorId}")
-    Call<ResponseBody> getLabelForArea(@Path("areaToken") String areaToken,
-	    @Path("generatorId") String generatorId,
+    Call<ResponseBody> getLabelForArea(@Path("areaToken") String areaToken, @Path("generatorId") String generatorId,
 	    @HeaderMap Map<String, String> headers);
 
     @GET("areas/{areaToken}/locations")
-    Call<SearchResults<DeviceLocationWithAsset>> listLocationsForArea(
-	    @Path("areaToken") String areaToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<SearchResults<DeviceLocationWithAsset>> listLocationsForArea(@Path("areaToken") String areaToken,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("areas/{areaToken}/measurements")
-    Call<SearchResults<DeviceMeasurementWithAsset>> listMeasurementsForArea(
-	    @Path("areaToken") String areaToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<SearchResults<DeviceMeasurementWithAsset>> listMeasurementsForArea(@Path("areaToken") String areaToken,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("areas/{areaToken}/responses")
-    Call<SearchResults<DeviceCommandResponseWithAsset>> listCommandResponsesForArea(
-	    @Path("areaToken") String areaToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
+    Call<SearchResults<DeviceCommandResponseWithAsset>> listCommandResponsesForArea(@Path("areaToken") String areaToken,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
 
     @GET("areas/{areaToken}/statechanges")
-    Call<SearchResults<DeviceStateChangeWithAsset>> listStateChangesForArea(
-	    @Path("areaToken") String areaToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
+    Call<SearchResults<DeviceStateChangeWithAsset>> listStateChangesForArea(@Path("areaToken") String areaToken,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
 
     @GET("areas/tree")
     Call<List<TreeNode>> areaTree(@HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
-    // Asset Types  
+    // Asset Types
     // ------------------------------------------------------------------------
-    
+
     @GET("assettypes")
-    Call<SearchResults<AssetType>> listAssetTypes(
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
+    Call<SearchResults<AssetType>> listAssetTypes(@Query("page") Integer page, @Query("pageSize") Integer pageSize,
 	    @HeaderMap Map<String, String> headers);
-    
+
     @GET("assettypes/{assetTypeToken}")
-    Call<AssetType> getAssetTypeByToken(@Path("assetTypeToken") String assetTypeToken, @HeaderMap Map<String, String> headers);
+    Call<AssetType> getAssetTypeByToken(@Path("assetTypeToken") String assetTypeToken,
+	    @HeaderMap Map<String, String> headers);
 
     @POST("assettypes")
     Call<AssetType> createAssetType(@Body AssetTypeCreateRequest request, @HeaderMap Map<String, String> headers);
@@ -257,25 +215,22 @@ public interface SiteWhereRestRetrofit {
 	    @HeaderMap Map<String, String> headers);
 
     @DELETE("assettypes/{assetTypeToken}")
-    Call<AssetType> deleteAssetType(@Path("assetTypeToken") String assetTypeToken, @HeaderMap Map<String, String> headers);
+    Call<AssetType> deleteAssetType(@Path("assetTypeToken") String assetTypeToken,
+	    @HeaderMap Map<String, String> headers);
 
     @GET("assettypes/{assetTypeToken}/label/{generatorId}")
     Call<ResponseBody> getLabelForAssetType(@Path("assetTypeToken") String assetTypeToken,
-	    @Path("generatorId") String generatorId,
-	    @HeaderMap Map<String, String> headers);
-    
+	    @Path("generatorId") String generatorId, @HeaderMap Map<String, String> headers);
+
     // ------------------------------------------------------------------------
-    // Asset  
+    // Asset
     // ------------------------------------------------------------------------
 
     @GET("assets")
-    Call<SearchResults<Asset>> listAssets(
-	    @Query("assetTypeToken") String assetTypeToken,
-	    @Query("includeAssetType") Boolean includeAssetType,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<SearchResults<Asset>> listAssets(@Query("assetTypeToken") String assetTypeToken,
+	    @Query("includeAssetType") Boolean includeAssetType, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("assets/{assetToken}")
     Call<MarshaledAsset> getAssetByToken(@Path("assetToken") String assetToken, @HeaderMap Map<String, String> headers);
 
@@ -290,119 +245,87 @@ public interface SiteWhereRestRetrofit {
     Call<Asset> deleteAsset(@Path("assetToken") String assetToken, @HeaderMap Map<String, String> headers);
 
     @GET("assets/{assetToken}/label/{generatorId}")
-    Call<ResponseBody> getLabelForAsset(@Path("assetToken") String assetToken,
-	    @Path("generatorId") String generatorId,
+    Call<ResponseBody> getLabelForAsset(@Path("assetToken") String assetToken, @Path("generatorId") String generatorId,
 	    @HeaderMap Map<String, String> headers);
 
     // ------------------------------------------------------------------------
-    // Assignments  
+    // Assignments
     // ------------------------------------------------------------------------
 
     @GET("assignments")
-    Call<SearchResults<MarshaledDeviceAssignment>> listDeviceAssignments(
-	    @Query("areaToken") String areaToken,
-	    @Query("includeArea") Boolean includeArea,
-	    @Query("assetToken") String assetToken,
-	    @Query("includeAsset") Boolean includeAsset,
-	    @Query("customerToken") String customerToken,
-	    @Query("includeCustomer") Boolean includeCustomer,
-	    @Query("deviceToken") String deviceToken,
-	    @Query("includeDevice") Boolean includeDevice,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<SearchResults<MarshaledDeviceAssignment>> listDeviceAssignments(@Query("areaToken") String areaToken,
+	    @Query("includeArea") Boolean includeArea, @Query("assetToken") String assetToken,
+	    @Query("includeAsset") Boolean includeAsset, @Query("customerToken") String customerToken,
+	    @Query("includeCustomer") Boolean includeCustomer, @Query("deviceToken") String deviceToken,
+	    @Query("includeDevice") Boolean includeDevice, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("assignments/{token}")
-    Call<MarshaledDeviceAssignment> getDeviceAssignmentByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
+    Call<MarshaledDeviceAssignment> getDeviceAssignmentByToken(@Path("token") String token,
+	    @HeaderMap Map<String, String> headers);
 
     @POST("assignments")
-    Call<MarshaledDeviceAssignment> createDeviceAssignment(@Body DeviceAssignmentCreateRequest request, 
+    Call<MarshaledDeviceAssignment> createDeviceAssignment(@Body DeviceAssignmentCreateRequest request,
 	    @HeaderMap Map<String, String> headers);
 
     @PUT("assignments/{token}")
-    Call<MarshaledDeviceAssignment> updateDeviceAssignment(@Path("token") String token, @Body DeviceAssignmentCreateRequest request,
-	    @HeaderMap Map<String, String> headers);
+    Call<MarshaledDeviceAssignment> updateDeviceAssignment(@Path("token") String token,
+	    @Body DeviceAssignmentCreateRequest request, @HeaderMap Map<String, String> headers);
 
     @DELETE("assignments/{token}")
-    Call<MarshaledDeviceAssignment> deleteDeviceAssignment(@Path("token") String token, @HeaderMap Map<String, String> headers);
-    
-    @GET("assignments/{token}/alerts")
-    Call<SearchResults<DeviceAlertWithAsset>> listAlertsForDeviceAssignment(
-	    @Path("token") String token,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
+    Call<MarshaledDeviceAssignment> deleteDeviceAssignment(@Path("token") String token,
 	    @HeaderMap Map<String, String> headers);
+
+    @GET("assignments/{token}/alerts")
+    Call<SearchResults<DeviceAlertWithAsset>> listAlertsForDeviceAssignment(@Path("token") String token,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
 
     @POST("assignments/{token}/alerts")
-    Call<DeviceAlertWithAsset> createAlertForDeviceAssignment(
-	    @Path("token") String token,
-	    @Body DeviceAlertCreateRequest request, 
-	    @HeaderMap Map<String, String> headers);
+    Call<DeviceAlertWithAsset> createAlertForDeviceAssignment(@Path("token") String token,
+	    @Body DeviceAlertCreateRequest request, @HeaderMap Map<String, String> headers);
 
     @POST("assignments/{token}/end")
-    Call<MarshaledDeviceAssignment> releaseDeviceAssignment(
-	    @Path("token") String token, @HeaderMap Map<String, String> headers);
-    
+    Call<MarshaledDeviceAssignment> releaseDeviceAssignment(@Path("token") String token,
+	    @HeaderMap Map<String, String> headers);
+
     @GET("assignments/{token}/invocations")
-    Call<SearchResults<DeviceCommandInvocation>> listCommandInvocationsForDeviceAssignment(
-	    @Path("token") String token, 
-	    @Query("includeCommand") Boolean includeCommand,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
+    Call<SearchResults<DeviceCommandInvocation>> listCommandInvocationsForDeviceAssignment(@Path("token") String token,
+	    @Query("includeCommand") Boolean includeCommand, @Query("startDate") String startDate,
+	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
 	    @HeaderMap Map<String, String> headers);
-    
+
     @POST("assignments/{token}/invocations")
-    Call<DeviceCommandInvocation> createCommandInvocationForDeviceAssignment(
-	    @Path("token") String token,
-	    @Body DeviceCommandInvocationCreateRequest request, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<DeviceCommandInvocation> createCommandInvocationForDeviceAssignment(@Path("token") String token,
+	    @Body DeviceCommandInvocationCreateRequest request, @HeaderMap Map<String, String> headers);
+
     @POST("assignments/{token}/invocations/schedules/{scheduleToken}")
-    Call<ScheduledJob> scheduleCommandInvocation(
-	    @Path("token") String token,
-	    @Path("scheduleToken") String scheduleToken,
-	    @Body DeviceCommandInvocationCreateRequest request,
+    Call<ScheduledJob> scheduleCommandInvocation(@Path("token") String token,
+	    @Path("scheduleToken") String scheduleToken, @Body DeviceCommandInvocationCreateRequest request,
 	    @HeaderMap Map<String, String> headers);
-    
+
     @GET("assignments/{token}/label/{generatorId}")
-    Call<ResponseBody> getLabelForDeviceAssignment(@Path("token") String token,
-	    @Path("generatorId") String generatorId,
+    Call<ResponseBody> getLabelForDeviceAssignment(@Path("token") String token, @Path("generatorId") String generatorId,
 	    @HeaderMap Map<String, String> headers);
 
     @GET("assignments/{token}/locations")
-    Call<SearchResults<DeviceLocationWithAsset>> listLocationsForDeviceAssignment(
-	    @Path("token") String token,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
+    Call<SearchResults<DeviceLocationWithAsset>> listLocationsForDeviceAssignment(@Path("token") String token,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
 
     @POST("assignments/{token}/locations")
-    Call<DeviceLocationWithAsset> createLocationForDeviceAssignment(
-	    @Path("token") String token,
-	    @Body DeviceLocationCreateRequest request, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<DeviceLocationWithAsset> createLocationForDeviceAssignment(@Path("token") String token,
+	    @Body DeviceLocationCreateRequest request, @HeaderMap Map<String, String> headers);
+
     @GET("assignments/{token}/measurements")
-    Call<SearchResults<DeviceMeasurementWithAsset>> listMeasurementsForDeviceAssignment(
-	    @Path("token") String token,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
+    Call<SearchResults<DeviceMeasurementWithAsset>> listMeasurementsForDeviceAssignment(@Path("token") String token,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
 
     @POST("assignments/{token}/measurements")
-    Call<DeviceMeasurementWithAsset> createMeasurementForDeviceAssignment(
-	    @Path("token") String token,
-	    @Body DeviceMeasurementCreateRequest request, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<DeviceMeasurementWithAsset> createMeasurementForDeviceAssignment(@Path("token") String token,
+	    @Body DeviceMeasurementCreateRequest request, @HeaderMap Map<String, String> headers);
+
     @GET("assignments/{token}/measurements/series")
     Call<List<ChartSeries<Double>>> listMeasurementsForDeviceAssignmentAsChartSeries(@Path("token") String token,
 	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
@@ -429,23 +352,23 @@ public interface SiteWhereRestRetrofit {
     @POST("assignments/{token}/statechanges")
     Call<DeviceStateChangeWithAsset> createStateChangeForDeviceAssignment(@Path("token") String token,
 	    @Body DeviceStateChangeCreateRequest request, @HeaderMap Map<String, String> headers);
-    
+
     @POST("assignments/bulk/alerts")
     Call<SearchResults<DeviceAlertWithAsset>> bulkListAlertsForDeviceAssignments(
 	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
-    
+
     @POST("assignments/bulk/invocations")
     Call<SearchResults<DeviceCommandInvocation>> bulkListCommandInvocationsForDeviceAssignments(
 	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
-    
+
     @POST("assignments/bulk/locations")
     Call<SearchResults<DeviceLocationWithAsset>> bulkListLocationsForDeviceAssignments(
 	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
-    
+
     @POST("assignments/bulk/measurements")
     Call<SearchResults<DeviceMeasurementWithAsset>> bulkListMeasurementsForDeviceAssignments(
 	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
-    
+
     @POST("assignments/bulk/measurements/series")
     Call<Map<String, List<ChartSeries<Double>>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(
 	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
@@ -453,33 +376,32 @@ public interface SiteWhereRestRetrofit {
     @POST("assignments/bulk/responses")
     Call<SearchResults<DeviceCommandResponseWithAsset>> bulkListCommandResponsesForDeviceAssignments(
 	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
-    
+
     @POST("assignments/bulk/statechanges")
     Call<SearchResults<DeviceStateChangeWithAsset>> bulkListStateChangesForDeviceAssignments(
 	    @Body DeviceAssignmentBulkRequest request, @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
     // Authorities
     // ------------------------------------------------------------------------
-    
+
     @GET("authorities")
     Call<SearchResults<GrantedAuthority>> listAuthorities(@HeaderMap Map<String, String> headers);
 
     @POST("authorities")
-    Call<GrantedAuthority> createAuthority(
-	    @Body GrantedAuthorityCreateRequest request,
+    Call<GrantedAuthority> createAuthority(@Body GrantedAuthorityCreateRequest request,
 	    @HeaderMap Map<String, String> headers);
-    
+
     @GET("authorities/{name}")
     Call<GrantedAuthority> getAuthorityByName(@Path("name") String name, @HeaderMap Map<String, String> headers);
-    
+
     @GET("authorities/hierarchy")
     Call<List<GrantedAuthorityHierarchyNode>> getAuthoritiesHierarchy(@HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
-    // Batch Operations  
+    // Batch Operations
     // ------------------------------------------------------------------------
-    
+
     @GET("batch")
     Call<SearchResults<BatchOperation>> listBatchOperations(@Query("page") Integer page,
 	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
@@ -495,12 +417,11 @@ public interface SiteWhereRestRetrofit {
     @POST("batch/command")
     Call<BatchOperation> createBatchCommandInvocation(@Body BatchCommandInvocationRequest request,
 	    @HeaderMap Map<String, String> headers);
-    
+
     @POST("batch/command/criteria")
-    Call<Object> createBatchCommandOperationForCriteria(
-	    @Body  BatchCommandForCriteriaRequest request, 
+    Call<Object> createBatchCommandOperationForCriteria(@Body BatchCommandForCriteriaRequest request,
 	    @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
     // Command Invocations
     // ------------------------------------------------------------------------
@@ -508,66 +429,60 @@ public interface SiteWhereRestRetrofit {
     @GET("invocations/id/{id}")
     Call<DeviceCommandInvocation> getDeviceCommandInvocation(@Path("id") String id,
 	    @HeaderMap Map<String, String> headers);
-     
+
     @GET("invocations/id/{id}/summary")
     Call<DeviceCommandInvocationSummary> getDeviceCommandInvocationSummary(@Path("id") String id,
 	    @HeaderMap Map<String, String> headers);
-    
+
     @GET("invocations/id/{invocationId}/responses")
     Call<SearchResults<DeviceCommandResponse>> listCommandResponsesForCommandInvocation(
-	    @Path("invocationId") String invocationId,
-	    @HeaderMap Map<String, String> headers);
-    
+	    @Path("invocationId") String invocationId, @HeaderMap Map<String, String> headers);
+
     // ------------------------------------------------------------------------
     // Customer Types
     // ------------------------------------------------------------------------
 
     @GET("customertypes")
     Call<SearchResults<CustomerType>> listCustomerTypes(
-	    @Query("includeContainedCustomerTypes") Boolean includeContainedCustomerTypes,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+	    @Query("includeContainedCustomerTypes") Boolean includeContainedCustomerTypes, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("customertypes/{customerTypeToken}")
-    Call<CustomerType> getCustomerTypeByToken(@Path("customerTypeToken") String customerTypeToken, @HeaderMap Map<String, String> headers);
+    Call<CustomerType> getCustomerTypeByToken(@Path("customerTypeToken") String customerTypeToken,
+	    @HeaderMap Map<String, String> headers);
 
     @POST("customertypes")
-    Call<CustomerType> createCustomerType(@Body CustomerTypeCreateRequest request, 
+    Call<CustomerType> createCustomerType(@Body CustomerTypeCreateRequest request,
 	    @HeaderMap Map<String, String> headers);
 
     @PUT("customertypes/{customerTypeToken}")
-    Call<CustomerType> updateCustomerType(@Path("customerTypeToken") String customerTypeToken, @Body CustomerTypeCreateRequest request,
-	    @HeaderMap Map<String, String> headers);
+    Call<CustomerType> updateCustomerType(@Path("customerTypeToken") String customerTypeToken,
+	    @Body CustomerTypeCreateRequest request, @HeaderMap Map<String, String> headers);
 
     @DELETE("customertypes/{customerTypeToken}")
-    Call<CustomerType> deleteCustomerType(@Path("customerTypeToken") String customerTypeToken, @HeaderMap Map<String, String> headers);
-    
+    Call<CustomerType> deleteCustomerType(@Path("customerTypeToken") String customerTypeToken,
+	    @HeaderMap Map<String, String> headers);
+
     @GET("customertypes/{customerTypeToken}/label/{generatorId}")
     Call<ResponseBody> getLabelForCustomerType(@Path("customerTypeToken") String customerTypeToken,
-	    @Path("generatorId") String generatorId,
-	    @HeaderMap Map<String, String> headers);
+	    @Path("generatorId") String generatorId, @HeaderMap Map<String, String> headers);
 
     // ------------------------------------------------------------------------
     // Customer
     // ------------------------------------------------------------------------
 
     @GET("customers")
-    Call<SearchResults<Customer>> listCustomers(
-	    @Query("customerTypeToken") String customerTypeToken,
-	    @Query("parentCustomerToken") String parentCustomerToken,	    
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize,
-	    @Query("includeCustomerType") Boolean includeCustomerType,
-	    @Query("rootOnly") Boolean rootOnly,
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<SearchResults<Customer>> listCustomers(@Query("customerTypeToken") String customerTypeToken,
+	    @Query("parentCustomerToken") String parentCustomerToken, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @Query("includeCustomerType") Boolean includeCustomerType,
+	    @Query("rootOnly") Boolean rootOnly, @HeaderMap Map<String, String> headers);
+
     @GET("customers/{customerToken}")
-    Call<MarshaledCustomer> getCustomerByToken(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
+    Call<MarshaledCustomer> getCustomerByToken(@Path("customerToken") String customerToken,
+	    @HeaderMap Map<String, String> headers);
 
     @POST("customers")
-    Call<Customer> createCustomer(@Body CustomerCreateRequest request, 
-	    @HeaderMap Map<String, String> headers);
+    Call<Customer> createCustomer(@Body CustomerCreateRequest request, @HeaderMap Map<String, String> headers);
 
     @PUT("customers/{customerToken}")
     Call<Customer> updateCustomer(@Path("customerToken") String customerToken, @Body CustomerCreateRequest request,
@@ -575,82 +490,55 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("customers/{customerToken}")
     Call<Customer> deleteCustomer(@Path("customerToken") String customerToken, @HeaderMap Map<String, String> headers);
-    
+
     @GET("customers/{customerToken}/alerts")
-    Call<SearchResults<DeviceAlertWithAsset>> listAlertsForCustomer(
-	    @Path("customerToken") String customerToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<SearchResults<DeviceAlertWithAsset>> listAlertsForCustomer(@Path("customerToken") String customerToken,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("customers/{customerToken}/assignments")
     Call<SearchResults<MarshaledDeviceAssignment>> listDeviceAssignmentsForCustomer(
-	    @Path("customerToken") String customerToken,
-	    @Query("status") String status,
-	    @Query("includeDevice") Boolean includeDevice,
-	    @Query("includeCustomer") Boolean includeCustomer,
-	    @Query("includeArea") Boolean includeArea,
-	    @Query("includeAsset") Boolean includeAsset,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+	    @Path("customerToken") String customerToken, @Query("status") String status,
+	    @Query("includeDevice") Boolean includeDevice, @Query("includeCustomer") Boolean includeCustomer,
+	    @Query("includeArea") Boolean includeArea, @Query("includeAsset") Boolean includeAsset,
+	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("customers/{customerToken}/invocations")
     Call<SearchResults<DeviceCommandInvocation>> listCommandInvocationsForCustomer(
-	    @Path("customerToken") String customerToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
+	    @Path("customerToken") String customerToken, @Query("startDate") String startDate,
+	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
 	    @HeaderMap Map<String, String> headers);
 
     @GET("customers/{customerToken}/label/{generatorId}")
     Call<ResponseBody> getLabelForCustomer(@Path("customerToken") String customerToken,
-	    @Path("generatorId") String generatorId,
-	    @HeaderMap Map<String, String> headers);
+	    @Path("generatorId") String generatorId, @HeaderMap Map<String, String> headers);
 
     @GET("customers/{customerToken}/locations")
-    Call<SearchResults<DeviceLocationWithAsset>> listLocationsForCustomer(
-	    @Path("customerToken") String customerToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<SearchResults<DeviceLocationWithAsset>> listLocationsForCustomer(@Path("customerToken") String customerToken,
+	    @Query("startDate") String startDate, @Query("endDate") String endDate, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("customers/{customerToken}/measurements")
     Call<SearchResults<DeviceMeasurementWithAsset>> listMeasurementsForCustomer(
-	    @Path("customerToken") String customerToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
+	    @Path("customerToken") String customerToken, @Query("startDate") String startDate,
+	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
 	    @HeaderMap Map<String, String> headers);
-    
+
     @GET("customers/{customerToken}/responses")
     Call<SearchResults<DeviceCommandResponseWithAsset>> listCommandResponsesForCustomer(
-	    @Path("customerToken") String customerToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
+	    @Path("customerToken") String customerToken, @Query("startDate") String startDate,
+	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
 	    @HeaderMap Map<String, String> headers);
 
     @GET("customers/{customerToken}/statechanges")
     Call<SearchResults<DeviceStateChangeWithAsset>> listStateChangesForCustomer(
-	    @Path("customerToken") String customerToken,
-	    @Query("startDate") String startDate,
-	    @Query("endDate") String endDate,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
+	    @Path("customerToken") String customerToken, @Query("startDate") String startDate,
+	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
 	    @HeaderMap Map<String, String> headers);
 
     @GET("customers/tree")
     Call<List<TreeNode>> customerTree(@HeaderMap Map<String, String> headers);
-    
-    
+
     // ------------------------------------------------------------------------
     // Device Commands
     // ------------------------------------------------------------------------
@@ -658,12 +546,12 @@ public interface SiteWhereRestRetrofit {
     @GET("commands")
     Call<SearchResults<DeviceCommand>> listDeviceCommands(@Query("deviceTypeToken") String deviceTypeToken,
 	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
-    
+
     @GET("commands/{token}")
     Call<DeviceCommand> getDeviceCommandByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
     @POST("commands")
-    Call<DeviceCommand> createDeviceCommand(@Body DeviceCommandCreateRequest request, 
+    Call<DeviceCommand> createDeviceCommand(@Body DeviceCommandCreateRequest request,
 	    @HeaderMap Map<String, String> headers);
 
     @PUT("commands/{token}")
@@ -672,16 +560,16 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("commands/{token}")
     Call<DeviceCommand> deleteDeviceCommand(@Path("token") String token, @HeaderMap Map<String, String> headers);
-    
+
     @GET("commands/namespaces")
     Call<SearchResults<DeviceCommandNamespace>> listDeviceCommandsByNamesapce(
-	    @Query("deviceTypeToken") String deviceTypeToken,
-	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
-    
+	    @Query("deviceTypeToken") String deviceTypeToken, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     // ------------------------------------------------------------------------
     // Device Events
     // ------------------------------------------------------------------------
-    
+
     @GET("events/alternate/{alternateId}")
     Call<DeviceEventWithAsset> getDeviceEventByAlternateId(@Path("alternateId") String alternateId,
 	    @HeaderMap Map<String, String> headers);
@@ -689,21 +577,21 @@ public interface SiteWhereRestRetrofit {
     @GET("events/id/{eventId}")
     Call<DeviceEventWithAsset> getDeviceEventById(@Path("eventId") String eventId,
 	    @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
     // Device Groups
     // ------------------------------------------------------------------------
-    
+
     @GET("devicegroups")
     Call<SearchResults<DeviceGroup>> listDeviceGroups(@Query("role") String role, @Query("page") Integer page,
 	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
-    
+
     @GET("devicegroups/{groupToken}")
-    Call<DeviceGroup> getDeviceGroupByToken(@Path("groupToken") String groupToken, @HeaderMap Map<String, String> headers);
+    Call<DeviceGroup> getDeviceGroupByToken(@Path("groupToken") String groupToken,
+	    @HeaderMap Map<String, String> headers);
 
     @POST("devicegroups")
-    Call<DeviceGroup> createDeviceGroup(@Body DeviceGroupCreateRequest request, 
-	    @HeaderMap Map<String, String> headers);
+    Call<DeviceGroup> createDeviceGroup(@Body DeviceGroupCreateRequest request, @HeaderMap Map<String, String> headers);
 
     @PUT("devicegroups/{groupToken}")
     Call<DeviceGroup> updateDeviceGroup(@Path("groupToken") String groupToken, @Body DeviceGroupCreateRequest request,
@@ -716,29 +604,23 @@ public interface SiteWhereRestRetrofit {
     Call<SearchResults<DeviceGroupElement>> listDeviceGroupElements(@Path("groupToken") String groupToken,
 	    @Query("includeDetails") Boolean includeDetails, @Query("page") Integer page,
 	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
-    
+
     @PUT("devicegroups/{groupToken}/elements")
-    Call<SearchResults<DeviceGroupElement>> addElementsToDdeviceGroup(
-	    @Path("groupToken") String groupToken, 
-	    @Body List<DeviceGroupElementCreateRequest> requests,
-	    @HeaderMap Map<String, String> headers);   
+    Call<SearchResults<DeviceGroupElement>> addElementsToDdeviceGroup(@Path("groupToken") String groupToken,
+	    @Body List<DeviceGroupElementCreateRequest> requests, @HeaderMap Map<String, String> headers);
 
     @DELETE("devicegroups/{groupToken}/elements")
-    Call<SearchResults<DeviceGroupElement>> deleteDeviceGroupElements(@Path("groupToken") String groupToken, 
-	    @Body List<String> elementIds,
-	    @HeaderMap Map<String, String> headers);
+    Call<SearchResults<DeviceGroupElement>> deleteDeviceGroupElements(@Path("groupToken") String groupToken,
+	    @Body List<String> elementIds, @HeaderMap Map<String, String> headers);
 
     @DELETE("devicegroups/{groupToken}/elements/{elementId}")
-    Call<SearchResults<DeviceGroupElement>> deleteDeviceGroupElement(
-	    @Path("groupToken") String groupToken, 
-	    @Path("elementId") String elementId,
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<SearchResults<DeviceGroupElement>> deleteDeviceGroupElement(@Path("groupToken") String groupToken,
+	    @Path("elementId") String elementId, @HeaderMap Map<String, String> headers);
+
     @GET("devicegroups/{groupToken}/label/{generatorId}")
     Call<ResponseBody> getLabelForDeviceGroup(@Path("groupToken") String groupToken,
-	    @Path("generatorId") String generatorId,
-	    @HeaderMap Map<String, String> headers);
-    
+	    @Path("generatorId") String generatorId, @HeaderMap Map<String, String> headers);
+
     // ------------------------------------------------------------------------
     // Device States
     // ------------------------------------------------------------------------
@@ -750,11 +632,11 @@ public interface SiteWhereRestRetrofit {
 	    @Query("includeDeviceAssignment") Boolean includeDeviceAssignment,
 	    @Query("includeDeviceType") Boolean includeDeviceType,
 	    @Query("includeEventDetails") Boolean includeEventDetails, @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
     // Device Statuses
     // ------------------------------------------------------------------------
-    
+
     @GET("statuses")
     Call<SearchResults<DeviceStatus>> listDeviceStatuses(@Query("code") String code,
 	    @Query("deviceTypeToken") String deviceTypeToken, @Query("page") Integer page,
@@ -764,7 +646,7 @@ public interface SiteWhereRestRetrofit {
     Call<DeviceStatus> getDeviceStatusByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
     @POST("statuses")
-    Call<DeviceStatus> createDeviceStatus(@Body DeviceStatusCreateRequest request, 
+    Call<DeviceStatus> createDeviceStatus(@Body DeviceStatusCreateRequest request,
 	    @HeaderMap Map<String, String> headers);
 
     @PUT("statuses/{token}")
@@ -773,9 +655,9 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("statuses/{token}")
     Call<DeviceStatus> deleteDeviceStatus(@Path("token") String token, @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
-    // Device Types 
+    // Device Types
     // ------------------------------------------------------------------------
 
     @GET("devicetypes")
@@ -817,9 +699,10 @@ public interface SiteWhereRestRetrofit {
 	    @Query("includeDeviceType") Boolean includeDeviceType, @Query("startDate") String startDate,
 	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
 	    @HeaderMap Map<String, String> headers);
-    
+
     @GET("devices/{deviceToken}")
-    Call<MarshaledDevice> getDeviceByToken(@Path("deviceToken") String deviceToken, @HeaderMap Map<String, String> headers);
+    Call<MarshaledDevice> getDeviceByToken(@Path("deviceToken") String deviceToken,
+	    @HeaderMap Map<String, String> headers);
 
     @POST("devices")
     Call<MarshaledDevice> createDevice(@Body DeviceCreateRequest request, @HeaderMap Map<String, String> headers);
@@ -830,48 +713,40 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("devices/{deviceToken}")
     Call<MarshaledDevice> deleteDevice(@Path("deviceToken") String deviceToken, @HeaderMap Map<String, String> headers);
-    
+
     @GET("devices/{deviceToken}/assignments")
     Call<SearchResults<MarshaledDeviceAssignment>> listDeviceAssignmentsForDevice(
-	    @Path("deviceToken") String deviceToken,
-	    @Query("includeArea") Boolean includeArea,
-	    @Query("includeAsset") Boolean includeAsset,
-	    @Query("includeCustomer") Boolean includeCustomer,
-	    @Query("includeDevice") Boolean includeDevice,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+	    @Path("deviceToken") String deviceToken, @Query("includeArea") Boolean includeArea,
+	    @Query("includeAsset") Boolean includeAsset, @Query("includeCustomer") Boolean includeCustomer,
+	    @Query("includeDevice") Boolean includeDevice, @Query("page") Integer page,
+	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @GET("devices/{deviceToken}/assignments/active")
-    Call<List<MarshaledDeviceAssignment>> getActiveAssignmentsForDevice(
-	    @Path("deviceToken") String deviceToken,
-	    @Query("includeArea") Boolean includeArea,
-	    @Query("includeAsset") Boolean includeAsset,
-	    @Query("includeCustomer") Boolean includeCustomer,
-	    @Query("includeDevice") Boolean includeDevice,
-	    @Query("page") Integer page, 
-	    @Query("pageSize") Integer pageSize, 
-	    @HeaderMap Map<String, String> headers);
-    
+    Call<List<MarshaledDeviceAssignment>> getActiveAssignmentsForDevice(@Path("deviceToken") String deviceToken,
+	    @Query("includeArea") Boolean includeArea, @Query("includeAsset") Boolean includeAsset,
+	    @Query("includeCustomer") Boolean includeCustomer, @Query("includeDevice") Boolean includeDevice,
+	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
     @POST("devices/{deviceToken}/batch")
     Call<DeviceEventBatchResponse> addMultipleEventsForDevice(@Path("deviceToken") String deviceToken,
 	    @Body DeviceEventBatch batch, @HeaderMap Map<String, String> headers);
-    	
+
     @GET("devices/{deviceToken}/label/{generatorId}")
-    Call<ResponseBody> getLabelForDevice(@Path("deviceToken") String deviceToken, @Path("generatorId") String generatorId,
-	    @HeaderMap Map<String, String> headers);
+    Call<ResponseBody> getLabelForDevice(@Path("deviceToken") String deviceToken,
+	    @Path("generatorId") String generatorId, @HeaderMap Map<String, String> headers);
 
     @POST("devices/{deviceToken}/mappings")
     Call<MarshaledDevice> createDeviceMappings(@Path("deviceToken") String deviceToken,
 	    @Body DeviceElementMapping request, @HeaderMap Map<String, String> headers);
 
     @DELETE("devices/{deviceToken}/mappings")
-    Call<MarshaledDevice> deleteDeviceMappings(@Path("deviceToken") String deviceToken, 
-	    @Path("path") String path, @HeaderMap Map<String, String> headers);
+    Call<MarshaledDevice> deleteDeviceMappings(@Path("deviceToken") String deviceToken, @Path("path") String path,
+	    @HeaderMap Map<String, String> headers);
 
-    //@GET("devices/{hardwareId}/symbol")
-    //Call<ResponseBody> getDeviceHardwareSymbol(@Path("hardwareId") String hardwareId, @HeaderMap Map<String, String> headers);
-    
+    // @GET("devices/{hardwareId}/symbol")
+    // Call<ResponseBody> getDeviceHardwareSymbol(@Path("hardwareId") String
+    // hardwareId, @HeaderMap Map<String, String> headers);
+
     @GET("devices/group/{groupToken}")
     Call<SearchResults<Device>> listDevicesByDeviceGroup(@Path("groupToken") String groupToken,
 	    @Query("deviceType") String deviceType, @Query("excludeAssigned") Boolean excludeAssigned,
@@ -879,7 +754,7 @@ public interface SiteWhereRestRetrofit {
 	    @Query("includeDeviceType") Boolean includeDeviceType, @Query("startDate") String startDate,
 	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
 	    @HeaderMap Map<String, String> headers);
-    
+
     @GET("devices/grouprole/{role}")
     Call<SearchResults<Device>> listDevicesByDeviceGroupWithRole(@Path("role") String role,
 	    @Query("deviceType") String deviceType, @Query("excludeAssigned") Boolean excludeAssigned,
@@ -887,15 +762,15 @@ public interface SiteWhereRestRetrofit {
 	    @Query("includeDeviceType") Boolean includeDeviceType, @Query("startDate") String startDate,
 	    @Query("endDate") String endDate, @Query("page") Integer page, @Query("pageSize") Integer pageSize,
 	    @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
     // External Search
     // ------------------------------------------------------------------------
-    
+
     // ------------------------------------------------------------------------
     // Instance
     // ------------------------------------------------------------------------
-    
+
     // ------------------------------------------------------------------------
     // Scheduled Jobs
     // ------------------------------------------------------------------------
@@ -908,7 +783,8 @@ public interface SiteWhereRestRetrofit {
     Call<ScheduledJob> getScheduledJobByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
     @POST("jobs")
-    Call<ScheduledJob> createScheduledJob(@Body ScheduledJobCreateRequest request, @HeaderMap Map<String, String> headers);
+    Call<ScheduledJob> createScheduledJob(@Body ScheduledJobCreateRequest request,
+	    @HeaderMap Map<String, String> headers);
 
     @PUT("jobs/{token}")
     Call<ScheduledJob> updateScheduledJob(@Path("token") String token, @Body ScheduledJobCreateRequest request,
@@ -916,15 +792,15 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("jobs/{token}")
     Call<ScheduledJob> deleteScheduledJob(@Path("token") String token, @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
     // Schedules
     // ------------------------------------------------------------------------
-    
+
     @GET("schedules")
     Call<SearchResults<Schedule>> listSchedules(@Query("page") Integer page, @Query("pageSize") Integer pageSize,
 	    @HeaderMap Map<String, String> headers);
-    
+
     @GET("schedules/{token}")
     Call<Schedule> getScheduleByToken(@Path("token") String token, @HeaderMap Map<String, String> headers);
 
@@ -937,7 +813,7 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("schedules/{token}")
     Call<Schedule> deleteSchedule(@Path("token") String token, @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
     // System
     // ------------------------------------------------------------------------
@@ -953,7 +829,7 @@ public interface SiteWhereRestRetrofit {
     Call<SearchResults<Tenant>> listTenants(@Query("authUserId") String authUserId,
 	    @Query("textSearch") String textSearch, @Query("includeRuntimeInfo") Boolean includeRuntimeInfo,
 	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
-   
+
     @GET("tenants/{tenantToken}")
     Call<Tenant> getTenantByToken(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);
 
@@ -966,14 +842,14 @@ public interface SiteWhereRestRetrofit {
 
     @DELETE("tenants/{tenantToken}")
     Call<Tenant> deleteTenant(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
     // Users
     // ------------------------------------------------------------------------
-    
+
     @GET("users")
     Call<SearchResults<User>> listUsers(@HeaderMap Map<String, String> headers);
-    
+
     @GET("users/{username}")
     Call<User> getUserByUsername(@Path("username") String username, @HeaderMap Map<String, String> headers);
 
@@ -985,12 +861,12 @@ public interface SiteWhereRestRetrofit {
 	    @HeaderMap Map<String, String> headers);
 
     @DELETE("users/{username}")
-    Call<User> deleteUser(@Path("username") String username, @HeaderMap Map<String, String> headers); 
-    
+    Call<User> deleteUser(@Path("username") String username, @HeaderMap Map<String, String> headers);
+
     @GET("users/{username}/authorities")
     Call<SearchResults<GrantedAuthority>> listUserAuthorities(@Path("username") String username,
 	    @HeaderMap Map<String, String> headers);
-    
+
     // ------------------------------------------------------------------------
     // Zones
     // ------------------------------------------------------------------------
@@ -998,7 +874,7 @@ public interface SiteWhereRestRetrofit {
     @GET("zones")
     Call<SearchResults<Zone>> listZones(@Query("areaToken") String areaToken, @Query("page") Integer page,
 	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
-    
+
     @GET("zones/{zoneToken}")
     Call<Zone> getZoneByToken(@Path("zoneToken") String zoneToken, @HeaderMap Map<String, String> headers);
 
@@ -1010,6 +886,6 @@ public interface SiteWhereRestRetrofit {
 	    @HeaderMap Map<String, String> headers);
 
     @DELETE("zones/{zoneToken}")
-    Call<Zone> deleteZone(@Path("zoneToken") String zoneToken, @HeaderMap Map<String, String> headers); 
-    
+    Call<Zone> deleteZone(@Path("zoneToken") String zoneToken, @HeaderMap Map<String, String> headers);
+
 }

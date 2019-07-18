@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * Interface for arguments needed to create a device group element.
- * 
- * @author Derek
  */
 public interface IDeviceGroupElementCreateRequest {
 

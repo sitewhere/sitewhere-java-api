@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.event.IDeviceEvent;
 /**
  * Extends device event information with extra data from the asset associated
  * with its assignment.
- * 
- * @author Derek
  */
 public interface IDeviceEventWithAsset extends IDeviceEvent {
 

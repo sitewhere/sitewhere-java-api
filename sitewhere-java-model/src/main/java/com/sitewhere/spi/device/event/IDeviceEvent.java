@@ -15,8 +15,6 @@ import com.sitewhere.spi.common.IMetadataProvider;
 
 /**
  * Event that originates from a device.
- * 
- * @author Derek
  */
 public interface IDeviceEvent extends IMetadataProvider, Serializable {
 

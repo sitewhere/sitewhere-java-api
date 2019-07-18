@@ -19,8 +19,6 @@ import com.sitewhere.spi.scheduling.ScheduledJobType;
 
 /**
  * Model object for a scheduled job.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class ScheduledJob extends PersistentEntity implements IScheduledJob {

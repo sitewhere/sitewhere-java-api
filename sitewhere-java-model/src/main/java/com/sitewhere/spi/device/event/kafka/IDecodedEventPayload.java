@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.event.request.IDeviceEventCreateRequest;
 /**
  * Get payload passed for inbound events after they have been decoded in the
  * event sources.
- * 
- * @author Derek
  */
 public interface IDecodedEventPayload {
 

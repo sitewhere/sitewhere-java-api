@@ -11,8 +11,6 @@ import com.sitewhere.spi.label.ILabel;
 
 /**
  * Model object for label information.
- * 
- * @author Derek
  */
 public class Label implements ILabel {
 

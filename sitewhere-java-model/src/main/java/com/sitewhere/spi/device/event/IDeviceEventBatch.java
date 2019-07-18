@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.event.request.IDeviceMeasurementCreateRequest;
 
 /**
  * Used to create multiple events for a given device.
- * 
- * @author Derek
  */
 public interface IDeviceEventBatch {
 

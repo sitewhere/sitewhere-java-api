@@ -12,8 +12,6 @@ import com.sitewhere.spi.search.device.IDeviceTypeSearchCriteria;
 
 /**
  * Default implementation of {@link IDeviceTypeSearchCriteria}.
- *
- * @author Jorge Villaverde
  */
 public class DeviceTypeSearchCriteria extends SearchCriteria implements IDeviceTypeSearchCriteria {
 

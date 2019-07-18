@@ -9,8 +9,6 @@ package com.sitewhere.spi.web;
 
 /**
  * Interface for constants used in web operations.
- * 
- * @author dadams
  */
 public interface ISiteWhereWebConstants {
 
@@ -28,8 +26,4 @@ public interface ISiteWhereWebConstants {
 
     /** Header that holds SiteWhere error code on error response */
     public static final String HEADER_SITEWHERE_ERROR_CODE = "X-SiteWhere-Error-Code";
-
-    /** Request parameter name for passing tenant authentication token */
-    @Deprecated
-    public static final String REQUEST_TENANT_TOKEN = "tenantAuthToken";
 }

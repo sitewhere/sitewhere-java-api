@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event;
 
 /**
  * Location associated with a device assignment.
- * 
- * @author dadams
  */
 public interface IDeviceLocation extends IDeviceEvent {
 

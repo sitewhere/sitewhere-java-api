@@ -16,9 +16,6 @@ import com.sitewhere.spi.device.event.IDeviceCommandInvocation;
  * Represents an {@link IDeviceCommand} combined with an
  * {@link IDeviceCommandInvocation} to represent the actual call made to the
  * target.
- * 
- * @author Derek
- * 
  */
 public interface IDeviceCommandExecution extends Serializable {
 

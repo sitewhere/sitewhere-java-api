@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.request.IBrandedEntityCreateRequest;
 
 /**
  * Provides information needed to create an area type.
- * 
- * @author Derek
  */
 public interface IAreaTypeCreateRequest extends IAccessible, IBrandedEntityCreateRequest {
 

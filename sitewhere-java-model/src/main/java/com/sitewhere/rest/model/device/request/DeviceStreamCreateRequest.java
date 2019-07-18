@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.event.request.IDeviceStreamCreateRequest;
 
 /**
  * Holds fields needed to create a new device stream.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceStreamCreateRequest extends PersistentEntityCreateRequest implements IDeviceStreamCreateRequest {

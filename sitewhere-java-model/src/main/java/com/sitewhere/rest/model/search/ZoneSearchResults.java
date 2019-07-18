@@ -14,8 +14,6 @@ import com.sitewhere.rest.model.area.Zone;
 
 /**
  * Search results that contain zones.
- * 
- * @author dadams
  */
 public class ZoneSearchResults extends SearchResults<Zone> {
 

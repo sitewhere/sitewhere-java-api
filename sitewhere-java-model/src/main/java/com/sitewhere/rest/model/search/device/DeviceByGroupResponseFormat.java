@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.device.IDeviceByGroupResponseFormat;
 
 /**
  * Default implementation of {@link IDeviceByGroupResponseFormat}.
- *
- * @author Jorge Villaverde
  */
 public class DeviceByGroupResponseFormat extends DeviceResponseFormat implements IDeviceByGroupResponseFormat {
 
@@ -20,8 +18,8 @@ public class DeviceByGroupResponseFormat extends DeviceResponseFormat implements
     private Boolean includeDeleted;
 
     /*
-     * @see
-     * com.sitewhere.spi.search.device.IDeviceByGroupResponseFormat#getIncludeDeleted()
+     * @see com.sitewhere.spi.search.device.IDeviceByGroupResponseFormat#
+     * getIncludeDeleted()
      */
     @Override
     public Boolean getIncludeDeleted() {
@@ -29,7 +27,6 @@ public class DeviceByGroupResponseFormat extends DeviceResponseFormat implements
     }
 
     public void setIncludeDeleted(Boolean includeDeleted) {
-        this.includeDeleted = includeDeleted;
+	this.includeDeleted = includeDeleted;
     }
-
 }

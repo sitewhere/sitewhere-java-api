@@ -17,8 +17,6 @@ import com.sitewhere.spi.device.IDeviceAlarm;
 
 /**
  * Information needed to create an {@link IDeviceAlarm}.
- * 
- * @author Derek
  */
 public interface IDeviceAlarmCreateRequest extends Serializable {
 

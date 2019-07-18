@@ -13,8 +13,6 @@ import com.sitewhere.spi.device.event.request.ISendDeviceStreamDataRequest;
 
 /**
  * Implementation of {@link ISendDeviceStreamDataRequest}.
- * 
- * @author Derek
  */
 public class SendDeviceStreamDataRequest implements ISendDeviceStreamDataRequest {
 

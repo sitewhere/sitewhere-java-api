@@ -16,8 +16,6 @@ import com.sitewhere.spi.customer.request.ICustomerCreateRequest;
 
 /**
  * Provides parameters needed to create a new customer.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class CustomerCreateRequest extends BrandedEntityCreateRequest implements ICustomerCreateRequest {

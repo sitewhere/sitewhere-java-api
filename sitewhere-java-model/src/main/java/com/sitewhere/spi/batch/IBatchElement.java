@@ -15,8 +15,6 @@ import com.sitewhere.spi.common.IMetadataProvider;
 
 /**
  * Holds information about a single element within an {@link IBatchOperation}.
- * 
- * @author Derek
  */
 public interface IBatchElement extends IMetadataProvider, Serializable {
 

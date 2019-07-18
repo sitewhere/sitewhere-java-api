@@ -17,8 +17,6 @@ import com.sitewhere.spi.device.group.IDeviceGroup;
 
 /**
  * Model object for a device group.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceGroup extends BrandedEntity implements IDeviceGroup {

@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 
 /**
  * Unit of work that should be executed on a schedule.
- * 
- * @author Derek
  */
 public interface IScheduledJob extends IPersistentEntity {
 

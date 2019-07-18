@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.DeviceAssignmentStatus;
 
 /**
  * Interface for arguments needed to create a device assignment.
- * 
- * @author Derek
  */
 public interface IDeviceAssignmentCreateRequest extends IPersistentEntityCreateRequest {
 

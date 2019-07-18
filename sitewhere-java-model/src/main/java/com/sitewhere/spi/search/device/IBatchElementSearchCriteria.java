@@ -12,8 +12,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Extends search criteria to add batch element fields.
- * 
- * @author Derek
  */
 public interface IBatchElementSearchCriteria extends ISearchCriteria {
 

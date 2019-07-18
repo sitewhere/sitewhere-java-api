@@ -22,8 +22,6 @@ import com.sitewhere.spi.scheduling.request.IScheduleCreateRequest;
 
 /**
  * Holds fields needed to create a new schedule.
- * 
- * @author Derek Adams
  */
 @JsonInclude(Include.NON_NULL)
 public class ScheduleCreateRequest extends PersistentEntityCreateRequest implements IScheduleCreateRequest {

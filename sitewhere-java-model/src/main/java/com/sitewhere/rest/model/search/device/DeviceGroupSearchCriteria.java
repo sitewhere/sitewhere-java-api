@@ -12,14 +12,12 @@ import com.sitewhere.spi.search.device.IDeviceGroupSearchCriteria;
 
 /**
  * Default implementation of {@link IDeviceGroupSearchCriteria}.
- *
- * @author Jorge Villaverde
  */
 public class DeviceGroupSearchCriteria extends SearchCriteria implements IDeviceGroupSearchCriteria {
 
     /** Filter by role */
     private String role;
-    
+
     /**
      * @param pageNumber
      * @param pageSize

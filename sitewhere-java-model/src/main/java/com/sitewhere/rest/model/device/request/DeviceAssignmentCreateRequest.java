@@ -17,8 +17,6 @@ import com.sitewhere.spi.device.request.IDeviceAssignmentCreateRequest;
 
 /**
  * Holds fields needed to create a device assignment.
- * 
- * @author Derek Adams
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceAssignmentCreateRequest extends PersistentEntityCreateRequest

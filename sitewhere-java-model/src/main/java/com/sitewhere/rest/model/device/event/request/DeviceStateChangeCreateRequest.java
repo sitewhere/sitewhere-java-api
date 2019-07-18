@@ -16,8 +16,6 @@ import com.sitewhere.spi.device.event.request.IDeviceStateChangeCreateRequest;
  * Represents a change in state for a device. This may be a statement of the
  * current state (i.e. a piece of hardware is unavailable) or a request for
  * change of system state (i.e the device requests registration in the system).
- * 
- * @author Derek
  */
 public class DeviceStateChangeCreateRequest extends DeviceEventCreateRequest
 	implements IDeviceStateChangeCreateRequest, Serializable {

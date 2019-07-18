@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.command;
 
 /**
  * Enumerates types of system commands that may be sent to devices.
- * 
- * @author Derek
  */
 public enum SystemCommandType {
 

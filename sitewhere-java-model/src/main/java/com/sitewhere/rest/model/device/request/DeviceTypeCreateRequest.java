@@ -21,8 +21,6 @@ import com.sitewhere.spi.device.request.IDeviceTypeCreateRequest;
 
 /**
  * Holds fields needed to create a new device specification.
- * 
- * @author Derek Adams
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceTypeCreateRequest extends BrandedEntityCreateRequest implements IDeviceTypeCreateRequest {

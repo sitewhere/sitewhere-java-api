@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Specifies criteria for searching a list of assets.
- * 
- * @author Derek
  */
 public interface IAssetTypeSearchCritiera extends ISearchCriteria {
 }

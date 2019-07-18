@@ -9,8 +9,6 @@ package com.sitewhere.spi.error;
 
 /**
  * Enumerates various system error conditions and gives them unique codes.
- * 
- * @author Derek
  */
 public enum ErrorCode {
 

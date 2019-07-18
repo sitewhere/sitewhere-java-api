@@ -12,8 +12,6 @@ import com.sitewhere.spi.search.asset.IAssetTypeSearchCritiera;
 
 /**
  * Model object for properties used in asset type searches.
- * 
- * @author Derek
  */
 public class AssetTypeSearchCriteria extends SearchCriteria implements IAssetTypeSearchCritiera {
 

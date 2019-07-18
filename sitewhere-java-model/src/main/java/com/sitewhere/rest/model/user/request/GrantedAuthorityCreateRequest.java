@@ -10,9 +10,8 @@ package com.sitewhere.rest.model.user.request;
 import com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest;
 
 /**
- * Default implementation of {@link IGrantedAuthorityCreateRequest} for use in REST
- * services.
- * @author Jorge Villaverde
+ * Default implementation of {@link IGrantedAuthorityCreateRequest} for use in
+ * REST services.
  */
 public class GrantedAuthorityCreateRequest implements IGrantedAuthorityCreateRequest {
 
@@ -21,50 +20,54 @@ public class GrantedAuthorityCreateRequest implements IGrantedAuthorityCreateReq
 
     /** Authority name */
     private String authority;
-    
+
     /** Description of the authority */
     private String description;
-    
+
     /** Parent authority */
     private String parent;
-    
+
     /** Indicates if it's a group of authorities */
     private boolean group;
 
     /*
-     * @see com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#getAuthority()
+     * @see
+     * com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#getAuthority()
      */
     @Override
     public String getAuthority() {
-        return authority;
+	return authority;
     }
 
     public void setAuthority(String authority) {
-        this.authority = authority;
+	this.authority = authority;
     }
 
     /*
-     * @see com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#getDescription()
+     * @see
+     * com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#getDescription(
+     * )
      */
     @Override
     public String getDescription() {
-        return description;
+	return description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+	this.description = description;
     }
 
     /*
-     * @see com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#getParent()
+     * @see
+     * com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#getParent()
      */
     @Override
     public String getParent() {
-        return parent;
+	return parent;
     }
 
     public void setParent(String parent) {
-        this.parent = parent;
+	this.parent = parent;
     }
 
     /*
@@ -72,10 +75,10 @@ public class GrantedAuthorityCreateRequest implements IGrantedAuthorityCreateReq
      */
     @Override
     public boolean isGroup() {
-        return group;
+	return group;
     }
 
     public void setGroup(boolean group) {
-        this.group = group;
+	this.group = group;
     }
 }

@@ -18,8 +18,6 @@ import com.sitewhere.spi.device.event.request.IDeviceEventCreateRequest;
 
 /**
  * Holds common fields for creating {@link DeviceEvent} subclasses.
- * 
- * @author Derek
  */
 public class DeviceEventCreateRequest implements IDeviceEventCreateRequest {
 
@@ -117,8 +115,6 @@ public class DeviceEventCreateRequest implements IDeviceEventCreateRequest {
 
     /**
      * Uses builder pattern to create device event requests.
-     * 
-     * @author Derek
      */
     public abstract static class Builder<T extends DeviceEventCreateRequest> {
 

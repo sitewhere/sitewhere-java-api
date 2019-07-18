@@ -18,8 +18,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 /**
  * Base class for persistent entities that have a unique UUID along with a
  * user-definable token. The entities also track create/update information.
- * 
- * @author Derek Adams
  */
 public class PersistentEntity extends MetadataProvider implements IPersistentEntity {
 

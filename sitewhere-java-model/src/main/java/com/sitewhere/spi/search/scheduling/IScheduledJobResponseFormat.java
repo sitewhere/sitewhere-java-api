@@ -9,11 +9,9 @@ package com.sitewhere.spi.search.scheduling;
 
 /**
  * Determines which content is returned for scheduled job responses.
- * 
- * @author Jorge Villaverde
  */
 public interface IScheduledJobResponseFormat {
-    
+
     /**
      * Indicates if context is to be included in the response.
      * 

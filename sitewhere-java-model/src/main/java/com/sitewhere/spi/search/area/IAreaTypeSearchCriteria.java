@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Specifies criteria used to find matching area types.
- * 
- * @author Jorge Villaverde
  */
 public interface IAreaTypeSearchCriteria extends ISearchCriteria {
 

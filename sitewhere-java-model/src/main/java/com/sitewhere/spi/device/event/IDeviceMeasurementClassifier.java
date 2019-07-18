@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 
 /**
  * Provides extra metadata about measurement events that have a common function.
- * 
- * @author Derek
  */
 public interface IDeviceMeasurementClassifier extends IPersistentEntity, IAccessible, IColorProvider, IIconProvider {
 

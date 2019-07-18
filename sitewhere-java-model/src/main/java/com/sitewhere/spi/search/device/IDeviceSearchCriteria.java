@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.IDateRangeSearchCriteria;
 
 /**
  * Search criteria particular to device searches.
- * 
- * @author Derek
  */
 public interface IDeviceSearchCriteria extends IDateRangeSearchCriteria {
 

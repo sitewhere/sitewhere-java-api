@@ -19,8 +19,6 @@ import com.sitewhere.spi.device.event.IDeviceAlert;
 
 /**
  * Model object for an alert event from a remote device.
- * 
- * @author dadams
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceAlert extends DeviceEvent implements IDeviceAlert, Serializable {

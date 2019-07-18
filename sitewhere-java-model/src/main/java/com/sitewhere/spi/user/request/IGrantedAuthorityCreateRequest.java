@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 /**
  * Interface for arguments needed to create a granted authority.
- * 
- * @author Derek
  */
 public interface IGrantedAuthorityCreateRequest extends Serializable {
 

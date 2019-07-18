@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.event.DeviceEventType;
 
 /**
  * Interface for arguments needed to create a device event.
- * 
- * @author Derek
  */
 public interface IDeviceEventCreateRequest extends Serializable {
 

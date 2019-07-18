@@ -9,8 +9,6 @@ package com.sitewhere.spi.error;
 
 /**
  * Indicates severity of an error.
- * 
- * @author Derek
  */
 public enum ErrorLevel {
 

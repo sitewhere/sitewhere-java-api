@@ -14,8 +14,6 @@ import com.sitewhere.rest.model.device.event.DeviceLocation;
 
 /**
  * Search results that contain device locations.
- * 
- * @author dadams
  */
 public class DeviceLocationSearchResults extends SearchResults<DeviceLocation> {
 

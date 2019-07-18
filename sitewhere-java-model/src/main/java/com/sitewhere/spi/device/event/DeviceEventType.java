@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event;
 
 /**
  * Indicates event type.
- * 
- * @author Derek
  */
 public enum DeviceEventType {
 

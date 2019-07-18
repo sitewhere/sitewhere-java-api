@@ -11,8 +11,6 @@ import com.sitewhere.spi.SiteWhereException;
 
 /**
  * Indicates that a "create" operation resulted in a duplicate key.
- * 
- * @author Derek
  */
 public class ResourceExistsException extends SiteWhereException {
 

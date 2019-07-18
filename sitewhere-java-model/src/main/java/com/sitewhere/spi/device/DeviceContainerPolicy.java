@@ -9,8 +9,6 @@ package com.sitewhere.spi.device;
 
 /**
  * Used to differentiate between device container policies.
- * 
- * @author Derek
  */
 public enum DeviceContainerPolicy {
 

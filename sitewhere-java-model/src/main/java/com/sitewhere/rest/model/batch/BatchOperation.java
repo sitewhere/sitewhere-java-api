@@ -21,8 +21,6 @@ import com.sitewhere.spi.batch.IBatchOperation;
 
 /**
  * Model object for a batch operation.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class BatchOperation extends PersistentEntity implements IBatchOperation {

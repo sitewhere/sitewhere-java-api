@@ -9,8 +9,6 @@ package com.sitewhere.spi.search;
 
 /**
  * Common base class for searching that includes support for paging.
- * 
- * @author Derek
  */
 public interface ISearchCriteria {
 

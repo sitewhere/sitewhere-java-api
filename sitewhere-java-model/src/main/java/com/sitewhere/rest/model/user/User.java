@@ -23,8 +23,6 @@ import com.sitewhere.spi.user.IUser;
 
 /**
  * Model class for a User.
- * 
- * @author Derek Adams
  */
 @JsonInclude(Include.NON_NULL)
 public class User extends PersistentEntity implements IUser {

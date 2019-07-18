@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 
 /**
  * Interface for an operation that is applied to multiple devices.
- * 
- * @author Derek
  */
 public interface IBatchOperation extends IPersistentEntity {
 

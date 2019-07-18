@@ -20,8 +20,6 @@ import com.sitewhere.spi.device.element.IDeviceElementSchema;
 
 /**
  * Model object for device information.
- * 
- * @author dadams
  */
 @JsonInclude(Include.NON_NULL)
 public class Device extends PersistentEntity implements IDevice {

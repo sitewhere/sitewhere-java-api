@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event;
 
 /**
  * Enumerates actors that can act as command targets.
- * 
- * @author Derek
  */
 public enum CommandTarget {
 

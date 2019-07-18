@@ -16,8 +16,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 /**
  * Indicates a possible status for a device. A device status is tied to a device
  * type and can be used for customizing user interfaces.
- * 
- * @author Derek
  */
 public interface IDeviceStatus extends IPersistentEntity, IColorProvider, IIconProvider {
 

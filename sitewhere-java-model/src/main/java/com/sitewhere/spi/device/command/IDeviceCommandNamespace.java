@@ -12,8 +12,6 @@ import java.util.List;
 
 /**
  * Used for grouping device commands by namespace.
- * 
- * @author Derek
  */
 public interface IDeviceCommandNamespace extends Serializable {
 

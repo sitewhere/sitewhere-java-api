@@ -11,8 +11,6 @@ import java.util.Map;
 
 /**
  * Interface for an entity that has associated metadata.
- * 
- * @author dadams
  */
 public interface IMetadataProvider {
 

@@ -15,8 +15,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Provides filter criteria for device state searches.
- * 
- * @author Derek
  */
 public interface IDeviceStateSearchCriteria extends ISearchCriteria {
 

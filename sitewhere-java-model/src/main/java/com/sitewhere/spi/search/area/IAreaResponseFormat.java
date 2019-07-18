@@ -9,8 +9,6 @@ package com.sitewhere.spi.search.area;
 
 /**
  * Determines which content is returned for areas.
- *
- * @author Jorge Villaverde
  */
 public interface IAreaResponseFormat {
 

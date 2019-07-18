@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 /**
  * Interface for arguments needed to create a device measurement.
- * 
- * @author Derek
  */
 public interface IDeviceMeasurementCreateRequest extends IDeviceEventCreateRequest, Serializable {
 

@@ -18,8 +18,6 @@ import com.sitewhere.spi.device.element.IDeviceUnit;
 
 /**
  * Default implementation of {@link IDeviceUnit}.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceUnit extends DeviceElement implements IDeviceUnit, Serializable {

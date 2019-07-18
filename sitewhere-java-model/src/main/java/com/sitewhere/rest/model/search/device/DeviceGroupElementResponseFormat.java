@@ -11,11 +11,9 @@ import com.sitewhere.spi.search.device.IDeviceGroupElementResponseFormat;
 
 /**
  * Default implementation of {@link IDeviceGroupElementResponseFormat}.
- *
- * @author Jorge Villaverde
  */
 public class DeviceGroupElementResponseFormat implements IDeviceGroupElementResponseFormat {
-    
+
     /** Details are to be included in the result */
     private Boolean includeDetails;
 
@@ -31,5 +29,4 @@ public class DeviceGroupElementResponseFormat implements IDeviceGroupElementResp
     public void setIncludeDetails(Boolean includeDetails) {
 	this.includeDetails = includeDetails;
     }
-
 }

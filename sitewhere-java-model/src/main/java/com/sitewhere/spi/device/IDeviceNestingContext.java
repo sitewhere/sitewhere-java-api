@@ -11,8 +11,6 @@ import com.sitewhere.spi.device.element.IDeviceElementSchema;
 
 /**
  * Provides context information for addressing a nested device.
- * 
- * @author Derek
  */
 public interface IDeviceNestingContext {
 
@@ -24,8 +22,8 @@ public interface IDeviceNestingContext {
     public IDevice getGateway();
 
     /**
-     * Get nested device being addressed. In standalone devices, this value will
-     * be null.
+     * Get nested device being addressed. In standalone devices, this value will be
+     * null.
      * 
      * @return
      */

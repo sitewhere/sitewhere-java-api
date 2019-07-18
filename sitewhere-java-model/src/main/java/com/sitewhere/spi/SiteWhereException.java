@@ -11,8 +11,6 @@ import java.io.IOException;
 
 /**
  * Base class for SiteWhere exceptions.
- * 
- * @author Derek Adams
  */
 public class SiteWhereException extends IOException {
 

@@ -15,8 +15,6 @@ import com.sitewhere.spi.batch.request.IBatchOperationUpdateRequest;
 
 /**
  * Holds information needed to update a batch operation.
- * 
- * @author Derek
  */
 public class BatchOperationUpdateRequest extends PersistentEntityCreateRequest implements IBatchOperationUpdateRequest {
 

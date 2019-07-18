@@ -18,8 +18,6 @@ import com.sitewhere.spi.customer.ICustomerType;
 
 /**
  * Model object for a customer type.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class CustomerType extends BrandedEntity implements ICustomerType {

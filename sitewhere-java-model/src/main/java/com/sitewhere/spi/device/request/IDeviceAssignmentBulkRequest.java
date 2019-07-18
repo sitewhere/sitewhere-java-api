@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * Handles requests that apply to multiple device assignments.
- * 
- * @author Derek
  */
 public interface IDeviceAssignmentBulkRequest {
 

@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.element;
 
 /**
  * Common base class for elements in the {@link IDeviceElementSchema} hierarchy.
- * 
- * @author Derek
  */
 public interface IDeviceElement {
 

@@ -9,8 +9,6 @@ package com.sitewhere.rest.model.device.communication;
 
 /**
  * Used for marshaling device request data to JSON.
- * 
- * @author Derek
  */
 public class DeviceRequest {
 
@@ -60,8 +58,6 @@ public class DeviceRequest {
 
     /**
      * Enumerates types of expected requests.
-     * 
-     * @author Derek
      */
     public static enum Type {
 

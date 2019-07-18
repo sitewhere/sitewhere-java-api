@@ -9,8 +9,6 @@ package com.sitewhere.spi.user;
 
 /**
  * Constants related to SiteWhere granted authorities.
- * 
- * @author Derek
  */
 public interface SiteWhereRoles {
 

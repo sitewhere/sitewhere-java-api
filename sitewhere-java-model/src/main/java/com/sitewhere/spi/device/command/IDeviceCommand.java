@@ -15,8 +15,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 
 /**
  * A parameterized command issued to a device.
- * 
- * @author Derek
  */
 public interface IDeviceCommand extends IPersistentEntity, IAccessible {
 

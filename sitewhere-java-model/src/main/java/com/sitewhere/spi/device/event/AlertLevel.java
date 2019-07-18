@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event;
 
 /**
  * Indicates severity of alert.
- * 
- * @author Derek
  */
 public enum AlertLevel {
 

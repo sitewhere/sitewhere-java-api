@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.event.DeviceEventType;
 /**
  * Wraps a device event and provides extra information the associated asset from
  * its assignment.
- * 
- * @author Derek
  */
 public class DeviceEventWithAsset extends DeviceEvent implements IDeviceEventWithAsset {
 
@@ -28,7 +26,7 @@ public class DeviceEventWithAsset extends DeviceEvent implements IDeviceEventWit
     public DeviceEventWithAsset(DeviceEventType type) {
 	super(type);
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -40,7 +38,6 @@ public class DeviceEventWithAsset extends DeviceEvent implements IDeviceEventWit
     }
 
     public void setAssetName(String assetName) {
-        this.assetName = assetName;
+	this.assetName = assetName;
     }
-
 }

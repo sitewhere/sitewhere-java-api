@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event.request;
 
 /**
  * Request from a device to update its state in SiteWhere.
- * 
- * @author Derek
  */
 public interface IDeviceStateChangeCreateRequest extends IDeviceEventCreateRequest {
 

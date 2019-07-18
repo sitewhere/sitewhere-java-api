@@ -12,8 +12,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 /**
  * Common criteria used in searches that return a list of results. Includes
  * parameters for paging of results.
- * 
- * @author Derek
  */
 public class SearchCriteria implements ISearchCriteria {
 

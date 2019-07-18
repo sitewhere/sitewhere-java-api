@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * Used to group related {@link IDeviceSlot} elements into logical units.
- * 
- * @author Derek
  */
 public interface IDeviceUnit extends IDeviceElement {
 

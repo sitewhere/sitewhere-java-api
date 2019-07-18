@@ -11,15 +11,11 @@ import java.util.Comparator;
 
 /**
  * Commonly used comparators for SiteWhere entities.
- * 
- * @author Derek
  */
 public class Comparators {
 
     /**
      * Lists objects with newest created first.
-     * 
-     * @author Derek
      */
     public static class InverseCreatedDateComparator implements Comparator<IPersistentEntity> {
 

@@ -22,8 +22,6 @@ import com.sitewhere.spi.device.event.IDeviceCommandInvocation;
 
 /**
  * Implementation of {@link IDeviceCommandInvocation}.
- * 
- * @author Derek
  */
 @JsonIgnoreProperties
 @JsonInclude(Include.NON_NULL)

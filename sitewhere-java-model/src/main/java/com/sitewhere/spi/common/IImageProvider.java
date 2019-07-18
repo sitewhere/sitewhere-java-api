@@ -9,8 +9,6 @@ package com.sitewhere.spi.common;
 
 /**
  * Entity which provides an image.
- * 
- * @author Derek
  */
 public interface IImageProvider {
 

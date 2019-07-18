@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Specifies criteria used to find matching customer types.
- * 
- * @author Jorge Villaverde
  */
 public interface ICustomerTypeSearchCriteria extends ISearchCriteria {
 

@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.event.IDeviceStateChange;
 
 /**
  * Model object for a state change reported by a remote device.
- * 
- * @author Derek
  */
 public class DeviceStateChange extends DeviceEvent implements IDeviceStateChange {
 

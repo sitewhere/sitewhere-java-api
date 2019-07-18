@@ -17,8 +17,6 @@ import com.sitewhere.spi.tenant.ITenant;
 
 /**
  * Default implementation of {@link ITenant} interface used for REST services.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class Tenant extends BrandedEntity implements ITenant {

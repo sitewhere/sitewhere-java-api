@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.request.ITreeEntityCreateRequest;
 
 /**
  * Interface for arguments needed to create a customer.
- * 
- * @author Derek
  */
 public interface ICustomerCreateRequest extends IAccessible, IBrandedEntityCreateRequest, ITreeEntityCreateRequest {
 

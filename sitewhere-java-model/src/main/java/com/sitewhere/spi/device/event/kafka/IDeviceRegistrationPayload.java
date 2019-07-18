@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.event.request.IDeviceRegistrationRequest;
 /**
  * Get payload passed for inbound device registration requests after they have
  * been decoded in the event sources.
- * 
- * @author Derek
  */
 public interface IDeviceRegistrationPayload extends Serializable {
 

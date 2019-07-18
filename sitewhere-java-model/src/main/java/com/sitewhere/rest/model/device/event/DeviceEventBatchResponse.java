@@ -18,8 +18,6 @@ import com.sitewhere.spi.device.event.IDeviceMeasurement;
 
 /**
  * Response from device event batch create operation.
- * 
- * @author Derek
  */
 public class DeviceEventBatchResponse implements IDeviceEventBatchResponse, Serializable {
 
@@ -39,8 +37,7 @@ public class DeviceEventBatchResponse implements IDeviceEventBatchResponse, Seri
      * (non-Javadoc)
      * 
      * @see
-     * com.sitewhere.spi.device.IDeviceEventBatchResponse#getCreatedMeasurements
-     * ()
+     * com.sitewhere.spi.device.IDeviceEventBatchResponse#getCreatedMeasurements ()
      */
     @SuppressWarnings("unchecked")
     public List<IDeviceMeasurement> getCreatedMeasurements() {
@@ -54,8 +51,7 @@ public class DeviceEventBatchResponse implements IDeviceEventBatchResponse, Seri
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * com.sitewhere.spi.device.IDeviceEventBatchResponse#getCreatedLocations()
+     * @see com.sitewhere.spi.device.IDeviceEventBatchResponse#getCreatedLocations()
      */
     @SuppressWarnings("unchecked")
     public List<IDeviceLocation> getCreatedLocations() {
@@ -69,8 +65,7 @@ public class DeviceEventBatchResponse implements IDeviceEventBatchResponse, Seri
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * com.sitewhere.spi.device.IDeviceEventBatchResponse#getCreatedAlerts()
+     * @see com.sitewhere.spi.device.IDeviceEventBatchResponse#getCreatedAlerts()
      */
     @SuppressWarnings("unchecked")
     public List<IDeviceAlert> getCreatedAlerts() {

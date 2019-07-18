@@ -14,8 +14,6 @@ import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 
 /**
  * Search results that contain device command invocations.
- * 
- * @author dadams
  */
 public class DeviceCommandInvocationSearchResults extends SearchResults<DeviceCommandInvocation> {
 

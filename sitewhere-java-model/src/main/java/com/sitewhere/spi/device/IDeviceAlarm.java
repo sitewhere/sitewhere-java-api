@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.IMetadataProvider;
 
 /**
  * Indicates an alarm condition that potentially requires human intervention.
- * 
- * @author Derek
  */
 public interface IDeviceAlarm extends IMetadataProvider {
 

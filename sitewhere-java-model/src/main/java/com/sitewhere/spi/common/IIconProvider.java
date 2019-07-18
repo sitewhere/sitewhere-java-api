@@ -9,8 +9,6 @@ package com.sitewhere.spi.common;
 
 /**
  * Entity which may be represented visually with an icon and colored
- * 
- * @author Derek
  */
 public interface IIconProvider {
 

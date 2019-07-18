@@ -15,8 +15,6 @@ import com.sitewhere.spi.area.IAreaType;
 /**
  * Extends {@link AreaType} to support fields that can be included on REST
  * calls.
- * 
- * @author Derek
  */
 public class MarshaledAreaType extends AreaType {
 

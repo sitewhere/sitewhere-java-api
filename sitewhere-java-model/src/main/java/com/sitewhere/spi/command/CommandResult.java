@@ -9,8 +9,6 @@ package com.sitewhere.spi.command;
 
 /**
  * Indicates the result status for a command.
- * 
- * @author dadams
  */
 public enum CommandResult {
 

@@ -11,8 +11,6 @@ import java.util.UUID;
 
 /**
  * Request from a device to send a chunk of device stream data.
- * 
- * @author Derek
  */
 public interface ISendDeviceStreamDataRequest {
 

@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.command.ParameterType;
 
 /**
  * Model object for a command parameter.
- * 
- * @author Derek
  */
 public class CommandParameter implements ICommandParameter, Serializable {
 

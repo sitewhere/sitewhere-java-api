@@ -19,8 +19,6 @@ import com.sitewhere.spi.device.request.IDeviceAlarmCreateRequest;
 
 /**
  * Fields needed to create/update a device alarm.
- * 
- * @author Derek Adams
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceAlarmCreateRequest implements IDeviceAlarmCreateRequest {

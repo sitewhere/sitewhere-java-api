@@ -9,8 +9,6 @@ package com.sitewhere.spi.device;
 
 /**
  * Enumerates possible states for an alarm.
- * 
- * @author Derek
  */
 public enum DeviceAlarmState {
 

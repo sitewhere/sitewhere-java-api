@@ -20,8 +20,6 @@ import com.sitewhere.spi.area.request.IZoneCreateRequest;
 
 /**
  * Provides parameters needed to create a new zone.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class ZoneCreateRequest extends PersistentEntityCreateRequest implements IZoneCreateRequest {

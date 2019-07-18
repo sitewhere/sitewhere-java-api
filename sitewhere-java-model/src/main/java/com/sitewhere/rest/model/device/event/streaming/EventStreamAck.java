@@ -11,8 +11,6 @@ import com.sitewhere.spi.device.event.streaming.IEventStreamAck;
 
 /**
  * Model object for an event stream ack.
- * 
- * @author Derek
  */
 public class EventStreamAck implements IEventStreamAck {
 

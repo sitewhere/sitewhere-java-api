@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.event.CommandTarget;
 
 /**
  * Interface for arguments needed to create a device command invocation.
- * 
- * @author Derek
  */
 public interface IDeviceCommandInvocationCreateRequest extends IDeviceEventCreateRequest {
 

@@ -13,8 +13,6 @@ import com.sitewhere.spi.device.event.IDeviceLocation;
 
 /**
  * Contains results of matching a location against a list of zones.
- * 
- * @author Derek
  */
 public interface IZoneMatcher {
 

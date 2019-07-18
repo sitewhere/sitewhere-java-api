@@ -16,8 +16,6 @@ import com.sitewhere.spi.common.request.ITreeEntityCreateRequest;
 
 /**
  * Interface for arguments needed to create an area.
- * 
- * @author Derek
  */
 public interface IAreaCreateRequest extends IAccessible, IBrandedEntityCreateRequest, ITreeEntityCreateRequest {
 

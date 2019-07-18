@@ -20,8 +20,6 @@ import com.sitewhere.spi.device.event.request.IDeviceAlertCreateRequest;
 
 /**
  * Model object used to create a new {@link DeviceAlert} via REST APIs.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceAlertCreateRequest extends DeviceEventCreateRequest
@@ -63,8 +61,7 @@ public class DeviceAlertCreateRequest extends DeviceEventCreateRequest
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * com.sitewhere.spi.device.request.IDeviceAlertCreateRequest#getLevel()
+     * @see com.sitewhere.spi.device.request.IDeviceAlertCreateRequest#getLevel()
      */
     public AlertLevel getLevel() {
 	return level;
@@ -90,8 +87,7 @@ public class DeviceAlertCreateRequest extends DeviceEventCreateRequest
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * com.sitewhere.spi.device.request.IDeviceAlertCreateRequest#getMessage()
+     * @see com.sitewhere.spi.device.request.IDeviceAlertCreateRequest#getMessage()
      */
     public String getMessage() {
 	return message;

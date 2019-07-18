@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 
 /**
  * A data stream associated with a device assignment.
- * 
- * @author Derek
  */
 public interface IDeviceStream extends IPersistentEntity {
 

@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.event.IDeviceMeasurement;
 
 /**
  * Search results that contain device measurements.
- * 
- * @author dadams
  */
 public class DeviceMeasurementsSearchResults extends SearchResults<IDeviceMeasurement> {
 

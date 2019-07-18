@@ -19,8 +19,6 @@ import com.sitewhere.spi.area.request.IAreaCreateRequest;
 
 /**
  * Provides parameters needed to create a new area.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class AreaCreateRequest extends BrandedEntityCreateRequest implements IAreaCreateRequest {

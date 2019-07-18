@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 /**
  * System command issued to device.
- * 
- * @author Derek
  */
 public interface ISystemCommand extends Serializable {
 

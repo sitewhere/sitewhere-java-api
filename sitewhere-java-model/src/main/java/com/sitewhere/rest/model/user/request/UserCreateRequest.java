@@ -19,32 +19,31 @@ import com.sitewhere.spi.user.request.IUserCreateRequest;
 /**
  * Default implementation of {@link IUserCreateRequest} for use in REST
  * services.
- * @author Jorge Villaverde
  */
 @JsonInclude(Include.NON_NULL)
 public class UserCreateRequest extends PersistentEntityCreateRequest implements IUserCreateRequest {
 
     /** Serial version UID */
     private static final long serialVersionUID = -735534954435737620L;
-    
+
     /** Username */
     private String username;
-    
+
     /** User password */
     private String password;
 
     /** User firstname */
     private String firstName;
-    
+
     /** User lastname */
     private String lastName;
-    
+
     /** User status */
     private AccountStatus status;
-    
+
     /** User authorities */
     private List<String> authorities;
-    
+
     /*
      * @see com.sitewhere.spi.user.request.IUserCreateRequest#getUsername()
      */
@@ -54,7 +53,7 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     }
 
     public void setUsername(String username) {
-        this.username = username;
+	this.username = username;
     }
 
     /*
@@ -66,7 +65,7 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     }
 
     public void setPassword(String password) {
-        this.password = password;
+	this.password = password;
     }
 
     /*
@@ -74,11 +73,11 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
      */
     @Override
     public String getFirstName() {
-        return firstName;
+	return firstName;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+	this.firstName = firstName;
     }
 
     /*
@@ -86,11 +85,11 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
      */
     @Override
     public String getLastName() {
-        return lastName;
+	return lastName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+	this.lastName = lastName;
     }
 
     /*
@@ -98,11 +97,11 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
      */
     @Override
     public AccountStatus getStatus() {
-        return status;
+	return status;
     }
 
     public void setStatus(AccountStatus status) {
-        this.status = status;
+	this.status = status;
     }
 
     /*
@@ -114,6 +113,6 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     }
 
     public void setAuthorities(List<String> authorities) {
-        this.authorities = authorities;
+	this.authorities = authorities;
     }
 }

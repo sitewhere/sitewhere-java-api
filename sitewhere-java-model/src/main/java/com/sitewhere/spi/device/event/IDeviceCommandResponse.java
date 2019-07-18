@@ -11,8 +11,6 @@ import java.util.UUID;
 
 /**
  * Represents a response from a device regarding a previously sent command.
- * 
- * @author Derek
  */
 public interface IDeviceCommandResponse extends IDeviceEvent {
 

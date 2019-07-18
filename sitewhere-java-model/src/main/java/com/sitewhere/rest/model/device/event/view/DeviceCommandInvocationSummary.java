@@ -22,8 +22,6 @@ import com.sitewhere.spi.device.event.IDeviceCommandInvocation;
  * Merges information from an {@link IDeviceCommand} and an
  * {@link IDeviceCommandInvocation} in a form that is easy to use in a user
  * interface.
- * 
- * @author Derek
  */
 public class DeviceCommandInvocationSummary extends MetadataProvider implements Serializable {
 

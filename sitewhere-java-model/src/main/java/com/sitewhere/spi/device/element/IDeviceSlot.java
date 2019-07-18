@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.IDevice;
 /**
  * Available position where an {@link IDevice} may be inserted into a parent
  * device.
- * 
- * @author Derek
  */
 public interface IDeviceSlot extends IDeviceElement {
 }

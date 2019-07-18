@@ -17,8 +17,6 @@ import com.sitewhere.spi.area.request.IAreaTypeCreateRequest;
 
 /**
  * Provides information needed to create an area type.
- * 
- * @author Derek
  */
 public class AreaTypeCreateRequest extends BrandedEntityCreateRequest implements IAreaTypeCreateRequest {
 

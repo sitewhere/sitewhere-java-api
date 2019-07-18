@@ -9,8 +9,6 @@ package com.sitewhere.spi;
 
 /**
  * Provides tenant authentication information.
- * 
- * @author Derek
  */
 public interface ITenantAuthentication {
 

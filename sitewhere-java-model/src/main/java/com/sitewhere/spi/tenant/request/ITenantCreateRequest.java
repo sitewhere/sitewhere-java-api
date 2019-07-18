@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.request.IBrandedEntityCreateRequest;
 
 /**
  * Interface for arguments needed to create a tenant.
- * 
- * @author Derek
  */
 public interface ITenantCreateRequest extends IBrandedEntityCreateRequest {
 

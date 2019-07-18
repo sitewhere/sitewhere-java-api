@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 /**
  * Interface for getting version information.
- * 
- * @author Derek
  */
 public interface IVersion extends Serializable {
 

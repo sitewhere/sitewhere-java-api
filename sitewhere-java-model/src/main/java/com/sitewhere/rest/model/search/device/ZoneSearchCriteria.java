@@ -12,8 +12,6 @@ import com.sitewhere.spi.search.device.IZoneSearchCriteria;
 
 /**
  * Adds options specific to zone searches.
- * 
- * @author Derek
  */
 public class ZoneSearchCriteria extends SearchCriteria implements IZoneSearchCriteria {
 

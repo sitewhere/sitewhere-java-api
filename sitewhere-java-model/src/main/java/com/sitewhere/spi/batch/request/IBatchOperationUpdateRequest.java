@@ -15,8 +15,6 @@ import com.sitewhere.spi.common.request.IPersistentEntityCreateRequest;
 
 /**
  * Defines fields that can be updated on an {@link IBatchOperation}.
- * 
- * @author Derek
  */
 public interface IBatchOperationUpdateRequest extends IPersistentEntityCreateRequest {
 

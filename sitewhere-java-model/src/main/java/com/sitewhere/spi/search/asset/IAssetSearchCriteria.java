@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Criteria used to search for assets.
- * 
- * @author Derek
  */
 public interface IAssetSearchCriteria extends ISearchCriteria {
 
@@ -22,7 +20,7 @@ public interface IAssetSearchCriteria extends ISearchCriteria {
      * @return
      */
     public String getAssetTypeToken();
-    
+
     /**
      * Indicates if asset type are to be returned.
      * 

@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.element;
 
 /**
  * Specifies a schema for referencing nested devices within a parent device.
- * 
- * @author Derek
  */
 public interface IDeviceElementSchema extends IDeviceUnit {
 }

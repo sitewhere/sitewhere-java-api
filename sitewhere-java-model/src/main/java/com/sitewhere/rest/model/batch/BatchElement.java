@@ -20,8 +20,6 @@ import com.sitewhere.spi.batch.IBatchElement;
 
 /**
  * Model object for a batch element.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class BatchElement extends MetadataProvider implements IBatchElement {

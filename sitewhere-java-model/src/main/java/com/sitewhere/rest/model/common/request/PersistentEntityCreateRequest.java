@@ -12,8 +12,6 @@ import com.sitewhere.spi.common.request.IPersistentEntityCreateRequest;
 
 /**
  * Base class for fields needed to create a persistent entity.
- * 
- * @author Derek
  */
 public class PersistentEntityCreateRequest extends MetadataProvider implements IPersistentEntityCreateRequest {
 

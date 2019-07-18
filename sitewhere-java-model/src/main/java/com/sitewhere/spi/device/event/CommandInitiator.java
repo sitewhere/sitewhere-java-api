@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event;
 
 /**
  * Enumerates actors that can initiate commands.
- * 
- * @author Derek
  */
 public enum CommandInitiator {
 

@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 /**
  * Measurement associated with a device assignment at a point in time.
- * 
- * @author Derek
  */
 public interface IDeviceMeasurement extends IDeviceEvent, Serializable {
 

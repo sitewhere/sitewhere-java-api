@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event;
 
 /**
  * Status indicator for a command.
- * 
- * @author Derek
  */
 public enum CommandStatus {
 

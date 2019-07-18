@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Search criteria for tenants.
- * 
- * @author Derek
  */
 public interface ITenantSearchCriteria extends ISearchCriteria {
 

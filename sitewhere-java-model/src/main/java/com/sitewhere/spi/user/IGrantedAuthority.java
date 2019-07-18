@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 /**
  * Interface for granted authority information.
- * 
- * @author Derek
  */
 public interface IGrantedAuthority extends Serializable {
 

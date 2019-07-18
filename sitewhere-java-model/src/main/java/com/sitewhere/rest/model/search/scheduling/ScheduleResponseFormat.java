@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.scheduling.IScheduleResponseFormat;
 
 /**
  * Default implementation of {@link IScheduleResponseFormat}.
- * 
- * @author Jorge Villaverde
  */
 public class ScheduleResponseFormat implements IScheduleResponseFormat {
 

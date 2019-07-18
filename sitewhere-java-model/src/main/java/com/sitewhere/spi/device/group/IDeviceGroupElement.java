@@ -12,8 +12,6 @@ import java.util.UUID;
 
 /**
  * Interface for an entry in an {@link IDeviceGroup}.
- * 
- * @author Derek
  */
 public interface IDeviceGroupElement {
 

@@ -12,8 +12,6 @@ import java.util.List;
 /**
  * Base interface for results returned from paged queries.
  * 
- * @author Derek
- * 
  * @param <T>
  */
 public interface ISearchResults<T> {

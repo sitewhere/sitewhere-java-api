@@ -17,8 +17,6 @@ import com.sitewhere.spi.customer.request.ICustomerTypeCreateRequest;
 
 /**
  * Provides information needed to create a customer type.
- * 
- * @author Derek
  */
 public class CustomerTypeCreateRequest extends BrandedEntityCreateRequest implements ICustomerTypeCreateRequest {
 

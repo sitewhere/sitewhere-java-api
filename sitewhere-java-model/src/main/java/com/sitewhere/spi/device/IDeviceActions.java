@@ -13,8 +13,6 @@ import com.sitewhere.spi.SiteWhereException;
 
 /**
  * Provides simple methods for invoking commonly used SiteWhere actions.
- * 
- * @author Derek
  */
 public interface IDeviceActions {
 

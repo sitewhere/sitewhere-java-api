@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event;
 
 /**
  * Indicates source that generated an alert.
- * 
- * @author dadams
  */
 public enum AlertSource {
 

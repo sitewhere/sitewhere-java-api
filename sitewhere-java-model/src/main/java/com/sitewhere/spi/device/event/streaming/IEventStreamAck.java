@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event.streaming;
 
 /**
  * Acknowledges processing of events via stream.
- * 
- * @author Derek
  */
 public interface IEventStreamAck {
 

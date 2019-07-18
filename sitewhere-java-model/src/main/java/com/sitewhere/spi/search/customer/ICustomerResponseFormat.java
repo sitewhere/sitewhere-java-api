@@ -9,8 +9,6 @@ package com.sitewhere.spi.search.customer;
 
 /**
  * Determines which content is returned for customer responses.
- * 
- * @author Jorge Villaverde
  */
 public interface ICustomerResponseFormat {
 

@@ -12,8 +12,6 @@ import java.io.Serializable;
 /**
  * Event that captures a change of state (either requested or after the fact)
  * for a device.
- * 
- * @author Derek
  */
 public interface IDeviceStateChange extends IDeviceEvent, Serializable {
 

@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.event.IDeviceMeasurement;
 
 /**
  * Implementation of device measurements.
- * 
- * @author dadams
  */
 @JsonIgnoreProperties
 @JsonInclude(Include.NON_NULL)

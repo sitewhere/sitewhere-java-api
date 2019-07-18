@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.ILocation;
 
 /**
  * Model object for a location in 3d space.
- * 
- * @author dadams
  */
 public class Location implements ILocation {
 

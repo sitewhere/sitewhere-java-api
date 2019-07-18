@@ -13,8 +13,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Criteria for searching granted authorities.
- * 
- * @author Derek
  */
 public interface IGrantedAuthoritySearchCriteria extends ISearchCriteria, Serializable {
 }

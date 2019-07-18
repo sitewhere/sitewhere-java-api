@@ -11,8 +11,6 @@ import com.sitewhere.spi.ITenantAuthentication;
 
 /**
  * Model object for passing tenant authentication information.
- * 
- * @author Derek
  */
 public class TenantAuthentication implements ITenantAuthentication {
 
