@@ -23,14 +23,14 @@ public class ZoneSearchCriteria extends SearchCriteria implements IZoneSearchCri
     }
 
     /*
-     * @see com.sitewhere.spi.search.device.IZoneSearchCriteria#getAreaId()
+     * @see com.sitewhere.spi.search.device.IZoneSearchCriteria#getAreaToken()
      */
     @Override
     public String getAreaToken() {
 	return areaToken;
     }
 
-    public void setAreaId(String areaToken) {
+    public void setAreaToken(String areaToken) {
 	this.areaToken = areaToken;
     }
 }
