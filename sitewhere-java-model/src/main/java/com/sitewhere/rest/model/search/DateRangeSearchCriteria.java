@@ -13,8 +13,6 @@ import com.sitewhere.spi.search.IDateRangeSearchCriteria;
 
 /**
  * Extends search criteria with ability to specify a date range.
- * 
- * @author Derek
  */
 public class DateRangeSearchCriteria extends SearchCriteria implements IDateRangeSearchCriteria {
 

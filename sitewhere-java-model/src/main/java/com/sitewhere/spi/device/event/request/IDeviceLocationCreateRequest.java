@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event.request;
 
 /**
  * Interface for arguments needed to create a device location.
- * 
- * @author Derek
  */
 public interface IDeviceLocationCreateRequest extends IDeviceEventCreateRequest {
 

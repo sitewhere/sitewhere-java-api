@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.streaming.request.IDeviceStreamDataCreateRequest
 
 /**
  * Model object used to create a new {@link DeviceStreamData} via REST APIs.
- * 
- * @author Derek
  */
 public class DeviceStreamDataCreateRequest extends DeviceEventCreateRequest
 	implements IDeviceStreamDataCreateRequest, Serializable {

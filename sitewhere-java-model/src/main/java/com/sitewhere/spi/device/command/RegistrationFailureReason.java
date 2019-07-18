@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.command;
 
 /**
  * Enumerates reasons device registration can fail.
- * 
- * @author Derek
  */
 public enum RegistrationFailureReason {
 

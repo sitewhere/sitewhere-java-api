@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.event.IDeviceLocation;
 
 /**
  * Represents a relationship between a location and a zone.
- * 
- * @author Derek
  */
 public interface IZoneRelationship {
 

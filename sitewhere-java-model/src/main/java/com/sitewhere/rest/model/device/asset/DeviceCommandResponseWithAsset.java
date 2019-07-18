@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.asset.IDeviceEventWithAsset;
 
 /**
  * Model object for device command response with asset.
- * 
- * @author Jorge Villaverde
  */
 public class DeviceCommandResponseWithAsset extends DeviceCommandResponse implements IDeviceEventWithAsset {
 
@@ -22,7 +20,7 @@ public class DeviceCommandResponseWithAsset extends DeviceCommandResponse implem
 
     /** asset name */
     private String assetName;
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -34,7 +32,6 @@ public class DeviceCommandResponseWithAsset extends DeviceCommandResponse implem
     }
 
     public void setAssetName(String assetName) {
-        this.assetName = assetName;
+	this.assetName = assetName;
     }
-    
 }

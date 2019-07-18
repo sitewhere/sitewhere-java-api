@@ -17,8 +17,6 @@ import com.sitewhere.spi.device.element.IDeviceElementSchema;
 
 /**
  * Model object for device specification information.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceType extends BrandedEntity implements IDeviceType {

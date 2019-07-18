@@ -20,8 +20,6 @@ import com.sitewhere.spi.device.IDeviceAssignment;
 
 /**
  * Device assignment value object used for marshaling.
- * 
- * @author dadams
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceAssignment extends PersistentEntity implements IDeviceAssignment {

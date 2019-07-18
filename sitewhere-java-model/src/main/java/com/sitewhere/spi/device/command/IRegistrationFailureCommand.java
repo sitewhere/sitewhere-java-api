@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 /**
  * Command that indicates device registration failed.
- * 
- * @author Derek
  */
 public interface IRegistrationFailureCommand extends ISystemCommand, Serializable {
 

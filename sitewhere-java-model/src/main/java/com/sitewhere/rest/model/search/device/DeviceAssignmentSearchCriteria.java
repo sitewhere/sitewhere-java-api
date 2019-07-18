@@ -15,8 +15,6 @@ import com.sitewhere.spi.search.device.IDeviceAssignmentSearchCriteria;
 
 /**
  * Default implementation of {@link IDeviceAssignmentSearchCriteria}.
- * 
- * @author Derek
  */
 public class DeviceAssignmentSearchCriteria extends SearchCriteria implements IDeviceAssignmentSearchCriteria {
 

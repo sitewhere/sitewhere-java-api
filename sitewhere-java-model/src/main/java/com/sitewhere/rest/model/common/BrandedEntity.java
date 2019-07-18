@@ -12,8 +12,6 @@ import com.sitewhere.spi.common.IBrandedEntity;
 
 /**
  * Base class for entities that include branding information.
- * 
- * @author Derek
  */
 public abstract class BrandedEntity extends PersistentEntity implements IBrandedEntity {
 

@@ -15,8 +15,6 @@ import com.sitewhere.spi.customer.ICustomerType;
 /**
  * Extends {@link CustomerType} to support fields that can be included on REST
  * calls.
- * 
- * @author Derek
  */
 public class MarshaledCustomerType extends CustomerType {
 

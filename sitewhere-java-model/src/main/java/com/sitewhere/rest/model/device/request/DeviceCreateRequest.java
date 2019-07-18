@@ -18,8 +18,6 @@ import com.sitewhere.spi.device.request.IDeviceCreateRequest;
 
 /**
  * Fields needed to create/update a device.
- * 
- * @author Derek Adams
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceCreateRequest extends PersistentEntityCreateRequest implements IDeviceCreateRequest {

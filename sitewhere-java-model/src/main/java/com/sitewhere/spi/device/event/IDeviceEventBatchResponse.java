@@ -11,8 +11,6 @@ import java.util.List;
 
 /**
  * Response generated when a batch of events has been processed.
- * 
- * @author Derek
  */
 public interface IDeviceEventBatchResponse {
 

@@ -12,8 +12,6 @@ import retrofit2.http.GET;
 
 /**
  * Retrofit API for SiteWhere authentication.
- * 
- * @author Derek
  */
 public interface AuthenticationRetrofit {
     @GET("jwt")

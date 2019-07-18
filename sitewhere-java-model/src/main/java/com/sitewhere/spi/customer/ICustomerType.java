@@ -16,8 +16,6 @@ import com.sitewhere.spi.common.IBrandedEntity;
 /**
  * Represents a domain-specific customer (device owner) type that can be used
  * for building a hierarchical customer model.
- * 
- * @author Derek
  */
 public interface ICustomerType extends IBrandedEntity, IAccessible {
 

@@ -15,8 +15,6 @@ import com.sitewhere.spi.common.request.IPersistentEntityCreateRequest;
 
 /**
  * Provides information needex to create an {@link IBatchOperation}.
- * 
- * @author Derek
  */
 public interface IBatchOperationCreateRequest extends IPersistentEntityCreateRequest {
 

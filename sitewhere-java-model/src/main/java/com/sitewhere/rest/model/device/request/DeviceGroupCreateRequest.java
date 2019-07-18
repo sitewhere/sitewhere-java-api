@@ -19,8 +19,6 @@ import com.sitewhere.spi.device.request.IDeviceGroupCreateRequest;
 
 /**
  * Holds fields needed to create a new device group.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceGroupCreateRequest extends BrandedEntityCreateRequest implements IDeviceGroupCreateRequest {

@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.device.IDeviceStateResponseFormat;
 
 /**
  * Default implementation of {@link IDeviceStateResponseFormat}.
- * 
- * @author Jorge Villaverde
  */
 public class DeviceStateResponseFormat implements IDeviceStateResponseFormat {
 

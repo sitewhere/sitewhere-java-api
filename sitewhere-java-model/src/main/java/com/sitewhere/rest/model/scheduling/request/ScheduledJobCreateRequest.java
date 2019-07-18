@@ -18,8 +18,6 @@ import com.sitewhere.spi.scheduling.request.IScheduledJobCreateRequest;
 
 /**
  * Holds fields needed to create a new scheduled job.
- * 
- * @author Derek Adams
  */
 @JsonInclude(Include.NON_NULL)
 public class ScheduledJobCreateRequest extends PersistentEntityCreateRequest implements IScheduledJobCreateRequest {

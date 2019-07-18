@@ -15,8 +15,6 @@ import com.sitewhere.spi.scheduling.ScheduledJobType;
 
 /**
  * Includes values needed to create a scheduled job.
- * 
- * @author Derek
  */
 public interface IScheduledJobCreateRequest extends IPersistentEntityCreateRequest {
 

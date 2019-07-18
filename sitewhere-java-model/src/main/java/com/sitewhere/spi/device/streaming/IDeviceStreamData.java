@@ -11,8 +11,6 @@ import com.sitewhere.spi.device.event.IDeviceEvent;
 
 /**
  * A single chunk of data that is part of a stream coming from a device.
- * 
- * @author Derek
  */
 public interface IDeviceStreamData extends IDeviceEvent {
 

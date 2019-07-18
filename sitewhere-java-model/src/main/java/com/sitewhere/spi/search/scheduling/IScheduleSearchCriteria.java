@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Search criteria for Schedule.
- * 
- * @author Jorge Villaverde
  */
 public interface IScheduleSearchCriteria extends ISearchCriteria {
 

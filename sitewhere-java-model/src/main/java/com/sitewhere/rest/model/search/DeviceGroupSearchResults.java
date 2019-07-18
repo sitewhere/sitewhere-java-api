@@ -14,8 +14,6 @@ import com.sitewhere.rest.model.device.group.DeviceGroup;
 
 /**
  * Search results that contain device groups.
- * 
- * @author Derek
  */
 public class DeviceGroupSearchResults extends SearchResults<DeviceGroup> {
 

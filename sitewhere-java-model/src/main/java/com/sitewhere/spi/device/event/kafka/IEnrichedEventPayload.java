@@ -13,8 +13,6 @@ import com.sitewhere.spi.device.event.IDeviceEventContext;
 /**
  * Event payload that has been enriched with extra device/assignment data that
  * may be useful in processing.
- * 
- * @author Derek
  */
 public interface IEnrichedEventPayload {
 

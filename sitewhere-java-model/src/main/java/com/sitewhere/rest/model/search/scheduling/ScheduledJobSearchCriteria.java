@@ -12,8 +12,6 @@ import com.sitewhere.spi.search.scheduling.IScheduledJobSearchCriteria;
 
 /**
  * Default implementation of {@link IScheduledJobSearchCriteria}.
- * 
- * @author Jorge Villaverde
  */
 public class ScheduledJobSearchCriteria extends SearchCriteria implements IScheduledJobSearchCriteria {
 

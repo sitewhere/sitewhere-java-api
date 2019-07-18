@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.streaming.IDeviceStreamData;
 
 /**
  * Holds a single chunk of data from a binary stream.
- * 
- * @author Derek
  */
 public class DeviceStreamData extends DeviceEvent implements IDeviceStreamData, Serializable {
 

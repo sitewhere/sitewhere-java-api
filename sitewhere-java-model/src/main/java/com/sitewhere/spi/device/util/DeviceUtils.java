@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.IDeviceElementMapping;
 
 /**
  * Helper methods for common operations on {@link IDevice} objects.
- * 
- * @author Derek
  */
 public class DeviceUtils {
 

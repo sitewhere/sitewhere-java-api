@@ -9,15 +9,11 @@ package com.sitewhere.spi.scheduling;
 
 /**
  * Metadata constants for values used by various job types.
- * 
- * @author Derek
  */
 public interface JobConstants {
 
     /**
      * Constants used for single command invocation.
-     * 
-     * @author Derek
      */
     public static interface CommandInvocation {
 
@@ -33,8 +29,6 @@ public interface JobConstants {
 
     /**
      * Constants used for batch command invocations.
-     * 
-     * @author Derek
      */
     public static interface BatchCommandInvocation {
 

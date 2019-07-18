@@ -118,10 +118,6 @@ import com.sitewhere.rest.model.user.request.UserCreateRequest;
 
 /**
  * Interface for SiteWhere client calls.
- * 
- * @author Derek Adams
- * @author Jorge Villaverde
- *
  */
 public interface ISiteWhereClient {
 
@@ -284,7 +280,7 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForArea(ITenantAuthentication tenant,
-	    String areaToken, DeviceAssignmentSearchCriteria searchCriteria, 
+	    String areaToken, DeviceAssignmentSearchCriteria searchCriteria,
 	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException;
 
     /**
@@ -629,7 +625,7 @@ public interface ISiteWhereClient {
      */
     public DeviceCommandInvocation createCommandInvocationForDeviceAssignment(ITenantAuthentication tenant,
 	    String token, DeviceCommandInvocationCreateRequest request) throws SiteWhereException;
-    
+
     /**
      * Schedule command invocation.
      * 
@@ -725,7 +721,7 @@ public interface ISiteWhereClient {
      */
     public MarshaledDeviceAssignment markMissingDeviceAssignment(ITenantAuthentication tenant, String token)
 	    throws SiteWhereException;
-    
+
     /**
      * List command response events for assignment.
      * 
@@ -750,7 +746,7 @@ public interface ISiteWhereClient {
      */
     public DeviceCommandResponseWithAsset createCommandResponseForDeviceAssignment(ITenantAuthentication tenant,
 	    String token, DeviceCommandResponseCreateRequest request) throws SiteWhereException;
-    
+
     /**
      * List state change events for assignment.
      * 
@@ -760,9 +756,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<DeviceStateChangeWithAsset> listStateChangesForDeviceAssignment(
-	    ITenantAuthentication tenant, String token, DateRangeSearchCriteria searchCriteria)
-	    throws SiteWhereException;
+    public SearchResults<DeviceStateChangeWithAsset> listStateChangesForDeviceAssignment(ITenantAuthentication tenant,
+	    String token, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
 
     /**
      * Create state change event for assignment.
@@ -773,9 +768,9 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public DeviceStateChangeWithAsset createStateChangeForDeviceAssignment(ITenantAuthentication tenant,
-	    String token, DeviceStateChangeCreateRequest request) throws SiteWhereException;
-        
+    public DeviceStateChangeWithAsset createStateChangeForDeviceAssignment(ITenantAuthentication tenant, String token,
+	    DeviceStateChangeCreateRequest request) throws SiteWhereException;
+
     /**
      * List alert events for device assignment.
      * 
@@ -786,7 +781,7 @@ public interface ISiteWhereClient {
      */
     public SearchResults<DeviceAlertWithAsset> bulkListAlertsForDeviceAssignments(ITenantAuthentication tenant,
 	    DeviceAssignmentBulkRequest request) throws SiteWhereException;
-    
+
     /**
      * List command invocation events for assignment.
      * 
@@ -806,8 +801,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<DeviceLocationWithAsset> bulkListLocationsForDeviceAssignments(
-	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException;
+    public SearchResults<DeviceLocationWithAsset> bulkListLocationsForDeviceAssignments(ITenantAuthentication tenant,
+	    DeviceAssignmentBulkRequest request) throws SiteWhereException;
 
     /**
      * List measurement events for multiple assignments.
@@ -828,8 +823,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public Map<String, List<ChartSeries<Double>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(ITenantAuthentication tenant,
-	    DeviceAssignmentBulkRequest request) throws SiteWhereException;
+    public Map<String, List<ChartSeries<Double>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(
+	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException;
 
     /**
      * List command response events for assignment.
@@ -852,11 +847,11 @@ public interface ISiteWhereClient {
      */
     public SearchResults<DeviceStateChangeWithAsset> bulkListStateChangesForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException;
-    
+
     // ------------------------------------------------------------------------
     // Authorities
     // ------------------------------------------------------------------------
-    
+
     /**
      * List authorities that match criteria.
      * 
@@ -874,7 +869,7 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public GrantedAuthority getAuthorityByName(ITenantAuthentication tenant, String name) throws SiteWhereException;
-    
+
     /**
      * Create a new authority.
      * 
@@ -910,7 +905,7 @@ public interface ISiteWhereClient {
      */
     public SearchResults<BatchOperation> listBatchOperations(ITenantAuthentication tenant,
 	    BatchOperationSearchCriteria searchCriteria) throws SiteWhereException;
-    
+
     /**
      * Get a batch operation by token.
      * 
@@ -921,7 +916,7 @@ public interface ISiteWhereClient {
      */
     public BatchOperation getBatchOperationByToken(ITenantAuthentication tenant, String batchToken)
 	    throws SiteWhereException;
-    
+
     /**
      * List batch operation elements.
      * 
@@ -931,7 +926,7 @@ public interface ISiteWhereClient {
      */
     public SearchResults<BatchElement> listBatchOperationElements(ITenantAuthentication tenant, String operationToken)
 	    throws SiteWhereException;
-    
+
     /**
      * Create new batch command invocation.
      * 
@@ -952,8 +947,8 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public Object createBatchCommandOperationForCriteria(ITenantAuthentication tenant,
-	      BatchCommandForCriteriaRequest request) throws SiteWhereException;
-    
+	    BatchCommandForCriteriaRequest request) throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Command Invocations
     // ------------------------------------------------------------------------
@@ -990,7 +985,7 @@ public interface ISiteWhereClient {
      */
     public SearchResults<DeviceCommandResponse> listCommandResponsesForCommandInvocation(ITenantAuthentication tenant,
 	    String id) throws SiteWhereException;
-    
+
     // ------------------------------------------------------------------------
     // Customer Types
     // ------------------------------------------------------------------------
@@ -1006,8 +1001,8 @@ public interface ISiteWhereClient {
      */
     public SearchResults<CustomerType> listCustomerTypes(ITenantAuthentication tenant,
 	    CustomerTypeSearchCriteria searchCriteria, CustomerTypeResponseFormat responseFormat)
-	    throws SiteWhereException;	    
-    
+	    throws SiteWhereException;
+
     /**
      * Get a customer type by token.
      * 
@@ -1064,11 +1059,11 @@ public interface ISiteWhereClient {
      */
     public byte[] getLabelForCustomerType(ITenantAuthentication tenant, String customerTypeToken, String generatorId)
 	    throws SiteWhereException;
-    
+
     // ------------------------------------------------------------------------
     // Customer
     // ------------------------------------------------------------------------
-    
+
     /**
      * List customers matching criteria.
      * 
@@ -1078,9 +1073,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<Customer> listCustomers(ITenantAuthentication tenant,
-	    CustomerSearchCriteria searchCriteria, CustomerResponseFormat responseFormat)
-	    throws SiteWhereException;	    
+    public SearchResults<Customer> listCustomers(ITenantAuthentication tenant, CustomerSearchCriteria searchCriteria,
+	    CustomerResponseFormat responseFormat) throws SiteWhereException;
 
     /**
      * Get a customer by token.
@@ -1090,7 +1084,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public MarshaledCustomer getCustomerByToken(ITenantAuthentication tenant, String customerToken) throws SiteWhereException;
+    public MarshaledCustomer getCustomerByToken(ITenantAuthentication tenant, String customerToken)
+	    throws SiteWhereException;
 
     /**
      * Create a new customer.
@@ -1147,7 +1142,7 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForCustomer(ITenantAuthentication tenant,
-	    String customerToken, DeviceAssignmentSearchCriteria searchCriteria, 
+	    String customerToken, DeviceAssignmentSearchCriteria searchCriteria,
 	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException;
 
     /**
@@ -1183,8 +1178,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<DeviceLocationWithAsset> listLocationsForCustomer(ITenantAuthentication tenant, String customerToken,
-	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
+    public SearchResults<DeviceLocationWithAsset> listLocationsForCustomer(ITenantAuthentication tenant,
+	    String customerToken, DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
 
     /**
      * List locations for a customer.
@@ -1301,7 +1296,7 @@ public interface ISiteWhereClient {
      */
     public SearchResults<DeviceCommandNamespace> listDeviceCommandsByNamesapce(ITenantAuthentication tenant,
 	    DeviceCommandSearchCriteria searchCriteria) throws SiteWhereException;
-        
+
     // ------------------------------------------------------------------------
     // Device Events
     // ------------------------------------------------------------------------
@@ -1327,7 +1322,7 @@ public interface ISiteWhereClient {
      */
     public DeviceEventWithAsset getDeviceEventById(ITenantAuthentication tenant, String eventId)
 	    throws SiteWhereException;
-    
+
     // ------------------------------------------------------------------------
     // Device Groups
     // ------------------------------------------------------------------------
@@ -1399,7 +1394,7 @@ public interface ISiteWhereClient {
     public SearchResults<DeviceGroupElement> listDeviceGroupElements(ITenantAuthentication tenant,
 	    DeviceGroupElementSearchCriteria searchCriteria, DeviceGroupElementResponseFormat responseFormat)
 	    throws SiteWhereException;
-    
+
     /**
      * Add elements to device group.
      * 
@@ -1409,9 +1404,9 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<DeviceGroupElement> addElementsToDdeviceGroup(ITenantAuthentication tenant,
-	    String groupToken, List<DeviceGroupElementCreateRequest> requests) throws SiteWhereException;
-    
+    public SearchResults<DeviceGroupElement> addElementsToDdeviceGroup(ITenantAuthentication tenant, String groupToken,
+	    List<DeviceGroupElementCreateRequest> requests) throws SiteWhereException;
+
     /**
      * Delete elements from device group.
      * 
@@ -1421,9 +1416,9 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<DeviceGroupElement> deleteDeviceGroupElements(ITenantAuthentication tenant,
-	    String groupToken, List<String> elementIds) throws SiteWhereException;
-    
+    public SearchResults<DeviceGroupElement> deleteDeviceGroupElements(ITenantAuthentication tenant, String groupToken,
+	    List<String> elementIds) throws SiteWhereException;
+
     /**
      * Delete elements from device group.
      * 
@@ -1433,9 +1428,9 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<DeviceGroupElement> deleteDeviceGroupElement(ITenantAuthentication tenant,
-	    String groupToken, String elementId) throws SiteWhereException;
-    
+    public SearchResults<DeviceGroupElement> deleteDeviceGroupElement(ITenantAuthentication tenant, String groupToken,
+	    String elementId) throws SiteWhereException;
+
     /**
      * Get label for device group.
      * 
@@ -1446,12 +1441,12 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public byte[] getLabelForDeviceGroup(ITenantAuthentication tenant, String groupToken, String generatorId)
-	    throws SiteWhereException;        
+	    throws SiteWhereException;
 
     // ------------------------------------------------------------------------
     // Device States
     // ------------------------------------------------------------------------
-    
+
     /**
      * List device states matching criteria.
      * 
@@ -1461,9 +1456,9 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<DeviceState> listDeviceStates(ITenantAuthentication tenant, 
+    public SearchResults<DeviceState> listDeviceStates(ITenantAuthentication tenant,
 	    DeviceStateSearchCriteria searchCriteria, DeviceStateResponseFormat responseFormat)
-	    throws SiteWhereException;        
+	    throws SiteWhereException;
 
     // ------------------------------------------------------------------------
     // Device Statuses
@@ -1593,7 +1588,7 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public byte[] getLabelForDeviceType(ITenantAuthentication tenant, String token, String generatorId)
-	    throws SiteWhereException;        
+	    throws SiteWhereException;
 
     /**
      * Get device type specification GPB by unique token.
@@ -1603,9 +1598,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public String getDeviceTypeGPBSpecification(ITenantAuthentication tenant, String token)
-	    throws SiteWhereException;
-    
+    public String getDeviceTypeGPBSpecification(ITenantAuthentication tenant, String token) throws SiteWhereException;
+
     /**
      * Download device type specification GPB by unique token.
      * 
@@ -1616,7 +1610,7 @@ public interface ISiteWhereClient {
      */
     public File downlaodDeviceTypeGPBSpecification(ITenantAuthentication tenant, String token)
 	    throws SiteWhereException;
-    
+
     // ------------------------------------------------------------------------
     // Devices
     // ------------------------------------------------------------------------
@@ -1651,7 +1645,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public MarshaledDevice createDevice(ITenantAuthentication tenant, DeviceCreateRequest request) throws SiteWhereException;
+    public MarshaledDevice createDevice(ITenantAuthentication tenant, DeviceCreateRequest request)
+	    throws SiteWhereException;
 
     /**
      * Update an existing device.
@@ -1674,7 +1669,7 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public MarshaledDevice deleteDevice(ITenantAuthentication tenant, String deviceToken) throws SiteWhereException;
-    
+
     /**
      * List assignment history for device.
      * 
@@ -1688,19 +1683,19 @@ public interface ISiteWhereClient {
     public SearchResults<MarshaledDeviceAssignment> listDeviceAssignmentsForDevice(ITenantAuthentication tenant,
 	    String deviceToken, DeviceAssignmentSearchCriteria searchCriteria,
 	    DeviceAssignmentResponseFormat responseFormat) throws SiteWhereException;
-    
+
     /**
      * Add multiple events for device.
-     *  
+     * 
      * @param tenant
      * @param deviceToken
      * @param batch
      * @return
      * @throws SiteWhereException
      */
-    public DeviceEventBatchResponse addMultipleEventsForDevice(ITenantAuthentication tenant,
-	    String deviceToken, DeviceEventBatch batch) throws SiteWhereException;
-    
+    public DeviceEventBatchResponse addMultipleEventsForDevice(ITenantAuthentication tenant, String deviceToken,
+	    DeviceEventBatch batch) throws SiteWhereException;
+
     /**
      * Get label for device.
      * 
@@ -1711,8 +1706,8 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public byte[] getLabelForDevice(ITenantAuthentication tenant, String deviceToken, String generatorId)
-	    throws SiteWhereException;   
-    
+	    throws SiteWhereException;
+
     /**
      * Create new device element mapping.
      * 
@@ -1724,7 +1719,7 @@ public interface ISiteWhereClient {
      */
     public MarshaledDevice createDeviceMappings(ITenantAuthentication tenant, String deviceToken,
 	    DeviceElementMapping request) throws SiteWhereException;
-    
+
     /**
      * Delete existing device element mapping.
      * 
@@ -1734,9 +1729,9 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public MarshaledDevice deleteDeviceMappings(ITenantAuthentication tenant, String deviceToken,
-	    String path) throws SiteWhereException;
-    
+    public MarshaledDevice deleteDeviceMappings(ITenantAuthentication tenant, String deviceToken, String path)
+	    throws SiteWhereException;
+
     /**
      * List devices in device group.
      * 
@@ -1844,8 +1839,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<Schedule> listSchedules(ITenantAuthentication tenant,
-	    ScheduleSearchCriteria searchCriteria, ScheduleResponseFormat responseFormat) throws SiteWhereException;
+    public SearchResults<Schedule> listSchedules(ITenantAuthentication tenant, ScheduleSearchCriteria searchCriteria,
+	    ScheduleResponseFormat responseFormat) throws SiteWhereException;
 
     /**
      * Get a schedule by token.
@@ -1913,9 +1908,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<Tenant> listTenants(TenantSearchCriteria searchCriteria)
-	    throws SiteWhereException;
-    
+    public SearchResults<Tenant> listTenants(TenantSearchCriteria searchCriteria) throws SiteWhereException;
+
     /**
      * Get a tenant by token.
      * 
@@ -1960,9 +1954,9 @@ public interface ISiteWhereClient {
     // ------------------------------------------------------------------------
     // Users
     // ------------------------------------------------------------------------
-    
+
     /**
-     * List users matching criteria. 
+     * List users matching criteria.
      * 
      * @param tenant
      * @return
@@ -1999,8 +1993,7 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public User updateUser(String username, UserCreateRequest request)
-	    throws SiteWhereException;
+    public User updateUser(String username, UserCreateRequest request) throws SiteWhereException;
 
     /**
      * Delete an existing user.
@@ -2011,7 +2004,7 @@ public interface ISiteWhereClient {
      * @throws SiteWhereException
      */
     public User deleteUser(String username) throws SiteWhereException;
-    
+
     /**
      * Get authorities for user.
      * 
@@ -2020,9 +2013,8 @@ public interface ISiteWhereClient {
      * @return
      * @throws SiteWhereException
      */
-    public SearchResults<GrantedAuthority> listUserAuthorities(String username)
-	    throws SiteWhereException;
-    
+    public SearchResults<GrantedAuthority> listUserAuthorities(String username) throws SiteWhereException;
+
     // ------------------------------------------------------------------------
     // Zones
     // ------------------------------------------------------------------------
@@ -2037,7 +2029,7 @@ public interface ISiteWhereClient {
      */
     public SearchResults<Zone> listZones(ITenantAuthentication tenant, ZoneSearchCriteria searchCriteria)
 	    throws SiteWhereException;
-    
+
     /**
      * Get a zone by token.
      * 

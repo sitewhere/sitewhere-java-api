@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.request.IPersistentEntityCreateRequest;
 
 /**
  * Interface for arguments needed to create a zone.
- * 
- * @author Derek
  */
 public interface IZoneCreateRequest extends IPersistentEntityCreateRequest {
 

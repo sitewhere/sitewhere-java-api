@@ -10,8 +10,6 @@ package com.sitewhere.rest.model.batch;
 /**
  * Extends {@link BatchOperation} to support fields that can be included on REST
  * calls.
- * 
- * @author Derek
  */
 public class MarshaledBatchOperation extends BatchOperation {
 

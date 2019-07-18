@@ -12,8 +12,6 @@ import com.sitewhere.spi.common.request.IBrandedEntityCreateRequest;
 /**
  * Contains information used to supply branding information for a persistent
  * entity.
- * 
- * @author Derek
  */
 public class BrandedEntityCreateRequest extends PersistentEntityCreateRequest implements IBrandedEntityCreateRequest {
 

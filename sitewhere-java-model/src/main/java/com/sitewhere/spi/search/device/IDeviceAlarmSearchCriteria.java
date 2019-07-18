@@ -14,8 +14,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Criteria used to search for device alarms.
- * 
- * @author Derek
  */
 public interface IDeviceAlarmSearchCriteria extends ISearchCriteria {
 

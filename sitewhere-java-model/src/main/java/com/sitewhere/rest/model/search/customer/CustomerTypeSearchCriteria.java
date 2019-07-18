@@ -12,8 +12,6 @@ import com.sitewhere.spi.search.customer.ICustomerTypeSearchCriteria;
 
 /**
  * Model object for properties used in customer type searches.
- * 
- * @author Jorge Villaverde
  */
 public class CustomerTypeSearchCriteria extends SearchCriteria implements ICustomerTypeSearchCriteria {
 

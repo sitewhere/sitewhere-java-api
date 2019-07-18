@@ -11,8 +11,6 @@ import java.util.Date;
 
 /**
  * Extends basic search criteria with ability to search by a date range.
- * 
- * @author Derek
  */
 public interface IDateRangeSearchCriteria extends ISearchCriteria {
 

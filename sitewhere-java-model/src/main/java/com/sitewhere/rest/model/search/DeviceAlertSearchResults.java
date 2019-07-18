@@ -14,8 +14,6 @@ import com.sitewhere.rest.model.device.event.DeviceAlert;
 
 /**
  * Search results that contain device alerts.
- * 
- * @author dadams
  */
 public class DeviceAlertSearchResults extends SearchResults<DeviceAlert> {
 

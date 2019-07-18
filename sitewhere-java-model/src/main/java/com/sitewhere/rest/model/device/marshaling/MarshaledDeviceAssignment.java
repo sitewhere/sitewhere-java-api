@@ -13,8 +13,6 @@ import com.sitewhere.rest.model.device.DeviceAssignment;
 /**
  * Extends {@link DeviceAssignment} to support fields that can be included on
  * REST calls.
- * 
- * @author Derek
  */
 public class MarshaledDeviceAssignment extends DeviceAssignment {
 

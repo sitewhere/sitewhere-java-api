@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Criteria for searching zones.
- * 
- * @author Derek
  */
 public interface IZoneSearchCriteria extends ISearchCriteria {
 

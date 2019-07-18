@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.command.SystemCommandType;
 
 /**
  * Base class for system command implementations.
- * 
- * @author Derek
  */
 public class SystemCommand implements ISystemCommand {
 

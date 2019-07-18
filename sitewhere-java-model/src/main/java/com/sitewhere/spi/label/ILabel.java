@@ -9,8 +9,6 @@ package com.sitewhere.spi.label;
 
 /**
  * Provides information about a label.
- * 
- * @author Derek
  */
 public interface ILabel {
 

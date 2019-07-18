@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.request.IBrandedEntityCreateRequest;
 
 /**
  * Information needed to create a new asset type.
- * 
- * @author Derek
  */
 public interface IAssetTypeCreateRequest extends IAccessible, IBrandedEntityCreateRequest {
 

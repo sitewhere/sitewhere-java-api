@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 /**
  * Response for a command issued to the server.
- * 
- * @author dadams *
  */
 public interface ICommandResponse extends Serializable {
 

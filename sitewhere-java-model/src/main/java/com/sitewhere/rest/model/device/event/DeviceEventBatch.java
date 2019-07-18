@@ -23,8 +23,6 @@ import com.sitewhere.spi.device.event.request.IDeviceMeasurementCreateRequest;
 
 /**
  * A batch of new events to create for a given device.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceEventBatch implements IDeviceEventBatch, Serializable {

@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Criteria used for filtering device commands.
- * 
- * @author Derek
  */
 public interface IDeviceCommandSearchCriteria extends ISearchCriteria {
 

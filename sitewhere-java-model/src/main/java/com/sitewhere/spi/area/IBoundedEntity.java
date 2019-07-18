@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.ILocation;
 /**
  * Entity that contains geospatial coordinates that provide boundary
  * information.
- * 
- * @author Derek
  */
 public interface IBoundedEntity {
 

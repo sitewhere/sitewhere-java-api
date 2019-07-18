@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 
 /**
  * Interface for accessing user information.
- * 
- * @author Derek
  */
 public interface IUser extends IPersistentEntity {
 

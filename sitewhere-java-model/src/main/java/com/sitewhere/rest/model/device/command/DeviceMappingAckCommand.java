@@ -13,8 +13,6 @@ import com.sitewhere.spi.device.command.SystemCommandType;
 
 /**
  * Default implementation of {@link IDeviceMappingAckCommand}.
- * 
- * @author Derek
  */
 public class DeviceMappingAckCommand extends SystemCommand implements IDeviceMappingAckCommand {
 
@@ -31,8 +29,7 @@ public class DeviceMappingAckCommand extends SystemCommand implements IDeviceMap
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * com.sitewhere.spi.device.command.IDeviceMappingAckCommand#getResult()
+     * @see com.sitewhere.spi.device.command.IDeviceMappingAckCommand#getResult()
      */
     public DeviceMappingResult getResult() {
 	return result;

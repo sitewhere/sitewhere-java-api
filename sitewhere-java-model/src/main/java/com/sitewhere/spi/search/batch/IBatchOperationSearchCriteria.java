@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Criteria used in searching for batch operations.
- * 
- * @author Derek
  */
 public interface IBatchOperationSearchCriteria extends ISearchCriteria {
 }

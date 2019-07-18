@@ -18,8 +18,6 @@ import com.sitewhere.spi.device.command.IDeviceCommand;
 
 /**
  * Model object for a command that can be invoked on a device.
- * 
- * @author Derek
  */
 public class DeviceCommand extends PersistentEntity implements IDeviceCommand {
 

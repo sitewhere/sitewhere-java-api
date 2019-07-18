@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.event.request.IDeviceEventCreateRequest;
 
 /**
  * Holds information required to create an event for a device assignment.
- * 
- * @author Derek
  */
 public class DeviceAssignmentEventCreateRequest implements IDeviceAssignmentEventCreateRequest {
 

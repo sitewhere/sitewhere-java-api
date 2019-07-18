@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.event.request.IDeviceRegistrationRequest;
 
 /**
  * Default model implementation of {@link IDeviceRegistrationRequest}.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceRegistrationRequest extends DeviceCreateRequest implements IDeviceRegistrationRequest {

@@ -11,8 +11,6 @@ package com.sitewhere.spi.device.command;
  * Indicates parameter datatype. These are the same datatypes used in
  * <a href="https://developers.google.com/protocol-buffers/docs/proto">Google
  * Protocol Buffers</a>.
- * 
- * @author Derek
  */
 public enum ParameterType {
 

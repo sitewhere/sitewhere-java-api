@@ -23,8 +23,6 @@ import com.sitewhere.spi.error.ErrorLevel;
 
 /**
  * Helper methods for common operations on {@link IDeviceType} objects.
- * 
- * @author Derek
  */
 public class DeviceTypeUtils {
 

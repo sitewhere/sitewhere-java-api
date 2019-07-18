@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.event.request.IDeviceRegistrationRequest;
 
 /**
  * Model object for device registration payload.
- * 
- * @author Derek
  */
 public class DeviceRegistrationPayload implements IDeviceRegistrationPayload {
 

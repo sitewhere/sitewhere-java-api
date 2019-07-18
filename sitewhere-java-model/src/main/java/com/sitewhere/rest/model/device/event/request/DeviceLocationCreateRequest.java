@@ -18,8 +18,6 @@ import com.sitewhere.spi.device.event.request.IDeviceLocationCreateRequest;
 
 /**
  * Model object used to create a new {@link DeviceLocation} via REST APIs.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceLocationCreateRequest extends DeviceEventCreateRequest
@@ -45,8 +43,7 @@ public class DeviceLocationCreateRequest extends DeviceEventCreateRequest
      * (non-Javadoc)
      * 
      * @see
-     * com.sitewhere.spi.device.request.IDeviceLocationCreateRequest#getLatitude
-     * ()
+     * com.sitewhere.spi.device.request.IDeviceLocationCreateRequest#getLatitude ()
      */
     public Double getLatitude() {
 	return latitude;

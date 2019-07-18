@@ -12,8 +12,6 @@ import com.sitewhere.spi.search.device.IDeviceCommandSearchCriteria;
 
 /**
  * Provides extra information for searching device commands.
- * 
- * @author Derek
  */
 public class DeviceCommandSearchCriteria extends SearchCriteria implements IDeviceCommandSearchCriteria {
 

@@ -12,14 +12,12 @@ import com.sitewhere.spi.search.device.IDeviceGroupElementSearchCriteria;
 
 /**
  * Default implementation of {@link IDeviceGroupElementSearchCriteria}.
- * 
- * @author Jorge Villaverde
  */
 public class DeviceGroupElementSearchCriteria extends SearchCriteria implements IDeviceGroupElementSearchCriteria {
 
     /** Filter by group token */
     private String groupToken;
-    
+
     /**
      * @param pageNumber
      * @param pageSize
@@ -34,7 +32,6 @@ public class DeviceGroupElementSearchCriteria extends SearchCriteria implements 
     }
 
     public void setGroupToken(String groupToken) {
-        this.groupToken = groupToken;
+	this.groupToken = groupToken;
     }
-
 }

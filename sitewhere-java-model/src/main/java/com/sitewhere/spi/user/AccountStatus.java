@@ -9,8 +9,6 @@ package com.sitewhere.spi.user;
 
 /**
  * Enumeration of possible account status values.
- * 
- * @author Derek
  */
 public enum AccountStatus {
 

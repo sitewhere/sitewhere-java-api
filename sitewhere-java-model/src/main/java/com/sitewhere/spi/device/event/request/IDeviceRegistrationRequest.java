@@ -11,8 +11,6 @@ import com.sitewhere.spi.device.request.IDeviceCreateRequest;
 
 /**
  * Interface for arguments needed to register a device.
- * 
- * @author Derek
  */
 public interface IDeviceRegistrationRequest extends IDeviceCreateRequest {
 

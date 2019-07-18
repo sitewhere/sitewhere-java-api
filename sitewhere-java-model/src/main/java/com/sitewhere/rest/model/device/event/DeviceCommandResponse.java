@@ -19,8 +19,6 @@ import com.sitewhere.spi.device.event.IDeviceCommandResponse;
 
 /**
  * Implementation of {@link IDeviceCommandResponse}.
- * 
- * @author Derek
  */
 @JsonIgnoreProperties
 @JsonInclude(Include.NON_NULL)

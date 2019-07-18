@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.command;
 
 /**
  * Enumeration of results for device mapping operations.
- * 
- * @author Derek
  */
 public enum DeviceMappingResult {
 

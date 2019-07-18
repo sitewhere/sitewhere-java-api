@@ -9,8 +9,6 @@ package com.sitewhere.spi.scheduling;
 
 /**
  * Indicates state of a scheduled job.
- * 
- * @author Derek
  */
 public enum ScheduledJobState {
 

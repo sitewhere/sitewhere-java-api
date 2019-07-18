@@ -12,21 +12,19 @@ import com.sitewhere.spi.search.area.IAreaTypeSearchCriteria;
 
 /**
  * Model object for properties used in area types searches.
- *
- * @author Jorge Villaverde
  */
 public class AreaTypeSearchCriteria extends SearchCriteria implements IAreaTypeSearchCriteria {
-    
+
     /** return contained area types */
     private Boolean includeContainedAreaTypes;
-
 
     public AreaTypeSearchCriteria(int pageNumber, int pageSize) {
 	super(pageNumber, pageSize);
     }
 
     /*
-     * @see com.sitewhere.spi.search.area.IAreaTypeSearchCriteria#getIncludeContainedAreaTypes()
+     * @see com.sitewhere.spi.search.area.IAreaTypeSearchCriteria#
+     * getIncludeContainedAreaTypes()
      */
     @Override
     public Boolean getIncludeContainedAreaTypes() {
@@ -34,7 +32,7 @@ public class AreaTypeSearchCriteria extends SearchCriteria implements IAreaTypeS
     }
 
     public void setIncludeContainedAreaTypes(Boolean includeContainedAreaTypes) {
-        this.includeContainedAreaTypes = includeContainedAreaTypes;
+	this.includeContainedAreaTypes = includeContainedAreaTypes;
     }
 
 }

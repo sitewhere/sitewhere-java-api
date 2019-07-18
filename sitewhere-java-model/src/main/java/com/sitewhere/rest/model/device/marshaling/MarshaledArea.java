@@ -16,9 +16,6 @@ import com.sitewhere.rest.model.device.DeviceAssignment;
 
 /**
  * Extends {@link Area} to support fields that can be included on REST calls.
- * 
- * @author Derek
- * @author Jorge Villaverde
  */
 public class MarshaledArea extends Area {
 

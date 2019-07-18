@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.element.IDeviceElement;
 
 /**
  * Default implementation of {@link IDeviceElement}.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceElement implements IDeviceElement, Serializable {

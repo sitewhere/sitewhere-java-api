@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.command.SystemCommandType;
 
 /**
  * System command that sends a chunk of device stream data to a device.
- * 
- * @author Derek
  */
 public class SendDeviceStreamDataCommand extends SystemCommand implements ISendDeviceStreamDataCommand {
 

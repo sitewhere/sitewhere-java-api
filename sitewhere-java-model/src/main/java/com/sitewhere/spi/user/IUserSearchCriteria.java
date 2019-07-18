@@ -13,8 +13,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Criteria used when searching for users.
- * 
- * @author Derek Adams
  */
 public interface IUserSearchCriteria extends ISearchCriteria, Serializable {
 }

@@ -25,8 +25,6 @@ import com.sitewhere.spi.device.event.IDeviceMeasurement;
 /**
  * Extends {@link DeviceState} to support fields that can be included on REST
  * calls.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class MarshaledDeviceState extends DeviceState {

@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.request.IBrandedEntityCreateRequest;
 
 /**
  * Provides information needed to create a customer type.
- * 
- * @author Derek
  */
 public interface ICustomerTypeCreateRequest extends IAccessible, IBrandedEntityCreateRequest {
 

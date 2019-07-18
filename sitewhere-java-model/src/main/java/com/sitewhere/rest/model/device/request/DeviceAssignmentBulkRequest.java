@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.request.IDeviceAssignmentBulkRequest;
 /**
  * Contains information about a request that applies to multiple device
  * assignments.
- * 
- * @author Derek
  */
 public class DeviceAssignmentBulkRequest implements IDeviceAssignmentBulkRequest {
 

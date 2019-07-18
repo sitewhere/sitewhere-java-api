@@ -13,8 +13,6 @@ import java.util.Map;
 /**
  * Provides values needed for sending a {@link IBatchCommandInvocationRequest}
  * based on devices that meet given criteria.
- * 
- * @author Derek
  */
 public interface IBatchCommandForCriteriaRequest {
 

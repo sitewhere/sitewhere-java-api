@@ -9,8 +9,6 @@ package com.sitewhere.spi.common;
 
 /**
  * Entity which provides a color scheme.
- * 
- * @author Derek
  */
 public interface IColorProvider {
 

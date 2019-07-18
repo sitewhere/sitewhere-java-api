@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Criteria available for filtering device group elements search results.
- * 
- * @author Jorge Villaverde
  */
 public interface IDeviceGroupElementSearchCriteria extends ISearchCriteria {
 
@@ -22,5 +20,5 @@ public interface IDeviceGroupElementSearchCriteria extends ISearchCriteria {
      * @return
      */
     public String getGroupToken();
-    
+
 }

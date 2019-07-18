@@ -14,8 +14,6 @@ import com.sitewhere.spi.search.device.IDeviceSearchCriteria;
 
 /**
  * Adds options specific to device searches.
- * 
- * @author Derek
  */
 public class DeviceSearchCriteria extends DateRangeSearchCriteria implements IDeviceSearchCriteria {
 

@@ -20,8 +20,6 @@ import com.sitewhere.spi.device.state.IDeviceState;
 
 /**
  * Model object for device state.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceState implements IDeviceState {

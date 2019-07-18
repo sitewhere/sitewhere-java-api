@@ -13,8 +13,6 @@ import com.sitewhere.spi.search.device.IBatchElementSearchCriteria;
 
 /**
  * Search criteria specific to searching a list of batch operation elements.
- * 
- * @author Derek
  */
 public class BatchElementSearchCriteria extends SearchCriteria implements IBatchElementSearchCriteria {
 

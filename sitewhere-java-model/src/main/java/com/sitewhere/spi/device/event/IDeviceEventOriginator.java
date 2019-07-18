@@ -12,8 +12,6 @@ import java.util.UUID;
 
 /**
  * Wrapper for device event originator information.
- * 
- * @author Derek
  */
 public interface IDeviceEventOriginator extends Serializable {
 

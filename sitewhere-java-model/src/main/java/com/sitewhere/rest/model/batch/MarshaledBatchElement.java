@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.IDevice;
 /**
  * Extends {@link BatchElement} to support fields that can be included on REST
  * calls.
- * 
- * @author Derek
  */
 public class MarshaledBatchElement extends BatchElement {
 

@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event.state;
 
 /**
  * Enumerates possible system registration states.
- * 
- * @author Derek
  */
 public enum RegistrationState {
 

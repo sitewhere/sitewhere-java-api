@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 
 /**
  * A polygonal area associated with a site that can be used to trigger events.
- * 
- * @author dadams
  */
 public interface IZone extends IBoundedEntity, IPersistentEntity {
 

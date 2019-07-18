@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.charting.IChartSeries;
 
 /**
  * Chart series implementation.
- * 
- * @author Derek
  */
 public class ChartSeries<T> implements IChartSeries<T> {
 

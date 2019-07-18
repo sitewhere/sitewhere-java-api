@@ -14,8 +14,6 @@ import com.sitewhere.spi.user.AccountStatus;
 
 /**
  * Interface for arguments needed to create a user.
- * 
- * @author Derek
  */
 public interface IUserCreateRequest extends IPersistentEntityCreateRequest {
 

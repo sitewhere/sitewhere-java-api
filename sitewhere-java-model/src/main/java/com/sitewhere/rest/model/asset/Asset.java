@@ -16,8 +16,6 @@ import com.sitewhere.spi.asset.IAsset;
 
 /**
  * Model object for an asset.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class Asset extends BrandedEntity implements IAsset {

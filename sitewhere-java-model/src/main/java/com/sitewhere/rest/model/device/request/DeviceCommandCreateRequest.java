@@ -21,8 +21,6 @@ import com.sitewhere.spi.device.request.IDeviceCommandCreateRequest;
 
 /**
  * Arguments needed to create a new device command.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceCommandCreateRequest extends PersistentEntityCreateRequest implements IDeviceCommandCreateRequest {

@@ -13,8 +13,6 @@ import com.sitewhere.spi.user.IGrantedAuthority;
 
 /**
  * Model object for a granted authority.
- * 
- * @author Derek Adams
  */
 @JsonInclude(Include.NON_NULL)
 public class GrantedAuthority implements IGrantedAuthority {

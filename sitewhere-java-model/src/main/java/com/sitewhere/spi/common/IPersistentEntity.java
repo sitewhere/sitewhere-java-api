@@ -13,8 +13,6 @@ import java.util.UUID;
 
 /**
  * Base interface for persistent entites.
- * 
- * @author Derek Adams
  */
 public interface IPersistentEntity extends IMetadataProvider, Serializable {
 

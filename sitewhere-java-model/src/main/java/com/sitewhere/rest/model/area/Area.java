@@ -19,8 +19,6 @@ import com.sitewhere.spi.area.IArea;
 
 /**
  * Model object for area information.
- * 
- * @author dadams
  */
 @JsonInclude(Include.NON_NULL)
 public class Area extends BrandedEntity implements IArea {

@@ -14,8 +14,6 @@ import com.sitewhere.rest.model.device.group.DeviceGroupElement;
 /**
  * Extends {@link DeviceGroupElement} to support fields that can be included on
  * REST calls.
- * 
- * @author Derek
  */
 public class MarshaledDeviceGroupElement extends DeviceGroupElement {
 

@@ -12,8 +12,6 @@ import com.sitewhere.spi.user.IUserSearchCriteria;
 
 /**
  * Implementation of IUserSearchCriteria.
- * 
- * @author Derek Adams
  */
 public class UserSearchCriteria extends SearchCriteria implements IUserSearchCriteria {
 

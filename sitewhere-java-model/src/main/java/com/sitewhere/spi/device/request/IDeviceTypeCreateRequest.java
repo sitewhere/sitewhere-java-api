@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.element.IDeviceElementSchema;
 
 /**
  * Interface for arguments needed to create a device type.
- * 
- * @author Derek
  */
 public interface IDeviceTypeCreateRequest extends IAccessible, IBrandedEntityCreateRequest {
 

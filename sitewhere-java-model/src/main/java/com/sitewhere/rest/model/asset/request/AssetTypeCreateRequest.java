@@ -17,8 +17,6 @@ import com.sitewhere.spi.asset.request.IAssetTypeCreateRequest;
 
 /**
  * REST model implementation of {@link IAssetTypeCreateRequest}.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class AssetTypeCreateRequest extends BrandedEntityCreateRequest implements IAssetTypeCreateRequest {

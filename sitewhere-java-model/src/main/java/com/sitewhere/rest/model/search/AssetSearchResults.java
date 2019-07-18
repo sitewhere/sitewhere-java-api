@@ -15,8 +15,6 @@ import com.sitewhere.rest.model.asset.Asset;
 /**
  * Search results that contain assets. Used by JSON marshaling for generic
  * assets.
- * 
- * @author Derek
  */
 public class AssetSearchResults extends SearchResults<Asset> {
 

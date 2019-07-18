@@ -9,8 +9,6 @@ package com.sitewhere.spi.search.device;
 
 /**
  * Determines which content is returned for device state responses.
- *
- * @author Jorge Villaverde
  */
 public interface IDeviceStateResponseFormat {
 
@@ -27,14 +25,14 @@ public interface IDeviceStateResponseFormat {
      * @return
      */
     public Boolean getIncludeAsset();
-    
+
     /**
      * Indicates if customer is included.
      * 
      * @return
      */
     public Boolean getIncludeCustomer();
-    
+
     /**
      * Indicates if device is included.
      * 
@@ -55,7 +53,7 @@ public interface IDeviceStateResponseFormat {
      * @return
      */
     public Boolean getIncludeDeviceType();
-    
+
     /**
      * Indicates if event details is included.
      * 

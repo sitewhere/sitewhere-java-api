@@ -12,7 +12,6 @@ import com.sitewhere.spi.search.scheduling.IScheduleSearchCriteria;
 
 /**
  * Default implementation of {@link IScheduleSearchCriteria}.
- * @author Jorge Villaverde
  */
 public class ScheduleSearchCriteria extends SearchCriteria implements IScheduleSearchCriteria {
 

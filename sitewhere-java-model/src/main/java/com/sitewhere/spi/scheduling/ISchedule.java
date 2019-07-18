@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.IPersistentEntity;
 
 /**
  * Represents a named schedule that can be applied to system actions.
- * 
- * @author Derek
  */
 public interface ISchedule extends IPersistentEntity {
 

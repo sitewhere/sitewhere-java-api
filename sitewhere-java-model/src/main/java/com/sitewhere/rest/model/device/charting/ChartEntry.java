@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.charting.IChartEntry;
 
 /**
  * Chart entry implementation.
- * 
- * @author Derek
  */
 public class ChartEntry<T> implements IChartEntry<T> {
 

@@ -13,8 +13,6 @@ import com.sitewhere.spi.device.command.SystemCommandType;
 
 /**
  * Default implementation of {@link IRegistrationAckCommand}.
- * 
- * @author Derek
  */
 public class RegistrationAckCommand extends SystemCommand implements IRegistrationAckCommand {
 

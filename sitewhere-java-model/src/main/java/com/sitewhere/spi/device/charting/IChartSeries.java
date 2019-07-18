@@ -13,8 +13,6 @@ import java.util.List;
 /**
  * Specifies a series of chart entries that may be rendered.
  * 
- * @author Derek
- * 
  * @param <T>
  */
 public interface IChartSeries<T> extends Serializable {

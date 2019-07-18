@@ -9,8 +9,6 @@ package com.sitewhere.spi.geospatial;
 
 /**
  * Specifies containment relationship between location and zone.
- * 
- * @author Derek
  */
 public enum ZoneContainment {
 

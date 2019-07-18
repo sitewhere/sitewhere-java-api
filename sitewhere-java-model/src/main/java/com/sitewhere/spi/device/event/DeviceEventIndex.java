@@ -9,8 +9,6 @@ package com.sitewhere.spi.device.event;
 
 /**
  * Enumerates indexes by which device events may be retrieved.
- * 
- * @author Derek
  */
 public enum DeviceEventIndex {
 

@@ -13,8 +13,6 @@ import com.sitewhere.spi.device.element.IDeviceElementSchema;
 
 /**
  * Specifies details about a given type of device.
- * 
- * @author Derek
  */
 public interface IDeviceType extends IBrandedEntity, IAccessible {
 

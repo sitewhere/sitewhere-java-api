@@ -16,8 +16,6 @@ import com.sitewhere.spi.device.DeviceAssignmentStatus;
  * Provides contextual information about a device event. This is a combination
  * of device and assignment data that might be used in outbound processors or
  * for rule calculations.
- * 
- * @author Derek
  */
 public interface IDeviceEventContext {
 

@@ -14,8 +14,6 @@ import com.sitewhere.spi.device.IDeviceElementMapping;
 
 /**
  * Model implementation of {@link IDeviceElementMapping}.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceElementMapping implements IDeviceElementMapping {

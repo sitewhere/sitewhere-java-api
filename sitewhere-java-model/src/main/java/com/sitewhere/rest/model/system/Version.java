@@ -11,8 +11,6 @@ import com.sitewhere.spi.system.IVersion;
 
 /**
  * Model object used to read version information from REST call.
- * 
- * @author Derek
  */
 public class Version implements IVersion {
 

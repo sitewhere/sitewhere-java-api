@@ -9,15 +9,11 @@ package com.sitewhere.spi.scheduling;
 
 /**
  * Metadata constants for values used by various trigger types.
- * 
- * @author Derek
  */
 public interface TriggerConstants {
 
     /**
      * Fields used by a simple trigger.
-     * 
-     * @author Derek
      */
     public static interface SimpleTrigger {
 
@@ -30,8 +26,6 @@ public interface TriggerConstants {
 
     /**
      * Fields used by a cron trigger.
-     * 
-     * @author Derek
      */
     public static interface CronTrigger {
 

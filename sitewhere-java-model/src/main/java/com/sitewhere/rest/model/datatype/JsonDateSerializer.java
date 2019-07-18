@@ -21,8 +21,6 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 
 /**
  * Used for serializing Calendar objects for JSON output.
- * 
- * @author dadams
  */
 public class JsonDateSerializer extends JsonSerializer<Date> {
 

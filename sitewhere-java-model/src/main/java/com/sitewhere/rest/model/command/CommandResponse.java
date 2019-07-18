@@ -12,8 +12,6 @@ import com.sitewhere.spi.command.ICommandResponse;
 
 /**
  * Model object for a command response.
- * 
- * @author dadams
  */
 public class CommandResponse implements ICommandResponse {
 

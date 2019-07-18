@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.command.SystemCommandType;
 
 /**
  * Command sent to a device to indicate status of creating a device stream.
- * 
- * @author Derek
  */
 public class DeviceStreamAckCommand extends SystemCommand implements IDeviceStreamAckCommand {
 

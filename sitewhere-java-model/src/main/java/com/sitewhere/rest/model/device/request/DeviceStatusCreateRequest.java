@@ -12,8 +12,6 @@ import com.sitewhere.spi.device.request.IDeviceStatusCreateRequest;
 
 /**
  * Model object implementing {@link IDeviceStatusCreateRequest}.
- * 
- * @author Derek
  */
 public class DeviceStatusCreateRequest extends PersistentEntityCreateRequest implements IDeviceStatusCreateRequest {
 

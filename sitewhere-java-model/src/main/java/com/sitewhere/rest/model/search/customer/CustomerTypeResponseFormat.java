@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.customer.ICustomerTypeResponseFormat;
 
 /**
  * Default implementation of {@link ICustomerTypeResponseFormat}.
- * 
- * @author Jorge Villaverde
  */
 public class CustomerTypeResponseFormat implements ICustomerTypeResponseFormat {
 

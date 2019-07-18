@@ -9,8 +9,6 @@ package com.sitewhere.spi.batch;
 
 /**
  * Indicates the processing status of a single {@link IBatchElement}.
- * 
- * @author Derek
  */
 public enum ElementProcessingStatus {
 

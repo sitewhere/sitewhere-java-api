@@ -12,8 +12,6 @@ import com.sitewhere.spi.common.IBrandedEntity;
 
 /**
  * Information about a class of assets with common information.
- * 
- * @author Derek
  */
 public interface IAssetType extends IBrandedEntity, IAccessible {
 

@@ -12,8 +12,6 @@ import java.util.UUID;
 
 /**
  * Captures information about the invocation of a command.
- * 
- * @author Derek
  */
 public interface IDeviceCommandInvocation extends IDeviceEvent {
 

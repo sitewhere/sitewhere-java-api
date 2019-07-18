@@ -20,8 +20,6 @@ import com.sitewhere.spi.area.IZone;
 
 /**
  * Model object for a zone.
- * 
- * @author dadams
  */
 @JsonInclude(Include.NON_NULL)
 public class Zone extends PersistentEntity implements IZone {

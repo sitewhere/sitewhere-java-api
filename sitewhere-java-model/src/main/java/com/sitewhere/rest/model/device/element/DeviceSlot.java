@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.element.IDeviceSlot;
 
 /**
  * Default implementation of {@link IDeviceSlot}.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceSlot extends DeviceElement implements IDeviceSlot, Serializable {

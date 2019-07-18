@@ -11,8 +11,6 @@ import java.util.UUID;
 
 /**
  * Holds information required to create an event for a device assignment.
- * 
- * @author Derek
  */
 public interface IDeviceAssignmentEventCreateRequest {
 

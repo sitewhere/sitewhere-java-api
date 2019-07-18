@@ -17,8 +17,6 @@ import com.sitewhere.spi.device.event.IDeviceEventOriginator;
  * Default implementation of {@link IDeviceEventOriginator}. This object is used
  * to provide a strongly-typed argument in interactions with device agents that
  * use Java introspection to find the right method to invoke.
- * 
- * @author Derek
  */
 public class DeviceEventOriginator implements IDeviceEventOriginator, Serializable {
 

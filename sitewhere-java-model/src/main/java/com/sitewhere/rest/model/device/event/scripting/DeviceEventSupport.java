@@ -15,8 +15,6 @@ import com.sitewhere.spi.device.event.IDeviceEvent;
 /**
  * Provides support for common operations on device events in scripting
  * operations.
- * 
- * @author Derek
  */
 public class DeviceEventSupport {
 

@@ -9,8 +9,6 @@ package com.sitewhere.spi.user;
 
 /**
  * Enumerates authorities used to control access to SiteWhere data.
- * 
- * @author Derek
  */
 public enum SiteWhereAuthority {
 
@@ -18,7 +16,8 @@ public enum SiteWhereAuthority {
     Server(SiteWhereRoles.GRP_SERVER, "Server administration", null, true),
 
     /** View global server information */
-    ViewServerInfo(SiteWhereRoles.AUTH_VIEW_SERVER_INFO, "View global server information", SiteWhereRoles.GRP_SERVER, false),
+    ViewServerInfo(SiteWhereRoles.AUTH_VIEW_SERVER_INFO, "View global server information", SiteWhereRoles.GRP_SERVER,
+	    false),
 
     /** Group for system access setting */
     Access(SiteWhereRoles.GRP_ACCESS, "Remote access", null, true),
@@ -45,16 +44,19 @@ public enum SiteWhereAuthority {
     AdminTenants(SiteWhereRoles.AUTH_ADMINISTER_TENANTS, "Administer all tenants", SiteWhereRoles.GRP_TENANTS, false),
 
     /** Administer own tenant */
-    AdminOwnTenant(SiteWhereRoles.AUTH_ADMINISTER_TENANT_SELF, "Administer own tenant", SiteWhereRoles.GRP_TENANTS, false),
+    AdminOwnTenant(SiteWhereRoles.AUTH_ADMINISTER_TENANT_SELF, "Administer own tenant", SiteWhereRoles.GRP_TENANTS,
+	    false),
 
     /** Group for all schedules */
     Schedules(SiteWhereRoles.GRP_SCHEDULES, "Schedules", null, true),
 
     /** Administer all schedules */
-    AdminSchedules(SiteWhereRoles.AUTH_ADMINISTER_SCHEDULES, "Administer schedules", SiteWhereRoles.GRP_SCHEDULES, false),
+    AdminSchedules(SiteWhereRoles.AUTH_ADMINISTER_SCHEDULES, "Administer schedules", SiteWhereRoles.GRP_SCHEDULES,
+	    false),
 
     /** Add scheduled job for batch or indivisual command invocation */
-    ScheduleCommands(SiteWhereRoles.AUTH_SCHEDULE_COMMANDS, "Schedule batch or individial commands", SiteWhereRoles.GRP_SCHEDULES, false);
+    ScheduleCommands(SiteWhereRoles.AUTH_SCHEDULE_COMMANDS, "Schedule batch or individial commands",
+	    SiteWhereRoles.GRP_SCHEDULES, false);
 
     /** Authority name */
     private String name;

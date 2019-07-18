@@ -14,8 +14,6 @@ import com.sitewhere.rest.model.device.group.DeviceGroupElement;
 
 /**
  * Search results that contain device group elements.
- * 
- * @author dadams
  */
 public class DeviceGroupElementSearchResults extends SearchResults<DeviceGroupElement> {
 

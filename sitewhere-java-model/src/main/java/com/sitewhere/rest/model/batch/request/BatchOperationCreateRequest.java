@@ -17,8 +17,6 @@ import com.sitewhere.spi.batch.request.IBatchOperationCreateRequest;
 
 /**
  * Holds information needed to create a batch operation.
- * 
- * @author Derek
  */
 public class BatchOperationCreateRequest extends PersistentEntityCreateRequest implements IBatchOperationCreateRequest {
 

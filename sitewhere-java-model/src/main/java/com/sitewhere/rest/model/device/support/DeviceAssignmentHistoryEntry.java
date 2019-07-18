@@ -11,8 +11,6 @@ import com.sitewhere.rest.model.common.Location;
 
 /**
  * Entry used in InterpolatedAssignmentHistory.
- * 
- * @author Derek Adams
  */
 public class DeviceAssignmentHistoryEntry {
 

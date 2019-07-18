@@ -9,8 +9,6 @@ package com.sitewhere.spi.search.device;
 
 /**
  * Determines which content is returned for device type responses.
- * 
- * @author Jorge Villaverde
  */
 public interface IDeviceTypeResponseFormat {
 

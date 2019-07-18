@@ -9,8 +9,6 @@ package com.sitewhere.spi.scheduling;
 
 /**
  * Enumerates types of triggers the scheduler can process.
- * 
- * @author Derek
  */
 public enum TriggerType {
 

@@ -15,8 +15,6 @@ import com.sitewhere.rest.model.device.DeviceType;
 /**
  * Search results that contain device types. Needed so that JSON marshaling has
  * a concrete class to inflate.
- * 
- * @author dadams
  */
 public class DeviceTypeSearchResults extends SearchResults<DeviceType> {
 

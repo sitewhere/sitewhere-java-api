@@ -9,11 +9,9 @@ package com.sitewhere.spi.search.customer;
 
 /**
  * Determines which content is returned for customer type responses.
- * 
- * @author Jorge Villaverde
  */
 public interface ICustomerTypeResponseFormat {
-    
+
     /**
      * Indicates if contained customer types are to be returned.
      * 

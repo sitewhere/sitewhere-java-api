@@ -14,8 +14,6 @@ import com.sitewhere.rest.model.device.streaming.DeviceStreamData;
 
 /**
  * Search results that contain device stream data.
- * 
- * @author dadams
  */
 public class DeviceStreamDataSearchResults extends SearchResults<DeviceStreamData> {
 

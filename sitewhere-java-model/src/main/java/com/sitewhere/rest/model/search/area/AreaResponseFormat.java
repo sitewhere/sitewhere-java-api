@@ -11,8 +11,6 @@ import com.sitewhere.spi.search.area.IAreaResponseFormat;
 
 /**
  * Default implementation of {@link IAreaResponseFormat}.
- * 
- * @author Jorge Villaverde
  */
 public class AreaResponseFormat implements IAreaResponseFormat {
 

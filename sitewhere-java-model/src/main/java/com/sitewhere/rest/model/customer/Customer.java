@@ -16,8 +16,6 @@ import com.sitewhere.spi.customer.ICustomer;
 
 /**
  * Model object for customer information.
- * 
- * @author dadams
  */
 @JsonInclude(Include.NON_NULL)
 public class Customer extends BrandedEntity implements ICustomer {

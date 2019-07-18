@@ -19,8 +19,6 @@ import com.sitewhere.spi.device.group.IDeviceGroupElement;
 
 /**
  * Model object for an element in an {@link IDeviceGroup}.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class DeviceGroupElement implements IDeviceGroupElement, Serializable {

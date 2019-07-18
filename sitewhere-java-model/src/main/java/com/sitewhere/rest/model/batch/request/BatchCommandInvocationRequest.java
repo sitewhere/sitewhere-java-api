@@ -17,8 +17,6 @@ import com.sitewhere.spi.batch.request.IBatchCommandInvocationRequest;
 /**
  * Parameters for a batch operation that executes a command for all devices in
  * the batch.
- * 
- * @author Derek
  */
 public class BatchCommandInvocationRequest implements IBatchCommandInvocationRequest, Serializable {
 

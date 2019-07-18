@@ -9,8 +9,6 @@ package com.sitewhere.spi.asset;
 
 /**
  * Indicates the general type of an asset.
- * 
- * @author dadams
  */
 public enum AssetCategory {
 

@@ -21,8 +21,6 @@ import com.sitewhere.spi.device.event.IDeviceEvent;
 
 /**
  * Model object for an event originating from a remote device.
- * 
- * @author dadams
  */
 @JsonInclude(Include.NON_NULL)
 public abstract class DeviceEvent extends MetadataProvider implements IDeviceEvent, Serializable {

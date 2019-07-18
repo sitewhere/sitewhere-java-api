@@ -18,8 +18,6 @@ import com.sitewhere.spi.area.IAreaType;
 
 /**
  * Model object for an area type.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class AreaType extends BrandedEntity implements IAreaType {

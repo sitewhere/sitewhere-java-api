@@ -16,8 +16,6 @@ import com.sitewhere.spi.device.IDeviceAlarm;
 
 /**
  * Model object for device alarm information.
- * 
- * @author Derek
  */
 public class DeviceAlarm extends MetadataProvider implements IDeviceAlarm {
 

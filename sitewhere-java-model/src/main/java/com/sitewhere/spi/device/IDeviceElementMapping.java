@@ -13,8 +13,6 @@ import com.sitewhere.spi.device.element.IDeviceElementSchema;
 
 /**
  * Maps a location in an {@link IDeviceElementSchema} to an {@link IDevice}.
- * 
- * @author Derek
  */
 public interface IDeviceElementMapping extends Serializable {
 

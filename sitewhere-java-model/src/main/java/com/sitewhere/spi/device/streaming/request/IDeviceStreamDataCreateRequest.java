@@ -11,8 +11,6 @@ import com.sitewhere.spi.device.event.request.IDeviceEventCreateRequest;
 
 /**
  * Interface for arguments needed to create a chunk of stream data for a device.
- * 
- * @author Derek
  */
 public interface IDeviceStreamDataCreateRequest extends IDeviceEventCreateRequest {
 

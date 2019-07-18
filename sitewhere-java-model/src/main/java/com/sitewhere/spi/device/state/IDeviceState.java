@@ -14,8 +14,6 @@ import java.util.UUID;
 
 /**
  * Contains most recent state information for a device.
- * 
- * @author Derek
  */
 public interface IDeviceState extends Serializable {
 

@@ -12,8 +12,6 @@ import com.sitewhere.spi.user.IGrantedAuthoritySearchCriteria;
 
 /**
  * Implementation of IGrantedAuthoritySearchCriteria.
- * 
- * @author Derek
  */
 public class GrantedAuthoritySearchCriteria extends SearchCriteria implements IGrantedAuthoritySearchCriteria {
 

@@ -9,8 +9,6 @@ package com.sitewhere.spi.batch;
 
 /**
  * Status indicators for batch operation processing.
- * 
- * @author Derek
  */
 public enum BatchOperationStatus {
 

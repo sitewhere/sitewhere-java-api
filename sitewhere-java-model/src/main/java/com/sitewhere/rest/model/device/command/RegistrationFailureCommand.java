@@ -13,8 +13,6 @@ import com.sitewhere.spi.device.command.SystemCommandType;
 
 /**
  * Default implementation of {@link IRegistrationFailureCommand}.
- * 
- * @author Derek
  */
 public class RegistrationFailureCommand extends SystemCommand implements IRegistrationFailureCommand {
 
@@ -34,8 +32,7 @@ public class RegistrationFailureCommand extends SystemCommand implements IRegist
     /*
      * (non-Javadoc)
      * 
-     * @see
-     * com.sitewhere.spi.device.command.IRegistrationFailureCommand#getReason()
+     * @see com.sitewhere.spi.device.command.IRegistrationFailureCommand#getReason()
      */
     public RegistrationFailureReason getReason() {
 	return reason;

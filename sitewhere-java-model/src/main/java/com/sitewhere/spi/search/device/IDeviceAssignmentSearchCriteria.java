@@ -14,8 +14,6 @@ import com.sitewhere.spi.search.ISearchCriteria;
 
 /**
  * Criteria available for filtering device assignment search results.
- * 
- * @author Derek
  */
 public interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
 

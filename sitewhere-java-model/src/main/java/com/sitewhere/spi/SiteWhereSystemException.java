@@ -12,8 +12,6 @@ import com.sitewhere.spi.error.ErrorLevel;
 
 /**
  * System-level exception. Usually non-recoverable.
- * 
- * @author Derek Adams
  */
 public class SiteWhereSystemException extends SiteWhereException {
 

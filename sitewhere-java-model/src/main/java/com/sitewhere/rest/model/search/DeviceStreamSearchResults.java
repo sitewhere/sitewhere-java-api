@@ -15,8 +15,6 @@ import com.sitewhere.rest.model.device.streaming.DeviceStream;
 /**
  * Search results that contain device streams. Needed so that JSON marshaling
  * has a concrete class to inflate.
- * 
- * @author dadams
  */
 public class DeviceStreamSearchResults extends SearchResults<DeviceStream> {
 

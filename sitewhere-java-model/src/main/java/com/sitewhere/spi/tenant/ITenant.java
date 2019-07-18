@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.IBrandedEntity;
 
 /**
  * Interface for information about a tenant.
- * 
- * @author Derek
  */
 public interface ITenant extends IBrandedEntity {
 

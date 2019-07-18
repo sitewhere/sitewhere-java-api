@@ -9,8 +9,6 @@ package com.sitewhere.spi.scheduling;
 
 /**
  * Types of jobs that may be scheduled.
- * 
- * @author Derek
  */
 public enum ScheduledJobType {
 

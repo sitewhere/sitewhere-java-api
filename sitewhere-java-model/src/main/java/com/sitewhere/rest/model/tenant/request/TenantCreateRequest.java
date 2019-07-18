@@ -20,8 +20,6 @@ import com.sitewhere.spi.tenant.request.ITenantCreateRequest;
 /**
  * Default implementation of {@link ITenantCreateRequest} for use in REST
  * services.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class TenantCreateRequest extends BrandedEntityCreateRequest implements ITenantCreateRequest {

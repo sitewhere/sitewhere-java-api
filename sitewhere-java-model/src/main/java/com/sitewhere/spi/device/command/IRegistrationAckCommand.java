@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 /**
  * Acknowledges successful registration.
- * 
- * @author Derek
  */
 public interface IRegistrationAckCommand extends ISystemCommand, Serializable {
 

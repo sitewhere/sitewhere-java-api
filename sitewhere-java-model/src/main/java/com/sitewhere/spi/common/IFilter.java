@@ -9,8 +9,6 @@ package com.sitewhere.spi.common;
 
 /**
  * Determines whether a record should be filtered from a result set.
- * 
- * @author Derek
  */
 public interface IFilter<T> {
 

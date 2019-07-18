@@ -18,8 +18,6 @@ import com.sitewhere.spi.device.event.request.IDeviceMeasurementCreateRequest;
 
 /**
  * Model object used to create a new {@link DeviceMeasurement} via REST APIs.
- * 
- * @author Derek
  */
 @JsonIgnoreProperties
 @JsonInclude(Include.NON_NULL)

@@ -13,8 +13,6 @@ import com.sitewhere.spi.common.IMetadataProvider;
 
 /**
  * Contains base fields for creating a persistent entity.
- * 
- * @author Derek
  */
 public interface IPersistentEntityCreateRequest extends Serializable, IMetadataProvider {
 

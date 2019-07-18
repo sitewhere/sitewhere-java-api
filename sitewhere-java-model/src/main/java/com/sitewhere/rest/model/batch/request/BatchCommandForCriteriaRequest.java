@@ -20,8 +20,6 @@ import com.sitewhere.spi.batch.request.IBatchCommandForCriteriaRequest;
 
 /**
  * Model implementation of {@link IBatchCommandForCriteriaRequest}.
- * 
- * @author Derek
  */
 @JsonInclude(Include.NON_NULL)
 public class BatchCommandForCriteriaRequest implements IBatchCommandForCriteriaRequest, Serializable {

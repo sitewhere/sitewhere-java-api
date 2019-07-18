@@ -14,8 +14,6 @@ import com.sitewhere.spi.common.request.IBrandedEntityCreateRequest;
 
 /**
  * Interface for arguments needed to create a device group.
- * 
- * @author Derek
  */
 public interface IDeviceGroupCreateRequest extends IAccessible, IBrandedEntityCreateRequest {
 

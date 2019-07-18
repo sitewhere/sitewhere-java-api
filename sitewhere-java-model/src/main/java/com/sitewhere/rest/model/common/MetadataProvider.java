@@ -19,8 +19,6 @@ import com.sitewhere.spi.error.ErrorLevel;
 
 /**
  * Holds arbitrary metadata associated with an entity.
- * 
- * @author dadams
  */
 public class MetadataProvider implements IMetadataProvider, Serializable {
 
