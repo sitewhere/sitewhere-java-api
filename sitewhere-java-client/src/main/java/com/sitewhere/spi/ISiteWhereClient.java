@@ -26,13 +26,11 @@ import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.batch.request.BatchCommandForCriteriaRequest;
 import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
-import com.sitewhere.rest.model.common.MetadataProvider;
 import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.device.Device;
-import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceElementMapping;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
@@ -45,13 +43,10 @@ import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.command.DeviceCommandNamespace;
-import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.DeviceCommandResponse;
 import com.sitewhere.rest.model.device.event.DeviceEventBatch;
 import com.sitewhere.rest.model.device.event.DeviceEventBatchResponse;
-import com.sitewhere.rest.model.device.event.DeviceLocation;
-import com.sitewhere.rest.model.device.event.DeviceMeasurement;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreateRequest;
@@ -73,30 +68,15 @@ import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupElementCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
-import com.sitewhere.rest.model.device.request.DeviceStreamCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.device.state.DeviceState;
-import com.sitewhere.rest.model.device.streaming.DeviceStream;
 import com.sitewhere.rest.model.scheduling.Schedule;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
 import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
 import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
-import com.sitewhere.rest.model.search.AssetSearchResults;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
-import com.sitewhere.rest.model.search.DeviceAlertSearchResults;
-import com.sitewhere.rest.model.search.DeviceAssignmentSearchResults;
-import com.sitewhere.rest.model.search.DeviceCommandInvocationSearchResults;
-import com.sitewhere.rest.model.search.DeviceCommandSearchResults;
-import com.sitewhere.rest.model.search.DeviceGroupElementSearchResults;
-import com.sitewhere.rest.model.search.DeviceGroupSearchResults;
-import com.sitewhere.rest.model.search.DeviceLocationSearchResults;
-import com.sitewhere.rest.model.search.DeviceSearchResults;
-import com.sitewhere.rest.model.search.DeviceStreamSearchResults;
-import com.sitewhere.rest.model.search.DeviceTypeSearchResults;
-import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.TreeNode;
-import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.search.area.AreaResponseFormat;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
@@ -135,9 +115,6 @@ import com.sitewhere.rest.model.user.GrantedAuthorityHierarchyNode;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.GrantedAuthorityCreateRequest;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
-import com.sitewhere.spi.device.DeviceAssignmentStatus;
-import com.sitewhere.spi.device.event.IDeviceMeasurement;
-import com.sitewhere.spi.device.request.IDeviceAssignmentCreateRequest;
 
 /**
  * Interface for SiteWhere client calls.
@@ -2103,372 +2080,4 @@ public interface ISiteWhereClient {
      */
     public Zone deleteZone(ITenantAuthentication tenant, String zoneToken) throws SiteWhereException;
 
-    // ------------------------------------------------------------------------
-    /**
-     * List device types that meet the given criteria.
-     * 
-     * @param includeDeleted
-     * @param includeDetailedAssetInfo
-     * @param criteria
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceTypeSearchResults listDeviceTypes(boolean includeDeleted, boolean includeDetailedAssetInfo,
-	    SearchCriteria criteria) throws SiteWhereException;
-
-    /**
-     * Create a new device command for a specification.
-     * 
-     * @param specificationToken
-     * @param request
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceCommand createDeviceCommand(String specificationToken, DeviceCommandCreateRequest request)
-	    throws SiteWhereException;
-
-    /**
-     * List all device commands for a device specification.
-     * 
-     * @param specificationToken
-     * @param includeDeleted
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceCommandSearchResults listDeviceCommands(String specificationToken, boolean includeDeleted)
-	    throws SiteWhereException;
-
-    /**
-     * List zones associated with a given site.
-     * 
-     * @param siteToken
-     * @return
-     * @throws SiteWhereException
-     */
-    public ZoneSearchResults listZonesForSite(String siteToken) throws SiteWhereException;
-
-    /**
-     * List devices that meet the given criteria.
-     * 
-     * @param includeDeleted
-     * @param excludeAssigned
-     * @param populateSpecification
-     * @param populateAssignment
-     * @param criteria
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceSearchResults listDevices(boolean includeDeleted, boolean excludeAssigned,
-	    boolean populateSpecification, boolean populateAssignment, DateRangeSearchCriteria criteria)
-	    throws SiteWhereException;
-
-    /**
-     * Get current device assignment for a device based on hardware id.
-     * 
-     * @param hardwareId
-     *            unique hardware id of device
-     * @return device assignment information
-     * @throws SiteWhereException
-     */
-    public DeviceAssignment getCurrentAssignmentForDevice(String hardwareId) throws SiteWhereException;
-
-    /**
-     * Get the history of device assignments for a given hardware id.
-     * 
-     * @param hardwareId
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceAssignmentSearchResults listDeviceAssignmentHistory(String hardwareId) throws SiteWhereException;
-
-    /**
-     * Get all assignments at a site that are associated with a given asset.
-     * 
-     * @param siteToken
-     * @param assetModuleId
-     * @param assetId
-     * @param status
-     * @param criteria
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceAssignmentSearchResults getAssignmentsForAsset(String siteToken, String assetModuleId, String assetId,
-	    DeviceAssignmentStatus status, SearchCriteria criteria) throws SiteWhereException;
-
-    /**
-     * Add a batch of events to the current assignment for the given hardware id.
-     * 
-     * @param hardwareId
-     *            hardware id whose assignment will have events added
-     * @param batch
-     *            batch of events that will be added
-     * @return response of events that were created
-     * @throws SiteWhereException
-     */
-    public DeviceEventBatchResponse addDeviceEventBatch(String hardwareId, DeviceEventBatch batch)
-	    throws SiteWhereException;
-
-    /**
-     * Create a new device assignment based on the given inputs.
-     * 
-     * @param request
-     *            information about the new assignment
-     * @return the assignment that was created.
-     * @throws SiteWhereException
-     */
-    public DeviceAssignment createDeviceAssignment(IDeviceAssignmentCreateRequest request) throws SiteWhereException;
-
-    /**
-     * Get a device assignment by its unique token.
-     * 
-     * @param assignmentToken
-     *            unique assignment token
-     * @return the device assignment
-     * @throws SiteWhereException
-     */
-    public DeviceAssignment getDeviceAssignmentByToken(String assignmentToken) throws SiteWhereException;
-
-    /**
-     * List all assignments for a site.
-     * 
-     * @param token
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceAssignmentSearchResults listAssignmentsForSite(String token) throws SiteWhereException;
-
-    /**
-     * Update the metadata for an existing device assignment.
-     * 
-     * @param token
-     * @param metadata
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceAssignment updateDeviceAssignmentMetadata(String token, MetadataProvider metadata)
-	    throws SiteWhereException;
-
-    /**
-     * Create measurements for an assignment.
-     * 
-     * @param assignmentToken
-     * @param measurements
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceMeasurement createDeviceMeasurements(String assignmentToken,
-	    DeviceMeasurementCreateRequest measurements) throws SiteWhereException;
-
-    /**
-     * Get most recent device measurements for a given assignment.
-     * 
-     * @param assignmentToken
-     * @param searchCriteria
-     * @return
-     * @throws SiteWhereException
-     */
-    public SearchResults<IDeviceMeasurement> listDeviceMeasurements(String assignmentToken,
-	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException;
-
-    /**
-     * Create a new device location for an assignment.
-     * 
-     * @param assignmentToken
-     * @param request
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceLocation createDeviceLocation(String assignmentToken, DeviceLocationCreateRequest request)
-	    throws SiteWhereException;
-
-    /**
-     * Get most recent device locations for a given assignment.
-     * 
-     * @param assignmentToken
-     * @param criteria
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceLocationSearchResults listDeviceLocations(String assignmentToken, DateRangeSearchCriteria criteria)
-	    throws SiteWhereException;
-
-    /**
-     * Create a new alert for a device assignment.
-     * 
-     * @param assignmentToken
-     * @param request
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceAlert createDeviceAlert(String assignmentToken, DeviceAlertCreateRequest request)
-	    throws SiteWhereException;
-
-    /**
-     * Get most recent device alerts for a given assignment.
-     * 
-     * @param assignmentToken
-     * @param criteria
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceAlertSearchResults listDeviceAlerts(String assignmentToken, DateRangeSearchCriteria criteria)
-	    throws SiteWhereException;
-
-    /**
-     * Create a new device command invocation for a device assignment.
-     * 
-     * @param assignmentToken
-     * @param request
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceCommandInvocation createDeviceCommandInvocation(String assignmentToken,
-	    DeviceCommandInvocationCreateRequest request) throws SiteWhereException;
-
-    /**
-     * List device command invocations that match the given criteria.
-     * 
-     * @param assignmentToken
-     * @param criteria
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceCommandInvocationSearchResults listDeviceCommandInvocations(String assignmentToken,
-	    DateRangeSearchCriteria criteria) throws SiteWhereException;
-
-    /**
-     * Create a stream that will be associated with a device assignment.
-     * 
-     * @param assignmentToken
-     * @param request
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceStream createDeviceStream(String assignmentToken, DeviceStreamCreateRequest request)
-	    throws SiteWhereException;
-
-    /**
-     * Get a stream from an assignment based on unique id.
-     * 
-     * @param assignmentToken
-     * @param streamId
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceStream getDeviceStream(String assignmentToken, String streamId) throws SiteWhereException;
-
-    /**
-     * List device streams for an assignment.
-     * 
-     * @param assignmentToken
-     * @param criteria
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceStreamSearchResults listDeviceStreams(String assignmentToken, DateRangeSearchCriteria criteria)
-	    throws SiteWhereException;
-
-    /**
-     * Add a chunk of data to a device stream.
-     * 
-     * @param assignmentToken
-     * @param streamId
-     * @param sequenceNumber
-     * @param data
-     * @throws SiteWhereException
-     */
-    public void addDeviceStreamData(String assignmentToken, String streamId, long sequenceNumber, byte[] data)
-	    throws SiteWhereException;
-
-    /**
-     * Get a chunk of data from a device stream.
-     * 
-     * @param assignmentToken
-     * @param streamId
-     * @param sequenceNumber
-     * @return
-     * @throws SiteWhereException
-     */
-    public byte[] getDeviceStreamData(String assignmentToken, String streamId, long sequenceNumber)
-	    throws SiteWhereException;
-
-    /**
-     * List device stream data that meets the given criteria.
-     * 
-     * @param assignmentToken
-     * @param streamId
-     * @param criteria
-     * @return
-     * @throws SiteWhereException
-     */
-    public byte[] listDeviceStreamData(String assignmentToken, String streamId, DateRangeSearchCriteria criteria)
-	    throws SiteWhereException;
-
-    /**
-     * Invokes a command on a list of devices as a batch operation.
-     * 
-     * @param batchToken
-     * @param commandToken
-     * @param parameters
-     * @param hardwareIds
-     * @return
-     * @throws SiteWhereException
-     */
-    public BatchOperation createBatchCommandInvocation(String batchToken, String commandToken,
-	    Map<String, String> parameters, List<String> hardwareIds) throws SiteWhereException;
-
-    /**
-     * List device groups that meet the given criteria.
-     * 
-     * @param role
-     * @param criteria
-     * @param includeDeleted
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceGroupSearchResults listDeviceGroups(String role, SearchCriteria criteria, boolean includeDeleted)
-	    throws SiteWhereException;
-
-    /**
-     * Add elements to an existing device group.
-     * 
-     * @param groupToken
-     * @param elements
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceGroupElementSearchResults addDeviceGroupElements(String groupToken,
-	    List<DeviceGroupElementCreateRequest> elements) throws SiteWhereException;
-
-    /**
-     * List device group elements that meet the given criteria.
-     * 
-     * @param groupToken
-     * @param includeDetails
-     * @param criteria
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceGroupElementSearchResults listDeviceGroupElements(String groupToken, boolean includeDetails,
-	    SearchCriteria criteria) throws SiteWhereException;
-
-    /**
-     * Delete elements from an existing device group.
-     * 
-     * @param groupToken
-     * @param elements
-     * @return
-     * @throws SiteWhereException
-     */
-    public DeviceGroupElementSearchResults deleteDeviceGroupElements(String groupToken,
-	    List<DeviceGroupElementCreateRequest> elements) throws SiteWhereException;
-
-    /**
-     * List all assets in a given asset module that meet the given criteria.
-     * 
-     * @param moduleId
-     * @return
-     * @throws SiteWhereException
-     */
-    public AssetSearchResults getAssetsByModuleId(String moduleId, String criteria) throws SiteWhereException;
 }
