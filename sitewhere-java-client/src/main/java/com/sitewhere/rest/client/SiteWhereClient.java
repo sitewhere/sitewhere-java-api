@@ -31,14 +31,12 @@ import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
 import com.sitewhere.rest.model.batch.request.BatchCommandForCriteriaRequest;
 import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
-import com.sitewhere.rest.model.common.MetadataProvider;
 import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
 import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.rest.model.device.Device;
-import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceElementMapping;
 import com.sitewhere.rest.model.device.DeviceStatus;
 import com.sitewhere.rest.model.device.DeviceType;
@@ -51,13 +49,10 @@ import com.sitewhere.rest.model.device.asset.DeviceStateChangeWithAsset;
 import com.sitewhere.rest.model.device.charting.ChartSeries;
 import com.sitewhere.rest.model.device.command.DeviceCommand;
 import com.sitewhere.rest.model.device.command.DeviceCommandNamespace;
-import com.sitewhere.rest.model.device.event.DeviceAlert;
 import com.sitewhere.rest.model.device.event.DeviceCommandInvocation;
 import com.sitewhere.rest.model.device.event.DeviceCommandResponse;
 import com.sitewhere.rest.model.device.event.DeviceEventBatch;
 import com.sitewhere.rest.model.device.event.DeviceEventBatchResponse;
-import com.sitewhere.rest.model.device.event.DeviceLocation;
-import com.sitewhere.rest.model.device.event.DeviceMeasurement;
 import com.sitewhere.rest.model.device.event.request.DeviceAlertCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandInvocationCreateRequest;
 import com.sitewhere.rest.model.device.event.request.DeviceCommandResponseCreateRequest;
@@ -79,30 +74,16 @@ import com.sitewhere.rest.model.device.request.DeviceCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceGroupElementCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceStatusCreateRequest;
-import com.sitewhere.rest.model.device.request.DeviceStreamCreateRequest;
 import com.sitewhere.rest.model.device.request.DeviceTypeCreateRequest;
 import com.sitewhere.rest.model.device.state.DeviceState;
-import com.sitewhere.rest.model.device.streaming.DeviceStream;
 import com.sitewhere.rest.model.scheduling.Schedule;
 import com.sitewhere.rest.model.scheduling.ScheduledJob;
 import com.sitewhere.rest.model.scheduling.request.ScheduleCreateRequest;
 import com.sitewhere.rest.model.scheduling.request.ScheduledJobCreateRequest;
-import com.sitewhere.rest.model.search.AssetSearchResults;
 import com.sitewhere.rest.model.search.DateRangeSearchCriteria;
-import com.sitewhere.rest.model.search.DeviceAlertSearchResults;
-import com.sitewhere.rest.model.search.DeviceAssignmentSearchResults;
-import com.sitewhere.rest.model.search.DeviceCommandInvocationSearchResults;
-import com.sitewhere.rest.model.search.DeviceCommandSearchResults;
-import com.sitewhere.rest.model.search.DeviceGroupElementSearchResults;
-import com.sitewhere.rest.model.search.DeviceGroupSearchResults;
-import com.sitewhere.rest.model.search.DeviceLocationSearchResults;
-import com.sitewhere.rest.model.search.DeviceSearchResults;
-import com.sitewhere.rest.model.search.DeviceStreamSearchResults;
-import com.sitewhere.rest.model.search.DeviceTypeSearchResults;
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.rest.model.search.SearchResults;
 import com.sitewhere.rest.model.search.TreeNode;
-import com.sitewhere.rest.model.search.ZoneSearchResults;
 import com.sitewhere.rest.model.search.area.AreaResponseFormat;
 import com.sitewhere.rest.model.search.area.AreaSearchCriteria;
 import com.sitewhere.rest.model.search.area.AreaTypeSearchCriteria;
@@ -144,9 +125,6 @@ import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.ISiteWhereClient;
 import com.sitewhere.spi.ITenantAuthentication;
 import com.sitewhere.spi.SiteWhereException;
-import com.sitewhere.spi.device.DeviceAssignmentStatus;
-import com.sitewhere.spi.device.event.IDeviceMeasurement;
-import com.sitewhere.spi.device.request.IDeviceAssignmentCreateRequest;
 import com.sitewhere.spi.web.ISiteWhereWebConstants;
 
 import okhttp3.Headers;
@@ -2445,230 +2423,6 @@ public class SiteWhereClient implements ISiteWhereClient {
     }
 
     // ------------------------------------------------------------------------
-
-    @Override
-    public DeviceTypeSearchResults listDeviceTypes(boolean includeDeleted, boolean includeDetailedAssetInfo,
-	    SearchCriteria criteria) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceCommand createDeviceCommand(String specificationToken, DeviceCommandCreateRequest request)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceCommandSearchResults listDeviceCommands(String specificationToken, boolean includeDeleted)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public ZoneSearchResults listZonesForSite(String siteToken) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceSearchResults listDevices(boolean includeDeleted, boolean excludeAssigned,
-	    boolean populateSpecification, boolean populateAssignment, DateRangeSearchCriteria criteria)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceAssignment getCurrentAssignmentForDevice(String hardwareId) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceAssignmentSearchResults listDeviceAssignmentHistory(String hardwareId) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceAssignmentSearchResults getAssignmentsForAsset(String siteToken, String assetModuleId, String assetId,
-	    DeviceAssignmentStatus status, SearchCriteria criteria) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceEventBatchResponse addDeviceEventBatch(String hardwareId, DeviceEventBatch batch)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceAssignment createDeviceAssignment(IDeviceAssignmentCreateRequest request) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceAssignment getDeviceAssignmentByToken(String assignmentToken) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceAssignmentSearchResults listAssignmentsForSite(String token) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceAssignment updateDeviceAssignmentMetadata(String token, MetadataProvider metadata)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceMeasurement createDeviceMeasurements(String assignmentToken,
-	    DeviceMeasurementCreateRequest measurements) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public SearchResults<IDeviceMeasurement> listDeviceMeasurements(String assignmentToken,
-	    DateRangeSearchCriteria searchCriteria) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceLocation createDeviceLocation(String assignmentToken, DeviceLocationCreateRequest request)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceLocationSearchResults listDeviceLocations(String assignmentToken, DateRangeSearchCriteria criteria)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceAlert createDeviceAlert(String assignmentToken, DeviceAlertCreateRequest request)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceAlertSearchResults listDeviceAlerts(String assignmentToken, DateRangeSearchCriteria criteria)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceCommandInvocation createDeviceCommandInvocation(String assignmentToken,
-	    DeviceCommandInvocationCreateRequest request) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceCommandInvocationSearchResults listDeviceCommandInvocations(String assignmentToken,
-	    DateRangeSearchCriteria criteria) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceStream createDeviceStream(String assignmentToken, DeviceStreamCreateRequest request)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceStream getDeviceStream(String assignmentToken, String streamId) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceStreamSearchResults listDeviceStreams(String assignmentToken, DateRangeSearchCriteria criteria)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public void addDeviceStreamData(String assignmentToken, String streamId, long sequenceNumber, byte[] data)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public byte[] getDeviceStreamData(String assignmentToken, String streamId, long sequenceNumber)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public byte[] listDeviceStreamData(String assignmentToken, String streamId, DateRangeSearchCriteria criteria)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public BatchOperation createBatchCommandInvocation(String batchToken, String commandToken,
-	    Map<String, String> parameters, List<String> hardwareIds) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceGroupSearchResults listDeviceGroups(String role, SearchCriteria criteria, boolean includeDeleted)
-	    throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceGroupElementSearchResults addDeviceGroupElements(String groupToken,
-	    List<DeviceGroupElementCreateRequest> elements) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceGroupElementSearchResults listDeviceGroupElements(String groupToken, boolean includeDetails,
-	    SearchCriteria criteria) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public DeviceGroupElementSearchResults deleteDeviceGroupElements(String groupToken,
-	    List<DeviceGroupElementCreateRequest> elements) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    @Override
-    public AssetSearchResults getAssetsByModuleId(String moduleId, String criteria) throws SiteWhereException {
-	// TODO Auto-generated method stub
-	return null;
-    }
 
     /**
      * Authentication for default tenant.
