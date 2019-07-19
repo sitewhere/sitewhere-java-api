@@ -152,6 +152,7 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
     public void testListAssignments() throws SiteWhereException {
 	DeviceAssignmentSearchCriteria searchCriteria = new DeviceAssignmentSearchCriteria();
 	DeviceAssignmentResponseFormat responseFormat = new DeviceAssignmentResponseFormat();
+	responseFormat.setIncludeCustomer(true);
 	SearchResults<MarshaledDeviceAssignment> assignments = 
 		getClient().listDeviceAssignmentsForArea(
 			getTenatAuthentication(), parentToken, searchCriteria, responseFormat);

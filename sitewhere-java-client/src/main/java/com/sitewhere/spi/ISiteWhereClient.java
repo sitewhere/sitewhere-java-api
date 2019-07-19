@@ -124,7 +124,7 @@ public interface ISiteWhereClient {
     /**
      * Initialize the client.
      * 
-     * @return
+     * @return Initialized ISiteWhereClient.
      * @throws SiteWhereException
      */
     public ISiteWhereClient initialize() throws SiteWhereException;
@@ -136,7 +136,7 @@ public interface ISiteWhereClient {
     /**
      * List area types matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @return
      * @throws SiteWhereException
@@ -147,7 +147,7 @@ public interface ISiteWhereClient {
     /**
      * Get a area type by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaTypeToken
      * @return
      * @throws SiteWhereException
@@ -158,7 +158,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new area type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -169,7 +169,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing area type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaTypeToken
      * @param request
      * @return
@@ -181,7 +181,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing area type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaTypeToken
      * @return
      * @throws SiteWhereException
@@ -191,7 +191,7 @@ public interface ISiteWhereClient {
     /**
      * Get label for area type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaTypeToken
      * @param generatorId
      * @return
@@ -207,7 +207,7 @@ public interface ISiteWhereClient {
     /**
      * List areas matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -219,7 +219,7 @@ public interface ISiteWhereClient {
     /**
      * Get a area by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @return
      * @throws SiteWhereException
@@ -229,7 +229,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new area type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -239,7 +239,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing area type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @param request
      * @return
@@ -251,7 +251,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing area type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @return
      * @throws SiteWhereException
@@ -261,7 +261,7 @@ public interface ISiteWhereClient {
     /**
      * List alerts for an area.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @param searchCriteria
      * @return
@@ -273,7 +273,7 @@ public interface ISiteWhereClient {
     /**
      * List device assignments for an area.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @param searchCriteria
      * @return
@@ -286,7 +286,7 @@ public interface ISiteWhereClient {
     /**
      * List command invocations for an area.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @param searchCriteria
      * @return
@@ -298,7 +298,7 @@ public interface ISiteWhereClient {
     /**
      * Get label for area.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @param generatorId
      * @return
@@ -310,7 +310,7 @@ public interface ISiteWhereClient {
     /**
      * List locations for an area.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @param searchCriteria
      * @return
@@ -322,7 +322,7 @@ public interface ISiteWhereClient {
     /**
      * List locations for an area.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @param searchCriteria
      * @return
@@ -334,7 +334,7 @@ public interface ISiteWhereClient {
     /**
      * List command responses for an area.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @param searchCriteria
      * @return
@@ -346,7 +346,7 @@ public interface ISiteWhereClient {
     /**
      * List state changes for an area.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param areaToken
      * @param searchCriteria
      * @return
@@ -358,7 +358,7 @@ public interface ISiteWhereClient {
     /**
      * List all areas in tree format.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @return
      * @throws SiteWhereException
      */
@@ -371,7 +371,7 @@ public interface ISiteWhereClient {
     /**
      * List asset types matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @return
      * @throws SiteWhereException
@@ -382,7 +382,7 @@ public interface ISiteWhereClient {
     /**
      * Get a asset type by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param assetTypeToken
      * @return
      * @throws SiteWhereException
@@ -392,7 +392,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new asset type type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -403,7 +403,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing asset type type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param assetTypeToken
      * @param request
      * @return
@@ -415,7 +415,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing asset type type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param assetTypeToken
      * @return
      * @throws SiteWhereException
@@ -425,7 +425,7 @@ public interface ISiteWhereClient {
     /**
      * Get label for asset type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param assetTypeToken
      * @param generatorId
      * @return
@@ -441,7 +441,7 @@ public interface ISiteWhereClient {
     /**
      * List assets matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @return
      * @throws SiteWhereException
@@ -452,7 +452,7 @@ public interface ISiteWhereClient {
     /**
      * Get a asset by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param assetToken
      * @return
      * @throws SiteWhereException
@@ -462,7 +462,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new asset.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -472,7 +472,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing asset.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param assetToken
      * @param request
      * @return
@@ -484,7 +484,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing asset.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param assetToken
      * @return
      * @throws SiteWhereException
@@ -494,7 +494,7 @@ public interface ISiteWhereClient {
     /**
      * Get label for asset.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param assetToken
      * @param generatorId
      * @return
@@ -510,7 +510,7 @@ public interface ISiteWhereClient {
     /**
      * List device assignment matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param format
      * @return
@@ -523,7 +523,7 @@ public interface ISiteWhereClient {
     /**
      * Get a device assignment by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -534,7 +534,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -545,7 +545,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -557,7 +557,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -568,7 +568,7 @@ public interface ISiteWhereClient {
     /**
      * List alerts for a device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param searchCriteria
      * @return
@@ -580,7 +580,7 @@ public interface ISiteWhereClient {
     /**
      * Create alert event for device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -592,7 +592,7 @@ public interface ISiteWhereClient {
     /**
      * Release an active device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -603,7 +603,7 @@ public interface ISiteWhereClient {
     /**
      * List command invocations for a device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param includeCommand
      * @param searchCriteria
@@ -617,7 +617,7 @@ public interface ISiteWhereClient {
     /**
      * Create command invocation event for assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -629,7 +629,7 @@ public interface ISiteWhereClient {
     /**
      * Schedule command invocation.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param scheduleToken
      * @param request
@@ -642,7 +642,7 @@ public interface ISiteWhereClient {
     /**
      * Get label for device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param generatorId
      * @return
@@ -654,7 +654,7 @@ public interface ISiteWhereClient {
     /**
      * List location events for device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param searchCriteria
      * @return
@@ -666,7 +666,7 @@ public interface ISiteWhereClient {
     /**
      * Create location event for assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -678,7 +678,7 @@ public interface ISiteWhereClient {
     /**
      * List measurement events for device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param searchCriteria
      * @return
@@ -690,7 +690,7 @@ public interface ISiteWhereClient {
     /**
      * Create location event for assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -702,7 +702,7 @@ public interface ISiteWhereClient {
     /**
      * List assignment measurements as chart series.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param searchCriteria
      * @return
@@ -714,7 +714,7 @@ public interface ISiteWhereClient {
     /**
      * Mark device assignment as missing.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -725,7 +725,7 @@ public interface ISiteWhereClient {
     /**
      * List command response events for assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param searchCriteria
      * @return
@@ -738,7 +738,7 @@ public interface ISiteWhereClient {
     /**
      * Create command response event for assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -750,7 +750,7 @@ public interface ISiteWhereClient {
     /**
      * List state change events for assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param searchCriteria
      * @return
@@ -762,7 +762,7 @@ public interface ISiteWhereClient {
     /**
      * Create state change event for assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -774,7 +774,7 @@ public interface ISiteWhereClient {
     /**
      * List alert events for device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -785,7 +785,7 @@ public interface ISiteWhereClient {
     /**
      * List command invocation events for assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -796,7 +796,7 @@ public interface ISiteWhereClient {
     /**
      * List location events for device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -807,7 +807,7 @@ public interface ISiteWhereClient {
     /**
      * List measurement events for multiple assignments.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -818,7 +818,7 @@ public interface ISiteWhereClient {
     /**
      * List measurements for multiple assignments as chart series.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -829,7 +829,7 @@ public interface ISiteWhereClient {
     /**
      * List command response events for assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -840,7 +840,7 @@ public interface ISiteWhereClient {
     /**
      * List state change events for a device assignment.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -863,7 +863,7 @@ public interface ISiteWhereClient {
     /**
      * Get authority by name.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param name
      * @return
      * @throws SiteWhereException
@@ -873,7 +873,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new authority.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -884,7 +884,7 @@ public interface ISiteWhereClient {
     /**
      * Get authorities hierarchy.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @return
      * @throws SiteWhereException
      */
@@ -898,7 +898,7 @@ public interface ISiteWhereClient {
     /**
      * List batch operations.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @return
      * @throws SiteWhereException
@@ -909,7 +909,7 @@ public interface ISiteWhereClient {
     /**
      * Get a batch operation by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param batchToken
      * @return
      * @throws SiteWhereException
@@ -920,7 +920,7 @@ public interface ISiteWhereClient {
     /**
      * List batch operation elements.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param operationToken
      * @return
      */
@@ -930,7 +930,7 @@ public interface ISiteWhereClient {
     /**
      * Create new batch command invocation.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -941,7 +941,7 @@ public interface ISiteWhereClient {
     /**
      * Create batch command operation based on criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -956,7 +956,7 @@ public interface ISiteWhereClient {
     /**
      * Get command invocation by unique id.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param id
      * @return
      * @throws SiteWhereException
@@ -967,7 +967,7 @@ public interface ISiteWhereClient {
     /**
      * Get command invocation summary.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param id
      * @return
      * @throws SiteWhereException
@@ -978,7 +978,7 @@ public interface ISiteWhereClient {
     /**
      * List responses for command invocation.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param id
      * @return
      * @throws SiteWhereException
@@ -993,7 +993,7 @@ public interface ISiteWhereClient {
     /**
      * List customer types matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1006,7 +1006,7 @@ public interface ISiteWhereClient {
     /**
      * Get a customer type by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerTypeToken
      * @return
      * @throws SiteWhereException
@@ -1017,7 +1017,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new customer type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1028,7 +1028,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing customer type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerTypeToken
      * @param request
      * @return
@@ -1040,7 +1040,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing customer type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerTypeToken
      * @return
      * @throws SiteWhereException
@@ -1051,7 +1051,7 @@ public interface ISiteWhereClient {
     /**
      * Get label for customer type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerTypeToken
      * @param generatorId
      * @return
@@ -1067,7 +1067,7 @@ public interface ISiteWhereClient {
     /**
      * List customers matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1079,7 +1079,7 @@ public interface ISiteWhereClient {
     /**
      * Get a customer by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerToken
      * @return
      * @throws SiteWhereException
@@ -1090,7 +1090,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1101,7 +1101,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerToken
      * @param request
      * @return
@@ -1113,7 +1113,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerToken
      * @return
      * @throws SiteWhereException
@@ -1123,7 +1123,7 @@ public interface ISiteWhereClient {
     /**
      * List alerts for a customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerToken
      * @param searchCriteria
      * @return
@@ -1135,7 +1135,7 @@ public interface ISiteWhereClient {
     /**
      * List device assignments for a customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerToken
      * @param searchCriteria
      * @return
@@ -1148,7 +1148,7 @@ public interface ISiteWhereClient {
     /**
      * List command invocations for a customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerToken
      * @param searchCriteria
      * @return
@@ -1160,7 +1160,7 @@ public interface ISiteWhereClient {
     /**
      * Get label for customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerTypeToken
      * @param generatorId
      * @return
@@ -1172,7 +1172,7 @@ public interface ISiteWhereClient {
     /**
      * List locations for a customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerToken
      * @param searchCriteria
      * @return
@@ -1184,7 +1184,7 @@ public interface ISiteWhereClient {
     /**
      * List locations for a customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerToken
      * @param searchCriteria
      * @return
@@ -1196,7 +1196,7 @@ public interface ISiteWhereClient {
     /**
      * List command responses for a customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerToken
      * @param searchCriteria
      * @return
@@ -1208,7 +1208,7 @@ public interface ISiteWhereClient {
     /**
      * List state changes for a customer.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param customerToken
      * @param searchCriteria
      * @return
@@ -1220,7 +1220,7 @@ public interface ISiteWhereClient {
     /**
      * List all customer in tree format.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @return
      * @throws SiteWhereException
      */
@@ -1233,7 +1233,7 @@ public interface ISiteWhereClient {
     /**
      * List device commands matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1245,7 +1245,7 @@ public interface ISiteWhereClient {
     /**
      * Get a device command by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1255,7 +1255,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new device command.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1266,7 +1266,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing device command.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -1278,7 +1278,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing device command.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1288,7 +1288,7 @@ public interface ISiteWhereClient {
     /**
      * List device commands by namespace.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1304,7 +1304,7 @@ public interface ISiteWhereClient {
     /**
      * Get a device event by alternate Id.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param alternateId
      * @return
      * @throws SiteWhereException
@@ -1315,7 +1315,7 @@ public interface ISiteWhereClient {
     /**
      * Get a device event by Id.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param eventId
      * @return
      * @throws SiteWhereException
@@ -1330,7 +1330,7 @@ public interface ISiteWhereClient {
     /**
      * List device groups matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1342,7 +1342,7 @@ public interface ISiteWhereClient {
     /**
      * Get a device group by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param groupToken
      * @return
      * @throws SiteWhereException
@@ -1352,7 +1352,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new device group.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1363,7 +1363,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing device group.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param groupToken
      * @param request
      * @return
@@ -1375,7 +1375,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing device group.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param groupToken
      * @return
      * @throws SiteWhereException
@@ -1385,7 +1385,7 @@ public interface ISiteWhereClient {
     /**
      * List elements in a device group.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1398,7 +1398,7 @@ public interface ISiteWhereClient {
     /**
      * Add elements to device group.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param groupToken
      * @param requests
      * @return
@@ -1410,7 +1410,7 @@ public interface ISiteWhereClient {
     /**
      * Delete elements from device group.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param groupToken
      * @param elementIds
      * @return
@@ -1422,7 +1422,7 @@ public interface ISiteWhereClient {
     /**
      * Delete elements from device group.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param groupToken
      * @param elementId
      * @return
@@ -1434,7 +1434,7 @@ public interface ISiteWhereClient {
     /**
      * Get label for device group.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param groupToken
      * @param generatorId
      * @return
@@ -1450,7 +1450,7 @@ public interface ISiteWhereClient {
     /**
      * List device states matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1467,7 +1467,7 @@ public interface ISiteWhereClient {
     /**
      * List device statuses that match criteria..
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1479,7 +1479,7 @@ public interface ISiteWhereClient {
     /**
      * Get a device status by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1489,7 +1489,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new device status.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1500,7 +1500,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing device status.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -1512,7 +1512,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing device status.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1526,7 +1526,7 @@ public interface ISiteWhereClient {
     /**
      * List device types that match criteria..
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1538,7 +1538,7 @@ public interface ISiteWhereClient {
     /**
      * Get a device type by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1548,7 +1548,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new device type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1559,7 +1559,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing device type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -1571,7 +1571,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing device type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1581,7 +1581,7 @@ public interface ISiteWhereClient {
     /**
      * Get label for device type.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param generatorId
      * @return
@@ -1593,7 +1593,7 @@ public interface ISiteWhereClient {
     /**
      * Get device type specification GPB by unique token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1603,7 +1603,7 @@ public interface ISiteWhereClient {
     /**
      * Download device type specification GPB by unique token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1618,7 +1618,7 @@ public interface ISiteWhereClient {
     /**
      * List devices that match criteria..
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1630,7 +1630,7 @@ public interface ISiteWhereClient {
     /**
      * Get a device by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param deviceToken
      * @return
      * @throws SiteWhereException
@@ -1640,7 +1640,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new device.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1651,7 +1651,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing device.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param deviceToken
      * @param request
      * @return
@@ -1663,7 +1663,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing device.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param deviceToken
      * @return
      * @throws SiteWhereException
@@ -1673,7 +1673,7 @@ public interface ISiteWhereClient {
     /**
      * List assignment history for device.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param deviceToken
      * @param searchCriteria
      * @param responseFormat
@@ -1687,7 +1687,7 @@ public interface ISiteWhereClient {
     /**
      * Add multiple events for device.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param deviceToken
      * @param batch
      * @return
@@ -1699,7 +1699,7 @@ public interface ISiteWhereClient {
     /**
      * Get label for device.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param deviceToken
      * @param generatorId
      * @return
@@ -1711,7 +1711,7 @@ public interface ISiteWhereClient {
     /**
      * Create new device element mapping.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param deviceToken
      * @param request
      * @return
@@ -1723,7 +1723,7 @@ public interface ISiteWhereClient {
     /**
      * Delete existing device element mapping.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param deviceToken
      * @param path
      * @return
@@ -1735,7 +1735,7 @@ public interface ISiteWhereClient {
     /**
      * List devices in device group.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param groupToken
      * @param searchCriteria
      * @param responseFormat
@@ -1748,7 +1748,7 @@ public interface ISiteWhereClient {
     /**
      * List devices in device group with role.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param role
      * @param searchCriteria
      * @param responseFormat
@@ -1773,7 +1773,7 @@ public interface ISiteWhereClient {
     /**
      * List scheduled jobs matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1786,7 +1786,7 @@ public interface ISiteWhereClient {
     /**
      * Get a schedule job by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1796,7 +1796,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new schedule job.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1807,7 +1807,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing schedule job.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -1819,7 +1819,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing schedule job.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1833,7 +1833,7 @@ public interface ISiteWhereClient {
     /**
      * List schedules matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param searchCriteria
      * @param responseFormat
      * @return
@@ -1845,7 +1845,7 @@ public interface ISiteWhereClient {
     /**
      * Get a schedule by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1855,7 +1855,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new schedule.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1866,7 +1866,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing schedule.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information. Tenant authentication information.
      * @param token
      * @param request
      * @return
@@ -1878,7 +1878,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing schedule.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param token
      * @return
      * @throws SiteWhereException
@@ -1904,7 +1904,7 @@ public interface ISiteWhereClient {
     /**
      * List tenants that match criteria.
      * 
-     * @param tenant
+     * @param searchCriteria
      * @return
      * @throws SiteWhereException
      */
@@ -1913,8 +1913,7 @@ public interface ISiteWhereClient {
     /**
      * Get a tenant by token.
      * 
-     * @param tenant
-     * @param tenantToken
+     * @param tenant Tenant authentication information.Token
      * @return
      * @throws SiteWhereException
      */
@@ -1923,7 +1922,6 @@ public interface ISiteWhereClient {
     /**
      * Create a new tenant.
      * 
-     * @param tenant
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1933,8 +1931,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing tenant.
      * 
-     * @param tenant
-     * @param tenantToken
+     * @param tenant Tenant authentication information.Token
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1944,8 +1941,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing tenant.
      * 
-     * @param tenant
-     * @param tenantToken
+     * @param tenant Tenant authentication information.Token
      * @return
      * @throws SiteWhereException
      */
@@ -1958,7 +1954,7 @@ public interface ISiteWhereClient {
     /**
      * List users matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @return
      * @throws SiteWhereException
      */
@@ -1967,7 +1963,7 @@ public interface ISiteWhereClient {
     /**
      * Get a user by username.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param username
      * @return
      * @throws SiteWhereException
@@ -1977,7 +1973,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new user.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -1987,7 +1983,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing user.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param username
      * @param request
      * @return
@@ -1998,7 +1994,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing user.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param username
      * @return
      * @throws SiteWhereException
@@ -2008,7 +2004,7 @@ public interface ISiteWhereClient {
     /**
      * Get authorities for user.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param username
      * @return
      * @throws SiteWhereException
@@ -2022,7 +2018,7 @@ public interface ISiteWhereClient {
     /**
      * List zones matching criteria.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param searchCriteria
      * @return
      * @throws SiteWhereException
@@ -2033,7 +2029,7 @@ public interface ISiteWhereClient {
     /**
      * Get a zone by token.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param zoneToken
      * @return
      * @throws SiteWhereException
@@ -2043,7 +2039,7 @@ public interface ISiteWhereClient {
     /**
      * Create a new zone.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param request
      * @return
      * @throws SiteWhereException
@@ -2053,7 +2049,7 @@ public interface ISiteWhereClient {
     /**
      * Update an existing zone.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param zoneToken
      * @param request
      * @return
@@ -2065,7 +2061,7 @@ public interface ISiteWhereClient {
     /**
      * Delete an existing zone.
      * 
-     * @param tenant
+     * @param tenant Tenant authentication information.
      * @param zoneToken
      * @return
      * @throws SiteWhereException

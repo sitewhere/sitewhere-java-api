@@ -88,7 +88,7 @@ public class AreaTypeRestTests extends AbstractWithLabelCRUDRestTest<AreaType, A
     
     @Override
     protected SearchResults<AreaType> listEntities() throws SiteWhereException {
-	AreaTypeSearchCriteria searchCriteria = new AreaTypeSearchCriteria(0, 10);
+	AreaTypeSearchCriteria searchCriteria = new AreaTypeSearchCriteria(1, 100);
 	return getClient().listAreaTypes(getTenatAuthentication(), searchCriteria);
     }
 
