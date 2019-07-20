@@ -9,8 +9,6 @@ package com.sitewhere.rest.client.batch;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 import com.sitewhere.rest.client.AbstractRestTest;
@@ -38,15 +36,14 @@ public class BatchOperationRestTests extends AbstractRestTest {
     }
  
     @Test
-    public void testCreateBatchCommandInvocation() throws SiteWhereException {
-	
-	BatchCommandInvocationRequest request = new BatchCommandInvocationRequest();
-	
-	request.setToken(batchOperationToken);
-	request.setCommandToken("ping");
-	request.setDeviceTokens(new ArrayList<String>());
-	request.getDeviceTokens().add("15737-UNO-7576364");
-	
+    public void testCreateBatchCommandInvocation() throws SiteWhereException {	
+	BatchCommandInvocationRequest request = BatchCommandInvocationRequest.newBuilder()
+		.withToken(batchOperationToken)
+		.withCommandToken("ping")
+		.addDeviceToken("15737-UNO-7576364")
+		.parameter("host", "localhost")
+		.build();
+		
 	BatchOperation batchOperation = getClient().createBatchCommandInvocation(getTenatAuthentication(), request);
 	assertNotNull(batchOperation);
     }

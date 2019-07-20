@@ -8,9 +8,12 @@
 package com.sitewhere.rest.model.batch.request;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import com.sitewhere.spi.batch.request.IBatchCommandInvocationRequest;
 
@@ -85,5 +88,58 @@ public class BatchCommandInvocationRequest implements IBatchCommandInvocationReq
 
     public void setDeviceTokens(List<String> deviceTokens) {
 	this.deviceTokens = deviceTokens;
+    }
+    
+    /**
+     * Get new builder class.
+     * 
+     * @return
+     */
+    public static Builder newBuilder() {
+	return new Builder();
+    }
+
+    public static class Builder {
+	
+	/** Build object */
+	private BatchCommandInvocationRequest build;
+	
+	private Builder() {
+	    super();
+	    this.build = new BatchCommandInvocationRequest();
+	    withToken(UUID.randomUUID().toString());
+	}
+	
+	public Builder withToken(String token) {
+	    this.build.setToken(token);
+	    return this;
+	}
+	
+	public Builder withCommandToken(String commandToken) {
+	    this.build.setCommandToken(commandToken);
+	    return this;
+	}
+
+	public Builder addDeviceTokens(List<String> deviceTokens) {
+	    if(this.build.getDeviceTokens() == null) {
+		this.build.setDeviceTokens(new ArrayList<String>());
+	    }
+	    this.build.getDeviceTokens().addAll(deviceTokens);
+	    return this;
+	}
+	
+	public Builder addDeviceToken(String deviceToken) {
+	    addDeviceTokens(Collections.singletonList(deviceToken));
+	    return this;
+	}
+	
+	public Builder parameter(String name, String value) {
+	    this.build.getParameterValues().put(name, value);
+	    return this;
+	}
+	
+	public BatchCommandInvocationRequest build() {
+	    return this.build;
+	}
     }
 }
