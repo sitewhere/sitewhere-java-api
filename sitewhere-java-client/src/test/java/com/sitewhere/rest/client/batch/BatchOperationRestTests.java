@@ -56,7 +56,7 @@ public class BatchOperationRestTests extends AbstractRestTest {
     
     @Test
     public void testListBatchOperationElements() throws SiteWhereException {
-	SearchResults<BatchElement> batchElements = getClient().listBatchOperationElements(getTenatAuthentication(), batchOperationToken);
+    	SearchResults<BatchElement> batchElements = getClient().listBatchOperationElements(getTenatAuthentication(), batchOperationToken);
 	assertNotNull(batchElements);	
     }
 

@@ -5,7 +5,7 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package com.sitewhere.rest.client.client;
+package com.sitewhere.rest.client.customer;
 
 import com.sitewhere.rest.client.AbstractWithLabelCRUDRestTest;
 import com.sitewhere.rest.model.customer.CustomerType;

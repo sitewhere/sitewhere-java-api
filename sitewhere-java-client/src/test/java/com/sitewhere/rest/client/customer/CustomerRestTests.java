@@ -6,7 +6,7 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package com.sitewhere.rest.client.client;
+package com.sitewhere.rest.client.customer;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -111,7 +111,7 @@ public class CustomerRestTests extends AbstractWithLabelCRUDRestTest<Customer, C
     @Override
     protected SearchResults<? extends Customer> listEntities() throws SiteWhereException {
 	CustomerSearchCriteria searchCriteria = new CustomerSearchCriteria(1, 1);
-	CustomerResponseFormat responseFormat = new CustomerResponseFormat();
+    	CustomerResponseFormat responseFormat = new CustomerResponseFormat();
 	return getClient().listCustomers(getTenatAuthentication(), searchCriteria, responseFormat);
     }
 
