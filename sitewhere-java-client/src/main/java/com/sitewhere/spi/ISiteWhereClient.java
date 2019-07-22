@@ -137,8 +137,8 @@ public interface ISiteWhereClient {
      * List area types matching criteria.
      * 
      * @param tenant Tenant authentication information. Tenant authentication information.
-     * @param searchCriteria
-     * @return
+     * @param searchCriteria Search criteria object used for filtering Area Type results.
+     * @return <code>SearchResuts</code> object containing area type matching the criteria provided. 
      * @throws SiteWhereException
      */
     public SearchResults<AreaType> listAreaTypes(ITenantAuthentication tenant, AreaTypeSearchCriteria searchCriteria)

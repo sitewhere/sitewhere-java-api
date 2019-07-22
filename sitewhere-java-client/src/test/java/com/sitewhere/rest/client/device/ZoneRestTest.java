@@ -29,7 +29,7 @@ public class ZoneRestTest extends AbstractCRUDRestClientTests<Zone, ZoneCreateRe
     
     @Override
     protected String knownEntityToken() {
-	return "workarea";
+	return "officepark";
     }
     
     // ------------------------------------------------------------------------
