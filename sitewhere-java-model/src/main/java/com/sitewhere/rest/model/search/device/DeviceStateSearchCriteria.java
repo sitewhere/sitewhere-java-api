@@ -9,7 +9,6 @@ package com.sitewhere.rest.model.search.device;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import com.sitewhere.rest.model.search.SearchCriteria;
 import com.sitewhere.spi.search.device.IDeviceStateSearchCriteria;
@@ -22,17 +21,17 @@ public class DeviceStateSearchCriteria extends SearchCriteria implements IDevice
     /** Filter by last interaction date before a given value */
     private Date lastInteractionDateBefore;
 
-    /** Device type ids to be included */
-    private List<UUID> deviceTypeIds;
+    /** Device type tokens to be included */
+    private List<String> deviceTypeTokens;
 
-    /** Customer ids to be included */
-    private List<UUID> customerIds;
+    /** Customer tokens to be included */
+    private List<String> customerTokens;
 
-    /** Area ids to be included */
-    private List<UUID> areaIds;
+    /** Area tokens to be included */
+    private List<String> areaTokens;
 
-    /** Asset ids to be included */
-    private List<UUID> assetIds;
+    /** Asset tokens to be included */
+    private List<String> assetTokens;
 
     public DeviceStateSearchCriteria() {
 	super();
@@ -44,52 +43,52 @@ public class DeviceStateSearchCriteria extends SearchCriteria implements IDevice
 
     /*
      * @see
-     * com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getDeviceTypeIds()
+     * com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getDeviceTypeTokens()
      */
     @Override
-    public List<UUID> getDeviceTypeIds() {
-	return deviceTypeIds;
+    public List<String> getDeviceTypeTokens() {
+	return deviceTypeTokens;
     }
 
-    public void setDeviceTypeIds(List<UUID> deviceTypeIds) {
-	this.deviceTypeIds = deviceTypeIds;
+    public void setDeviceTypeTokens(List<String> deviceTypeTokens) {
+	this.deviceTypeTokens = deviceTypeTokens;
     }
 
     /*
      * @see
-     * com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getCustomerIds()
+     * com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getCustomerTokens()
      */
     @Override
-    public List<UUID> getCustomerIds() {
-	return customerIds;
+    public List<String> getCustomerTokens() {
+	return customerTokens;
     }
 
-    public void setCustomerIds(List<UUID> customerIds) {
-	this.customerIds = customerIds;
+    public void setCustomerTokens(List<String> customerTokens) {
+	this.customerTokens = customerTokens;
     }
 
     /*
-     * @see com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getAreaIds()
+     * @see com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getAreaTokens()
      */
     @Override
-    public List<UUID> getAreaIds() {
-	return areaIds;
+    public List<String> getAreaTokens() {
+	return areaTokens;
     }
 
-    public void setAreaIds(List<UUID> areaIds) {
-	this.areaIds = areaIds;
+    public void setAreaTokens(List<String> areaTokens) {
+	this.areaTokens = areaTokens;
     }
 
     /*
-     * @see com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getAssetIds()
+     * @see com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getAssetTokens()
      */
     @Override
-    public List<UUID> getAssetIds() {
-	return assetIds;
+    public List<String> getAssetTokens() {
+	return assetTokens;
     }
 
-    public void setAssetIds(List<UUID> assetIds) {
-	this.assetIds = assetIds;
+    public void setAssetTokens(List<String> assetTokens) {
+	this.assetTokens = assetTokens;
     }
 
     /*

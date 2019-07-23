@@ -9,7 +9,6 @@ package com.sitewhere.spi.search.device;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import com.sitewhere.spi.search.ISearchCriteria;
 
@@ -31,26 +30,26 @@ public interface IDeviceStateSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public List<UUID> getDeviceTypeIds();
+    public List<String> getDeviceTypeTokens();
 
     /**
      * List of customers to be included in results.
      * 
      * @return
      */
-    public List<UUID> getCustomerIds();
+    public List<String> getCustomerTokens();
 
     /**
      * List of areas to be included in results.
      * 
      * @return
      */
-    public List<UUID> getAreaIds();
+    public List<String> getAreaTokens();
 
     /**
      * List of assets to be included in results.
      * 
      * @return
      */
-    public List<UUID> getAssetIds();
+    public List<String> getAssetTokens();
 }
