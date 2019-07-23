@@ -33,15 +33,12 @@ public class DeviceStatusRestTests extends AbstractCRUDRestClientTests<DeviceSta
     
     @Override
     protected DeviceStatusCreateRequest buildCreateRequest(String token) {
-	DeviceStatusCreateRequest request = new DeviceStatusCreateRequest();
-	request.setToken(token);
-	request.setName("status01");
-	request.setDeviceTypeToken("iphone6s");
-	request.setCode(token);
-	request.setBackgroundColor("#FF00FF");
-	request.setForegroundColor("#00FF00");
-	request.setBorderColor("#000000");
-	request.setIcon("fa-question");
+	DeviceStatusCreateRequest request = DeviceStatusCreateRequest.newBuilder()
+		.withToken(token)
+		.withName("status01")
+		.withDeviceTypeToken("iphone6s")
+		.withCode(token)
+		.build();
 	return request;
     }
 
@@ -65,15 +62,12 @@ public class DeviceStatusRestTests extends AbstractCRUDRestClientTests<DeviceSta
     
     @Override
     protected DeviceStatusCreateRequest buildUpdateRequest(String token) throws SiteWhereException {
-	DeviceStatusCreateRequest request = new DeviceStatusCreateRequest();
-	request.setToken(token);
-	request.setName("status01-update");
-	request.setDeviceTypeToken("iphone6s");
-	request.setCode(token);
-	request.setBackgroundColor("#FF00FF");
-	request.setForegroundColor("#00FF00");
-	request.setBorderColor("#000000");
-	request.setIcon("fa-question");
+	DeviceStatusCreateRequest request = DeviceStatusCreateRequest.newBuilder()
+		.withToken(token)
+		.withName("status01-updated")
+		.withDeviceTypeToken("iphone6s")
+		.withCode(token)
+		.build();
 	return request;
     }
 

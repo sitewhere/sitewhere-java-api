@@ -17,6 +17,18 @@ public class DeviceStatusCreateRequest extends PersistentEntityCreateRequest imp
 
     /** Serial version UID */
     private static final long serialVersionUID = -1667891345754538713L;
+    
+    /** Default Background Color */
+    public static final String DEFAULT_BACKGROUD_COLOR = "#FFFFFF";
+
+    /** Default Foreground Color */
+    public static final String DEFAULT_FOREGROUND_COLOR = "#000000";
+    
+    /** Default Border Color */
+    public static final String DEFAULT_BORDER_COLOR = "#000000";
+	
+    /** Default Icon */
+    public static final String DEFAULT_ICON = "fa-question";
 
     /** Token for device type */
     private String deviceTypeToken;
@@ -137,5 +149,67 @@ public class DeviceStatusCreateRequest extends PersistentEntityCreateRequest imp
 
     public void setIcon(String icon) {
 	this.icon = icon;
+    }
+    
+    public static Builder newBuilder() {
+	return new Builder();
+    }
+    
+    public static class Builder {
+
+	private DeviceStatusCreateRequest build;
+	
+	private Builder() {
+	    super();
+	    this.build = new DeviceStatusCreateRequest();
+	    withBackgroundColor(DEFAULT_BACKGROUD_COLOR);
+	    withForegroundColor(DEFAULT_FOREGROUND_COLOR);
+	    withBorderColor(DEFAULT_BORDER_COLOR);
+	    withIcon(DEFAULT_ICON);
+	}
+	
+	public Builder withToken(String token) {
+	    this.build.setToken(token);
+	    return this;
+	}
+	
+	public Builder withDeviceTypeToken(String deviceTypeToken) {
+	    this.build.setDeviceTypeToken(deviceTypeToken);
+	    return this;
+	}
+	
+	public Builder withCode(String code) {
+	    this.build.setCode(code);
+	    return this;
+	}
+	
+	public Builder withName(String name) {
+	    this.build.setName(name);
+	    return this;
+	}
+
+	public Builder withBackgroundColor(String backgroundColor) {
+	    this.build.setBackgroundColor(backgroundColor);
+	    return this;
+	}
+
+	public Builder withForegroundColor(String foregroundColor) {
+	    this.build.setForegroundColor(foregroundColor);
+	    return this;
+	}
+
+	public Builder withBorderColor(String borderColor) {
+	    this.build.setBorderColor(borderColor);
+	    return this;
+	}
+
+	public Builder withIcon(String icon) {
+	    this.build.setIcon(icon);
+	    return this;
+	}
+		
+	public DeviceStatusCreateRequest build() {
+	    return this.build;
+	}
     }
 }
