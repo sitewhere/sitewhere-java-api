@@ -39,11 +39,14 @@ public class Zone extends PersistentEntity implements IZone {
     /** Border color */
     private String borderColor;
 
+    /** Border opacity */
+    private Double borderOpacity;
+
     /** Fill color */
     private String fillColor;
 
-    /** Opacity */
-    private Double opacity;
+    /** Fill opacity */
+    private Double fillOpacity;
 
     /*
      * @see com.sitewhere.spi.area.IZone#getAreaId()
@@ -94,6 +97,18 @@ public class Zone extends PersistentEntity implements IZone {
     }
 
     /*
+     * @see com.sitewhere.spi.area.IZone#getBorderOpacity()
+     */
+    @Override
+    public Double getBorderOpacity() {
+	return borderOpacity;
+    }
+
+    public void setBorderOpacity(Double borderOpacity) {
+	this.borderOpacity = borderOpacity;
+    }
+
+    /*
      * @see com.sitewhere.spi.area.IZone#getFillColor()
      */
     @Override
@@ -106,15 +121,15 @@ public class Zone extends PersistentEntity implements IZone {
     }
 
     /*
-     * @see com.sitewhere.spi.area.IZone#getOpacity()
+     * @see com.sitewhere.spi.area.IZone#getFillOpacity()
      */
     @Override
-    public Double getOpacity() {
-	return opacity;
+    public Double getFillOpacity() {
+	return fillOpacity;
     }
 
-    public void setOpacity(Double opacity) {
-	this.opacity = opacity;
+    public void setFillOpacity(Double fillOpacity) {
+	this.fillOpacity = fillOpacity;
     }
 
     /**
@@ -131,8 +146,9 @@ public class Zone extends PersistentEntity implements IZone {
 	result.setName(input.getName());
 	result.setCreatedDate(input.getCreatedDate());
 	result.setBorderColor(input.getBorderColor());
+	result.setBorderOpacity(input.getBorderOpacity());
 	result.setFillColor(input.getFillColor());
-	result.setOpacity(input.getOpacity());
+	result.setFillOpacity(input.getFillOpacity());
 	result.setBounds(Location.copy(input.getBounds()));
 
 	PersistentEntity.copy(input, result);

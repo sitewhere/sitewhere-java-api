@@ -24,25 +24,26 @@ import com.sitewhere.spi.SiteWhereException;
 public class ZoneRestTest extends AbstractCRUDRestClientTests<Zone, ZoneCreateRequest> {
 
     private String name = "Test Zone Name";
-    
+
     private String areaToken = "peachtree";
-    
+
     @Override
     protected String knownEntityToken() {
 	return "officepark";
     }
-    
+
     // ------------------------------------------------------------------------
     // CREATE
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected ZoneCreateRequest buildCreateRequest(String token) throws SiteWhereException {
 	Area area = getClient().getAreaByToken(getTenatAuthentication(), areaToken);
 	ZoneCreateRequest.Builder builder = new ZoneCreateRequest.Builder(token, name, area);
-	builder.withFillColor("#FFCC00");
 	builder.withBorderColor("#FFCCCC");
-	builder.withOpacity(0.9);
+	builder.withBorderOpacity(0.8);
+	builder.withFillColor("#FFCC00");
+	builder.withFillOpacity(0.9);
 
 	return builder.build();
     }
@@ -68,10 +69,11 @@ public class ZoneRestTest extends AbstractCRUDRestClientTests<Zone, ZoneCreateRe
     @Override
     protected ZoneCreateRequest buildUpdateRequest(String token) throws SiteWhereException {
 	Area area = getClient().getAreaByToken(getTenatAuthentication(), areaToken);
-	ZoneCreateRequest.Builder builder = new ZoneCreateRequest.Builder(token, name, area);	
+	ZoneCreateRequest.Builder builder = new ZoneCreateRequest.Builder(token, name, area);
 	builder.withFillColor("#FFCC00");
+	builder.withBorderOpacity(0.7);
 	builder.withBorderColor("#FFCCCC");
-	builder.withOpacity(0.8);
+	builder.withFillOpacity(0.8);
 	return builder.build();
     }
 
@@ -92,12 +94,11 @@ public class ZoneRestTest extends AbstractCRUDRestClientTests<Zone, ZoneCreateRe
     // ------------------------------------------------------------------------
     // LIST
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected SearchResults<Zone> listEntities() throws SiteWhereException {
 	ZoneSearchCriteria searchCriteria = new ZoneSearchCriteria(0, 10);
 	return getClient().listZones(getTenatAuthentication(), searchCriteria);
     }
-
 
 }

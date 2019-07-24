@@ -38,6 +38,13 @@ public interface IZone extends IBoundedEntity, IPersistentEntity {
     public String getBorderColor();
 
     /**
+     * Get the border opacity value.
+     * 
+     * @return
+     */
+    public Double getBorderOpacity();
+
+    /**
      * Get the fill color.
      * 
      * @return
@@ -45,9 +52,9 @@ public interface IZone extends IBoundedEntity, IPersistentEntity {
     public String getFillColor();
 
     /**
-     * Get the opacity value.
+     * Get the fill opacity value.
      * 
      * @return
      */
-    public Double getOpacity();
+    public Double getFillOpacity();
 }
