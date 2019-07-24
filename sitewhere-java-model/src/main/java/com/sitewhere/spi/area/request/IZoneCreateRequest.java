@@ -46,6 +46,13 @@ public interface IZoneCreateRequest extends IPersistentEntityCreateRequest {
     public String getBorderColor();
 
     /**
+     * Get opacity for border.
+     * 
+     * @return
+     */
+    public Double getBorderOpacity();
+
+    /**
      * Get fill color for UI.
      * 
      * @return
@@ -53,9 +60,9 @@ public interface IZoneCreateRequest extends IPersistentEntityCreateRequest {
     public String getFillColor();
 
     /**
-     * Get opacity for UI.
+     * Get opacity for fill.
      * 
      * @return
      */
-    public Double getOpacity();
+    public Double getFillOpacity();
 }

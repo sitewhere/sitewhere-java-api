@@ -39,11 +39,14 @@ public class ZoneCreateRequest extends PersistentEntityCreateRequest implements 
     /** Border color in UI */
     private String borderColor;
 
+    /** Border opacity */
+    private Double borderOpacity;
+
     /** Fill color in UI */
     private String fillColor;
 
-    /** Opacity in UI */
-    private Double opacity;
+    /** Fill opacity */
+    private Double fillOpacity;
 
     /*
      * @see com.sitewhere.spi.area.request.IZoneCreateRequest#getAreaToken()
@@ -94,6 +97,18 @@ public class ZoneCreateRequest extends PersistentEntityCreateRequest implements 
     }
 
     /*
+     * @see com.sitewhere.spi.area.request.IZoneCreateRequest#getBorderOpacity()
+     */
+    @Override
+    public Double getBorderOpacity() {
+	return borderOpacity;
+    }
+
+    public void setBorderOpacity(Double borderOpacity) {
+	this.borderOpacity = borderOpacity;
+    }
+
+    /*
      * @see com.sitewhere.spi.area.request.IZoneCreateRequest#getFillColor()
      */
     @Override
@@ -106,15 +121,15 @@ public class ZoneCreateRequest extends PersistentEntityCreateRequest implements 
     }
 
     /*
-     * @see com.sitewhere.spi.area.request.IZoneCreateRequest#getOpacity()
+     * @see com.sitewhere.spi.area.request.IZoneCreateRequest#getFillOpacity()
      */
     @Override
-    public Double getOpacity() {
-	return opacity;
+    public Double getFillOpacity() {
+	return fillOpacity;
     }
 
-    public void setOpacity(Double opacity) {
-	this.opacity = opacity;
+    public void setFillOpacity(Double fillOpacity) {
+	this.fillOpacity = fillOpacity;
     }
 
     public static class Builder {
@@ -133,13 +148,18 @@ public class ZoneCreateRequest extends PersistentEntityCreateRequest implements 
 	    return this;
 	}
 
+	public Builder withBorderOpacity(double opacity) {
+	    request.setBorderOpacity(opacity);
+	    return this;
+	}
+
 	public Builder withFillColor(String fillColor) {
 	    request.setFillColor(fillColor);
 	    return this;
 	}
 
-	public Builder withOpacity(double opacity) {
-	    request.setOpacity(opacity);
+	public Builder withFillOpacity(double opacity) {
+	    request.setFillOpacity(opacity);
 	    return this;
 	}
 
