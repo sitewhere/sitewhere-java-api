@@ -11,12 +11,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.spi.batch.ElementProcessingStatus;
 import com.sitewhere.spi.batch.request.IBatchElementCreateRequest;
 
 /**
  * Holds information needed to create/update a batch operation element.
  */
+@JsonInclude(Include.NON_NULL)
 public class BatchElementCreateRequest implements IBatchElementCreateRequest, Serializable {
 
     /** Serialization version identifier */

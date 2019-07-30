@@ -7,25 +7,19 @@
  */
 package com.sitewhere.spi.batch.request;
 
-import java.util.List;
 import java.util.Map;
 
 import com.sitewhere.spi.common.request.IPersistentEntityCreateRequest;
 
 /**
- * Parameters for a batch operation that executes a command for all devices in
- * the batch.
+ * Provides values needed for sending a {@link IBatchCommandInvocationRequest}
+ * based on devices that meet given criteria.
  */
-public interface IBatchCommandInvocationRequest extends IPersistentEntityCreateRequest {
-
-    /** Batch operation parameter name for command token */
-    public static final String PARAM_COMMAND_TOKEN = "commandToken";
-
-    /** Metadata property on batch element that holds invocation event id */
-    public static final String META_INVOCATION_EVENT_ID = "invocation";
+public interface IInvocationByDeviceCriteriaRequest extends IPersistentEntityCreateRequest {
 
     /**
-     * Device type for command.
+     * If set, only devices with the given device type token will be sent the
+     * command.
      * 
      * @return
      */
@@ -44,11 +38,4 @@ public interface IBatchCommandInvocationRequest extends IPersistentEntityCreateR
      * @return
      */
     public Map<String, String> getParameterValues();
-
-    /**
-     * Get the list of targeted device tokens.
-     * 
-     * @return
-     */
-    public List<String> getDeviceTokens();
 }

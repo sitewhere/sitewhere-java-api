@@ -9,6 +9,8 @@ package com.sitewhere.rest.model.batch.request;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.request.PersistentEntityCreateRequest;
 import com.sitewhere.spi.batch.BatchOperationStatus;
 import com.sitewhere.spi.batch.request.IBatchOperationUpdateRequest;
@@ -16,6 +18,7 @@ import com.sitewhere.spi.batch.request.IBatchOperationUpdateRequest;
 /**
  * Holds information needed to update a batch operation.
  */
+@JsonInclude(Include.NON_NULL)
 public class BatchOperationUpdateRequest extends PersistentEntityCreateRequest implements IBatchOperationUpdateRequest {
 
     /** Serialization version identifier */

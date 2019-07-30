@@ -18,43 +18,40 @@ public interface JobConstants {
     public static interface CommandInvocation {
 
 	/** Token of assignment to target */
-	public static final String ASSIGNMENT_TOKEN = "assignmentToken";
+	public static final String ASSIGNMENT_TOKEN = "at";
 
 	/** Token of command to invoke */
-	public static final String COMMAND_TOKEN = "commandToken";
+	public static final String COMMAND_TOKEN = "ct";
 
 	/** Prefix for command parameter values */
-	public static final String PARAMETER_PREFIX = "param_";
+	public static final String PARAMETER_PREFIX = "pm_";
     }
 
     /**
-     * Constants used for batch command invocations.
+     * Constants used for batch command invocations based on device criteria.
      */
-    public static interface BatchCommandInvocation {
+    public static interface InvocationByDeviceCriteria {
 
 	/** Indicates if results should be narrowed by device type */
-	public static final String DEVICE_TYPE_TOKEN = "deviceTypeToken";
+	public static final String DEVICE_TYPE_TOKEN = "dt";
+    }
 
-	/** Indicates if results should be narrowed by area */
-	public static final String AREA_TOKEN = "areaToken";
+    /**
+     * Constants used for batch command invocations based on device assignment
+     * criteria.
+     */
+    public static interface InvocationByAssignmentCriteria {
 
-	/** Indicates if results should be narrowed by group */
-	public static final String GROUP_TOKEN = "groupToken";
+	/** Indicates if results should be narrowed by device type */
+	public static final String DEVICE_TYPE_TOKEN = "dt";
 
-	/**
-	 * Indicates if results should be narrowed by groups that have a given role
-	 */
-	public static final String GROUP_ROLE = "groupRole";
+	/** Prefix for customer tokens */
+	public static final String CUSTOMER_TOKEN_PREFIX = "cu_";
 
-	/**
-	 * Indicates if results should be narrowed by devices created on or after a date
-	 */
-	public static final String START_DATE = "startDate";
+	/** Prefix for area tokens */
+	public static final String AREA_TOKEN_PREFIX = "ar_";
 
-	/**
-	 * Indicates if results should be narrowed by devices created on or before a
-	 * date
-	 */
-	public static final String END_DATE = "endDate";
+	/** Prefix for asset tokens */
+	public static final String ASSET_TOKEN_PREFIX = "as_";
     }
 }

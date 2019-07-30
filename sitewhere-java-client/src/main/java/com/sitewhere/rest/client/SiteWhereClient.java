@@ -29,7 +29,7 @@ import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
-import com.sitewhere.rest.model.batch.request.BatchCommandForCriteriaRequest;
+import com.sitewhere.rest.model.batch.request.InvocationByDeviceCriteriaRequest;
 import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
 import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
@@ -1153,7 +1153,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      */
     @Override
     public Object createBatchCommandOperationForCriteria(ITenantAuthentication tenant,
-	    BatchCommandForCriteriaRequest request) throws SiteWhereException {
+	    InvocationByDeviceCriteriaRequest request) throws SiteWhereException {
 	Call<Object> call = getRestRetrofit().createBatchCommandOperationForCriteria(request, createHeadersFor(tenant));
 	return processRestCall(call);
     }
