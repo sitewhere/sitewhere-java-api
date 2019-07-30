@@ -12,12 +12,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.request.PersistentEntityCreateRequest;
 import com.sitewhere.spi.batch.request.IBatchOperationCreateRequest;
 
 /**
  * Holds information needed to create a batch operation.
  */
+@JsonInclude(Include.NON_NULL)
 public class BatchOperationCreateRequest extends PersistentEntityCreateRequest implements IBatchOperationCreateRequest {
 
     /** Serialization version identifier */

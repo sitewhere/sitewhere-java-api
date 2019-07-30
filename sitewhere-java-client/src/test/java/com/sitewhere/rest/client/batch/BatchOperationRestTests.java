@@ -31,44 +31,46 @@ public class BatchOperationRestTests extends AbstractRestTest {
     @Test
     public void testListBatchOperations() throws SiteWhereException {
 	BatchOperationSearchCriteria searchCriteria = new BatchOperationSearchCriteria(1, 1);
-	SearchResults<BatchOperation> batchOperations = getClient().listBatchOperations(getTenatAuthentication(), searchCriteria);
+	SearchResults<BatchOperation> batchOperations = getClient().listBatchOperations(getTenatAuthentication(),
+		searchCriteria);
 	assertNotNull(batchOperations);
     }
- 
+
     @Test
-    public void testCreateBatchCommandInvocation() throws SiteWhereException {	
+    public void testCreateBatchCommandInvocation() throws SiteWhereException {
 	BatchCommandInvocationRequest request = BatchCommandInvocationRequest.newBuilder()
-		.withToken(batchOperationToken)
-		.withCommandToken("ping")
-		.addDeviceToken("15737-UNO-7576364")
-		.parameter("host", "localhost")
-		.build();
-		
+		.withToken(batchOperationToken).withCommandToken("ping").withDeviceToken("15737-UNO-7576364")
+		.withParameter("host", "localhost").build();
+
 	BatchOperation batchOperation = getClient().createBatchCommandInvocation(getTenatAuthentication(), request);
 	assertNotNull(batchOperation);
     }
-    
+
     @Test
     public void testGetBatchOperationInvocation() throws SiteWhereException {
-	BatchOperation batchOperation = getClient().getBatchOperationByToken(getTenatAuthentication(), batchOperationToken);
+	BatchOperation batchOperation = getClient().getBatchOperationByToken(getTenatAuthentication(),
+		batchOperationToken);
 	assertNotNull(batchOperation);
     }
-    
+
     @Test
     public void testListBatchOperationElements() throws SiteWhereException {
-    	SearchResults<BatchElement> batchElements = getClient().listBatchOperationElements(getTenatAuthentication(), batchOperationToken);
-	assertNotNull(batchElements);	
+	SearchResults<BatchElement> batchElements = getClient().listBatchOperationElements(getTenatAuthentication(),
+		batchOperationToken);
+	assertNotNull(batchElements);
     }
 
-//    @Test
-//    public void testCreateBatchCommandOperationForCriteria() throws SiteWhereException {
-//	BatchCommandForCriteriaRequest request = new BatchCommandForCriteriaRequest();
-//	
-//	request.setCommandToken("ping");
-//	request.setToken(batchOperationToken);
-//	
-//	Object command = getClient().createBatchCommandOperationForCriteria(
-//		getTenatAuthentication(), request);
-//	assertNotNull(command);	
-//    }
+    // @Test
+    // public void testCreateBatchCommandOperationForCriteria() throws
+    // SiteWhereException {
+    // BatchCommandForCriteriaRequest request = new
+    // BatchCommandForCriteriaRequest();
+    //
+    // request.setCommandToken("ping");
+    // request.setToken(batchOperationToken);
+    //
+    // Object command = getClient().createBatchCommandOperationForCriteria(
+    // getTenatAuthentication(), request);
+    // assertNotNull(command);
+    // }
 }

@@ -7,44 +7,39 @@
  */
 package com.sitewhere.rest.model.batch.request;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.request.PersistentEntityCreateRequest;
-import com.sitewhere.spi.batch.request.IBatchCommandInvocationRequest;
+import com.sitewhere.spi.batch.request.IInvocationByDeviceCriteriaRequest;
 
 /**
- * Request for invoking a device command for multiple devices.
+ * Request for creating command invocations for devices which match the given
+ * criteria.
  */
 @JsonInclude(Include.NON_NULL)
-public class BatchCommandInvocationRequest extends PersistentEntityCreateRequest
-	implements IBatchCommandInvocationRequest {
+public class InvocationByDeviceCriteriaRequest extends PersistentEntityCreateRequest
+	implements IInvocationByDeviceCriteriaRequest {
 
     /** Serialization version identifier */
-    private static final long serialVersionUID = -8215264923380389864L;
+    private static final long serialVersionUID = -7139262971572322676L;
 
-    /** Device type token for command */
+    /** Device type token to limit by */
     private String deviceTypeToken;
 
-    /** Token for command to be executed */
+    /** Token for command to execute */
     private String commandToken;
 
-    /** Values for command parameters */
+    /** Map of parameter values */
     private Map<String, String> parameterValues = new HashMap<String, String>();
-
-    /** List of targeted device tokens */
-    private List<String> deviceTokens;
 
     /*
      * @see
-     * com.sitewhere.spi.batch.request.invocation.IBatchCommandInvocationRequest#
-     * getDeviceTypeToken()
+     * com.sitewhere.spi.batch.request.invocation.IInvocationByDeviceCriteriaRequest
+     * #getDeviceTypeToken()
      */
     @Override
     public String getDeviceTypeToken() {
@@ -56,8 +51,9 @@ public class BatchCommandInvocationRequest extends PersistentEntityCreateRequest
     }
 
     /*
-     * @see com.sitewhere.spi.batch.request.IBatchCommandInvocationRequest#
-     * getCommandToken()
+     * @see
+     * com.sitewhere.spi.batch.request.invocation.IInvocationByDeviceCriteriaRequest
+     * #getCommandToken()
      */
     @Override
     public String getCommandToken() {
@@ -69,8 +65,9 @@ public class BatchCommandInvocationRequest extends PersistentEntityCreateRequest
     }
 
     /*
-     * @see com.sitewhere.spi.batch.request.IBatchCommandInvocationRequest#
-     * getParameterValues()
+     * @see
+     * com.sitewhere.spi.batch.request.invocation.IInvocationByDeviceCriteriaRequest
+     * #getParameterValues()
      */
     @Override
     public Map<String, String> getParameterValues() {
@@ -81,36 +78,14 @@ public class BatchCommandInvocationRequest extends PersistentEntityCreateRequest
 	this.parameterValues = parameterValues;
     }
 
-    /*
-     * @see com.sitewhere.spi.batch.request.IBatchCommandInvocationRequest#
-     * getDeviceTokens()
-     */
-    @Override
-    public List<String> getDeviceTokens() {
-	return deviceTokens;
-    }
-
-    public void setDeviceTokens(List<String> deviceTokens) {
-	this.deviceTokens = deviceTokens;
-    }
-
-    /**
-     * Get new builder class.
-     * 
-     * @return
-     */
-    public static Builder newBuilder() {
-	return new Builder();
-    }
-
     public static class Builder {
 
 	/** Build object */
-	private BatchCommandInvocationRequest build;
+	private InvocationByDeviceCriteriaRequest build;
 
 	private Builder() {
 	    super();
-	    this.build = new BatchCommandInvocationRequest();
+	    this.build = new InvocationByDeviceCriteriaRequest();
 	    withToken(UUID.randomUUID().toString());
 	}
 
@@ -129,25 +104,12 @@ public class BatchCommandInvocationRequest extends PersistentEntityCreateRequest
 	    return this;
 	}
 
-	public Builder withDeviceTokens(List<String> deviceTokens) {
-	    if (this.build.getDeviceTokens() == null) {
-		this.build.setDeviceTokens(new ArrayList<String>());
-	    }
-	    this.build.getDeviceTokens().addAll(deviceTokens);
-	    return this;
-	}
-
-	public Builder withDeviceToken(String deviceToken) {
-	    withDeviceTokens(Collections.singletonList(deviceToken));
-	    return this;
-	}
-
 	public Builder withParameter(String name, String value) {
 	    this.build.getParameterValues().put(name, value);
 	    return this;
 	}
 
-	public BatchCommandInvocationRequest build() {
+	public InvocationByDeviceCriteriaRequest build() {
 	    return this.build;
 	}
     }
