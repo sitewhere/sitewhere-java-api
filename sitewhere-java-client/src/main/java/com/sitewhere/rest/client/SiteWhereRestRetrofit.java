@@ -605,7 +605,7 @@ public interface SiteWhereRestRetrofit {
 	    @Query("includeDetails") Boolean includeDetails, @Query("page") Integer page,
 	    @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
 
-    @PUT("devicegroups/{groupToken}/elements")
+    @POST("devicegroups/{groupToken}/elements")
     Call<SearchResults<DeviceGroupElement>> addElementsToDdeviceGroup(@Path("groupToken") String groupToken,
 	    @Body List<DeviceGroupElementCreateRequest> requests, @HeaderMap Map<String, String> headers);
 
