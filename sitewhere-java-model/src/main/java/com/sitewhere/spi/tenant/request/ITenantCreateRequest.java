@@ -7,14 +7,26 @@
  */
 package com.sitewhere.spi.tenant.request;
 
+import java.io.Serializable;
 import java.util.List;
 
-import com.sitewhere.spi.common.request.IBrandedEntityCreateRequest;
+import com.sitewhere.spi.common.IColorProvider;
+import com.sitewhere.spi.common.IIconProvider;
+import com.sitewhere.spi.common.IImageProvider;
+import com.sitewhere.spi.common.IMetadataProvider;
 
 /**
  * Interface for arguments needed to create a tenant.
  */
-public interface ITenantCreateRequest extends IBrandedEntityCreateRequest {
+public interface ITenantCreateRequest
+	extends IColorProvider, IIconProvider, IImageProvider, IMetadataProvider, Serializable {
+
+    /**
+     * Get unique id.
+     * 
+     * @return
+     */
+    public String getToken();
 
     /**
      * Get tenant name.
@@ -38,11 +50,11 @@ public interface ITenantCreateRequest extends IBrandedEntityCreateRequest {
     public List<String> getAuthorizedUserIds();
 
     /**
-     * Get id of template used to create tenant.
+     * Get id of configuration template used for tenant.
      * 
      * @return
      */
-    public String getTenantTemplateId();
+    public String getConfigurationTemplateId();
 
     /**
      * Get id of dataset template used to populate tenant.

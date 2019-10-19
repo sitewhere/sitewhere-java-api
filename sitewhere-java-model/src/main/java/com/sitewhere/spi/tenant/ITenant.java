@@ -7,14 +7,25 @@
  */
 package com.sitewhere.spi.tenant;
 
+import java.io.Serializable;
 import java.util.List;
 
-import com.sitewhere.spi.common.IBrandedEntity;
+import com.sitewhere.spi.common.IColorProvider;
+import com.sitewhere.spi.common.IIconProvider;
+import com.sitewhere.spi.common.IImageProvider;
+import com.sitewhere.spi.common.IMetadataProvider;
 
 /**
  * Interface for information about a tenant.
  */
-public interface ITenant extends IBrandedEntity {
+public interface ITenant extends IColorProvider, IIconProvider, IImageProvider, IMetadataProvider, Serializable {
+
+    /**
+     * Get unique identifier.
+     * 
+     * @return
+     */
+    public String getToken();
 
     /**
      * Get tenant name.
@@ -42,7 +53,7 @@ public interface ITenant extends IBrandedEntity {
      * 
      * @return
      */
-    public String getTenantTemplateId();
+    public String getConfigurationTemplateId();
 
     /**
      * Get id of dataset template used to populate tenant.
