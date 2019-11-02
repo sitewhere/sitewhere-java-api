@@ -1,8 +1,12 @@
+[![Maven Central](https://img.shields.io/maven-central/v/com.sitewhere/sitewhere-java-client.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.sitewhere%22%20AND%20a:%22sitewhere-java-client%22)
+
 # SiteWhere Java Model and REST API Library
+
 This repository contains the core Java API and data model used to interact
 with REST services on a SiteWhere instance.
 
 ## Using the Java Client
+
 The Java client wraps the Spring `RestTemplate` mechanism and takes care
 of acquiring a JWT from the SiteWhere instance and storing it for use in the REST
 API calls. A new client with the default settings may be created as follows:
