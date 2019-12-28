@@ -19,12 +19,12 @@ public interface IDeviceUnit extends IDeviceElement {
      * 
      * @return
      */
-    public List<IDeviceSlot> getDeviceSlots();
+    public List<? extends IDeviceSlot> getDeviceSlots();
 
     /**
      * Get list of subordinate units associated with the unit.
      * 
      * @return
      */
-    public List<IDeviceUnit> getDeviceUnits();
+    public List<? extends IDeviceUnit> getDeviceUnits();
 }

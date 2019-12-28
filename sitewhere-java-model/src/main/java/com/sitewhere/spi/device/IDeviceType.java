@@ -7,9 +7,10 @@
  */
 package com.sitewhere.spi.device;
 
+import java.util.UUID;
+
 import com.sitewhere.spi.common.IAccessible;
 import com.sitewhere.spi.common.IBrandedEntity;
-import com.sitewhere.spi.device.element.IDeviceElementSchema;
 
 /**
  * Specifies details about a given type of device.
@@ -28,5 +29,5 @@ public interface IDeviceType extends IBrandedEntity, IAccessible {
      * 
      * @return
      */
-    public IDeviceElementSchema getDeviceElementSchema();
+    public UUID getDeviceElementSchemaId();
 }

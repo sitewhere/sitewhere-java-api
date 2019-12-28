@@ -7,10 +7,6 @@
  */
 package com.sitewhere.rest.model.area;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.BrandedEntity;
@@ -30,9 +26,6 @@ public class AreaType extends BrandedEntity implements IAreaType {
 
     /** Description */
     private String description;
-
-    /** List of contained area type ids */
-    private List<UUID> containedAreaTypeIds = new ArrayList<>();
 
     /*
      * @see com.sitewhere.spi.area.IAreaType#getName()
@@ -56,17 +49,5 @@ public class AreaType extends BrandedEntity implements IAreaType {
 
     public void setDescription(String description) {
 	this.description = description;
-    }
-
-    /*
-     * @see com.sitewhere.spi.area.IAreaType#getContainedAreaTypeIds()
-     */
-    @Override
-    public List<UUID> getContainedAreaTypeIds() {
-	return containedAreaTypeIds;
-    }
-
-    public void setContainedAreaTypeIds(List<UUID> containedAreaTypeIds) {
-	this.containedAreaTypeIds = containedAreaTypeIds;
     }
 }

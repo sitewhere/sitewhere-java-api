@@ -7,17 +7,16 @@
  */
 package com.sitewhere.rest.model.device.element;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.sitewhere.rest.model.common.PersistentEntity;
 import com.sitewhere.spi.device.element.IDeviceElement;
 
 /**
  * Default implementation of {@link IDeviceElement}.
  */
 @JsonInclude(Include.NON_NULL)
-public class DeviceElement implements IDeviceElement, Serializable {
+public class DeviceElement extends PersistentEntity implements IDeviceElement {
 
     /** Serialization version identifier */
     private static final long serialVersionUID = 8334544031222730874L;

@@ -26,13 +26,6 @@ public interface IDevice extends IPersistentEntity {
     public UUID getDeviceTypeId();
 
     /**
-     * Get device assignment id if assigned.
-     * 
-     * @return
-     */
-    public List<UUID> getActiveDeviceAssignmentIds();
-
-    /**
      * If contained by a parent device, returns the parent device id.
      * 
      * @return
@@ -45,7 +38,7 @@ public interface IDevice extends IPersistentEntity {
      * 
      * @return
      */
-    public List<IDeviceElementMapping> getDeviceElementMappings();
+    public List<? extends IDeviceElementMapping> getDeviceElementMappings();
 
     /**
      * Get device comments.

@@ -29,5 +29,5 @@ public interface IDeviceTypeCreateRequest extends IAccessible, IBrandedEntityCre
      * 
      * @return
      */
-    public IDeviceElementSchema getDeviceElementSchema();
+    public String getDeviceElementSchemaToken();
 }

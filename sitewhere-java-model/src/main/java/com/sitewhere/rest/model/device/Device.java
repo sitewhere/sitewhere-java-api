@@ -30,9 +30,6 @@ public class Device extends PersistentEntity implements IDevice {
     /** Device type id */
     private UUID deviceTypeId;
 
-    /** Ids for active device assignments */
-    private List<UUID> activeDeviceAssignmentIds = new ArrayList<>();
-
     /** Parent device id (if nested) */
     private UUID parentDeviceId;
 
@@ -55,18 +52,6 @@ public class Device extends PersistentEntity implements IDevice {
 
     public void setDeviceTypeId(UUID deviceTypeId) {
 	this.deviceTypeId = deviceTypeId;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.IDevice#getActiveDeviceAssignmentIds()
-     */
-    @Override
-    public List<UUID> getActiveDeviceAssignmentIds() {
-	return activeDeviceAssignmentIds;
-    }
-
-    public void setActiveDeviceAssignmentIds(List<UUID> activeDeviceAssignmentIds) {
-	this.activeDeviceAssignmentIds = activeDeviceAssignmentIds;
     }
 
     /*

@@ -7,13 +7,13 @@
  */
 package com.sitewhere.rest.model.device;
 
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.BrandedEntity;
-import com.sitewhere.rest.model.device.element.DeviceElementSchema;
 import com.sitewhere.spi.device.DeviceContainerPolicy;
 import com.sitewhere.spi.device.IDeviceType;
-import com.sitewhere.spi.device.element.IDeviceElementSchema;
 
 /**
  * Model object for device specification information.
@@ -33,8 +33,8 @@ public class DeviceType extends BrandedEntity implements IDeviceType {
     /** Device container policy */
     private DeviceContainerPolicy containerPolicy = DeviceContainerPolicy.Standalone;
 
-    /** Schema that specifies allowable locations of nested devices */
-    private DeviceElementSchema deviceElementSchema;
+    /** Id of that specifies allowable locations of nested devices */
+    private UUID deviceElementSchemaId;
 
     /*
      * @see com.sitewhere.spi.device.IDeviceType#getName()
@@ -73,14 +73,14 @@ public class DeviceType extends BrandedEntity implements IDeviceType {
     }
 
     /*
-     * @see com.sitewhere.spi.device.IDeviceType#getDeviceElementSchema()
+     * @see com.sitewhere.spi.device.IDeviceType#getDeviceElementSchemaId()
      */
     @Override
-    public IDeviceElementSchema getDeviceElementSchema() {
-	return deviceElementSchema;
+    public UUID getDeviceElementSchemaId() {
+	return deviceElementSchemaId;
     }
 
-    public void setDeviceElementSchema(DeviceElementSchema deviceElementSchema) {
-	this.deviceElementSchema = deviceElementSchema;
+    public void setDeviceElementSchemaId(UUID deviceElementSchemaId) {
+	this.deviceElementSchemaId = deviceElementSchemaId;
     }
 }

@@ -7,10 +7,14 @@
  */
 package com.sitewhere.spi.device.element;
 
+import java.io.Serializable;
+
+import com.sitewhere.spi.common.IPersistentEntity;
+
 /**
  * Common base class for elements in the {@link IDeviceElementSchema} hierarchy.
  */
-public interface IDeviceElement {
+public interface IDeviceElement extends IPersistentEntity, Serializable {
 
     /**
      * Get human-readable name for element.

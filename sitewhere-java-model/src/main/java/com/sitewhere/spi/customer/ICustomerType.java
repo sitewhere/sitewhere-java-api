@@ -7,9 +7,6 @@
  */
 package com.sitewhere.spi.customer;
 
-import java.util.List;
-import java.util.UUID;
-
 import com.sitewhere.spi.common.IAccessible;
 import com.sitewhere.spi.common.IBrandedEntity;
 
@@ -18,11 +15,4 @@ import com.sitewhere.spi.common.IBrandedEntity;
  * for building a hierarchical customer model.
  */
 public interface ICustomerType extends IBrandedEntity, IAccessible {
-
-    /**
-     * Get list of customer type ids which may be contained.
-     * 
-     * @return
-     */
-    public List<UUID> getContainedCustomerTypeIds();
 }

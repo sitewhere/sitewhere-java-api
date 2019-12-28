@@ -22,13 +22,13 @@ public class MarshaledAreaType extends AreaType {
     private static final long serialVersionUID = 2440287915755224663L;
 
     /** List of contained area types */
-    private List<IAreaType> containedAreaTypes;
+    private List<? extends IAreaType> containedAreaTypes;
 
-    public List<IAreaType> getContainedAreaTypes() {
+    public List<? extends IAreaType> getContainedAreaTypes() {
 	return containedAreaTypes;
     }
 
-    public void setContainedAreaTypes(List<IAreaType> containedAreaTypes) {
+    public void setContainedAreaTypes(List<? extends IAreaType> containedAreaTypes) {
 	this.containedAreaTypes = containedAreaTypes;
     }
 }

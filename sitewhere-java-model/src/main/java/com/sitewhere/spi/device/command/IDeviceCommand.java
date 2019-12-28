@@ -37,5 +37,5 @@ public interface IDeviceCommand extends IPersistentEntity, IAccessible {
      * 
      * @return
      */
-    public List<ICommandParameter> getParameters();
+    public List<? extends ICommandParameter> getParameters();
 }

@@ -10,6 +10,7 @@ package com.sitewhere.spi.device.util;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Queue;
+import java.util.UUID;
 
 import com.sitewhere.spi.SiteWhereException;
 import com.sitewhere.spi.SiteWhereSystemException;
@@ -57,10 +58,11 @@ public class DeviceTypeUtils {
 	}
 	String[] segarray = path.split("[/]");
 	Queue<String> segments = new ArrayDeque<String>(Arrays.asList(segarray));
-	IDeviceUnit unit = deviceType.getDeviceElementSchema();
-	if (unit == null) {
+	UUID schemaId = deviceType.getDeviceElementSchemaId();
+	if (schemaId == null) {
 	    return null;
 	}
+	IDeviceUnit unit = null; // TODO: Handle schema lookup.
 	while (segments.size() > 0) {
 	    String segment = segments.poll();
 	    if (segments.size() > 0) {

@@ -7,9 +7,6 @@
  */
 package com.sitewhere.spi.area;
 
-import java.util.List;
-import java.util.UUID;
-
 import com.sitewhere.spi.common.IAccessible;
 import com.sitewhere.spi.common.IBrandedEntity;
 
@@ -18,11 +15,4 @@ import com.sitewhere.spi.common.IBrandedEntity;
  * hierarchical area model.
  */
 public interface IAreaType extends IBrandedEntity, IAccessible {
-
-    /**
-     * Get list of area type ids which may be contained.
-     * 
-     * @return
-     */
-    public List<UUID> getContainedAreaTypeIds();
 }

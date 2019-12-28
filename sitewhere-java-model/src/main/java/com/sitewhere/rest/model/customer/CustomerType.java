@@ -7,10 +7,6 @@
  */
 package com.sitewhere.rest.model.customer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.BrandedEntity;
@@ -30,9 +26,6 @@ public class CustomerType extends BrandedEntity implements ICustomerType {
 
     /** Description */
     private String description;
-
-    /** List of contained area type ids */
-    private List<UUID> containedCustomerTypeIds = new ArrayList<>();
 
     /*
      * @see com.sitewhere.spi.customer.ICustomerType#getName()
@@ -56,17 +49,5 @@ public class CustomerType extends BrandedEntity implements ICustomerType {
 
     public void setDescription(String description) {
 	this.description = description;
-    }
-
-    /*
-     * @see com.sitewhere.spi.customer.ICustomerType#getContainedCustomerTypeIds()
-     */
-    @Override
-    public List<UUID> getContainedCustomerTypeIds() {
-	return containedCustomerTypeIds;
-    }
-
-    public void setContainedCustomerTypeIds(List<UUID> containedCustomerTypeIds) {
-	this.containedCustomerTypeIds = containedCustomerTypeIds;
     }
 }

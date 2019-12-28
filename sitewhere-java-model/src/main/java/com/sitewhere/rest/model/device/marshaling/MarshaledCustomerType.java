@@ -22,13 +22,13 @@ public class MarshaledCustomerType extends CustomerType {
     private static final long serialVersionUID = 5902204555479363292L;
 
     /** List of contained customer types */
-    private List<ICustomerType> containedCustomerTypes;
+    private List<? extends ICustomerType> containedCustomerTypes;
 
-    public List<ICustomerType> getContainedCustomerTypes() {
+    public List<? extends ICustomerType> getContainedCustomerTypes() {
 	return containedCustomerTypes;
     }
 
-    public void setContainedCustomerTypes(List<ICustomerType> containedCustomerTypes) {
+    public void setContainedCustomerTypes(List<? extends ICustomerType> containedCustomerTypes) {
 	this.containedCustomerTypes = containedCustomerTypes;
     }
 }
