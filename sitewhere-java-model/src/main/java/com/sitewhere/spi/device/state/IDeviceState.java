@@ -7,15 +7,15 @@
  */
 package com.sitewhere.spi.device.state;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.Map;
 import java.util.UUID;
+
+import com.sitewhere.spi.common.IPersistentEntity;
 
 /**
  * Contains most recent state information for a device.
  */
-public interface IDeviceState extends Serializable {
+public interface IDeviceState extends IPersistentEntity {
 
     /**
      * Get id.
@@ -79,25 +79,4 @@ public interface IDeviceState extends Serializable {
      * @return
      */
     public Date getPresenceMissingDate();
-
-    /**
-     * Get event id for last location reported.
-     * 
-     * @return
-     */
-    public UUID getLastLocationEventId();
-
-    /**
-     * Get last measurement event ids indexed by measurement id.
-     * 
-     * @return
-     */
-    public Map<String, UUID> getLastMeasurementEventIds();
-
-    /**
-     * Get last alert event ids indexed by alert type.
-     * 
-     * @return
-     */
-    public Map<String, UUID> getLastAlertEventIds();
 }

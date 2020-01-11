@@ -8,8 +8,6 @@
 package com.sitewhere.rest.model.device.state.request;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import com.sitewhere.spi.device.state.request.IDeviceStateCreateRequest;
@@ -45,15 +43,6 @@ public class DeviceStateCreateRequest implements IDeviceStateCreateRequest {
 
     /** Date presence was determined to be missing */
     private Date presenceMissingDate;
-
-    /** Event id of last location event */
-    private UUID lastLocationEventId;
-
-    /** Map of last measurement event ids by mx id */
-    private Map<String, UUID> lastMeasurementEventIds = new HashMap<>();
-
-    /** Map of last alert event ids by alert type */
-    private Map<String, UUID> lastAlertEventIds = new HashMap<>();
 
     /*
      * @see
@@ -158,44 +147,5 @@ public class DeviceStateCreateRequest implements IDeviceStateCreateRequest {
 
     public void setPresenceMissingDate(Date presenceMissingDate) {
 	this.presenceMissingDate = presenceMissingDate;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.request.IDeviceStateCreateRequest#
-     * getLastLocationEventId()
-     */
-    @Override
-    public UUID getLastLocationEventId() {
-	return lastLocationEventId;
-    }
-
-    public void setLastLocationEventId(UUID lastLocationEventId) {
-	this.lastLocationEventId = lastLocationEventId;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.request.IDeviceStateCreateRequest#
-     * getLastMeasurementEventIds()
-     */
-    @Override
-    public Map<String, UUID> getLastMeasurementEventIds() {
-	return lastMeasurementEventIds;
-    }
-
-    public void setLastMeasurementEventIds(Map<String, UUID> lastMeasurementEventIds) {
-	this.lastMeasurementEventIds = lastMeasurementEventIds;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.request.IDeviceStateCreateRequest#
-     * getLastAlertEventIds()
-     */
-    @Override
-    public Map<String, UUID> getLastAlertEventIds() {
-	return lastAlertEventIds;
-    }
-
-    public void setLastAlertEventIds(Map<String, UUID> lastAlertEventIds) {
-	this.lastAlertEventIds = lastAlertEventIds;
     }
 }

@@ -9,11 +9,10 @@ package com.sitewhere.spi.device.state.request;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Map;
 import java.util.UUID;
 
 /**
- * Provides data required to create device assignment state.
+ * Provides data pertaining to recent device state.
  */
 public interface IDeviceStateCreateRequest extends Serializable {
 
@@ -72,25 +71,4 @@ public interface IDeviceStateCreateRequest extends Serializable {
      * @return
      */
     public Date getPresenceMissingDate();
-
-    /**
-     * Get event id for last location reported.
-     * 
-     * @return
-     */
-    public UUID getLastLocationEventId();
-
-    /**
-     * Get last measurement event ids indexed by measurement id.
-     * 
-     * @return
-     */
-    public Map<String, UUID> getLastMeasurementEventIds();
-
-    /**
-     * Get last alert event ids indexed by alert type.
-     * 
-     * @return
-     */
-    public Map<String, UUID> getLastAlertEventIds();
 }

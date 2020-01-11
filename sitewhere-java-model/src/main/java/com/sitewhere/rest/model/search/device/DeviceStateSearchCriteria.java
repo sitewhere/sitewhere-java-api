@@ -21,6 +21,12 @@ public class DeviceStateSearchCriteria extends SearchCriteria implements IDevice
     /** Filter by last interaction date before a given value */
     private Date lastInteractionDateBefore;
 
+    /** Device tokens to be included */
+    private List<String> deviceTokens;
+
+    /** Device assignment tokens to be included */
+    private List<String> deviceAssignmentTokens;
+
     /** Device type tokens to be included */
     private List<String> deviceTypeTokens;
 
@@ -43,7 +49,33 @@ public class DeviceStateSearchCriteria extends SearchCriteria implements IDevice
 
     /*
      * @see
-     * com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getDeviceTypeTokens()
+     * com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getDeviceTokens()
+     */
+    @Override
+    public List<String> getDeviceTokens() {
+	return deviceTokens;
+    }
+
+    public void setDeviceTokens(List<String> deviceTokens) {
+	this.deviceTokens = deviceTokens;
+    }
+
+    /*
+     * @see com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#
+     * getDeviceAssignmentTokens()
+     */
+    @Override
+    public List<String> getDeviceAssignmentTokens() {
+	return deviceAssignmentTokens;
+    }
+
+    public void setDeviceAssignmentTokens(List<String> deviceAssignmentTokens) {
+	this.deviceAssignmentTokens = deviceAssignmentTokens;
+    }
+
+    /*
+     * @see com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#
+     * getDeviceTypeTokens()
      */
     @Override
     public List<String> getDeviceTypeTokens() {
@@ -56,7 +88,8 @@ public class DeviceStateSearchCriteria extends SearchCriteria implements IDevice
 
     /*
      * @see
-     * com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getCustomerTokens()
+     * com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getCustomerTokens(
+     * )
      */
     @Override
     public List<String> getCustomerTokens() {
@@ -68,7 +101,8 @@ public class DeviceStateSearchCriteria extends SearchCriteria implements IDevice
     }
 
     /*
-     * @see com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getAreaTokens()
+     * @see
+     * com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getAreaTokens()
      */
     @Override
     public List<String> getAreaTokens() {
@@ -80,7 +114,8 @@ public class DeviceStateSearchCriteria extends SearchCriteria implements IDevice
     }
 
     /*
-     * @see com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getAssetTokens()
+     * @see
+     * com.sitewhere.spi.search.device.IDeviceStateSearchCriteria#getAssetTokens()
      */
     @Override
     public List<String> getAssetTokens() {
