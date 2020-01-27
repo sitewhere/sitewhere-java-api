@@ -13,9 +13,7 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sitewhere.rest.model.common.MetadataProvider;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.spi.device.event.DeviceEventType;
 import com.sitewhere.spi.device.event.IDeviceEvent;
 
@@ -168,7 +166,6 @@ public abstract class DeviceEvent extends MetadataProvider implements IDeviceEve
      * @see com.sitewhere.spi.device.IDeviceEvent#getEventDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
     public Date getEventDate() {
 	return eventDate;
     }
@@ -183,7 +180,6 @@ public abstract class DeviceEvent extends MetadataProvider implements IDeviceEve
      * @see com.sitewhere.spi.device.IDeviceEvent#getReceivedDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
     public Date getReceivedDate() {
 	return receivedDate;
     }

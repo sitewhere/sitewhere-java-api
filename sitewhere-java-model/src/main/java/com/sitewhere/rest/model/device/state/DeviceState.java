@@ -10,11 +10,10 @@ package com.sitewhere.rest.model.device.state;
 import java.util.Date;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sitewhere.rest.model.common.PersistentEntity;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.spi.device.state.IDeviceState;
 
 /**
@@ -141,7 +140,7 @@ public class DeviceState extends PersistentEntity implements IDeviceState {
      * @see com.sitewhere.spi.device.state.IDeviceState#getLastInteractionDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getLastInteractionDate() {
 	return lastInteractionDate;
     }
@@ -154,7 +153,7 @@ public class DeviceState extends PersistentEntity implements IDeviceState {
      * @see com.sitewhere.spi.device.state.IDeviceState#getPresenceMissingDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getPresenceMissingDate() {
 	return presenceMissingDate;
     }

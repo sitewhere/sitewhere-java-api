@@ -10,11 +10,10 @@ package com.sitewhere.rest.model.device;
 import java.util.Date;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sitewhere.rest.model.common.PersistentEntity;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.spi.device.DeviceAssignmentStatus;
 import com.sitewhere.spi.device.IDeviceAssignment;
 
@@ -130,8 +129,8 @@ public class DeviceAssignment extends PersistentEntity implements IDeviceAssignm
      * 
      * @see com.sitewhere.spi.device.IDeviceAssignment#getActiveDate()
      */
-    @JsonSerialize(using = JsonDateSerializer.class)
     @Override
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getActiveDate() {
 	return activeDate;
     }
@@ -145,8 +144,8 @@ public class DeviceAssignment extends PersistentEntity implements IDeviceAssignm
      * 
      * @see com.sitewhere.spi.device.IDeviceAssignment#getReleasedDate()
      */
-    @JsonSerialize(using = JsonDateSerializer.class)
     @Override
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getReleasedDate() {
 	return releasedDate;
     }

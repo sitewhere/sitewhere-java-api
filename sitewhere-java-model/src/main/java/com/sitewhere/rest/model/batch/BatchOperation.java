@@ -11,11 +11,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sitewhere.rest.model.common.PersistentEntity;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.spi.batch.BatchOperationStatus;
 import com.sitewhere.spi.batch.IBatchOperation;
 
@@ -90,7 +89,7 @@ public class BatchOperation extends PersistentEntity implements IBatchOperation 
      * com.sitewhere.spi.device.batch.IBatchOperation#getProcessingStartedDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getProcessingStartedDate() {
 	return processingStartedDate;
     }
@@ -105,7 +104,7 @@ public class BatchOperation extends PersistentEntity implements IBatchOperation 
      * @see com.sitewhere.spi.device.batch.IBatchOperation#getProcessingEndedDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getProcessingEndedDate() {
 	return processingEndedDate;
     }

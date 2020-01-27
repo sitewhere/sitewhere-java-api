@@ -12,11 +12,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sitewhere.rest.model.common.PersistentEntity;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.spi.SiteWhereException;
 import com.sitewhere.spi.user.AccountStatus;
 import com.sitewhere.spi.user.IUser;
@@ -103,7 +102,7 @@ public class User extends PersistentEntity implements IUser {
      * @see com.sitewhere.spi.user.IUser#getLastLogin()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getLastLogin() {
 	return lastLogin;
     }

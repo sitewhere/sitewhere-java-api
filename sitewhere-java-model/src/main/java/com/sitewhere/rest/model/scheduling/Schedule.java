@@ -11,11 +11,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sitewhere.rest.model.common.PersistentEntity;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.spi.scheduling.ISchedule;
 import com.sitewhere.spi.scheduling.TriggerType;
 
@@ -91,7 +90,7 @@ public class Schedule extends PersistentEntity implements ISchedule {
      * @see com.sitewhere.spi.scheduling.ISchedule#getStartDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getStartDate() {
 	return startDate;
     }
@@ -106,7 +105,7 @@ public class Schedule extends PersistentEntity implements ISchedule {
      * @see com.sitewhere.spi.scheduling.ISchedule#getEndDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getEndDate() {
 	return endDate;
     }

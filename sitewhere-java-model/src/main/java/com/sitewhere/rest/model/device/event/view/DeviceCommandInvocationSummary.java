@@ -12,9 +12,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sitewhere.rest.model.common.MetadataProvider;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.spi.device.command.IDeviceCommand;
 import com.sitewhere.spi.device.event.IDeviceCommandInvocation;
 
@@ -58,7 +57,7 @@ public class DeviceCommandInvocationSummary extends MetadataProvider implements 
 	this.namespace = namespace;
     }
 
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getInvocationDate() {
 	return invocationDate;
     }
@@ -148,7 +147,7 @@ public class DeviceCommandInvocationSummary extends MetadataProvider implements 
 	    this.description = description;
 	}
 
-	@JsonSerialize(using = JsonDateSerializer.class)
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	public Date getDate() {
 	    return date;
 	}

@@ -10,11 +10,10 @@ package com.sitewhere.rest.model.batch;
 import java.util.Date;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sitewhere.rest.model.common.MetadataProvider;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.spi.batch.ElementProcessingStatus;
 import com.sitewhere.spi.batch.IBatchElement;
 
@@ -98,7 +97,7 @@ public class BatchElement extends MetadataProvider implements IBatchElement {
      * @see com.sitewhere.spi.device.batch.IBatchElement#getProcessedDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getProcessedDate() {
 	return processedDate;
     }

@@ -10,8 +10,7 @@ package com.sitewhere.rest.model.common;
 import java.util.Date;
 import java.util.UUID;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sitewhere.spi.SiteWhereException;
 import com.sitewhere.spi.common.IPersistentEntity;
 
@@ -70,7 +69,7 @@ public class PersistentEntity extends MetadataProvider implements IPersistentEnt
      * @see com.sitewhere.spi.common.IPersistentEntity#getCreatedDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getCreatedDate() {
 	return createdDate;
     }
@@ -95,7 +94,7 @@ public class PersistentEntity extends MetadataProvider implements IPersistentEnt
      * @see com.sitewhere.spi.common.IPersistentEntity#getUpdatedDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getUpdatedDate() {
 	return updatedDate;
     }

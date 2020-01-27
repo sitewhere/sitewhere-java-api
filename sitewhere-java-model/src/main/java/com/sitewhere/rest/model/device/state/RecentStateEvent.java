@@ -10,8 +10,7 @@ package com.sitewhere.rest.model.device.state;
 import java.util.Date;
 import java.util.UUID;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sitewhere.spi.device.event.DeviceEventType;
 import com.sitewhere.spi.device.state.IRecentStateEvent;
 
@@ -105,7 +104,7 @@ public class RecentStateEvent implements IRecentStateEvent {
      * @see com.sitewhere.spi.device.state.IRecentStateEvent#getEventDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getEventDate() {
 	return eventDate;
     }

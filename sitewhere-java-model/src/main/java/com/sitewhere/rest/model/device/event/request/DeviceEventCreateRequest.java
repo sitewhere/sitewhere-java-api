@@ -10,8 +10,7 @@ package com.sitewhere.rest.model.device.event.request;
 import java.util.Date;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sitewhere.rest.model.device.event.DeviceEvent;
 import com.sitewhere.spi.device.event.DeviceEventType;
 import com.sitewhere.spi.device.event.request.IDeviceEventCreateRequest;
@@ -74,7 +73,7 @@ public class DeviceEventCreateRequest implements IDeviceEventCreateRequest {
      * com.sitewhere.spi.device.request.IDeviceEventCreateRequest#getEventDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getEventDate() {
 	return eventDate;
     }
