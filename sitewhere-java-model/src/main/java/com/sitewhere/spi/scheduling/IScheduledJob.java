@@ -8,6 +8,7 @@
 package com.sitewhere.spi.scheduling;
 
 import java.util.Map;
+import java.util.UUID;
 
 import com.sitewhere.spi.common.IPersistentEntity;
 
@@ -21,7 +22,7 @@ public interface IScheduledJob extends IPersistentEntity {
      * 
      * @return
      */
-    public String getScheduleToken();
+    public UUID getScheduleId();
 
     /**
      * Get job type.

@@ -9,6 +9,7 @@ package com.sitewhere.rest.model.scheduling;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -26,8 +27,8 @@ public class ScheduledJob extends PersistentEntity implements IScheduledJob {
     /** Serial version UID */
     private static final long serialVersionUID = -8440919585518011992L;
 
-    /** Token for associated schedule */
-    private String scheduleToken;
+    /** Id for associated schedule */
+    private UUID scheduleId;
 
     /** Job type */
     private ScheduledJobType jobType;
@@ -44,15 +45,15 @@ public class ScheduledJob extends PersistentEntity implements IScheduledJob {
     private Map<String, Object> context;
 
     /*
-     * @see com.sitewhere.spi.scheduling.IScheduledJob#getScheduleToken()
+     * @see com.sitewhere.spi.scheduling.IScheduledJob#getScheduleId()
      */
     @Override
-    public String getScheduleToken() {
-	return scheduleToken;
+    public UUID getScheduleId() {
+	return scheduleId;
     }
 
-    public void setScheduleToken(String scheduleToken) {
-	this.scheduleToken = scheduleToken;
+    public void setScheduleId(UUID scheduleId) {
+	this.scheduleId = scheduleId;
     }
 
     /*
