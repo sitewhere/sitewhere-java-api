@@ -7,19 +7,20 @@
  */
 package com.sitewhere.rest.model.device.request;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.sitewhere.rest.model.common.request.PersistentEntityCreateRequest;
 import com.sitewhere.spi.device.request.IDeviceGroupElementCreateRequest;
 
 /**
  * Holds fields needed to create a new device group element.
  */
 @JsonInclude(Include.NON_NULL)
-public class DeviceGroupElementCreateRequest implements IDeviceGroupElementCreateRequest, Serializable {
+public class DeviceGroupElementCreateRequest extends PersistentEntityCreateRequest
+	implements IDeviceGroupElementCreateRequest {
 
     /** Serialization version identifier */
     private static final long serialVersionUID = 652319724175005277L;

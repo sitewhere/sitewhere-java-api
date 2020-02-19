@@ -7,13 +7,13 @@
  */
 package com.sitewhere.rest.model.device.group;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.sitewhere.rest.model.common.PersistentEntity;
 import com.sitewhere.spi.device.group.IDeviceGroup;
 import com.sitewhere.spi.device.group.IDeviceGroupElement;
 
@@ -21,13 +21,10 @@ import com.sitewhere.spi.device.group.IDeviceGroupElement;
  * Model object for an element in an {@link IDeviceGroup}.
  */
 @JsonInclude(Include.NON_NULL)
-public class DeviceGroupElement implements IDeviceGroupElement, Serializable {
+public class DeviceGroupElement extends PersistentEntity implements IDeviceGroupElement {
 
     /** Serialization version identifier */
     private static final long serialVersionUID = -5565956152579362877L;
-
-    /** Unqiue id */
-    private UUID id;
 
     /** Parent group id */
     private UUID groupId;
@@ -40,18 +37,6 @@ public class DeviceGroupElement implements IDeviceGroupElement, Serializable {
 
     /** List of roles for the element */
     private List<String> roles = new ArrayList<String>();
-
-    /*
-     * @see com.sitewhere.spi.device.group.IDeviceGroupElement#getId()
-     */
-    @Override
-    public UUID getId() {
-	return id;
-    }
-
-    public void setId(UUID id) {
-	this.id = id;
-    }
 
     /*
      * @see com.sitewhere.spi.device.group.IDeviceGroupElement#getGroupId()

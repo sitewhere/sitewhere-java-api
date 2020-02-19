@@ -10,17 +10,12 @@ package com.sitewhere.spi.device.group;
 import java.util.List;
 import java.util.UUID;
 
+import com.sitewhere.spi.common.IPersistentEntity;
+
 /**
  * Interface for an entry in an {@link IDeviceGroup}.
  */
-public interface IDeviceGroupElement {
-
-    /**
-     * Get unique element id.
-     * 
-     * @return
-     */
-    public UUID getId();
+public interface IDeviceGroupElement extends IPersistentEntity {
 
     /**
      * Get id for parent group.

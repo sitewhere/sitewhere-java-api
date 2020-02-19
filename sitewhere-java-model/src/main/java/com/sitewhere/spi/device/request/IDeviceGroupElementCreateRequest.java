@@ -9,10 +9,12 @@ package com.sitewhere.spi.device.request;
 
 import java.util.List;
 
+import com.sitewhere.spi.common.request.IPersistentEntityCreateRequest;
+
 /**
  * Interface for arguments needed to create a device group element.
  */
-public interface IDeviceGroupElementCreateRequest {
+public interface IDeviceGroupElementCreateRequest extends IPersistentEntityCreateRequest {
 
     /**
      * Get device token (null if nested group supplied).
