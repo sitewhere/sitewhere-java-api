@@ -3,7 +3,6 @@ buildscript {
 		maven { url "https://plugins.gradle.org/m2/" }
  	}
 	dependencies {
-		classpath 'io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE'
 		classpath "gradle.plugin.nl.javadude.gradle.plugins:license-gradle-plugin:0.14.0"
 	}
 }
@@ -12,23 +11,15 @@ apply plugin: 'distribution'
 
 allprojects {
     group = 'com.sitewhere'
-	version = '3.0.0.alpha6'
+	version = '3.0.0.alpha7'
 	
     repositories {
-        maven { url "http://repo.maven.apache.org/maven2" }
+        maven { url "https://repo.maven.apache.org/maven2" }
     }
 }
 
 subprojects {
 	apply plugin: 'eclipse'
-	
-    // Use Spring dependency management.
- 	apply plugin: 'io.spring.dependency-management'
-	dependencyManagement {
-		imports {
-			mavenBom 'io.spring.platform:platform-bom:Cairo-SR1'
-		}
-	}
 	
 	apply plugin: "com.github.hierynomus.license"
 	license {
@@ -49,6 +40,8 @@ subprojects {
     
     // Common dependencies used for all projects.
     dependencies {
+   		compile platform('io.quarkus:quarkus-bom:1.2.1.Final')
+   	
         testCompile group: 'junit', name: 'junit'
     }
 	test {

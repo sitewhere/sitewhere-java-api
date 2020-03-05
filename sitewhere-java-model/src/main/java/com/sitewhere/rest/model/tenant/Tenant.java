@@ -30,9 +30,6 @@ public class Tenant implements ITenant {
     /** Tenant name */
     private String name;
 
-    /** Logo URL */
-    private String logoUrl;
-
     /** Device authentication token */
     private String authenticationToken;
 
@@ -85,17 +82,6 @@ public class Tenant implements ITenant {
 
     public void setName(String name) {
 	this.name = name;
-    }
-
-    /*
-     * @see com.sitewhere.spi.tenant.ITenant#getLogoUrl()
-     */
-    public String getLogoUrl() {
-	return logoUrl;
-    }
-
-    public void setLogoUrl(String logoUrl) {
-	this.logoUrl = logoUrl;
     }
 
     /*
