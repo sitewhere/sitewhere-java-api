@@ -15,7 +15,7 @@ allprojects {
 	version = '2.1.12'
 	
     repositories {
-        maven { url "http://repo.maven.apache.org/maven2" }
+        maven { url "https://repo.maven.apache.org/maven2" }
     }
 }
 

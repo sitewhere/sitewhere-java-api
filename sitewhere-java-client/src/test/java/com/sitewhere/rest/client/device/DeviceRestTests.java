@@ -39,7 +39,7 @@ public class DeviceRestTests extends AbstractWithLabelCRUDRestTest<Device, Devic
 
     @Override
     protected String knownEntityToken() {
-	return "60737-MT90-4178968";
+	return "2654-IPHONE6S-2443193";
     }
 
     // ------------------------------------------------------------------------
@@ -175,5 +175,11 @@ public class DeviceRestTests extends AbstractWithLabelCRUDRestTest<Device, Devic
 	SearchResults<Device> result = getClient().listDevicesByDeviceGroupWithRole(getTenatAuthentication(), role,
 		searchCriteria, responseFormat);
 	assertNotNull(result);
+    }
+
+    @Test
+    public void testFindDeviceByToken() throws SiteWhereException {
+	MarshaledDevice device = getClient().getDeviceByToken(getTenatAuthentication(), knownEntityToken());
+	assertNotNull(device);
     }
 }
