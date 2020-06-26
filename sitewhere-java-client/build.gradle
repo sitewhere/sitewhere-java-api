@@ -3,12 +3,12 @@ description = 'SiteWhere Java Client'
 apply plugin: 'java'
 dependencies {
     compile project(':sitewhere-java-model')
-    
+
     // Android-compatible REST support.
     compile group: 'com.squareup.retrofit2', name: 'retrofit', version:'2.5.0'
     compile group: 'com.squareup.retrofit2', name: 'converter-jackson', version:'2.5.0'
     compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.12.0'
-   
+
     testCompile group: 'org.apache.activemq', name: 'activemq-all', version:'5.10.0'
 }
 
@@ -26,7 +26,7 @@ task javadocJar(type: Jar) {
     classifier = 'javadoc'
 }
 
-// Publish jar.	
+// Publish jar.
 apply plugin: 'maven-publish'
 publishing {
 	publications {
@@ -55,21 +55,11 @@ publishing {
                     connection = 'https://github.com/sitewhere/sitewhere-java-api.git'
                     url = 'https://github.com/sitewhere/sitewhere-java-api'
                 }
-			}	
+			}
 		}
 	}
     repositories {
-        maven {
-            url project.nexusUrl
-            credentials {
-                username project.nexusUsername
-                password project.nexusPassword
-            }
-        }
+        mavenLocal()
     }
 }
 
-apply plugin: 'signing'
-signing {
-    sign publishing.publications.mavenJava
-}

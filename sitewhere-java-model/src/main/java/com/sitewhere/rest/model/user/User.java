@@ -50,6 +50,9 @@ public class User extends PersistentEntity implements IUser {
     /** List of granted authorities */
     private List<String> authorities = new ArrayList<>();
 
+    /** List of roles */
+    private List<String> roles = new ArrayList<>();
+
     /*
      * @see com.sitewhere.spi.user.IUser#getUsername()
      */
@@ -135,9 +138,21 @@ public class User extends PersistentEntity implements IUser {
 	this.authorities = authorities;
     }
 
+    /*
+     * @see com.sitewhere.spi.user.IUser#getRoles()
+     */
+    @Override
+    public List<String> getRoles() {
+	return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+	this.roles = roles;
+    }
+
     /**
      * Copy contents from the SPI class.
-     * 
+     *
      * @param input
      * @return
      */
@@ -150,6 +165,7 @@ public class User extends PersistentEntity implements IUser {
 	result.setLastLogin(input.getLastLogin());
 	result.setStatus(input.getStatus());
 	result.setAuthorities(new ArrayList<String>(input.getAuthorities()));
+	result.setRoles(new ArrayList<String>(input.getRoles()));
 	PersistentEntity.copy(input, result);
 	return result;
     }
