@@ -17,48 +17,47 @@ public interface IDeviceStateResponseFormat {
      * 
      * @return
      */
-    public Boolean getIncludeArea();
+    Boolean getIncludeArea();
 
     /**
      * Indicates if asset is included.
      * 
      * @return
      */
-    public Boolean getIncludeAsset();
+    Boolean getIncludeAsset();
 
     /**
      * Indicates if customer is included.
      * 
      * @return
      */
-    public Boolean getIncludeCustomer();
+    Boolean getIncludeCustomer();
 
     /**
      * Indicates if device is included.
      * 
      * @return
      */
-    public Boolean getIncludeDevice();
+    Boolean getIncludeDevice();
 
     /**
      * Indicates if device assignment is included.
      * 
      * @return
      */
-    public Boolean getIncludeDeviceAssignment();
+    Boolean getIncludeDeviceAssignment();
 
     /**
      * Indicates if device type is included.
      * 
      * @return
      */
-    public Boolean getIncludeDeviceType();
+    Boolean getIncludeDeviceType();
 
     /**
      * Indicates if event details is included.
      * 
      * @return
      */
-    public Boolean getIncludeEventDetails();
-
+    Boolean getIncludeEventDetails();
 }

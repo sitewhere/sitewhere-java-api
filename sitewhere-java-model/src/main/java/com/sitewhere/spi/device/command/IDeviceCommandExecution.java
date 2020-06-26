@@ -24,19 +24,19 @@ public interface IDeviceCommandExecution extends Serializable {
      * 
      * @return
      */
-    public IDeviceCommand getCommand();
+    IDeviceCommand getCommand();
 
     /**
      * Get the invocation details.
      * 
      * @return
      */
-    public IDeviceCommandInvocation getInvocation();
+    IDeviceCommandInvocation getInvocation();
 
     /**
      * Get parameters populated with data from the invocation.
      * 
      * @return
      */
-    public Map<String, Object> getParameters();
+    Map<String, Object> getParameters();
 }

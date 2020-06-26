@@ -22,12 +22,12 @@ public interface IDeviceType extends IBrandedEntity, IAccessible {
      * 
      * @return
      */
-    public DeviceContainerPolicy getContainerPolicy();
+    DeviceContainerPolicy getContainerPolicy();
 
     /**
      * Get schema that describes how nested devices are arranged.
      * 
      * @return
      */
-    public UUID getDeviceElementSchemaId();
+    UUID getDeviceElementSchemaId();
 }

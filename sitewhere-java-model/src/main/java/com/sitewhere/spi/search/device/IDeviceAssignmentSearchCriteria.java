@@ -22,40 +22,40 @@ public interface IDeviceAssignmentSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public List<DeviceAssignmentStatus> getAssignmentStatuses();
+    List<DeviceAssignmentStatus> getAssignmentStatuses();
 
     /**
      * Limits search the given list of areas tokens.
      * 
      * @return
      */
-    public List<String> getAreaTokens();
+    List<String> getAreaTokens();
 
     /**
      * Limits search the given list of asset tokens.
      * 
      * @return
      */
-    public List<String> getAssetTokens();
+    List<String> getAssetTokens();
 
     /**
      * Limits search the given list of customer tokens.
      * 
      * @return
      */
-    public List<String> getCustomerTokens();
+    List<String> getCustomerTokens();
 
     /**
      * Limits search the given list of device tokens.
      * 
      * @return
      */
-    public List<String> getDeviceTokens();
+    List<String> getDeviceTokens();
 
     /**
      * Limits search the given list of device type tokens.
      * 
      * @return
      */
-    public List<String> getDeviceTypeTokens();
+    List<String> getDeviceTypeTokens();
 }

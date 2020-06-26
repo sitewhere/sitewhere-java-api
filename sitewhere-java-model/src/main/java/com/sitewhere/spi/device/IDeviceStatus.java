@@ -24,19 +24,19 @@ public interface IDeviceStatus extends IPersistentEntity, IColorProvider, IIconP
      * 
      * @return
      */
-    public String getCode();
+    String getCode();
 
     /**
      * Get unqiue id for the parent device type.
      * 
      * @return
      */
-    public UUID getDeviceTypeId();
+    UUID getDeviceTypeId();
 
     /**
      * Name displayed in user interface.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 }

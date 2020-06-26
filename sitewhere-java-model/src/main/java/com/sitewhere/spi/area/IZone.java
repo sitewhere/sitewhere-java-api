@@ -21,40 +21,40 @@ public interface IZone extends IBoundedEntity, IPersistentEntity {
      * 
      * @return
      */
-    public UUID getAreaId();
+    UUID getAreaId();
 
     /**
      * Get display name.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get the border color.
      * 
      * @return
      */
-    public String getBorderColor();
+    String getBorderColor();
 
     /**
      * Get the border opacity value.
      * 
      * @return
      */
-    public Double getBorderOpacity();
+    Double getBorderOpacity();
 
     /**
      * Get the fill color.
      * 
      * @return
      */
-    public String getFillColor();
+    String getFillColor();
 
     /**
      * Get the fill opacity value.
      * 
      * @return
      */
-    public Double getFillOpacity();
+    Double getFillOpacity();
 }

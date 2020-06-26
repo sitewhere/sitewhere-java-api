@@ -22,12 +22,12 @@ public interface IChartEntry<T> extends Comparable<IChartEntry<T>>, Serializable
      * 
      * @return
      */
-    public T getValue();
+    T getValue();
 
     /**
      * Get date the value was measured.
      * 
      * @return
      */
-    public Date getMeasurementDate();
+    Date getMeasurementDate();
 }

@@ -23,54 +23,54 @@ public interface IDeviceAssignment extends IPersistentEntity {
      * 
      * @return
      */
-    public UUID getDeviceId();
+    UUID getDeviceId();
 
     /**
      * Get unique id for assigned device type at time of assignment.
      * 
      * @return
      */
-    public UUID getDeviceTypeId();
+    UUID getDeviceTypeId();
 
     /**
      * Get unqiue id for customer assigned to device.
      * 
      * @return
      */
-    public UUID getCustomerId();
+    UUID getCustomerId();
 
     /**
      * Get unique id for area assigned to device.
      * 
      * @return
      */
-    public UUID getAreaId();
+    UUID getAreaId();
 
     /**
      * Get asset id.
      * 
      * @return
      */
-    public UUID getAssetId();
+    UUID getAssetId();
 
     /**
      * Get the device assignment status.
      * 
      * @return
      */
-    public DeviceAssignmentStatus getStatus();
+    DeviceAssignmentStatus getStatus();
 
     /**
      * Get the date/time at which the assignment was made active.
      * 
      * @return
      */
-    public Date getActiveDate();
+    Date getActiveDate();
 
     /**
      * Get the date/time at which the assignment was released.
      * 
      * @return
      */
-    public Date getReleasedDate();
+    Date getReleasedDate();
 }

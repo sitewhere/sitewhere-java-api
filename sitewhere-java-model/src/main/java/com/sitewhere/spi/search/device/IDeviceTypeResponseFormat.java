@@ -17,6 +17,5 @@ public interface IDeviceTypeResponseFormat {
      * 
      * @return
      */
-    public Boolean getIncludeAsset();
-
+    Boolean getIncludeAsset();
 }

@@ -17,19 +17,19 @@ public interface ICommandParameter {
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get parameter datatype.
      * 
      * @return
      */
-    public ParameterType getType();
+    ParameterType getType();
 
     /**
      * Indicates if parameter is required for command.
      * 
      * @return
      */
-    public boolean isRequired();
+    boolean isRequired();
 }

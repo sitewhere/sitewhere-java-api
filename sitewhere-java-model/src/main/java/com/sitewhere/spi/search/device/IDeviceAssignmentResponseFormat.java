@@ -17,33 +17,33 @@ public interface IDeviceAssignmentResponseFormat {
      * 
      * @return
      */
-    public Boolean getIncludeArea();
+    Boolean getIncludeArea();
 
     /**
      * Indicates if asset is to be returned.
      * 
      * @return
      */
-    public Boolean getIncludeAsset();
+    Boolean getIncludeAsset();
 
     /**
      * Indicates if customer is to be returned.
      * 
      * @return
      */
-    public Boolean getIncludeCustomer();
+    Boolean getIncludeCustomer();
 
     /**
      * Indicates if device is to be returned.
      * 
      * @return
      */
-    public Boolean getIncludeDevice();
+    Boolean getIncludeDevice();
 
     /**
      * Indicates if device type is to be returned.
      * 
      * @return
      */
-    public Boolean getIncludeDeviceType();
+    Boolean getIncludeDeviceType();
 }

@@ -21,5 +21,5 @@ public interface IAssetTypeCreateRequest extends IAccessible, IBrandedEntityCrea
      * 
      * @return
      */
-    public AssetCategory getAssetCategory();
+    AssetCategory getAssetCategory();
 }

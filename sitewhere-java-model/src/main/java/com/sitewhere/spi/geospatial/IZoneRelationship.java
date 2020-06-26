@@ -20,19 +20,19 @@ public interface IZoneRelationship {
      * 
      * @return
      */
-    public IDeviceLocation getLocation();
+    IDeviceLocation getLocation();
 
     /**
      * Get zone.
      * 
      * @return
      */
-    public IZone getZone();
+    IZone getZone();
 
     /**
      * Get containment indicator.
      * 
      * @return
      */
-    public ZoneContainment getContainment();
+    ZoneContainment getContainment();
 }

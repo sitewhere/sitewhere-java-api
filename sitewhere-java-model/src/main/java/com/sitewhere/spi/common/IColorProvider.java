@@ -17,19 +17,19 @@ public interface IColorProvider {
      * 
      * @return
      */
-    public String getBackgroundColor();
+    String getBackgroundColor();
 
     /**
      * Foreground color for user interface.
      * 
      * @return
      */
-    public String getForegroundColor();
+    String getForegroundColor();
 
     /**
      * Border color for user interface.
      * 
      * @return
      */
-    public String getBorderColor();
+    String getBorderColor();
 }

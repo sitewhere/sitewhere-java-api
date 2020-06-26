@@ -19,7 +19,7 @@ public interface IDeviceNestingContext {
      * 
      * @return
      */
-    public IDevice getGateway();
+    IDevice getGateway();
 
     /**
      * Get nested device being addressed. In standalone devices, this value will be
@@ -27,7 +27,7 @@ public interface IDeviceNestingContext {
      * 
      * @return
      */
-    public IDevice getNested();
+    IDevice getNested();
 
     /**
      * Get path in parent device {@link IDeviceElementSchema} mapped to target
@@ -35,5 +35,5 @@ public interface IDeviceNestingContext {
      * 
      * @return
      */
-    public String getPath();
+    String getPath();
 }

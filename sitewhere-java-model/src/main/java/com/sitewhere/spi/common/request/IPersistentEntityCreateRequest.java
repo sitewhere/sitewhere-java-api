@@ -21,5 +21,5 @@ public interface IPersistentEntityCreateRequest extends Serializable, IMetadataP
      * 
      * @return
      */
-    public String getToken();
+    String getToken();
 }

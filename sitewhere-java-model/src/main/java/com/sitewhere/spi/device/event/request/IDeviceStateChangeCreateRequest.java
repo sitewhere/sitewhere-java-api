@@ -26,26 +26,26 @@ public interface IDeviceStateChangeCreateRequest extends IDeviceEventCreateReque
      * 
      * @return
      */
-    public String getAttribute();
+    String getAttribute();
 
     /**
      * Get type of state change.
      * 
      * @return
      */
-    public String getType();
+    String getType();
 
     /**
      * Get the previous (or assumed previous) state.
      * 
      * @return
      */
-    public String getPreviousState();
+    String getPreviousState();
 
     /**
      * Get the requested new state.
      * 
      * @return
      */
-    public String getNewState();
+    String getNewState();
 }

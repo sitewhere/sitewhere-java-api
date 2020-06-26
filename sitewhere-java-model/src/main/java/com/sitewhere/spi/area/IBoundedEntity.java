@@ -22,5 +22,5 @@ public interface IBoundedEntity {
      * 
      * @return
      */
-    public List<? extends ILocation> getBounds();
+    List<? extends ILocation> getBounds();
 }

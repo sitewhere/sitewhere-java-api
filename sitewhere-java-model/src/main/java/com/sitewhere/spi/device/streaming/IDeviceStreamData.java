@@ -19,19 +19,19 @@ public interface IDeviceStreamData extends IDeviceEvent {
      * 
      * @return
      */
-    public String getStreamId();
+    String getStreamId();
 
     /**
      * Get sequence number for ordering chunks.
      * 
      * @return
      */
-    public Long getSequenceNumber();
+    Long getSequenceNumber();
 
     /**
      * Get chunk data.
      * 
      * @return
      */
-    public byte[] getData();
+    byte[] getData();
 }

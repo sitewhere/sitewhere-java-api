@@ -20,5 +20,5 @@ public interface IDeviceMappingAckCommand extends ISystemCommand, Serializable {
      * 
      * @return
      */
-    public DeviceMappingResult getResult();
+    DeviceMappingResult getResult();
 }

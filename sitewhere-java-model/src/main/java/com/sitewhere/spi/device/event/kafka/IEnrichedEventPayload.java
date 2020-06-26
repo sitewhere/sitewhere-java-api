@@ -21,12 +21,12 @@ public interface IEnrichedEventPayload {
      * 
      * @return
      */
-    public IDeviceEventContext getEventContext();
+    IDeviceEventContext getEventContext();
 
     /**
      * Get event data.
      * 
      * @return
      */
-    public IDeviceEvent getEvent();
+    IDeviceEvent getEvent();
 }

@@ -19,19 +19,19 @@ public interface IDeviceEventBatchResponse {
      * 
      * @return
      */
-    public List<IDeviceMeasurement> getCreatedMeasurements();
+    List<IDeviceMeasurement> getCreatedMeasurements();
 
     /**
      * List of locations that were created.
      * 
      * @return
      */
-    public List<IDeviceLocation> getCreatedLocations();
+    List<IDeviceLocation> getCreatedLocations();
 
     /**
      * List of alerts that were created.
      * 
      * @return
      */
-    public List<IDeviceAlert> getCreatedAlerts();
+    List<IDeviceAlert> getCreatedAlerts();
 }

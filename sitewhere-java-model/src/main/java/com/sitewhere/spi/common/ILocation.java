@@ -19,19 +19,19 @@ public interface ILocation extends Serializable {
      * 
      * @return
      */
-    public Double getLatitude();
+    Double getLatitude();
 
     /**
      * Get longitude measurement.
      * 
      * @return
      */
-    public Double getLongitude();
+    Double getLongitude();
 
     /**
      * Get elevation measurement.
      * 
      * @return
      */
-    public Double getElevation();
+    Double getElevation();
 }

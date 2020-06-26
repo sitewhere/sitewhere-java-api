@@ -17,6 +17,5 @@ public interface ICustomerTypeResponseFormat {
      * 
      * @return
      */
-    public Boolean getIncludeContainedCustomerTypes();
-
+    Boolean getIncludeContainedCustomerTypes();
 }

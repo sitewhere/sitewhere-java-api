@@ -23,26 +23,26 @@ public interface IScheduledJobCreateRequest extends IPersistentEntityCreateReque
      * 
      * @return
      */
-    public String getScheduleToken();
+    String getScheduleToken();
 
     /**
      * Get job type.
      * 
      * @return
      */
-    public ScheduledJobType getJobType();
+    ScheduledJobType getJobType();
 
     /**
      * Get job configuration values.
      * 
      * @return
      */
-    public Map<String, String> getJobConfiguration();
+    Map<String, String> getJobConfiguration();
 
     /**
      * Get job scheduling state.
      * 
      * @return
      */
-    public ScheduledJobState getJobState();
+    ScheduledJobState getJobState();
 }

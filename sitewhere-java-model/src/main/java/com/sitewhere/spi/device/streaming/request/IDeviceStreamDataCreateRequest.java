@@ -19,19 +19,19 @@ public interface IDeviceStreamDataCreateRequest extends IDeviceEventCreateReques
      * 
      * @return
      */
-    public String getStreamId();
+    String getStreamId();
 
     /**
      * Get sequence number for ordering chunks.
      * 
      * @return
      */
-    public long getSequenceNumber();
+    long getSequenceNumber();
 
     /**
      * Get chunk data.
      * 
      * @return
      */
-    public byte[] getData();
+    byte[] getData();
 }

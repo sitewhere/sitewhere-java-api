@@ -19,12 +19,12 @@ public interface IDateRangeSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public Date getStartDate();
+    Date getStartDate();
 
     /**
      * Get date range end.
      * 
      * @return
      */
-    public Date getEndDate();
+    Date getEndDate();
 }

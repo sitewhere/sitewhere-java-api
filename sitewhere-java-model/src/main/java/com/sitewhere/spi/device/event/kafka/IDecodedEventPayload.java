@@ -20,26 +20,26 @@ public interface IDecodedEventPayload {
      * 
      * @return
      */
-    public String getSourceId();
+    String getSourceId();
 
     /**
      * Get device token.
      * 
      * @return
      */
-    public String getDeviceToken();
+    String getDeviceToken();
 
     /**
      * Get id of originating event.
      * 
      * @return
      */
-    public String getOriginator();
+    String getOriginator();
 
     /**
      * Get event create request.
      * 
      * @return
      */
-    public IDeviceEventCreateRequest getEventCreateRequest();
+    IDeviceEventCreateRequest getEventCreateRequest();
 }

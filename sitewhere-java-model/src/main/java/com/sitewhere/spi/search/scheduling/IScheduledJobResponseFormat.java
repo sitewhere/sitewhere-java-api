@@ -17,5 +17,5 @@ public interface IScheduledJobResponseFormat {
      * 
      * @return
      */
-    public Boolean getIncludeContext();
+    Boolean getIncludeContext();
 }

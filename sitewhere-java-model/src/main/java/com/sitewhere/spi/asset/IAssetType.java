@@ -20,5 +20,5 @@ public interface IAssetType extends IBrandedEntity, IAccessible {
      * 
      * @return
      */
-    public AssetCategory getAssetCategory();
+    AssetCategory getAssetCategory();
 }

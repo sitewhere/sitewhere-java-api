@@ -19,5 +19,5 @@ public interface IUnprocessedBatchElement {
      * 
      * @return
      */
-    public IBatchElement getBatchElement();
+    IBatchElement getBatchElement();
 }

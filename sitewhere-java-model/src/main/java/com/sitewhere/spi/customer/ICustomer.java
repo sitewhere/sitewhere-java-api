@@ -22,5 +22,5 @@ public interface ICustomer extends IBrandedTreeEntity {
      * 
      * @return
      */
-    public UUID getCustomerTypeId();
+    UUID getCustomerTypeId();
 }

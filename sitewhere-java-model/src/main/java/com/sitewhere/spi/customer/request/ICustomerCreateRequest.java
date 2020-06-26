@@ -21,5 +21,5 @@ public interface ICustomerCreateRequest extends IAccessible, IBrandedEntityCreat
      * 
      * @return
      */
-    public String getCustomerTypeToken();
+    String getCustomerTypeToken();
 }

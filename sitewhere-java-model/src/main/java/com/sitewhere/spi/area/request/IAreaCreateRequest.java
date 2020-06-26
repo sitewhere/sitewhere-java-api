@@ -24,12 +24,12 @@ public interface IAreaCreateRequest extends IAccessible, IBrandedEntityCreateReq
      * 
      * @return
      */
-    public String getAreaTypeToken();
+    String getAreaTypeToken();
 
     /**
      * Get list of coordinates that defines the area bounds.
      * 
      * @return
      */
-    public List<? extends ILocation> getBounds();
+    List<? extends ILocation> getBounds();
 }

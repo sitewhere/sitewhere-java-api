@@ -22,5 +22,5 @@ public interface IDeviceGroupCreateRequest extends IAccessible, IBrandedEntityCr
      * 
      * @return
      */
-    public List<String> getRoles();
+    List<String> getRoles();
 }

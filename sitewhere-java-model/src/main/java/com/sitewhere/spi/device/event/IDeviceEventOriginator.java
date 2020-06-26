@@ -20,5 +20,5 @@ public interface IDeviceEventOriginator extends Serializable {
      * 
      * @return
      */
-    public UUID getEventId();
+    UUID getEventId();
 }

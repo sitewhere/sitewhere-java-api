@@ -20,12 +20,12 @@ public interface IDeviceCommandNamespace extends Serializable {
      * 
      * @return
      */
-    public String getValue();
+    String getValue();
 
     /**
      * List of commands in namespace.
      * 
      * @return
      */
-    public List<? extends IDeviceCommand> getCommands();
+    List<? extends IDeviceCommand> getCommands();
 }

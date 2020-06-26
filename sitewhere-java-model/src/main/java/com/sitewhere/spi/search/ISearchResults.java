@@ -21,12 +21,12 @@ public interface ISearchResults<T> {
      * 
      * @return
      */
-    public long getNumResults();
+    long getNumResults();
 
     /**
      * Get the results.
      * 
      * @return
      */
-    public List<T> getResults();
+    List<T> getResults();
 }

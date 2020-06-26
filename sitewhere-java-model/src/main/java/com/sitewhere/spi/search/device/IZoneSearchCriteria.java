@@ -19,5 +19,5 @@ public interface IZoneSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public String getAreaToken();
+    String getAreaToken();
 }

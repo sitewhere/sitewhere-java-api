@@ -26,19 +26,19 @@ public interface IBatchOperationCreateRequest extends IPersistentEntityCreateReq
      * 
      * @return
      */
-    public String getOperationType();
+    String getOperationType();
 
     /**
      * Get operation parameters.
      * 
      * @return
      */
-    public Map<String, String> getParameters();
+    Map<String, String> getParameters();
 
     /**
      * Get list of device tokens for operation.
      * 
      * @return
      */
-    public List<String> getDeviceTokens();
+    List<String> getDeviceTokens();
 }

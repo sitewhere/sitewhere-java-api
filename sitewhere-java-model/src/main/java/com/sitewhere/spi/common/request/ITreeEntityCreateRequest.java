@@ -17,5 +17,5 @@ public interface ITreeEntityCreateRequest {
      * 
      * @return
      */
-    public String getParentToken();
+    String getParentToken();
 }

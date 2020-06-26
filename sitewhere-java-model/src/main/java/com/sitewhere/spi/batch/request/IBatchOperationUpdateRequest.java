@@ -23,19 +23,19 @@ public interface IBatchOperationUpdateRequest extends IPersistentEntityCreateReq
      * 
      * @return
      */
-    public BatchOperationStatus getProcessingStatus();
+    BatchOperationStatus getProcessingStatus();
 
     /**
      * Get updated processing start date.
      * 
      * @return
      */
-    public Date getProcessingStartedDate();
+    Date getProcessingStartedDate();
 
     /**
      * Get updated processing end date.
      * 
      * @return
      */
-    public Date getProcessingEndedDate();
+    Date getProcessingEndedDate();
 }

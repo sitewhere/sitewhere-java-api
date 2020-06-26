@@ -19,6 +19,5 @@ public interface IDeviceGroupElementSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public String getGroupToken();
-
+    String getGroupToken();
 }

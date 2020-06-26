@@ -20,26 +20,26 @@ public interface ISendDeviceStreamDataCommand extends ISystemCommand, Serializab
      * 
      * @return
      */
-    public String getDeviceToken();
+    String getDeviceToken();
 
     /**
      * Get id of stream data belongs to.
      * 
      * @return
      */
-    public UUID getStreamId();
+    UUID getStreamId();
 
     /**
      * Get sequence number of data chunk.
      * 
      * @return
      */
-    public long getSequenceNumber();
+    long getSequenceNumber();
 
     /**
      * Get data.
      * 
      * @return
      */
-    public byte[] getData();
+    byte[] getData();
 }

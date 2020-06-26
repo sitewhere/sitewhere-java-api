@@ -21,26 +21,26 @@ public interface ITreeNode extends IMetadataProvider {
      * 
      * @return
      */
-    public String getToken();
+    String getToken();
 
     /**
      * Get node name.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get node icon.
      * 
      * @return
      */
-    public String getIcon();
+    String getIcon();
 
     /**
      * Get node children.
      * 
      * @return
      */
-    public List<? extends ITreeNode> getChildren();
+    List<? extends ITreeNode> getChildren();
 }

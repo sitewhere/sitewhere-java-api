@@ -17,5 +17,5 @@ public interface ICustomerResponseFormat {
      * 
      * @return
      */
-    public Boolean getIncludeCustomerType();
+    Boolean getIncludeCustomerType();
 }

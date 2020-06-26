@@ -19,12 +19,12 @@ public interface ISendDeviceStreamDataRequest {
      * 
      * @return
      */
-    public UUID getStreamId();
+    UUID getStreamId();
 
     /**
      * Get sequence number of chunk to send.
      * 
      * @return
      */
-    public long getSequenceNumber();
+    long getSequenceNumber();
 }

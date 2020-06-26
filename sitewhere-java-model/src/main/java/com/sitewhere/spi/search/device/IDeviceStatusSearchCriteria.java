@@ -19,12 +19,12 @@ public interface IDeviceStatusSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public String getDeviceTypeToken();
+    String getDeviceTypeToken();
 
     /**
      * Limit results by code.
      * 
      * @return
      */
-    public String getCode();
+    String getCode();
 }

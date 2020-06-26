@@ -21,19 +21,19 @@ public interface IDeviceStatusCreateRequest extends IPersistentEntityCreateReque
      * 
      * @return
      */
-    public String getDeviceTypeToken();
+    String getDeviceTypeToken();
 
     /**
      * Get the unique status code.
      * 
      * @return
      */
-    public String getCode();
+    String getCode();
 
     /**
      * Name displayed in user interface.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 }

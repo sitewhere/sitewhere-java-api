@@ -23,14 +23,14 @@ public interface IDevice extends IPersistentEntity {
      * 
      * @return
      */
-    public UUID getDeviceTypeId();
+    UUID getDeviceTypeId();
 
     /**
      * If contained by a parent device, returns the parent device id.
      * 
      * @return
      */
-    public UUID getParentDeviceId();
+    UUID getParentDeviceId();
 
     /**
      * Gets mappings of {@link IDeviceElementSchema} paths to hardware ids for
@@ -38,19 +38,19 @@ public interface IDevice extends IPersistentEntity {
      * 
      * @return
      */
-    public List<? extends IDeviceElementMapping> getDeviceElementMappings();
+    List<? extends IDeviceElementMapping> getDeviceElementMappings();
 
     /**
      * Get device comments.
      * 
      * @return
      */
-    public String getComments();
+    String getComments();
 
     /**
      * Get most recent device status.
      * 
      * @return
      */
-    public String getStatus();
+    String getStatus();
 }

@@ -19,5 +19,5 @@ public interface IMetadataProvider {
      * 
      * @return
      */
-    public Map<String, String> getMetadata();
+    Map<String, String> getMetadata();
 }

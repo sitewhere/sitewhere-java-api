@@ -19,12 +19,12 @@ public interface IDeviceAssignmentEventCreateRequest {
      * 
      * @return
      */
-    public UUID getDeviceAssignmentId();
+    UUID getDeviceAssignmentId();
 
     /**
      * Get request information for event to be posted.
      * 
      * @return
      */
-    public IDeviceEventCreateRequest getRequest();
+    IDeviceEventCreateRequest getRequest();
 }

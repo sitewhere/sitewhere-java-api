@@ -17,19 +17,19 @@ public interface IAreaResponseFormat {
      * 
      * @return
      */
-    public Boolean getIncludeAreaType();
+    Boolean getIncludeAreaType();
 
     /**
      * Indicates if assignments are to be returned.
      * 
      * @return
      */
-    public Boolean getIncludeAssignments();
+    Boolean getIncludeAssignments();
 
     /**
      * Indicates if zones are to be returned.
      * 
      * @return
      */
-    public Boolean getIncludeZones();
+    Boolean getIncludeZones();
 }

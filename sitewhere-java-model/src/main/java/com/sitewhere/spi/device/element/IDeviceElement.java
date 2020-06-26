@@ -21,12 +21,12 @@ public interface IDeviceElement extends IPersistentEntity, Serializable {
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get relative path to element from parent.
      * 
      * @return
      */
-    public String getPath();
+    String getPath();
 }

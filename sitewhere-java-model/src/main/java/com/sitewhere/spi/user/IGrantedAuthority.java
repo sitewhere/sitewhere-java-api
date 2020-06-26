@@ -19,26 +19,26 @@ public interface IGrantedAuthority extends Serializable {
      * 
      * @return
      */
-    public String getAuthority();
+    String getAuthority();
 
     /**
      * Get the description.
      * 
      * @return
      */
-    public String getDescription();
+    String getDescription();
 
     /**
      * Get parent authority.
      * 
      * @return
      */
-    public String getParent();
+    String getParent();
 
     /**
      * Indicates if the authority is a group.
      * 
      * @return
      */
-    public boolean isGroup();
+    boolean isGroup();
 }

@@ -22,40 +22,40 @@ public interface IUserCreateRequest extends IPersistentEntityCreateRequest {
      * 
      * @return
      */
-    public String getUsername();
+    String getUsername();
 
     /**
      * Get the password.
      * 
      * @return
      */
-    public String getPassword();
+    String getPassword();
 
     /**
      * Get the common name.
      * 
      * @return
      */
-    public String getFirstName();
+    String getFirstName();
 
     /**
      * Get the surname.
      * 
      * @return
      */
-    public String getLastName();
+    String getLastName();
 
     /**
      * Get the account status.
      * 
      * @return
      */
-    public AccountStatus getStatus();
+    AccountStatus getStatus();
 
     /**
      * Get the list of granted authorities.
      * 
      * @return
      */
-    public List<String> getAuthorities();
+    List<String> getAuthorities();
 }

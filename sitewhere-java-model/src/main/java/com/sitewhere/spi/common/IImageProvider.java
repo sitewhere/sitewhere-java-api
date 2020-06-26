@@ -17,5 +17,5 @@ public interface IImageProvider {
      * 
      * @return
      */
-    public String getImageUrl();
+    String getImageUrl();
 }

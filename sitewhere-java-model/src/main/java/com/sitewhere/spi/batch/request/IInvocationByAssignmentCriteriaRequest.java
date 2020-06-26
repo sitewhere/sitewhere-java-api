@@ -24,21 +24,21 @@ public interface IInvocationByAssignmentCriteriaRequest extends IPersistentEntit
      * 
      * @return
      */
-    public String getDeviceTypeToken();
+    String getDeviceTypeToken();
 
     /**
      * Get token for command to be executed.
      * 
      * @return
      */
-    public String getCommandToken();
+    String getCommandToken();
 
     /**
      * Get the list of parameter names mapped to values.
      * 
      * @return
      */
-    public Map<String, String> getParameterValues();
+    Map<String, String> getParameterValues();
 
     /**
      * If set, only assignments associated with the given customers will be sent the
@@ -46,7 +46,7 @@ public interface IInvocationByAssignmentCriteriaRequest extends IPersistentEntit
      * 
      * @return
      */
-    public List<String> getCustomerTokens();
+    List<String> getCustomerTokens();
 
     /**
      * If set, only assignments associated with the given areas will be sent the
@@ -54,7 +54,7 @@ public interface IInvocationByAssignmentCriteriaRequest extends IPersistentEntit
      * 
      * @return
      */
-    public List<String> getAreaTokens();
+    List<String> getAreaTokens();
 
     /**
      * If set, only assignments associated with the given assets will be sent the
@@ -62,5 +62,5 @@ public interface IInvocationByAssignmentCriteriaRequest extends IPersistentEntit
      * 
      * @return
      */
-    public List<String> getAssetTokens();
+    List<String> getAssetTokens();
 }

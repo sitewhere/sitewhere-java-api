@@ -19,12 +19,12 @@ public interface IRegistrationFailureCommand extends ISystemCommand, Serializabl
      * 
      * @return
      */
-    public RegistrationFailureReason getReason();
+    RegistrationFailureReason getReason();
 
     /**
      * Get error message.
      * 
      * @return
      */
-    public String getErrorMessage();
+    String getErrorMessage();
 }

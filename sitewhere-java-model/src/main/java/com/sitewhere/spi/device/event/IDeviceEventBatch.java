@@ -23,26 +23,26 @@ public interface IDeviceEventBatch {
      * 
      * @return
      */
-    public String getDeviceToken();
+    String getDeviceToken();
 
     /**
      * Get a list of device measurements create requests.
      * 
      * @return
      */
-    public List<IDeviceMeasurementCreateRequest> getMeasurements();
+    List<IDeviceMeasurementCreateRequest> getMeasurements();
 
     /**
      * Get a list of device location create requests.
      * 
      * @return
      */
-    public List<IDeviceLocationCreateRequest> getLocations();
+    List<IDeviceLocationCreateRequest> getLocations();
 
     /**
      * Get a list of device alert create requests.
      * 
      * @return
      */
-    public List<IDeviceAlertCreateRequest> getAlerts();
+    List<IDeviceAlertCreateRequest> getAlerts();
 }

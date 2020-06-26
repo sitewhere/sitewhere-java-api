@@ -19,19 +19,19 @@ public interface IAreaSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public Boolean getRootOnly();
+    Boolean getRootOnly();
 
     /**
      * Only match areas of the given type.
      * 
      * @return
      */
-    public String getAreaTypeToken();
+    String getAreaTypeToken();
 
     /**
      * Requires that areas have the given area as a parent.
      * 
      * @return
      */
-    public String getParentAreaToken();
+    String getParentAreaToken();
 }

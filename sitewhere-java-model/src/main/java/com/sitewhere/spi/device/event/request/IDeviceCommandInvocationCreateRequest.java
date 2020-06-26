@@ -22,40 +22,40 @@ public interface IDeviceCommandInvocationCreateRequest extends IDeviceEventCreat
      * 
      * @return
      */
-    public CommandInitiator getInitiator();
+    CommandInitiator getInitiator();
 
     /**
      * Get unique id of command inititator.
      * 
      * @return
      */
-    public String getInitiatorId();
+    String getInitiatorId();
 
     /**
      * Get command target type.
      * 
      * @return
      */
-    public CommandTarget getTarget();
+    CommandTarget getTarget();
 
     /**
      * Get unique id of command target.
      * 
      * @return
      */
-    public String getTargetId();
+    String getTargetId();
 
     /**
      * Get unique token for command to invoke.
      * 
      * @return
      */
-    public String getCommandToken();
+    String getCommandToken();
 
     /**
      * Get the list of parameter names mapped to values.
      * 
      * @return
      */
-    public Map<String, String> getParameterValues();
+    Map<String, String> getParameterValues();
 }

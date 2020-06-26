@@ -21,12 +21,12 @@ public interface IDeviceElementMapping extends Serializable {
      * 
      * @return
      */
-    public String getDeviceElementSchemaPath();
+    String getDeviceElementSchemaPath();
 
     /**
      * Get token of {@link IDevice} being mapped.
      * 
      * @return
      */
-    public String getDeviceToken();
+    String getDeviceToken();
 }

@@ -22,5 +22,5 @@ public interface IArea extends IBrandedTreeEntity, IBoundedEntity {
      * 
      * @return
      */
-    public UUID getAreaTypeId();
+    UUID getAreaTypeId();
 }

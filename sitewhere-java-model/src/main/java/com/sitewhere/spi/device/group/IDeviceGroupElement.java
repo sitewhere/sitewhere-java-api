@@ -22,7 +22,7 @@ public interface IDeviceGroupElement extends IPersistentEntity {
      * 
      * @return
      */
-    public UUID getGroupId();
+    UUID getGroupId();
 
     /**
      * Get id of device (only one of device id or nested group id should be
@@ -30,7 +30,7 @@ public interface IDeviceGroupElement extends IPersistentEntity {
      * 
      * @return
      */
-    public UUID getDeviceId();
+    UUID getDeviceId();
 
     /**
      * Get id of nested group (only one of device id or nested group id should be
@@ -38,12 +38,12 @@ public interface IDeviceGroupElement extends IPersistentEntity {
      * 
      * @return
      */
-    public UUID getNestedGroupId();
+    UUID getNestedGroupId();
 
     /**
      * Get list of roles associated with element.
      * 
      * @return
      */
-    public List<String> getRoles();
+    List<String> getRoles();
 }

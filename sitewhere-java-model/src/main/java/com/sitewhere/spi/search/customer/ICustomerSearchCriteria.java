@@ -19,19 +19,19 @@ public interface ICustomerSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public Boolean getRootOnly();
+    Boolean getRootOnly();
 
     /**
      * Requires that customers have the given customer as a parent.
      * 
      * @return
      */
-    public String getParentCustomerToken();
+    String getParentCustomerToken();
 
     /**
      * Require that customers have the given customer type.
      * 
      * @return
      */
-    public String getCustomerTypeToken();
+    String getCustomerTypeToken();
 }

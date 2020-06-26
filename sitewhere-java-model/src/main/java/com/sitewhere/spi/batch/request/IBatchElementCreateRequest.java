@@ -22,26 +22,26 @@ public interface IBatchElementCreateRequest {
      * 
      * @return
      */
-    public String getDeviceToken();
+    String getDeviceToken();
 
     /**
      * Get processing status indicator.
      * 
      * @return
      */
-    public ElementProcessingStatus getProcessingStatus();
+    ElementProcessingStatus getProcessingStatus();
 
     /**
      * Get date element was processed.
      * 
      * @return
      */
-    public Date getProcessedDate();
+    Date getProcessedDate();
 
     /**
      * Get metadata values.
      * 
      * @return
      */
-    public Map<String, String> getMetadata();
+    Map<String, String> getMetadata();
 }

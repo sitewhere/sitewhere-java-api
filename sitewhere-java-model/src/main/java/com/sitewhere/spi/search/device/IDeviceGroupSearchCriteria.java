@@ -19,5 +19,5 @@ public interface IDeviceGroupSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public String getRole();
+    String getRole();
 }

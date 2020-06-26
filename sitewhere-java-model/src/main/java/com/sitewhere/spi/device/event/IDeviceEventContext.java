@@ -24,47 +24,47 @@ public interface IDeviceEventContext {
      * 
      * @return
      */
-    public UUID getDeviceId();
+    UUID getDeviceId();
 
     /**
      * Get id for device type.
      * 
      * @return
      */
-    public UUID getDeviceTypeId();
+    UUID getDeviceTypeId();
 
     /**
      * If contained by a parent device, returns the parent id.
      * 
      * @return
      */
-    public UUID getParentDeviceId();
+    UUID getParentDeviceId();
 
     /**
      * Get most recent device status.
      * 
      * @return
      */
-    public String getDeviceStatus();
+    String getDeviceStatus();
 
     /**
      * Get a map of device metadata.
      * 
      * @return
      */
-    public Map<String, String> getDeviceMetadata();
+    Map<String, String> getDeviceMetadata();
 
     /**
      * Get the device assignment status.
      * 
      * @return
      */
-    public DeviceAssignmentStatus getAssignmentStatus();
+    DeviceAssignmentStatus getAssignmentStatus();
 
     /**
      * Get a map of device assignment metadata.
      * 
      * @return
      */
-    public Map<String, String> getAssignmentMetadata();
+    Map<String, String> getAssignmentMetadata();
 }

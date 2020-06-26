@@ -19,40 +19,40 @@ public interface IVersion extends Serializable {
      * 
      * @return
      */
-    public String getEdition();
+    String getEdition();
 
     /**
      * Get the short identifier for edition.
      * 
      * @return
      */
-    public String getEditionIdentifier();
+    String getEditionIdentifier();
 
     /**
      * Gets the Maven version identifier.
      * 
      * @return
      */
-    public String getVersionIdentifier();
+    String getVersionIdentifier();
 
     /**
      * Gets the build timestamp.
      * 
      * @return
      */
-    public String getBuildTimestamp();
+    String getBuildTimestamp();
 
     /**
      * Gets the Git revision id.
      * 
      * @return
      */
-    public String getGitRevision();
+    String getGitRevision();
 
     /**
      * Gets the abbreviated version of the Git revision.
      * 
      * @return
      */
-    public String getGitRevisionAbbrev();
+    String getGitRevisionAbbrev();
 }

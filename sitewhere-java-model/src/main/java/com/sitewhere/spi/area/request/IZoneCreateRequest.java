@@ -22,47 +22,47 @@ public interface IZoneCreateRequest extends IPersistentEntityCreateRequest {
      * 
      * @return
      */
-    public String getAreaToken();
+    String getAreaToken();
 
     /**
      * Get zone name.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get zone boundary locations.
      * 
      * @return
      */
-    public List<? extends ILocation> getBounds();
+    List<? extends ILocation> getBounds();
 
     /**
      * Get border color for UI.
      * 
      * @return
      */
-    public String getBorderColor();
+    String getBorderColor();
 
     /**
      * Get opacity for border.
      * 
      * @return
      */
-    public Double getBorderOpacity();
+    Double getBorderOpacity();
 
     /**
      * Get fill color for UI.
      * 
      * @return
      */
-    public String getFillColor();
+    String getFillColor();
 
     /**
      * Get opacity for fill.
      * 
      * @return
      */
-    public Double getFillOpacity();
+    Double getFillOpacity();
 }

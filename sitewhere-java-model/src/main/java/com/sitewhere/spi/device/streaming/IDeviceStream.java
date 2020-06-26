@@ -21,19 +21,19 @@ public interface IDeviceStream extends IPersistentEntity {
      * 
      * @return
      */
-    public UUID getAssignmentId();
+    UUID getAssignmentId();
 
     /**
      * Get unique identifier for stream within assignment.
      * 
      * @return
      */
-    public String getStreamId();
+    String getStreamId();
 
     /**
      * Get content type of stream data.
      * 
      * @return
      */
-    public String getContentType();
+    String getContentType();
 }

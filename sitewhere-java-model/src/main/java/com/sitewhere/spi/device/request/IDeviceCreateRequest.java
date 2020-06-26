@@ -22,40 +22,40 @@ public interface IDeviceCreateRequest extends IPersistentEntityCreateRequest {
      * 
      * @return
      */
-    public String getDeviceTypeToken();
+    String getDeviceTypeToken();
 
     /**
      * Get parent device token (if nested).
      * 
      * @return
      */
-    public String getParentDeviceToken();
+    String getParentDeviceToken();
 
     /**
      * Indicates whether parent reference should be removed.
      * 
      * @return
      */
-    public Boolean isRemoveParentHardwareId();
+    Boolean isRemoveParentHardwareId();
 
     /**
      * Get the list of device element mappings.
      * 
      * @return
      */
-    public List<? extends IDeviceElementMapping> getDeviceElementMappings();
+    List<? extends IDeviceElementMapping> getDeviceElementMappings();
 
     /**
      * Get comments associated with device.
      * 
      * @return
      */
-    public String getComments();
+    String getComments();
 
     /**
      * Get device status indicator code.
      * 
      * @return
      */
-    public String getStatus();
+    String getStatus();
 }

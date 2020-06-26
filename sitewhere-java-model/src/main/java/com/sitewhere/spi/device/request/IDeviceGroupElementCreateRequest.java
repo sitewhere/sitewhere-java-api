@@ -21,19 +21,19 @@ public interface IDeviceGroupElementCreateRequest extends IPersistentEntityCreat
      * 
      * @return
      */
-    public String getDeviceToken();
+    String getDeviceToken();
 
     /**
      * Get nested group token (null if device supplied).
      * 
      * @return
      */
-    public String getNestedGroupToken();
+    String getNestedGroupToken();
 
     /**
      * Get list of roles associated with element.
      * 
      * @return
      */
-    public List<String> getRoles();
+    List<String> getRoles();
 }
