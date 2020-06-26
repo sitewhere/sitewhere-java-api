@@ -20,5 +20,5 @@ public interface IBatchElementSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public ElementProcessingStatus getProcessingStatus();
+    ElementProcessingStatus getProcessingStatus();
 }

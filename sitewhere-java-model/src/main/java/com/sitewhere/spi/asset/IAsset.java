@@ -21,12 +21,12 @@ public interface IAsset extends IBrandedEntity {
      * 
      * @return
      */
-    public UUID getAssetTypeId();
+    UUID getAssetTypeId();
 
     /**
      * Get asset name.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 }

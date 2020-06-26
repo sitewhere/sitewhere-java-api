@@ -22,33 +22,33 @@ public interface IBatchOperation extends IPersistentEntity {
      * 
      * @return
      */
-    public String getOperationType();
+    String getOperationType();
 
     /**
      * Operation parameters.
      * 
      * @return
      */
-    public Map<String, String> getParameters();
+    Map<String, String> getParameters();
 
     /**
      * Get processing status for the batch operation.
      * 
      * @return
      */
-    public BatchOperationStatus getProcessingStatus();
+    BatchOperationStatus getProcessingStatus();
 
     /**
      * Get the date when processing of the operation started.
      * 
      * @return
      */
-    public Date getProcessingStartedDate();
+    Date getProcessingStartedDate();
 
     /**
      * Get the date when processing of the operation ended.
      * 
      * @return
      */
-    public Date getProcessingEndedDate();
+    Date getProcessingEndedDate();
 }

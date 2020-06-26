@@ -19,12 +19,12 @@ public interface IDeviceRegistrationRequest extends IDeviceCreateRequest {
      * 
      * @return
      */
-    public String getCustomerToken();
+    String getCustomerToken();
 
     /**
      * Get token for area to which device should be assigned.
      * 
      * @return
      */
-    public String getAreaToken();
+    String getAreaToken();
 }

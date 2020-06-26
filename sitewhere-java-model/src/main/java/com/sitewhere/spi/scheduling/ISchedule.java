@@ -22,33 +22,33 @@ public interface ISchedule extends IPersistentEntity {
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get type of trigger for schedule.
      * 
      * @return
      */
-    public TriggerType getTriggerType();
+    TriggerType getTriggerType();
 
     /**
      * Get trigger configuration values.
      * 
      * @return
      */
-    public Map<String, String> getTriggerConfiguration();
+    Map<String, String> getTriggerConfiguration();
 
     /**
      * Get date schedule takes effect.
      * 
      * @return
      */
-    public Date getStartDate();
+    Date getStartDate();
 
     /**
      * Get date schedule is no longer in effect.
      * 
      * @return
      */
-    public Date getEndDate();
+    Date getEndDate();
 }

@@ -22,12 +22,12 @@ public interface IDeviceTypeCreateRequest extends IAccessible, IBrandedEntityCre
      * 
      * @return
      */
-    public DeviceContainerPolicy getContainerPolicy();
+    DeviceContainerPolicy getContainerPolicy();
 
     /**
      * Get {@link IDeviceElementSchema} for locating nested devices.
      * 
      * @return
      */
-    public String getDeviceElementSchemaToken();
+    String getDeviceElementSchemaToken();
 }

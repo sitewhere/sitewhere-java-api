@@ -17,13 +17,12 @@ public interface IDeviceResponseFormat {
      * 
      * @return
      */
-    public Boolean getIncludeDeviceType();
+    Boolean getIncludeDeviceType();
 
     /**
      * Indicates if assignment information is included.
      * 
      * @return
      */
-    public Boolean getIncludeAssignment();
-
+    Boolean getIncludeAssignment();
 }

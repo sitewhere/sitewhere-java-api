@@ -25,54 +25,54 @@ public interface IDeviceAlarmCreateRequest extends Serializable {
      * 
      * @return
      */
-    public String getDeviceAssignmentToken();
+    String getDeviceAssignmentToken();
 
     /**
      * Get alarm message.
      * 
      * @return
      */
-    public String getAlarmMessage();
+    String getAlarmMessage();
 
     /**
      * Get event id that triggered alarm.
      * 
      * @return
      */
-    public UUID getTriggeringEventId();
+    UUID getTriggeringEventId();
 
     /**
      * Get alarm state.
      * 
      * @return
      */
-    public DeviceAlarmState getState();
+    DeviceAlarmState getState();
 
     /**
      * Get date the alarm was triggered.
      * 
      * @return
      */
-    public Date getTriggeredDate();
+    Date getTriggeredDate();
 
     /**
      * Get date the alarm was acknowledged.
      * 
      * @return
      */
-    public Date getAcknowledgedDate();
+    Date getAcknowledgedDate();
 
     /**
      * Get date the alarm was resolved.
      * 
      * @return
      */
-    public Date getResolvedDate();
+    Date getResolvedDate();
 
     /**
      * Get metadata values.
      * 
      * @return
      */
-    public Map<String, String> getMetadata();
+    Map<String, String> getMetadata();
 }

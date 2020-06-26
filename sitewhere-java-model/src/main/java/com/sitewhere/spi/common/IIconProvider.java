@@ -17,5 +17,5 @@ public interface IIconProvider {
      * 
      * @return
      */
-    public String getIcon();
+    String getIcon();
 }

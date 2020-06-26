@@ -23,33 +23,33 @@ public interface IBatchElement extends IMetadataProvider, Serializable {
      * 
      * @return
      */
-    public UUID getId();
+    UUID getId();
 
     /**
      * Get id for parent batch operation.
      * 
      * @return
      */
-    public UUID getBatchOperationId();
+    UUID getBatchOperationId();
 
     /**
      * Get id for associated device.
      * 
      * @return
      */
-    public UUID getDeviceId();
+    UUID getDeviceId();
 
     /**
      * Get processing status indicator.
      * 
      * @return
      */
-    public ElementProcessingStatus getProcessingStatus();
+    ElementProcessingStatus getProcessingStatus();
 
     /**
      * Get the date on which the element was processed.
      * 
      * @return
      */
-    public Date getProcessedDate();
+    Date getProcessedDate();
 }

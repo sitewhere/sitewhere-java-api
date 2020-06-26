@@ -26,40 +26,40 @@ public interface ITenantCreateRequest
      * 
      * @return
      */
-    public String getToken();
+    String getToken();
 
     /**
      * Get tenant name.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get token that devices pass to identify tenant.
      * 
      * @return
      */
-    public String getAuthenticationToken();
+    String getAuthenticationToken();
 
     /**
      * Get list of users authorized to access the tenant.
      * 
      * @return
      */
-    public List<String> getAuthorizedUserIds();
+    List<String> getAuthorizedUserIds();
 
     /**
      * Get id of configuration template used for tenant.
      * 
      * @return
      */
-    public String getConfigurationTemplateId();
+    String getConfigurationTemplateId();
 
     /**
      * Get id of dataset template used to populate tenant.
      * 
      * @return
      */
-    public String getDatasetTemplateId();
+    String getDatasetTemplateId();
 }

@@ -24,21 +24,21 @@ public interface IDeviceEventCreateRequest extends Serializable {
      * 
      * @return
      */
-    public String getAlternateId();
+    String getAlternateId();
 
     /**
      * Get event type indicator.
      * 
      * @return
      */
-    public DeviceEventType getEventType();
+    DeviceEventType getEventType();
 
     /**
      * Get the date on which the event occurred.
      * 
      * @return
      */
-    public Date getEventDate();
+    Date getEventDate();
 
     /**
      * Indicates whether state information on the device assignment should be
@@ -46,12 +46,12 @@ public interface IDeviceEventCreateRequest extends Serializable {
      * 
      * @return
      */
-    public boolean isUpdateState();
+    boolean isUpdateState();
 
     /**
      * Get metadata values.
      * 
      * @return
      */
-    public Map<String, String> getMetadata();
+    Map<String, String> getMetadata();
 }

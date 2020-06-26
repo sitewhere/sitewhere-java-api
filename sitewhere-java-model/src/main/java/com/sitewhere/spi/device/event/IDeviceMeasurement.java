@@ -19,12 +19,12 @@ public interface IDeviceMeasurement extends IDeviceEvent, Serializable {
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get measurement value.
      * 
      * @return
      */
-    public Double getValue();
+    Double getValue();
 }

@@ -22,5 +22,5 @@ public interface IDeviceGroup extends IBrandedEntity, IAccessible {
      * 
      * @return
      */
-    public List<String> getRoles();
+    List<String> getRoles();
 }

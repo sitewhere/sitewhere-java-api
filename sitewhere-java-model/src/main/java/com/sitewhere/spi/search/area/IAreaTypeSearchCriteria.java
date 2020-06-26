@@ -19,5 +19,5 @@ public interface IAreaTypeSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public Boolean getIncludeContainedAreaTypes();
+    Boolean getIncludeContainedAreaTypes();
 }

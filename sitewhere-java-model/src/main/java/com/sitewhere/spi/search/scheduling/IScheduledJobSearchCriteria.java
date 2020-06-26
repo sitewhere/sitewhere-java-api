@@ -13,5 +13,4 @@ import com.sitewhere.spi.search.ISearchCriteria;
  * Search criteria for Scheduled Job.
  */
 public interface IScheduledJobSearchCriteria extends ISearchCriteria {
-
 }

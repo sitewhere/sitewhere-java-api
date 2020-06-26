@@ -23,7 +23,7 @@ public interface IDeviceEvent extends IMetadataProvider, Serializable {
      * 
      * @return
      */
-    public UUID getId();
+    UUID getId();
 
     /**
      * Get alternate id that can be used for correlating events with external
@@ -31,61 +31,61 @@ public interface IDeviceEvent extends IMetadataProvider, Serializable {
      * 
      * @return
      */
-    public String getAlternateId();
+    String getAlternateId();
 
     /**
      * Get event type indicator.
      * 
      * @return
      */
-    public DeviceEventType getEventType();
+    DeviceEventType getEventType();
 
     /**
      * Get device id.
      * 
      * @return
      */
-    public UUID getDeviceId();
+    UUID getDeviceId();
 
     /**
      * Get assignment id.
      * 
      * @return
      */
-    public UUID getDeviceAssignmentId();
+    UUID getDeviceAssignmentId();
 
     /**
      * Get customer id if assigned.
      * 
      * @return
      */
-    public UUID getCustomerId();
+    UUID getCustomerId();
 
     /**
      * Get area id if assigned.
      * 
      * @return
      */
-    public UUID getAreaId();
+    UUID getAreaId();
 
     /**
      * Get asset id if assigned.
      * 
      * @return
      */
-    public UUID getAssetId();
+    UUID getAssetId();
 
     /**
      * Get the date the event occurred.
      * 
      * @return
      */
-    public Date getEventDate();
+    Date getEventDate();
 
     /**
      * Get the date this event was received.
      * 
      * @return
      */
-    public Date getReceivedDate();
+    Date getReceivedDate();
 }

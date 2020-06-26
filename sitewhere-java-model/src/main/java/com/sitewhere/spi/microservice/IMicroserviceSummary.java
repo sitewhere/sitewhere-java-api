@@ -17,68 +17,68 @@ public interface IMicroserviceSummary {
      * 
      * @return
      */
-    public String getId();
+    String getId();
 
     /**
      * Get display name.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get description.
      * 
      * @return
      */
-    public String getDescription();
+    String getDescription();
 
     /**
      * Functional area for microservice.
      * 
      * @return
      */
-    public String getFunctionalArea();
+    String getFunctionalArea();
 
     /**
      * Get icon displayed in UI.
      * 
      * @return
      */
-    public String getIcon();
+    String getIcon();
 
     /**
      * Flag for whether microservice is multitenant.
      * 
      * @return
      */
-    public boolean isMultitenant();
+    boolean isMultitenant();
 
     /**
      * Get tag for Docker image used by microservice.
      * 
      * @return
      */
-    public String getDockerImageTag();
+    String getDockerImageTag();
 
     /**
      * Flag for whether debug is enabled.
      * 
      * @return
      */
-    public boolean isDebugEnabled();
+    boolean isDebugEnabled();
 
     /**
      * Port for Jdwp debugging.
      * 
      * @return
      */
-    public int getDebugJdwpPort();
+    int getDebugJdwpPort();
 
     /**
      * Port for JMX debugging.
      * 
      * @return
      */
-    public int getDebugJmxPort();
+    int getDebugJmxPort();
 }

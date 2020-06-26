@@ -20,26 +20,26 @@ public interface IDeviceAlertCreateRequest extends IDeviceEventCreateRequest {
      * 
      * @return
      */
-    public AlertSource getSource();
+    AlertSource getSource();
 
     /**
      * Get alert severity.
      * 
      * @return
      */
-    public AlertLevel getLevel();
+    AlertLevel getLevel();
 
     /**
      * Get the alert type indicator.
      * 
      * @return
      */
-    public String getType();
+    String getType();
 
     /**
      * Get the alert message.
      * 
      * @return
      */
-    public String getMessage();
+    String getMessage();
 }

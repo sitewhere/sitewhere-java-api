@@ -19,19 +19,19 @@ public interface IDeviceCommandResponse extends IDeviceEvent {
      * 
      * @return
      */
-    public UUID getOriginatingEventId();
+    UUID getOriginatingEventId();
 
     /**
      * Get id of event sent as a response.
      * 
      * @return
      */
-    public UUID getResponseEventId();
+    UUID getResponseEventId();
 
     /**
      * Get response payload.
      * 
      * @return
      */
-    public String getResponse();
+    String getResponse();
 }

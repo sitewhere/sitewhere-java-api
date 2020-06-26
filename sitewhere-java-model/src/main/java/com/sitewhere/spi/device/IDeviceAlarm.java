@@ -22,82 +22,82 @@ public interface IDeviceAlarm extends IMetadataProvider {
      * 
      * @return
      */
-    public UUID getId();
+    UUID getId();
 
     /**
      * Get device id.
      * 
      * @return
      */
-    public UUID getDeviceId();
+    UUID getDeviceId();
 
     /**
      * Get assignment id.
      * 
      * @return
      */
-    public UUID getDeviceAssignmentId();
+    UUID getDeviceAssignmentId();
 
     /**
      * Get customer id if assigned.
      * 
      * @return
      */
-    public UUID getCustomerId();
+    UUID getCustomerId();
 
     /**
      * Get area id if assigned.
      * 
      * @return
      */
-    public UUID getAreaId();
+    UUID getAreaId();
 
     /**
      * Get asset id if assigned.
      * 
      * @return
      */
-    public UUID getAssetId();
+    UUID getAssetId();
 
     /**
      * Get alarm message.
      * 
      * @return
      */
-    public String getAlarmMessage();
+    String getAlarmMessage();
 
     /**
      * Get event id that triggered alarm.
      * 
      * @return
      */
-    public UUID getTriggeringEventId();
+    UUID getTriggeringEventId();
 
     /**
      * Get alarm state.
      * 
      * @return
      */
-    public DeviceAlarmState getState();
+    DeviceAlarmState getState();
 
     /**
      * Get date the alarm was triggered.
      * 
      * @return
      */
-    public Date getTriggeredDate();
+    Date getTriggeredDate();
 
     /**
      * Get date the alarm was acknowledged.
      * 
      * @return
      */
-    public Date getAcknowledgedDate();
+    Date getAcknowledgedDate();
 
     /**
      * Get date the alarm was resolved.
      * 
      * @return
      */
-    public Date getResolvedDate();
+    Date getResolvedDate();
 }

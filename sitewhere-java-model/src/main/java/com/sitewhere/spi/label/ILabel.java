@@ -17,5 +17,5 @@ public interface ILabel {
      * 
      * @return
      */
-    public byte[] getContent();
+    byte[] getContent();
 }

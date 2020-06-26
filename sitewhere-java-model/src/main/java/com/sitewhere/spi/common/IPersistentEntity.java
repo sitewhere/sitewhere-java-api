@@ -21,40 +21,40 @@ public interface IPersistentEntity extends IMetadataProvider, Serializable {
      * 
      * @return
      */
-    public UUID getId();
+    UUID getId();
 
     /**
      * Get reference token.
      * 
      * @return
      */
-    public String getToken();
+    String getToken();
 
     /**
      * Get date when entity was created.
      * 
      * @return
      */
-    public Date getCreatedDate();
+    Date getCreatedDate();
 
     /**
      * Get username that created entity.
      * 
      * @return
      */
-    public String getCreatedBy();
+    String getCreatedBy();
 
     /**
      * Get date when entity was last updated.
      * 
      * @return
      */
-    public Date getUpdatedDate();
+    Date getUpdatedDate();
 
     /**
      * Get username that last updated entity.
      * 
      * @return
      */
-    public String getUpdatedBy();
+    String getUpdatedBy();
 }

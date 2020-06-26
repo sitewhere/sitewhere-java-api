@@ -17,12 +17,12 @@ public interface IAccessible {
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get the group description.
      * 
      * @return
      */
-    public String getDescription();
+    String getDescription();
 }

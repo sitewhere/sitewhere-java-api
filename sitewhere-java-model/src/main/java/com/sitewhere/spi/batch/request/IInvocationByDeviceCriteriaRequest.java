@@ -23,19 +23,19 @@ public interface IInvocationByDeviceCriteriaRequest extends IPersistentEntityCre
      * 
      * @return
      */
-    public String getDeviceTypeToken();
+    String getDeviceTypeToken();
 
     /**
      * Get token for command to be executed.
      * 
      * @return
      */
-    public String getCommandToken();
+    String getCommandToken();
 
     /**
      * Get the list of parameter names mapped to values.
      * 
      * @return
      */
-    public Map<String, String> getParameterValues();
+    Map<String, String> getParameterValues();
 }

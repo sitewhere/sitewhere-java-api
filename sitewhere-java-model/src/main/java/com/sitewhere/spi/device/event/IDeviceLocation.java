@@ -17,19 +17,19 @@ public interface IDeviceLocation extends IDeviceEvent {
      * 
      * @return
      */
-    public Double getLatitude();
+    Double getLatitude();
 
     /**
      * Get longitude value.
      * 
      * @return
      */
-    public Double getLongitude();
+    Double getLongitude();
 
     /**
      * Get elevation value.
      * 
      * @return
      */
-    public Double getElevation();
+    Double getElevation();
 }

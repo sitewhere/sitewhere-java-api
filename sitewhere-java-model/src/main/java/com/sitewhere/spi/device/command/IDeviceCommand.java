@@ -23,19 +23,19 @@ public interface IDeviceCommand extends IPersistentEntity, IAccessible {
      * 
      * @return
      */
-    public UUID getDeviceTypeId();
+    UUID getDeviceTypeId();
 
     /**
      * Optional namespace for distinguishing commands.
      * 
      * @return
      */
-    public String getNamespace();
+    String getNamespace();
 
     /**
      * Get list of parameters.
      * 
      * @return
      */
-    public List<? extends ICommandParameter> getParameters();
+    List<? extends ICommandParameter> getParameters();
 }

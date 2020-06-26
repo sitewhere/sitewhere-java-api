@@ -19,12 +19,12 @@ public interface IAssetCreateRequest extends IBrandedEntityCreateRequest {
      * 
      * @return
      */
-    public String getAssetTypeToken();
+    String getAssetTypeToken();
 
     /**
      * Get asset name.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 }

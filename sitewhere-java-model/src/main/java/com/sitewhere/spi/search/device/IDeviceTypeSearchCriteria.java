@@ -13,5 +13,4 @@ import com.sitewhere.spi.search.ISearchCriteria;
  * Criteria used for filtering device types.
  */
 public interface IDeviceTypeSearchCriteria extends ISearchCriteria {
-
 }

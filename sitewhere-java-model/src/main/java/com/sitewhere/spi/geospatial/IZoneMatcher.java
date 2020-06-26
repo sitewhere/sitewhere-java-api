@@ -21,14 +21,14 @@ public interface IZoneMatcher {
      * 
      * @return
      */
-    public IDeviceLocation getLocation();
+    IDeviceLocation getLocation();
 
     /**
      * Get the map of all relationships.
      * 
      * @return
      */
-    public Map<String, IZoneRelationship> getRelationships();
+    Map<String, IZoneRelationship> getRelationships();
 
     /**
      * Get relationship with the given zone.
@@ -36,5 +36,5 @@ public interface IZoneMatcher {
      * @param zoneId
      * @return
      */
-    public IZoneRelationship getRelationship(String zoneId);
+    IZoneRelationship getRelationship(String zoneId);
 }

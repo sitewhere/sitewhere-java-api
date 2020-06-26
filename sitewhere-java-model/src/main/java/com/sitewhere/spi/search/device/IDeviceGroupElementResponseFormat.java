@@ -17,6 +17,5 @@ public interface IDeviceGroupElementResponseFormat {
      * 
      * @return
      */
-    public Boolean getIncludeDetails();
-
+    Boolean getIncludeDetails();
 }

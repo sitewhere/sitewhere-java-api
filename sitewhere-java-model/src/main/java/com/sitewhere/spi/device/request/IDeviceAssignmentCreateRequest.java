@@ -20,33 +20,33 @@ public interface IDeviceAssignmentCreateRequest extends IPersistentEntityCreateR
      * 
      * @return
      */
-    public String getDeviceToken();
+    String getDeviceToken();
 
     /**
      * Get token of customer if assigned.
      * 
      * @return
      */
-    public String getCustomerToken();
+    String getCustomerToken();
 
     /**
      * Get token of area if assigned.
      * 
      * @return
      */
-    public String getAreaToken();
+    String getAreaToken();
 
     /**
      * Get token of asset if assigned.
      * 
      * @return
      */
-    public String getAssetToken();
+    String getAssetToken();
 
     /**
      * Get the device assignment status.
      * 
      * @return
      */
-    public DeviceAssignmentStatus getStatus();
+    DeviceAssignmentStatus getStatus();
 }

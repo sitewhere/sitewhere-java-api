@@ -22,26 +22,26 @@ public interface IDeviceRegistrationPayload extends Serializable {
      * 
      * @return
      */
-    public String getSourceId();
+    String getSourceId();
 
     /**
      * Get device token.
      * 
      * @return
      */
-    public String getDeviceToken();
+    String getDeviceToken();
 
     /**
      * Get id of originating event.
      * 
      * @return
      */
-    public String getOriginator();
+    String getOriginator();
 
     /**
      * Get device registration request.
      * 
      * @return
      */
-    public IDeviceRegistrationRequest getDeviceRegistrationRequest();
+    IDeviceRegistrationRequest getDeviceRegistrationRequest();
 }

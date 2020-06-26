@@ -19,14 +19,14 @@ public interface ITenantSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public String getTextSearch();
+    String getTextSearch();
 
     /**
      * Search for tenants for which the given user is authorized.
      * 
      * @return
      */
-    public String getUserId();
+    String getUserId();
 
     /**
      * Indicates whether runtime information should be included for the
@@ -34,5 +34,5 @@ public interface ITenantSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public boolean isIncludeRuntimeInfo();
+    boolean isIncludeRuntimeInfo();
 }

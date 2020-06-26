@@ -22,5 +22,5 @@ public interface IDeviceMeasurementClassifier extends IPersistentEntity, IAccess
      * 
      * @return
      */
-    public String getUnit();
+    String getUnit();
 }

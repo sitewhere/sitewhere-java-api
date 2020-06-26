@@ -17,19 +17,19 @@ public interface IDeviceLocationCreateRequest extends IDeviceEventCreateRequest 
      * 
      * @return
      */
-    public Double getLatitude();
+    Double getLatitude();
 
     /**
      * Get longitude.
      * 
      * @return
      */
-    public Double getLongitude();
+    Double getLongitude();
 
     /**
      * Get elevation.s
      * 
      * @return
      */
-    public Double getElevation();
+    Double getElevation();
 }

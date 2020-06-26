@@ -20,12 +20,12 @@ public interface IPreprocessedEventPayload extends IDecodedEventPayload {
      * 
      * @return
      */
-    public UUID getDeviceId();
+    UUID getDeviceId();
 
     /**
      * Get unique device assignment id.
      * 
      * @return
      */
-    public UUID getDeviceAssignmentId();
+    UUID getDeviceAssignmentId();
 }

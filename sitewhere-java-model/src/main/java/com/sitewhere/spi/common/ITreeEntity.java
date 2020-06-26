@@ -19,5 +19,5 @@ public interface ITreeEntity extends IAccessible {
      * 
      * @return
      */
-    public UUID getParentId();
+    UUID getParentId();
 }

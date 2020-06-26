@@ -19,5 +19,5 @@ public interface IDeviceCommandSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public String getDeviceTypeToken();
+    String getDeviceTypeToken();
 }

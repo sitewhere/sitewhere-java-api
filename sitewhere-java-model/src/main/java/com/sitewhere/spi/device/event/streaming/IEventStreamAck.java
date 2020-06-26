@@ -17,5 +17,5 @@ public interface IEventStreamAck {
      * 
      * @return
      */
-    public long getProcessedEventCount();
+    long getProcessedEventCount();
 }

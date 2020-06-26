@@ -18,5 +18,5 @@ public interface IFilter<T> {
      * @param item
      * @return
      */
-    public boolean isExcluded(T item);
+    boolean isExcluded(T item);
 }

@@ -19,5 +19,5 @@ public interface IDeviceAssignmentBulkRequest {
      * 
      * @return
      */
-    public List<String> getDeviceAssignmentTokens();
+    List<String> getDeviceAssignmentTokens();
 }

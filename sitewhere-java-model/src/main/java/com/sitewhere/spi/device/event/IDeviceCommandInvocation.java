@@ -20,40 +20,40 @@ public interface IDeviceCommandInvocation extends IDeviceEvent {
      * 
      * @return
      */
-    public CommandInitiator getInitiator();
+    CommandInitiator getInitiator();
 
     /**
      * Get unique id of command initiated.
      * 
      * @return
      */
-    public String getInitiatorId();
+    String getInitiatorId();
 
     /**
      * Get actor type that received command.
      * 
      * @return
      */
-    public CommandTarget getTarget();
+    CommandTarget getTarget();
 
     /**
      * Get unique id of command target.
      * 
      * @return
      */
-    public String getTargetId();
+    String getTargetId();
 
     /**
      * Get unique id of device command being invoked.
      * 
      * @return
      */
-    public UUID getDeviceCommandId();
+    UUID getDeviceCommandId();
 
     /**
      * Get the list of parameter names mapped to values.
      * 
      * @return
      */
-    public Map<String, String> getParameterValues();
+    Map<String, String> getParameterValues();
 }

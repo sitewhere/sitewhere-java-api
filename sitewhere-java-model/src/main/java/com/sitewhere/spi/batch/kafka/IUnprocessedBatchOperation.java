@@ -22,12 +22,12 @@ public interface IUnprocessedBatchOperation {
      * 
      * @return
      */
-    public IBatchOperation getBatchOperation();
+    IBatchOperation getBatchOperation();
 
     /**
      * Get list of tokens for devices to which operation will be applied.
      * 
      * @return
      */
-    public List<String> getDeviceTokens();
+    List<String> getDeviceTokens();
 }

@@ -17,12 +17,12 @@ public interface ISearchCriteria {
      * 
      * @return
      */
-    public Integer getPageNumber();
+    Integer getPageNumber();
 
     /**
      * Get number of records per page of data.
      * 
      * @return
      */
-    public Integer getPageSize();
+    Integer getPageSize();
 }

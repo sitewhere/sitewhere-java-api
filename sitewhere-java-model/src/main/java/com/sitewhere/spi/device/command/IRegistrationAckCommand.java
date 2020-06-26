@@ -19,5 +19,5 @@ public interface IRegistrationAckCommand extends ISystemCommand, Serializable {
      * 
      * @return
      */
-    public RegistrationSuccessReason getReason();
+    RegistrationSuccessReason getReason();
 }

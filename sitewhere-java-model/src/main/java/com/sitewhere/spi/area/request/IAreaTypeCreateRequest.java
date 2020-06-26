@@ -22,5 +22,5 @@ public interface IAreaTypeCreateRequest extends IAccessible, IBrandedEntityCreat
      * 
      * @return
      */
-    public List<String> getContainedAreaTypeTokens();
+    List<String> getContainedAreaTypeTokens();
 }

@@ -22,5 +22,5 @@ public interface ICustomerTypeCreateRequest extends IAccessible, IBrandedEntityC
      * 
      * @return
      */
-    public List<String> getContainedCustomerTypeTokens();
+    List<String> getContainedCustomerTypeTokens();
 }

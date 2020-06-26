@@ -20,12 +20,12 @@ public interface IDeviceStreamAckCommand extends ISystemCommand, Serializable {
      * 
      * @return
      */
-    public UUID getStreamId();
+    UUID getStreamId();
 
     /**
      * Get status of stream creation.
      * 
      * @return
      */
-    public DeviceStreamStatus getStatus();
+    DeviceStreamStatus getStatus();
 }

@@ -19,12 +19,12 @@ public interface ICommandResponse extends Serializable {
      * 
      * @return
      */
-    public CommandResult getResult();
+    CommandResult getResult();
 
     /**
      * Get a detail message for the result.
      * 
      * @return
      */
-    public String getMessage();
+    String getMessage();
 }

@@ -20,5 +20,5 @@ public interface IDeviceEventWithAsset extends IDeviceEvent {
      * 
      * @return
      */
-    public String getAssetName();
+    String getAssetName();
 }

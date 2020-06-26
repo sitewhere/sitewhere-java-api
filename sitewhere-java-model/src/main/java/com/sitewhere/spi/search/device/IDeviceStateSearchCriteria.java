@@ -23,47 +23,47 @@ public interface IDeviceStateSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public Date getLastInteractionDateBefore();
+    Date getLastInteractionDateBefore();
 
     /**
      * List of devices to be included in results.
      * 
      * @return
      */
-    public List<String> getDeviceTokens();
+    List<String> getDeviceTokens();
 
     /**
      * List of device assignments to be included in results.
      * 
      * @return
      */
-    public List<String> getDeviceAssignmentTokens();
+    List<String> getDeviceAssignmentTokens();
 
     /**
      * List of device types to be included in results.
      * 
      * @return
      */
-    public List<String> getDeviceTypeTokens();
+    List<String> getDeviceTypeTokens();
 
     /**
      * List of customers to be included in results.
      * 
      * @return
      */
-    public List<String> getCustomerTokens();
+    List<String> getCustomerTokens();
 
     /**
      * List of areas to be included in results.
      * 
      * @return
      */
-    public List<String> getAreaTokens();
+    List<String> getAreaTokens();
 
     /**
      * List of assets to be included in results.
      * 
      * @return
      */
-    public List<String> getAssetTokens();
+    List<String> getAssetTokens();
 }

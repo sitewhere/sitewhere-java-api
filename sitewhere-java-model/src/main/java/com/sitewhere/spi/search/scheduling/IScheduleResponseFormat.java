@@ -11,5 +11,4 @@ package com.sitewhere.spi.search.scheduling;
  * Determines which content is returned for schedule responses.
  */
 public interface IScheduleResponseFormat {
-
 }

@@ -19,12 +19,12 @@ public interface IDeviceMeasurementCreateRequest extends IDeviceEventCreateReque
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get measurement value.
      * 
      * @return
      */
-    public double getValue();
+    double getValue();
 }

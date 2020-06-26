@@ -17,5 +17,5 @@ public interface IDeviceByGroupResponseFormat extends IDeviceResponseFormat {
      * 
      * @return
      */
-    public Boolean getIncludeDeleted();
+    Boolean getIncludeDeleted();
 }

@@ -20,5 +20,5 @@ public interface IDeviceStreamCreateRequest extends IPersistentEntityCreateReque
      * 
      * @return
      */
-    public String getContentType();
+    String getContentType();
 }

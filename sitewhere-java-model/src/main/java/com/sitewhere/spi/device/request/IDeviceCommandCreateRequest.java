@@ -22,33 +22,33 @@ public interface IDeviceCommandCreateRequest extends IPersistentEntityCreateRequ
      * 
      * @return
      */
-    public String getDeviceTypeToken();
+    String getDeviceTypeToken();
 
     /**
      * Optional namespace for distinguishing commands.
      * 
      * @return
      */
-    public String getNamespace();
+    String getNamespace();
 
     /**
      * Get command name.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get command description.
      * 
      * @return
      */
-    public String getDescription();
+    String getDescription();
 
     /**
      * Get list of parameters.
      * 
      * @return
      */
-    public List<ICommandParameter> getParameters();
+    List<ICommandParameter> getParameters();
 }

@@ -22,47 +22,47 @@ public interface IUser extends IPersistentEntity {
      * 
      * @return
      */
-    public String getUsername();
+    String getUsername();
 
     /**
      * Get the password.
      * 
      * @return
      */
-    public String getHashedPassword();
+    String getHashedPassword();
 
     /**
      * Get the common name.
      * 
      * @return
      */
-    public String getFirstName();
+    String getFirstName();
 
     /**
      * Get the surname.
      * 
      * @return
      */
-    public String getLastName();
+    String getLastName();
 
     /**
      * Get the last login date.
      * 
      * @return
      */
-    public Date getLastLogin();
+    Date getLastLogin();
 
     /**
      * Get the account status.
      * 
      * @return
      */
-    public AccountStatus getStatus();
+    AccountStatus getStatus();
 
     /**
      * Get the list of granted authorities.
      * 
      * @return
      */
-    public List<String> getAuthorities();
+    List<String> getAuthorities();
 }

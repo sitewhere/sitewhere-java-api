@@ -22,47 +22,47 @@ public interface IDeviceAlarmSearchCriteria extends ISearchCriteria {
      * 
      * @return
      */
-    public UUID getDeviceId();
+    UUID getDeviceId();
 
     /**
      * Get assignment id.
      * 
      * @return
      */
-    public UUID getDeviceAssignmentId();
+    UUID getDeviceAssignmentId();
 
     /**
      * Get customer id if assigned.
      * 
      * @return
      */
-    public UUID getCustomerId();
+    UUID getCustomerId();
 
     /**
      * Get area id if assigned.
      * 
      * @return
      */
-    public UUID getAreaId();
+    UUID getAreaId();
 
     /**
      * Get asset id if assigned.
      * 
      * @return
      */
-    public UUID getAssetId();
+    UUID getAssetId();
 
     /**
      * Get event id that triggered alarm.
      * 
      * @return
      */
-    public UUID getTriggeringEventId();
+    UUID getTriggeringEventId();
 
     /**
      * Get alarm state.
      * 
      * @return
      */
-    public DeviceAlarmState getState();
+    DeviceAlarmState getState();
 }

@@ -21,54 +21,54 @@ public interface IDeviceStateCreateRequest extends Serializable {
      * 
      * @return
      */
-    public UUID getDeviceId();
+    UUID getDeviceId();
 
     /**
      * Get device type id.
      * 
      * @return
      */
-    public UUID getDeviceTypeId();
+    UUID getDeviceTypeId();
 
     /**
      * Get device assignment id.
      * 
      * @return
      */
-    public UUID getDeviceAssignmentId();
+    UUID getDeviceAssignmentId();
 
     /**
      * Get customer id if assigned.
      * 
      * @return
      */
-    public UUID getCustomerId();
+    UUID getCustomerId();
 
     /**
      * Get area id if assigned.
      * 
      * @return
      */
-    public UUID getAreaId();
+    UUID getAreaId();
 
     /**
      * Get asset id if assigned.
      * 
      * @return
      */
-    public UUID getAssetId();
+    UUID getAssetId();
 
     /**
      * Get date of last device interaction.
      * 
      * @return
      */
-    public Date getLastInteractionDate();
+    Date getLastInteractionDate();
 
     /**
      * Get date device was marked as missing.
      * 
      * @return
      */
-    public Date getPresenceMissingDate();
+    Date getPresenceMissingDate();
 }

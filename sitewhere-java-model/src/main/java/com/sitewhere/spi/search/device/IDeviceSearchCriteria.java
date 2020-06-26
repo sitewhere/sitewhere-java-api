@@ -19,12 +19,12 @@ public interface IDeviceSearchCriteria extends IDateRangeSearchCriteria {
      * 
      * @return
      */
-    public String getDeviceTypeToken();
+    String getDeviceTypeToken();
 
     /**
      * Indicates whether assigned devices should be excluded.
      * 
      * @return
      */
-    public boolean isExcludeAssigned();
+    boolean isExcludeAssigned();
 }

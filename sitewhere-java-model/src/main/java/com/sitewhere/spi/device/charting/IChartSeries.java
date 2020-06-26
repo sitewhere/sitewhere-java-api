@@ -22,12 +22,12 @@ public interface IChartSeries<T> extends Serializable {
      * 
      * @return
      */
-    public String getMeasurementId();
+    String getMeasurementId();
 
     /**
      * Get data entries for the series.
      * 
      * @return
      */
-    public List<? extends IChartEntry<T>> getEntries();
+    List<? extends IChartEntry<T>> getEntries();
 }

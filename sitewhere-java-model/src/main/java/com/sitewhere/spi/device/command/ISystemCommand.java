@@ -19,5 +19,5 @@ public interface ISystemCommand extends Serializable {
      * 
      * @return
      */
-    public SystemCommandType getType();
+    SystemCommandType getType();
 }
