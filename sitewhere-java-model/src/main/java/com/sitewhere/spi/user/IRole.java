@@ -8,6 +8,7 @@
 package com.sitewhere.spi.user;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Interface for granted authority information.
@@ -27,4 +28,11 @@ public interface IRole extends Serializable {
      * @return
      */
     public String getDescription();
+
+    /**
+     * Get the list of granted authorities.
+     *
+     * @return
+     */
+    public List<String> getAuthorities();
 }

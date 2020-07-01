@@ -11,6 +11,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.spi.user.IRole;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Model object for a rol.
  */
@@ -26,6 +29,9 @@ public class Role implements IRole {
     /** Description */
     private String description;
 
+    /** List of granted authorities */
+    private List<String> authorities = new ArrayList<>();
+
     @Override
     public String getRole() {
 	return this.role;
@@ -36,12 +42,21 @@ public class Role implements IRole {
 	return this.description;
     }
 
+    @Override
+    public List<String> getAuthorities() {
+        return this.authorities;
+    }
+
     public void setRole(String role) {
 	this.role = role;
     }
 
     public void setDescription(String description) {
 	this.description = description;
+    }
+
+    public void setAuthorities(List<String> authorities) {
+        this.authorities = authorities;
     }
 
     /**
@@ -54,6 +69,7 @@ public class Role implements IRole {
 	Role result = new Role();
 	result.setRole(input.getRole());
 	result.setDescription(input.getDescription());
+	result.setAuthorities(input.getAuthorities());
 	return result;
     }
 }

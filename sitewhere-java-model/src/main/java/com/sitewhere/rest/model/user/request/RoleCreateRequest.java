@@ -10,6 +10,9 @@ package com.sitewhere.rest.model.user.request;
 import com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest;
 import com.sitewhere.spi.user.request.IRoleCreateRequest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Default implementation of {@link IGrantedAuthorityCreateRequest} for use in
  * REST services.
@@ -24,6 +27,9 @@ public class RoleCreateRequest implements IRoleCreateRequest {
 
     /** Description of the authority */
     private String description;
+
+    /** List of granted authorities */
+    private List<String> authorities = new ArrayList<>();
 
     /*
      * @see
@@ -46,7 +52,16 @@ public class RoleCreateRequest implements IRoleCreateRequest {
         return this.description;
     }
 
+    @Override
+    public List<String> getAuthorities() {
+        return this.authorities;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setAuthorities(List<String> authorities) {
+        this.authorities = authorities;
     }
 }

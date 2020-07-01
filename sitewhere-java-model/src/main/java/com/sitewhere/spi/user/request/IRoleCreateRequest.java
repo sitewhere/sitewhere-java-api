@@ -8,6 +8,7 @@
 package com.sitewhere.spi.user.request;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Interface for arguments needed to create a role
@@ -29,8 +30,9 @@ public interface IRoleCreateRequest extends Serializable {
     public String getDescription();
 
     /**
-     * Get parent authority.
+     * Get the list of granted authorities.
      *
      * @return
      */
+    public List<String> getAuthorities();
 }
