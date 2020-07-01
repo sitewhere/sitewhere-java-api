@@ -34,5 +34,5 @@ public interface IRole extends Serializable {
      *
      * @return
      */
-    public List<String> getAuthorities();
+    public List<IGrantedAuthority> getAuthorities();
 }

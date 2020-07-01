@@ -9,6 +9,7 @@ package com.sitewhere.rest.model.user;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.sitewhere.spi.user.IGrantedAuthority;
 import com.sitewhere.spi.user.IRole;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class Role implements IRole {
     private String description;
 
     /** List of granted authorities */
-    private List<String> authorities = new ArrayList<>();
+    private List<IGrantedAuthority> authorities = new ArrayList<>();
 
     @Override
     public String getRole() {
@@ -43,7 +44,7 @@ public class Role implements IRole {
     }
 
     @Override
-    public List<String> getAuthorities() {
+    public List<IGrantedAuthority> getAuthorities() {
         return this.authorities;
     }
 
@@ -55,7 +56,7 @@ public class Role implements IRole {
 	this.description = description;
     }
 
-    public void setAuthorities(List<String> authorities) {
+    public void setAuthorities(List<IGrantedAuthority> authorities) {
         this.authorities = authorities;
     }
 

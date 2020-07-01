@@ -7,18 +7,19 @@
  */
 package com.sitewhere.rest.model.user;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.PersistentEntity;
 import com.sitewhere.spi.SiteWhereException;
 import com.sitewhere.spi.user.AccountStatus;
+import com.sitewhere.spi.user.IRole;
 import com.sitewhere.spi.user.IUser;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Model class for a User.
@@ -51,7 +52,7 @@ public class User extends PersistentEntity implements IUser {
     private List<String> authorities = new ArrayList<>();
 
     /** List of roles */
-    private List<String> roles = new ArrayList<>();
+    private List<IRole> roles = new ArrayList<>();
 
     /*
      * @see com.sitewhere.spi.user.IUser#getUsername()
@@ -127,26 +128,14 @@ public class User extends PersistentEntity implements IUser {
     }
 
     /*
-     * @see com.sitewhere.spi.user.IUser#getAuthorities()
-     */
-    @Override
-    public List<String> getAuthorities() {
-	return authorities;
-    }
-
-    public void setAuthorities(List<String> authorities) {
-	this.authorities = authorities;
-    }
-
-    /*
      * @see com.sitewhere.spi.user.IUser#getRoles()
      */
     @Override
-    public List<String> getRoles() {
+    public List<IRole> getRoles() {
 	return roles;
     }
 
-    public void setRoles(List<String> roles) {
+    public void setRoles(List<IRole> roles) {
 	this.roles = roles;
     }
 
@@ -164,8 +153,7 @@ public class User extends PersistentEntity implements IUser {
 	result.setLastName(input.getLastName());
 	result.setLastLogin(input.getLastLogin());
 	result.setStatus(input.getStatus());
-	result.setAuthorities(new ArrayList<String>(input.getAuthorities()));
-	result.setRoles(new ArrayList<String>(input.getRoles()));
+	result.setRoles(new ArrayList<>(input.getRoles()));
 	PersistentEntity.copy(input, result);
 	return result;
     }

@@ -60,16 +60,9 @@ public interface IUser extends IPersistentEntity {
     public AccountStatus getStatus();
 
     /**
-     * Get the list of granted authorities.
-     *
-     * @return
-     */
-    public List<String> getAuthorities();
-
-    /**
      * Get the list roles.
      *
      * @return
      */
-    public List<String> getRoles();
+    public List<IRole> getRoles();
 }
