@@ -118,16 +118,4 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     public void setRoles(List<String> roles) {
 	this.roles = roles;
     }
-
-    /*
-     * @see com.sitewhere.spi.user.request.IUserCreateRequest#getAuthorities()
-     */
-    @Override
-    public List<String> getAuthorities() {
-        return Collections.unmodifiableList(this.authorities);
-    }
-
-    public void setAuthorities(List<String> authorities) {
-        this.authorities = authorities;
-    }
 }

@@ -58,11 +58,4 @@ public interface IUserCreateRequest extends IPersistentEntityCreateRequest {
      * @return
      */
     public List<String> getRoles();
-
-    /**
-     * Get the list of granted authorities.
-     *
-     * @return
-     */
-    public List<String> getAuthorities();
 }
