@@ -1,30 +1,43 @@
+/*
+ * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+ *
+ * The software in this package is published under the terms of the CPAL v1.0
+ * license, a copy of which has been included with this distribution in the
+ * LICENSE.txt file.
+ */
 package com.sitewhere.spi.user;
 
 import java.util.Arrays;
 import java.util.List;
 
 public enum SiteWhereRole {
-    REST("ROLE_REST", Arrays.asList(SiteWhereAuthority.REST)),
-    ADMIN_CONSOLE("ROLE_ADMIN_CONSOLE",Arrays.asList(SiteWhereAuthority.AdminConsole)),
-    VIEW_SERVER_INFO("ROLE_VIEW_SERVER_INFO", Arrays.asList(SiteWhereAuthority.ViewServerInfo)),
-    ADMINISTER_USERS("ROLE_ADMINISTER_USERS",Arrays.asList(SiteWhereAuthority.AdminUsers)),
-    ADMINISTER_USER_SELF("ROLE_ADMINISTER_USER_SELF",Arrays.asList(SiteWhereAuthority.AdminSelf)),
-    ADMINISTER_TENANTS("ROLE_ADMINISTER_TENANTS",Arrays.asList(SiteWhereAuthority.AdminTenants)),
-    ADMINISTER_TENANT_SELF("ROLE_ADMINISTER_TENANT_SELF",Arrays.asList(SiteWhereAuthority.AdminOwnTenant));
+    REST("ROLE_REST","", Arrays.asList(SiteWhereAuthority.REST)),
+    ADMIN_CONSOLE("ROLE_ADMIN_CONSOLE","",Arrays.asList(SiteWhereAuthority.AdminConsole)),
+    VIEW_SERVER_INFO("ROLE_VIEW_SERVER_INFO","", Arrays.asList(SiteWhereAuthority.ViewServerInfo)),
+    ADMINISTER_USERS("ROLE_ADMINISTER_USERS","",Arrays.asList(SiteWhereAuthority.AdminUsers)),
+    ADMINISTER_USER_SELF("ROLE_ADMINISTER_USER_SELF","",Arrays.asList(SiteWhereAuthority.AdminSelf)),
+    ADMINISTER_TENANTS("ROLE_ADMINISTER_TENANTS","",Arrays.asList(SiteWhereAuthority.AdminTenants)),
+    ADMINISTER_TENANT_SELF("ROLE_ADMINISTER_TENANT_SELF","",Arrays.asList(SiteWhereAuthority.AdminOwnTenant));
 
     private String roleName;
+    private String description;
     private List<SiteWhereAuthority> authorities;
 
     public String getRoleName() {
         return roleName;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public List<SiteWhereAuthority> getAuthorities() {
         return authorities;
     }
 
-    SiteWhereRole(final String roleName, final List<SiteWhereAuthority> authorities) {
+    SiteWhereRole(final String roleName, String description, final List<SiteWhereAuthority> authorities) {
         this.roleName = roleName;
+        this.description = description;
         this.authorities = authorities;
     }
 

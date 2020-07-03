@@ -8,6 +8,7 @@
 package com.sitewhere.rest.model.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.PersistentEntity;
@@ -48,10 +49,8 @@ public class User extends PersistentEntity implements IUser {
     /** Account status */
     private AccountStatus status;
 
-    /** List of granted authorities */
-    private List<String> authorities = new ArrayList<>();
-
     /** List of roles */
+    @JsonIgnore
     private List<IRole> roles = new ArrayList<>();
 
     /*
