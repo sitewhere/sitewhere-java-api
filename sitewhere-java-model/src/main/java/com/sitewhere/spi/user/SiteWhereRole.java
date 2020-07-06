@@ -9,6 +9,7 @@ package com.sitewhere.spi.user;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public enum SiteWhereRole {
     REST("ROLE_REST","", Arrays.asList(SiteWhereAuthority.REST)),
@@ -29,6 +30,11 @@ public enum SiteWhereRole {
 
     public String getDescription() {
         return description;
+    }
+
+    public List<String> getAuthoritiesAsStringList() {
+        List<String> authorities = this.authorities.stream().map(auth -> auth.getName()).collect(Collectors.toList());
+        return authorities;
     }
 
     public List<SiteWhereAuthority> getAuthorities() {
