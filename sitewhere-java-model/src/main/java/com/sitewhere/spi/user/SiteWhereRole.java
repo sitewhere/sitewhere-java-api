@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public enum SiteWhereRole {
-    REST("ROLE_REST","", Arrays.asList(SiteWhereAuthority.REST)),
-    ADMIN_CONSOLE("ROLE_ADMIN_CONSOLE","",Arrays.asList(SiteWhereAuthority.AdminConsole)),
-    VIEW_SERVER_INFO("ROLE_VIEW_SERVER_INFO","", Arrays.asList(SiteWhereAuthority.ViewServerInfo)),
-    ADMINISTER_USERS("ROLE_ADMINISTER_USERS","",Arrays.asList(SiteWhereAuthority.AdminUsers)),
-    ADMINISTER_USER_SELF("ROLE_ADMINISTER_USER_SELF","",Arrays.asList(SiteWhereAuthority.AdminSelf)),
-    ADMINISTER_TENANTS("ROLE_ADMINISTER_TENANTS","",Arrays.asList(SiteWhereAuthority.AdminTenants)),
-    ADMINISTER_TENANT_SELF("ROLE_ADMINISTER_TENANT_SELF","",Arrays.asList(SiteWhereAuthority.AdminOwnTenant));
+    REST("ROLE_REST","REST services access", Arrays.asList(SiteWhereAuthority.REST)),
+    ADMIN_CONSOLE("ROLE_ADMIN_CONSOLE","Administrative console login",Arrays.asList(SiteWhereAuthority.AdminConsole)),
+    VIEW_SERVER_INFO("ROLE_VIEW_SERVER_INFO","View global server information", Arrays.asList(SiteWhereAuthority.ViewServerInfo)),
+    ADMINISTER_USERS("ROLE_ADMINISTER_USERS","Administer all users",Arrays.asList(SiteWhereAuthority.AdminUsers)),
+    ADMINISTER_USER_SELF("ROLE_ADMINISTER_USER_SELF","Administer own user profile",Arrays.asList(SiteWhereAuthority.AdminSelf)),
+    ADMINISTER_TENANTS("ROLE_ADMINISTER_TENANTS","Administer all tenants",Arrays.asList(SiteWhereAuthority.AdminTenants)),
+    ADMINISTER_TENANT_SELF("ROLE_ADMINISTER_TENANT_SELF","Administer own tenant",Arrays.asList(SiteWhereAuthority.AdminOwnTenant));
 
     private String roleName;
     private String description;

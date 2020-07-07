@@ -6,15 +6,13 @@
  * LICENSE.txt file.
  */
 package com.sitewhere.rest.model.user.request;
-
-import com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest;
 import com.sitewhere.spi.user.request.IRoleCreateRequest;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Default implementation of {@link IGrantedAuthorityCreateRequest} for use in
+ * Default implementation of {@link IRoleCreateRequest} for use in
  * REST services.
  */
 public class RoleCreateRequest implements IRoleCreateRequest {
