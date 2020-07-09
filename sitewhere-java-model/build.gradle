@@ -5,7 +5,7 @@ dependencies {
 	// Jackson JSON processing.
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations'
-
+	
 	// Date/time conversions.
     compile group: 'joda-time', name: 'joda-time', version:'2.9.1'
 }
@@ -20,7 +20,7 @@ task javadocJar(type: Jar) {
     classifier = 'javadoc'
 }
 
-// Publish jar.
+// Publish jar.	
 apply plugin: 'maven-publish'
 publishing {
 	publications {
@@ -49,10 +49,21 @@ publishing {
                     connection = 'https://github.com/sitewhere/sitewhere-java-api.git'
                     url = 'https://github.com/sitewhere/sitewhere-java-api'
                 }
-			}
+			}	
 		}
 	}
     repositories {
-        mavenLocal()
+        maven {
+            url project.nexusUrl
+            credentials {
+                username project.nexusUsername
+                password project.nexusPassword
+            }
+        }
     }
+}
+
+apply plugin: 'signing'
+signing {
+    sign publishing.publications.mavenJava
 }
