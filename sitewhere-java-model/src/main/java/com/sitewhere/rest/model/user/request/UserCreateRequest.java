@@ -42,7 +42,7 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     private AccountStatus status;
 
     /** User authorities */
-    private List<String> authorities;
+    private List<String> roles;
 
     /*
      * @see com.sitewhere.spi.user.request.IUserCreateRequest#getUsername()
@@ -108,11 +108,11 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
      * @see com.sitewhere.spi.user.request.IUserCreateRequest#getAuthorities()
      */
     @Override
-    public List<String> getAuthorities() {
-	return Collections.unmodifiableList(this.authorities);
+    public List<String> getRoles() {
+	return Collections.unmodifiableList(this.roles);
     }
 
-    public void setAuthorities(List<String> authorities) {
-	this.authorities = authorities;
+    public void setRoles(List<String> roles) {
+	this.roles = roles;
     }
 }

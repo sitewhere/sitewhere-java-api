@@ -13,6 +13,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sitewhere.spi.user.SiteWhereRole;
 import org.junit.Test;
 
 import com.sitewhere.rest.client.AbstractCRUDRestClientTests;
@@ -36,11 +37,11 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
     protected String knownEntityToken() {
 	return "admin";
     }
-    
+
     // ------------------------------------------------------------------------
     // CREATE
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected UserCreateRequest buildCreateRequest(String token) throws SiteWhereException {
 	UserCreateRequest request = new UserCreateRequest();
@@ -52,10 +53,10 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
 	request.setPassword("1234");
 	List<String> authorities = new ArrayList<String>();
 	authorities.add("GRP_SERVER");
-	request.setAuthorities(authorities);
+	request.setRoles(authorities);
 	return request;
     }
- 
+
     protected String getToken() {
 	return JOHN_DOE_USERNAME;
     }
@@ -86,10 +87,10 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
 	request.setLastName("Doe");
 	request.setStatus(AccountStatus.Active);
 	request.setUsername(JOHN_DOE_USERNAME);
-	request.setPassword("12345");	
-	List<String> authorities = new ArrayList<String>();
-	authorities.add("GRP_SERVER");
-	request.setAuthorities(authorities);
+	request.setPassword("12345");
+	List<String> roles = new ArrayList<String>();
+	roles.add(SiteWhereRole.ADMINISTER_TENANTS.getRoleName());
+	request.setRoles(roles);
 	return request;
     }
 
@@ -110,12 +111,12 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
     // ------------------------------------------------------------------------
     // LIST
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected SearchResults<User> listEntities() throws SiteWhereException {
 	return getClient().listUsers();
     }
-    
+
     @Test
     public void testListUserAuthorities() throws SiteWhereException {
 	SearchResults<GrantedAuthority> auths = getClient().listUserAuthorities(knownEntityToken());
