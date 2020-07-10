@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sitewhere.spi.device.event.DeviceEventType;
 import com.sitewhere.spi.device.state.IRecentStateEvent;
 
 /**
@@ -25,20 +24,11 @@ public class RecentStateEvent implements IRecentStateEvent {
     /** Device state id */
     private UUID deviceStateId;
 
-    /** Event type */
-    private DeviceEventType eventType;
-
-    /** Event classifier */
-    private String classifier;
-
-    /** Most recent value */
-    private String value;
+    /** Reference to event id */
+    private UUID eventId;
 
     /** Event date */
     private Date eventDate;
-
-    /** Reference to event id */
-    private UUID eventId;
 
     /*
      * @see com.sitewhere.spi.device.state.IRecentStateEvent#getId()
@@ -65,39 +55,15 @@ public class RecentStateEvent implements IRecentStateEvent {
     }
 
     /*
-     * @see com.sitewhere.spi.device.state.IRecentStateEvent#getEventType()
+     * @see com.sitewhere.spi.device.state.IRecentStateEvent#getEventId()
      */
     @Override
-    public DeviceEventType getEventType() {
-	return eventType;
+    public UUID getEventId() {
+	return eventId;
     }
 
-    public void setEventType(DeviceEventType eventType) {
-	this.eventType = eventType;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.IRecentStateEvent#getClassifier()
-     */
-    @Override
-    public String getClassifier() {
-	return classifier;
-    }
-
-    public void setClassifier(String classifier) {
-	this.classifier = classifier;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.IRecentStateEvent#getValue()
-     */
-    @Override
-    public String getValue() {
-	return value;
-    }
-
-    public void setValue(String value) {
-	this.value = value;
+    public void setEventId(UUID eventId) {
+	this.eventId = eventId;
     }
 
     /*
@@ -111,17 +77,5 @@ public class RecentStateEvent implements IRecentStateEvent {
 
     public void setEventDate(Date eventDate) {
 	this.eventDate = eventDate;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.IRecentStateEvent#getEventId()
-     */
-    @Override
-    public UUID getEventId() {
-	return eventId;
-    }
-
-    public void setEventId(UUID eventId) {
-	this.eventId = eventId;
     }
 }

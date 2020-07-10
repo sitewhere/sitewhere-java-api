@@ -10,7 +10,6 @@ package com.sitewhere.rest.model.device.state.request;
 import java.util.Date;
 import java.util.UUID;
 
-import com.sitewhere.spi.device.event.DeviceEventType;
 import com.sitewhere.spi.device.state.request.IRecentStateEventCreateRequest;
 
 /**
@@ -24,20 +23,11 @@ public class RecentStateEventCreateRequest implements IRecentStateEventCreateReq
     /** Device state id */
     private UUID deviceStateId;
 
-    /** Event type */
-    private DeviceEventType eventType;
-
-    /** Classifier */
-    private String classifier;
-
-    /** Value */
-    private String value;
+    /** Event id */
+    private UUID eventId;
 
     /** Event date */
     private Date eventDate;
-
-    /** Event id */
-    private UUID eventId;
 
     /*
      * @see com.sitewhere.spi.device.state.request.IRecentStateEventCreateRequest#
@@ -54,41 +44,15 @@ public class RecentStateEventCreateRequest implements IRecentStateEventCreateReq
 
     /*
      * @see com.sitewhere.spi.device.state.request.IRecentStateEventCreateRequest#
-     * getEventType()
+     * getEventId()
      */
     @Override
-    public DeviceEventType getEventType() {
-	return eventType;
+    public UUID getEventId() {
+	return eventId;
     }
 
-    public void setEventType(DeviceEventType eventType) {
-	this.eventType = eventType;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.request.IRecentStateEventCreateRequest#
-     * getClassifier()
-     */
-    @Override
-    public String getClassifier() {
-	return classifier;
-    }
-
-    public void setClassifier(String classifier) {
-	this.classifier = classifier;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.request.IRecentStateEventCreateRequest#
-     * getValue()
-     */
-    @Override
-    public String getValue() {
-	return value;
-    }
-
-    public void setValue(String value) {
-	this.value = value;
+    public void setEventId(UUID eventId) {
+	this.eventId = eventId;
     }
 
     /*
@@ -102,18 +66,5 @@ public class RecentStateEventCreateRequest implements IRecentStateEventCreateReq
 
     public void setEventDate(Date eventDate) {
 	this.eventDate = eventDate;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.request.IRecentStateEventCreateRequest#
-     * getEventId()
-     */
-    @Override
-    public UUID getEventId() {
-	return eventId;
-    }
-
-    public void setEventId(UUID eventId) {
-	this.eventId = eventId;
     }
 }

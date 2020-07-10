@@ -11,8 +11,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-import com.sitewhere.spi.device.event.DeviceEventType;
-
 /**
  * Request used to create/update a recent device state event.
  */
@@ -26,25 +24,11 @@ public interface IRecentStateEventCreateRequest extends Serializable {
     UUID getDeviceStateId();
 
     /**
-     * Get type of event.
+     * Get unique event id.
      * 
      * @return
      */
-    DeviceEventType getEventType();
-
-    /**
-     * Uniquely classifies an event within a type (e.g. mx name or alert type).
-     * 
-     * @return
-     */
-    String getClassifier();
-
-    /**
-     * Get a string representation of the latest value.
-     * 
-     * @return
-     */
-    String getValue();
+    UUID getEventId();
 
     /**
      * Get date event occurred.
@@ -52,11 +36,4 @@ public interface IRecentStateEventCreateRequest extends Serializable {
      * @return
      */
     Date getEventDate();
-
-    /**
-     * Get unique event id.
-     * 
-     * @return
-     */
-    UUID getEventId();
 }

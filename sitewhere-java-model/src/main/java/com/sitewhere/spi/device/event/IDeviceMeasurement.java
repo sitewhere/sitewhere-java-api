@@ -12,19 +12,5 @@ import java.io.Serializable;
 /**
  * Measurement associated with a device assignment at a point in time.
  */
-public interface IDeviceMeasurement extends IDeviceEvent, Serializable {
-
-    /**
-     * Get measurement name.
-     * 
-     * @return
-     */
-    String getName();
-
-    /**
-     * Get measurement value.
-     * 
-     * @return
-     */
-    Double getValue();
+public interface IDeviceMeasurement extends IDeviceEvent, IDeviceMeasurementContent, Serializable {
 }
