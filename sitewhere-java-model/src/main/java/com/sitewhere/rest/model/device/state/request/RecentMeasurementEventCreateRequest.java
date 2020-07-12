@@ -7,6 +7,8 @@
  */
 package com.sitewhere.rest.model.device.state.request;
 
+import java.math.BigDecimal;
+
 import com.sitewhere.spi.device.state.request.IRecentMeasurementEventCreateRequest;
 
 public class RecentMeasurementEventCreateRequest extends RecentStateEventCreateRequest
@@ -19,7 +21,7 @@ public class RecentMeasurementEventCreateRequest extends RecentStateEventCreateR
     private String name;
 
     /** Value */
-    private Double value;
+    private BigDecimal value;
 
     public String getName() {
 	return name;
@@ -29,11 +31,11 @@ public class RecentMeasurementEventCreateRequest extends RecentStateEventCreateR
 	this.name = name;
     }
 
-    public Double getValue() {
+    public BigDecimal getValue() {
 	return value;
     }
 
-    public void setValue(Double value) {
+    public void setValue(BigDecimal value) {
 	this.value = value;
     }
 }

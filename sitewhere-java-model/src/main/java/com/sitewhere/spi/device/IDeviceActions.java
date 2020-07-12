@@ -7,6 +7,7 @@
  */
 package com.sitewhere.spi.device;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 import com.sitewhere.spi.SiteWhereException;
@@ -26,8 +27,8 @@ public interface IDeviceActions {
      * @param updateState
      * @throws SiteWhereException
      */
-    public void createLocation(IDeviceAssignment assignment, double latitude, double longitude, double elevation,
-	    boolean updateState) throws SiteWhereException;
+    public void createLocation(IDeviceAssignment assignment, BigDecimal latitude, BigDecimal longitude,
+	    BigDecimal elevation, boolean updateState) throws SiteWhereException;
 
     /**
      * Send command to a device.

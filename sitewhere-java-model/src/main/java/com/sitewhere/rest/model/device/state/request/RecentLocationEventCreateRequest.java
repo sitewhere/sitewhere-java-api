@@ -7,6 +7,8 @@
  */
 package com.sitewhere.rest.model.device.state.request;
 
+import java.math.BigDecimal;
+
 import com.sitewhere.spi.device.state.request.IRecentLocationEventCreateRequest;
 
 public class RecentLocationEventCreateRequest extends RecentStateEventCreateRequest
@@ -16,35 +18,35 @@ public class RecentLocationEventCreateRequest extends RecentStateEventCreateRequ
     private static final long serialVersionUID = 8614328023100102695L;
 
     /** Latitude */
-    private Double latitude;
+    private BigDecimal latitude;
 
     /** Longitude */
-    private Double longitude;
+    private BigDecimal longitude;
 
     /** Elevation */
-    private Double elevation;
+    private BigDecimal elevation;
 
-    public Double getLatitude() {
+    public BigDecimal getLatitude() {
 	return latitude;
     }
 
-    public void setLatitude(Double latitude) {
+    public void setLatitude(BigDecimal latitude) {
 	this.latitude = latitude;
     }
 
-    public Double getLongitude() {
+    public BigDecimal getLongitude() {
 	return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(BigDecimal longitude) {
 	this.longitude = longitude;
     }
 
-    public Double getElevation() {
+    public BigDecimal getElevation() {
 	return elevation;
     }
 
-    public void setElevation(Double elevation) {
+    public void setElevation(BigDecimal elevation) {
 	this.elevation = elevation;
     }
 }

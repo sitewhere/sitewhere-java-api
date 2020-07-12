@@ -8,6 +8,7 @@
 package com.sitewhere.spi.device.event.request;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * Interface for arguments needed to create a device measurement.
@@ -26,5 +27,5 @@ public interface IDeviceMeasurementCreateRequest extends IDeviceEventCreateReque
      * 
      * @return
      */
-    double getValue();
+    BigDecimal getValue();
 }

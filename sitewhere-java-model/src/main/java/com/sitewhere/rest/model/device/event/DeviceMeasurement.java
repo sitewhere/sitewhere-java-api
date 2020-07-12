@@ -7,6 +7,8 @@
  */
 package com.sitewhere.rest.model.device.event;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -27,7 +29,7 @@ public class DeviceMeasurement extends DeviceEvent implements IDeviceMeasurement
     private String name;
 
     /** Measurement value */
-    private Double value;
+    private BigDecimal value;
 
     public DeviceMeasurement() {
 	super(DeviceEventType.Measurement);
@@ -46,14 +48,14 @@ public class DeviceMeasurement extends DeviceEvent implements IDeviceMeasurement
     }
 
     /*
-     * @see com.sitewhere.spi.device.event.IDeviceMeasurement#getValue()
+     * @see com.sitewhere.spi.device.event.IDeviceMeasurementContent#getValue()
      */
     @Override
-    public Double getValue() {
+    public BigDecimal getValue() {
 	return value;
     }
 
-    public void setValue(Double value) {
+    public void setValue(BigDecimal value) {
 	this.value = value;
     }
 }

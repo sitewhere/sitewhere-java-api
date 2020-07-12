@@ -7,6 +7,8 @@
  */
 package com.sitewhere.spi.device.event;
 
+import java.math.BigDecimal;
+
 /**
  * Content associated with a device measurement.
  */
@@ -24,5 +26,5 @@ public interface IDeviceMeasurementContent {
      * 
      * @return
      */
-    Double getValue();
+    BigDecimal getValue();
 }

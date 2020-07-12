@@ -7,6 +7,8 @@
  */
 package com.sitewhere.spi.device.event;
 
+import java.math.BigDecimal;
+
 /**
  * Content associated with a device location.
  */
@@ -17,19 +19,19 @@ public interface IDeviceLocationContent {
      * 
      * @return
      */
-    Double getLatitude();
+    BigDecimal getLatitude();
 
     /**
      * Get longitude value.
      * 
      * @return
      */
-    Double getLongitude();
+    BigDecimal getLongitude();
 
     /**
      * Get elevation value.
      * 
      * @return
      */
-    Double getElevation();
+    BigDecimal getElevation();
 }

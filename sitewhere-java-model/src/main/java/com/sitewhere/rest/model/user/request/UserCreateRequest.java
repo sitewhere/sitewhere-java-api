@@ -7,13 +7,18 @@
  */
 package com.sitewhere.rest.model.user.request;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.request.PersistentEntityCreateRequest;
 import com.sitewhere.spi.user.AccountStatus;
+import com.sitewhere.spi.user.IRole;
+import com.sitewhere.spi.user.IUser;
 import com.sitewhere.spi.user.request.IUserCreateRequest;
 
 /**
@@ -114,5 +119,61 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
 
     public void setRoles(List<String> roles) {
 	this.roles = roles;
+    }
+
+    public static class Builder {
+
+	/** Request being built */
+	private UserCreateRequest request = new UserCreateRequest();
+
+	public Builder(String username, String password, String firstName, String lastName) {
+	    request.setUsername(username);
+	    request.setPassword(password);
+	    request.setFirstName(firstName);
+	    request.setLastName(lastName);
+	}
+
+	public Builder(IUser existing) {
+	    request.setUsername(existing.getUsername());
+	    request.setPassword(existing.getHashedPassword());
+	    request.setFirstName(existing.getFirstName());
+	    request.setLastName(existing.getLastName());
+	    request.setStatus(existing.getStatus());
+	    request.setRoles(existing.getRoles().stream().map(IRole::getRole).collect(Collectors.toList()));
+	    request.setMetadata(existing.getMetadata());
+	}
+
+	public Builder withStatus(AccountStatus status) {
+	    request.setStatus(status);
+	    return this;
+	}
+
+	public Builder withRole(IRole role) {
+	    if (request.getRoles() == null) {
+		request.setRoles(new ArrayList<>());
+	    }
+	    request.getRoles().add(role.getRole());
+	    return this;
+	}
+
+	public Builder withRoles(List<IRole> roles) {
+	    if (request.getRoles() == null) {
+		request.setRoles(new ArrayList<>());
+	    }
+	    request.getRoles().addAll(roles.stream().map(IRole::getRole).collect(Collectors.toList()));
+	    return this;
+	}
+
+	public Builder metadata(String name, String value) {
+	    if (request.getMetadata() == null) {
+		request.setMetadata(new HashMap<String, String>());
+	    }
+	    request.getMetadata().put(name, value);
+	    return this;
+	}
+
+	public UserCreateRequest build() {
+	    return request;
+	}
     }
 }

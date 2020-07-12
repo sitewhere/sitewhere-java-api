@@ -10,6 +10,8 @@ package com.sitewhere.rest.client.device;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.math.BigDecimal;
+
 import org.junit.Test;
 
 import com.sitewhere.rest.client.AbstractWithLabelCRUDRestTest;
@@ -136,7 +138,8 @@ public class DeviceRestTests extends AbstractWithLabelCRUDRestTest<Device, Devic
     }
 
     private IDeviceLocationCreateRequest deviceLocationCreateRequest() {
-	DeviceLocationCreateRequest.Builder builder = new DeviceLocationCreateRequest.Builder(22.2, 33.3);
+	DeviceLocationCreateRequest.Builder builder = new DeviceLocationCreateRequest.Builder(new BigDecimal("22.2"),
+		new BigDecimal("33.3"));
 	return builder.build();
     }
 
