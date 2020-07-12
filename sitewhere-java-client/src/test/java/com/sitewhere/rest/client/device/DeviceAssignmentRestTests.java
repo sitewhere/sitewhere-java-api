@@ -10,6 +10,7 @@ package com.sitewhere.rest.client.device;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -50,14 +51,15 @@ import com.sitewhere.spi.device.event.CommandInitiator;
  * @author Jorge Villaverde
  *
  */
-public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<MarshaledDeviceAssignment, DeviceAssignmentCreateRequest> {
+public class DeviceAssignmentRestTests
+	extends AbstractWithLabelCRUDRestTest<MarshaledDeviceAssignment, DeviceAssignmentCreateRequest> {
 
     private static final String deviceToken = "15737-UNO-7576364";
-    
+
     private static final String customerToken = "acme";
-    
-    private static final String areaToken = "southeast"; 
-    
+
+    private static final String areaToken = "southeast";
+
     private static final String assetToken = "derek.adams@sitewhere.com";
 
     @Override
@@ -71,15 +73,16 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 
     @Override
     protected DeviceAssignmentCreateRequest buildCreateRequest(String token) {
-	DeviceAssignmentCreateRequest.Builder builder = 
-		new DeviceAssignmentCreateRequest.Builder(deviceToken, customerToken, areaToken, assetToken);
+	DeviceAssignmentCreateRequest.Builder builder = new DeviceAssignmentCreateRequest.Builder(deviceToken,
+		customerToken, areaToken, assetToken);
 	DeviceAssignmentCreateRequest request = builder.build();
 	request.setToken(token);
 	return request;
     }
 
     @Override
-    protected MarshaledDeviceAssignment createEntity(DeviceAssignmentCreateRequest createRequest) throws SiteWhereException {
+    protected MarshaledDeviceAssignment createEntity(DeviceAssignmentCreateRequest createRequest)
+	    throws SiteWhereException {
 	return getClient().createDeviceAssignment(getTenatAuthentication(), createRequest);
     }
 
@@ -98,15 +101,16 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 
     @Override
     protected DeviceAssignmentCreateRequest buildUpdateRequest(String token) throws SiteWhereException {
-	DeviceAssignmentCreateRequest.Builder builder = 
-		new DeviceAssignmentCreateRequest.Builder(deviceToken, customerToken, areaToken, assetToken);
+	DeviceAssignmentCreateRequest.Builder builder = new DeviceAssignmentCreateRequest.Builder(deviceToken,
+		customerToken, areaToken, assetToken);
 	DeviceAssignmentCreateRequest request = builder.build();
 	request.setToken(token);
 	return request;
     }
 
     @Override
-    protected MarshaledDeviceAssignment updateEntity(String token, DeviceAssignmentCreateRequest updateRequest) throws SiteWhereException {
+    protected MarshaledDeviceAssignment updateEntity(String token, DeviceAssignmentCreateRequest updateRequest)
+	    throws SiteWhereException {
 	return getClient().updateDeviceAssignment(getTenatAuthentication(), token, updateRequest);
     }
 
@@ -142,35 +146,37 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
     @Test
     public void testListAlerts() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
-	SearchResults<DeviceAlertWithAsset> alerts = getClient()
-		.listAlertsForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), searchCriteria);
-	
+	SearchResults<DeviceAlertWithAsset> alerts = getClient().listAlertsForDeviceAssignment(getTenatAuthentication(),
+		knownEntityToken(), searchCriteria);
+
 	assertNotNull(alerts);
     }
 
     @Test
     public void testCreateAlert() throws SiteWhereException {
-	DeviceAlertCreateRequest.Builder builder = new DeviceAlertCreateRequest.Builder("egine.overheat", "Engine Overheat");
-	
+	DeviceAlertCreateRequest.Builder builder = new DeviceAlertCreateRequest.Builder("egine.overheat",
+		"Engine Overheat");
+
 	DeviceAlertCreateRequest request = builder.error().trackState().build();
-	
-	DeviceAlertWithAsset alert = getClient().createAlertForDeviceAssignment(
-		getTenatAuthentication(), knownEntityToken(), request);
-	
+
+	DeviceAlertWithAsset alert = getClient().createAlertForDeviceAssignment(getTenatAuthentication(),
+		knownEntityToken(), request);
+
 	assertNotNull(alert);
     }
 
     @Test
     public void testReleaseAssignment() throws SiteWhereException {
-	MarshaledDeviceAssignment assignment = getClient().releaseDeviceAssignment(getTenatAuthentication(), knownEntityToken());
+	MarshaledDeviceAssignment assignment = getClient().releaseDeviceAssignment(getTenatAuthentication(),
+		knownEntityToken());
 	assertNotNull(assignment);
 	assertEquals(DeviceAssignmentStatus.Released, assignment.getStatus());
     }
@@ -178,17 +184,18 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
     @Test
     public void testListCommandInvocations() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceCommandInvocation> commandInvocations = getClient()
-		.listCommandInvocationsForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), false, searchCriteria);
-	
+		.listCommandInvocationsForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), false,
+			searchCriteria);
+
 	assertNotNull(commandInvocations);
     }
 
@@ -198,19 +205,19 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 	String target = "Assignment";
 	String initiatorId = "REST";
 
-	DeviceCommandInvocationCreateRequest.Builder builder = 
-		new DeviceCommandInvocationCreateRequest.Builder(commandToken, target);
+	DeviceCommandInvocationCreateRequest.Builder builder = new DeviceCommandInvocationCreateRequest.Builder(
+		commandToken, target);
 	DeviceCommandInvocationCreateRequest request = builder.build();
-	
+
 	request.setInitiatorId(initiatorId);
 	request.setInitiator(CommandInitiator.REST);
-	
+
 	DeviceCommandInvocation commandInvocation = getClient()
 		.createCommandInvocationForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
-	
+
 	assertNotNull(commandInvocation);
     }
-    
+
     @Test
     public void testScheduleCommandInvocation() throws SiteWhereException {
 	String commandToken = "ping";
@@ -218,19 +225,19 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 	String initiatorId = "REST";
 	String scheduleToken = "de305d54-75b4-431b-adb2-eb6b9e546014";
 
-	DeviceCommandInvocationCreateRequest.Builder builder = 
-		new DeviceCommandInvocationCreateRequest.Builder(commandToken, target);
+	DeviceCommandInvocationCreateRequest.Builder builder = new DeviceCommandInvocationCreateRequest.Builder(
+		commandToken, target);
 	DeviceCommandInvocationCreateRequest request = builder.build();
-	
+
 	request.setInitiatorId(initiatorId);
 	request.setInitiator(CommandInitiator.REST);
-	
-	ScheduledJob scheduleJob = getClient()
-		.scheduleCommandInvocation(getTenatAuthentication(), knownEntityToken(), scheduleToken, request);
-	
+
+	ScheduledJob scheduleJob = getClient().scheduleCommandInvocation(getTenatAuthentication(), knownEntityToken(),
+		scheduleToken, request);
+
 	assertNotNull(scheduleJob);
     }
-    
+
     @Test
     public void testListLocations() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
@@ -247,14 +254,15 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 
 	assertNotNull(locations);
     }
-    
+
     @Test
     public void testCreateLocation() throws SiteWhereException {
-	DeviceLocationCreateRequest.Builder builder = new DeviceLocationCreateRequest.Builder(-27.3313291,-58.961281);
+	DeviceLocationCreateRequest.Builder builder = new DeviceLocationCreateRequest.Builder(
+		new BigDecimal("-27.3313291"), new BigDecimal("-58.961281"));
 	DeviceLocationCreateRequest request = builder.build();
-	
-	DeviceLocationWithAsset location = getClient()
-		.createLocationForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
+
+	DeviceLocationWithAsset location = getClient().createLocationForDeviceAssignment(getTenatAuthentication(),
+		knownEntityToken(), request);
 
 	assertNotNull(location);
     }
@@ -275,19 +283,19 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 
 	assertNotNull(measurements);
     }
-    
+
     @Test
     public void testCreateMeasurement() throws SiteWhereException {
 	DeviceMeasurementCreateRequest.Builder builder = new DeviceMeasurementCreateRequest.Builder();
-	builder.measurement("engine.temp", 50.0);
+	builder.measurement("engine.temp", new BigDecimal("50.0"));
 	DeviceMeasurementCreateRequest request = builder.build();
-	
+
 	DeviceMeasurementWithAsset measurement = getClient()
 		.createMeasurementForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
 
 	assertNotNull(measurement);
     }
-    
+
     @Test
     public void testListMeasurementsSeries() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
@@ -299,16 +307,17 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 	Date endDate = new Date();
 
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
-	
-	List<ChartSeries<Double>> series = getClient()
-		.listMeasurementsForDeviceAssignmentAsChartSeries(getTenatAuthentication(), knownEntityToken(), searchCriteria);
+
+	List<ChartSeries<Double>> series = getClient().listMeasurementsForDeviceAssignmentAsChartSeries(
+		getTenatAuthentication(), knownEntityToken(), searchCriteria);
 
 	assertNotNull(series);
     }
 
     @Test
     public void testMarkMissingAssignment() throws SiteWhereException {
-	MarshaledDeviceAssignment assignment = getClient().markMissingDeviceAssignment(getTenatAuthentication(), knownEntityToken());
+	MarshaledDeviceAssignment assignment = getClient().markMissingDeviceAssignment(getTenatAuthentication(),
+		knownEntityToken());
 	assertNotNull(assignment);
 	assertEquals(DeviceAssignmentStatus.Missing, assignment.getStatus());
     }
@@ -335,7 +344,7 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 	DeviceCommandResponseCreateRequest request = new DeviceCommandResponseCreateRequest();
 	request.setResponse("ok");
 	request.setOriginatingEventId(UUID.randomUUID());
-	
+
 	DeviceCommandResponseWithAsset commandResponse = getClient()
 		.createCommandResponseForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
 
@@ -366,95 +375,95 @@ public class DeviceAssignmentRestTests extends AbstractWithLabelCRUDRestTest<Mar
 	request.setAttribute("Attr");
 	request.setType("t1");
 	request.setUpdateState(true);
-	
+
 	DeviceStateChangeWithAsset stateChange = getClient()
 		.createStateChangeForDeviceAssignment(getTenatAuthentication(), knownEntityToken(), request);
 
 	assertNotNull(stateChange);
     }
-    
+
     @Test
     public void testBulkListAlertsForDeviceAssignments() throws SiteWhereException {
 	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
-	
+
 	request.setDeviceAssignmentTokens(new ArrayList<String>());
 	request.getDeviceAssignmentTokens().add(knownEntityToken());
-	
-	SearchResults<DeviceAlertWithAsset> bulk = 
-		getClient().bulkListAlertsForDeviceAssignments(getTenatAuthentication(), request);
-	assertNotNull(bulk);	
+
+	SearchResults<DeviceAlertWithAsset> bulk = getClient()
+		.bulkListAlertsForDeviceAssignments(getTenatAuthentication(), request);
+	assertNotNull(bulk);
     }
-    
+
     @Test
     public void testBulkListCommandInvocationsForDeviceAssignments() throws SiteWhereException {
 	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
-	
+
 	request.setDeviceAssignmentTokens(new ArrayList<String>());
 	request.getDeviceAssignmentTokens().add(knownEntityToken());
-	
-	SearchResults<DeviceCommandInvocation> bulk = 
-		getClient().bulkListCommandInvocationsForDeviceAssignments(getTenatAuthentication(), request);
-	assertNotNull(bulk);	
+
+	SearchResults<DeviceCommandInvocation> bulk = getClient()
+		.bulkListCommandInvocationsForDeviceAssignments(getTenatAuthentication(), request);
+	assertNotNull(bulk);
     }
 
     @Test
     public void testBulkListLocationsForDeviceAssignments() throws SiteWhereException {
 	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
-	
+
 	request.setDeviceAssignmentTokens(new ArrayList<String>());
 	request.getDeviceAssignmentTokens().add(knownEntityToken());
-	
-	SearchResults<DeviceLocationWithAsset> bulk = 
-		getClient().bulkListLocationsForDeviceAssignments(getTenatAuthentication(), request);
-	assertNotNull(bulk);	
+
+	SearchResults<DeviceLocationWithAsset> bulk = getClient()
+		.bulkListLocationsForDeviceAssignments(getTenatAuthentication(), request);
+	assertNotNull(bulk);
     }
 
     @Test
     public void testBulkListMeasurementsForDeviceAssignments() throws SiteWhereException {
 	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
-	
+
 	request.setDeviceAssignmentTokens(new ArrayList<String>());
 	request.getDeviceAssignmentTokens().add(knownEntityToken());
-	
-	SearchResults<DeviceMeasurementWithAsset> bulk = 
-		getClient().bulkListMeasurementsForDeviceAssignments(getTenatAuthentication(), request);
-	assertNotNull(bulk);	
+
+	SearchResults<DeviceMeasurementWithAsset> bulk = getClient()
+		.bulkListMeasurementsForDeviceAssignments(getTenatAuthentication(), request);
+	assertNotNull(bulk);
     }
-    
+
     @Test
     public void testBulkListMeasurementsForDeviceAssignmentsAsChartSeries() throws SiteWhereException {
 	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
-	
+
 	request.setDeviceAssignmentTokens(new ArrayList<String>());
 	request.getDeviceAssignmentTokens().add(knownEntityToken());
-	
+
 	Map<String, List<ChartSeries<Double>>> series = getClient()
 		.bulkListMeasurementsForDeviceAssignmentsAsChartSeries(getTenatAuthentication(), request);
 
 	assertNotNull(series);
     }
-    
+
     @Test
     public void testBulkListCommandResponsesForDeviceAssignments() throws SiteWhereException {
 	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
-	
+
 	request.setDeviceAssignmentTokens(new ArrayList<String>());
 	request.getDeviceAssignmentTokens().add(knownEntityToken());
-	
-	SearchResults<DeviceCommandResponseWithAsset> bulk = 
-		getClient().bulkListCommandResponsesForDeviceAssignments(getTenatAuthentication(), request);
-	assertNotNull(bulk);	
+
+	SearchResults<DeviceCommandResponseWithAsset> bulk = getClient()
+		.bulkListCommandResponsesForDeviceAssignments(getTenatAuthentication(), request);
+	assertNotNull(bulk);
     }
 
     @Test
     public void testBulkListStateChangesForDeviceAssignments() throws SiteWhereException {
 	DeviceAssignmentBulkRequest request = new DeviceAssignmentBulkRequest();
-	
+
 	request.setDeviceAssignmentTokens(new ArrayList<String>());
 	request.getDeviceAssignmentTokens().add(knownEntityToken());
-	
-	SearchResults<DeviceStateChangeWithAsset> bulk = 
-		getClient().bulkListStateChangesForDeviceAssignments(getTenatAuthentication(), request);
-	assertNotNull(bulk);	
+
+	SearchResults<DeviceStateChangeWithAsset> bulk = getClient()
+		.bulkListStateChangesForDeviceAssignments(getTenatAuthentication(), request);
+	assertNotNull(bulk);
     }
 }

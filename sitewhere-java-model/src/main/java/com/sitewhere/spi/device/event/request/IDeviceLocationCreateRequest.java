@@ -7,6 +7,8 @@
  */
 package com.sitewhere.spi.device.event.request;
 
+import java.math.BigDecimal;
+
 /**
  * Interface for arguments needed to create a device location.
  */
@@ -17,19 +19,19 @@ public interface IDeviceLocationCreateRequest extends IDeviceEventCreateRequest 
      * 
      * @return
      */
-    Double getLatitude();
+    BigDecimal getLatitude();
 
     /**
      * Get longitude.
      * 
      * @return
      */
-    Double getLongitude();
+    BigDecimal getLongitude();
 
     /**
      * Get elevation.s
      * 
      * @return
      */
-    Double getElevation();
+    BigDecimal getElevation();
 }

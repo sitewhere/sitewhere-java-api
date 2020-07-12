@@ -5,41 +5,38 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package com.sitewhere.spi.device.state;
-
-import java.util.Date;
-import java.util.UUID;
+package com.sitewhere.spi.device.event;
 
 /**
- * Base interface for recent device state events.
+ * Content associated with a device alert.
  */
-public interface IRecentStateEvent {
+public interface IDeviceAlertContent {
 
     /**
-     * Get unique id.
+     * Get source of the alert.
      * 
      * @return
      */
-    UUID getId();
+    AlertSource getSource();
 
     /**
-     * Get id of device state entity.
+     * Get severity of alert.
      * 
      * @return
      */
-    UUID getDeviceStateId();
+    AlertLevel getLevel();
 
     /**
-     * Get unique event id.
+     * Get the alert type indicator.
      * 
      * @return
      */
-    UUID getEventId();
+    String getType();
 
     /**
-     * Get date event occurred.
+     * Get the alert message.
      * 
      * @return
      */
-    Date getEventDate();
+    String getMessage();
 }

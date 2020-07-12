@@ -7,6 +7,7 @@
  */
 package com.sitewhere.test;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.apache.activemq.transport.stomp.StompConnection;
@@ -57,7 +58,7 @@ public class StompTest {
 	DeviceMeasurementCreateRequest request = new DeviceMeasurementCreateRequest();
 	request.setEventDate(new Date());
 	request.setName("engine.temp");
-	request.setValue(98.76);
+	request.setValue(new BigDecimal("98.76"));
 	batch.getMeasurements().add(request);
 	return MAPPER.writeValueAsString(batch);
     }

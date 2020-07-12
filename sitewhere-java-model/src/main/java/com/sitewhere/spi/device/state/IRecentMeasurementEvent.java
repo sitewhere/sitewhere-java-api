@@ -5,12 +5,14 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package com.sitewhere.spi.device.event;
+package com.sitewhere.spi.device.state;
 
 import java.io.Serializable;
 
+import com.sitewhere.spi.device.event.IDeviceMeasurementContent;
+
 /**
- * Location associated with a device assignment.
+ * Annotation of a recent device measurement event.
  */
-public interface IDeviceLocation extends IDeviceEvent, IDeviceLocationContent, Serializable {
+public interface IRecentMeasurementEvent extends IRecentStateEvent, IDeviceMeasurementContent, Serializable {
 }

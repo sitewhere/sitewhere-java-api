@@ -7,6 +7,7 @@
  */
 package com.sitewhere.rest.model.device.event.request;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,7 +32,7 @@ public class DeviceMeasurementCreateRequest extends DeviceEventCreateRequest
     private String name;
 
     /** Measurement value */
-    private double value;
+    private BigDecimal value;
 
     public DeviceMeasurementCreateRequest() {
 	setEventType(DeviceEventType.Measurement);
@@ -55,11 +56,11 @@ public class DeviceMeasurementCreateRequest extends DeviceEventCreateRequest
      * getValue()
      */
     @Override
-    public double getValue() {
+    public BigDecimal getValue() {
 	return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(BigDecimal value) {
 	this.value = value;
     }
 
@@ -71,6 +72,12 @@ public class DeviceMeasurementCreateRequest extends DeviceEventCreateRequest
 	}
 
 	public Builder measurement(String name, double value) {
+	    request.setName(name);
+	    request.setValue(new BigDecimal(value));
+	    return this;
+	}
+
+	public Builder measurement(String name, BigDecimal value) {
 	    request.setName(name);
 	    request.setValue(value);
 	    return this;

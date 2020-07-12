@@ -7,36 +7,10 @@
  */
 package com.sitewhere.spi.device.event;
 
+import java.io.Serializable;
+
 /**
  * Interface for an event from a device indiacating and exceptional condition.
  */
-public interface IDeviceAlert extends IDeviceEvent {
-
-    /**
-     * Get source of the alert.
-     * 
-     * @return
-     */
-    AlertSource getSource();
-
-    /**
-     * Get severity of alert.
-     * 
-     * @return
-     */
-    AlertLevel getLevel();
-
-    /**
-     * Get the alert type indicator.
-     * 
-     * @return
-     */
-    String getType();
-
-    /**
-     * Get the alert message.
-     * 
-     * @return
-     */
-    String getMessage();
+public interface IDeviceAlert extends IDeviceEvent, IDeviceAlertContent, Serializable {
 }

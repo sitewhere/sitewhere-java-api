@@ -7,10 +7,24 @@
  */
 package com.sitewhere.spi.device.event;
 
-import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
- * Location associated with a device assignment.
+ * Content associated with a device measurement.
  */
-public interface IDeviceLocation extends IDeviceEvent, IDeviceLocationContent, Serializable {
+public interface IDeviceMeasurementContent {
+
+    /**
+     * Get measurement name.
+     * 
+     * @return
+     */
+    String getName();
+
+    /**
+     * Get measurement value.
+     * 
+     * @return
+     */
+    BigDecimal getValue();
 }

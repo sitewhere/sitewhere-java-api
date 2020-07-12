@@ -5,27 +5,33 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package com.sitewhere.spi.device.event.request;
+package com.sitewhere.spi.device.event;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * Interface for arguments needed to create a device measurement.
+ * Content associated with a device location.
  */
-public interface IDeviceMeasurementCreateRequest extends IDeviceEventCreateRequest, Serializable {
+public interface IDeviceLocationContent {
 
     /**
-     * Get measurement name.
+     * Get latitude value.
      * 
      * @return
      */
-    String getName();
+    BigDecimal getLatitude();
 
     /**
-     * Get measurement value.
+     * Get longitude value.
      * 
      * @return
      */
-    BigDecimal getValue();
+    BigDecimal getLongitude();
+
+    /**
+     * Get elevation value.
+     * 
+     * @return
+     */
+    BigDecimal getElevation();
 }
