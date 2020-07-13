@@ -46,7 +46,7 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     /** User status */
     private AccountStatus status;
 
-    /** User authorities */
+    /** User roles */
     private List<String> roles;
 
     /*
@@ -114,7 +114,7 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
      */
     @Override
     public List<String> getRoles() {
-	return Collections.unmodifiableList(this.roles);
+	return this.roles;
     }
 
     public void setRoles(List<String> roles) {
