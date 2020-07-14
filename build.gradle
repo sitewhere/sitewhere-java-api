@@ -10,12 +10,12 @@ buildscript {
 apply plugin: 'distribution'
 
 allprojects {
-    group = 'com.sitewhere'
-	  version = '3.0.0.beta5'
+	group = 'com.sitewhere'
+	version = '3.0.0.beta5'
 
-    repositories {
-        maven { url "https://repo.maven.apache.org/maven2" }
-    }
+	repositories {
+		maven { url "https://repo.maven.apache.org/maven2" }
+	}
 }
 
 subprojects {
@@ -24,13 +24,13 @@ subprojects {
 	apply plugin: "com.github.hierynomus.license"
 	license {
 		header rootProject.file('HEADER')
-    	include "**/*.java"
+		include "**/*.java"
 	}
 
- 	// Choose Java settings.
-    apply plugin: 'java'
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+	// Choose Java settings.
+	apply plugin: 'java'
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
 
 	tasks.withType(Javadoc) {
 		options.addStringOption('Xdoclint:none', '-quiet')
@@ -38,13 +38,13 @@ subprojects {
 		options.addStringOption('charSet', 'UTF-8')
 	}
 
-    // Common dependencies used for all projects.
-    dependencies {
-   		compile platform('io.quarkus:quarkus-bom:1.2.1.Final')
+	// Common dependencies used for all projects.
+	dependencies {
+		compile platform('io.quarkus:quarkus-bom:1.2.1.Final')
 
-        testCompile group: 'junit', name: 'junit'
-    }
+		testCompile group: 'junit', name: 'junit'
+	}
 	test {
-	    exclude '**/*'
+		exclude '**/*'
 	}
 }
