@@ -46,8 +46,8 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     /** User status */
     private AccountStatus status;
 
-    /** User roles */
-    private List<String> roles;
+    /** User authorities */
+    private List<String> roles = new ArrayList<>();
 
     /*
      * @see com.sitewhere.spi.user.request.IUserCreateRequest#getUsername()
