@@ -149,18 +149,18 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
 	}
 
 	public Builder withRole(IRole role) {
-	    if (request.getRoles() == null) {
-		request.setRoles(new ArrayList<>());
+	    if (request.roles == null) {
+		request.roles = new ArrayList<>();
 	    }
-	    request.getRoles().add(role.getRole());
+	    request.roles.add(role.getRole());
 	    return this;
 	}
 
 	public Builder withRoles(List<IRole> roles) {
-	    if (request.getRoles() == null) {
-		request.setRoles(new ArrayList<>());
+	    if (request.roles == null) {
+		request.roles = new ArrayList<>();
 	    }
-	    request.getRoles().addAll(roles.stream().map(IRole::getRole).collect(Collectors.toList()));
+	    request.roles.addAll(roles.stream().map(IRole::getRole).collect(Collectors.toList()));
 	    return this;
 	}
 
