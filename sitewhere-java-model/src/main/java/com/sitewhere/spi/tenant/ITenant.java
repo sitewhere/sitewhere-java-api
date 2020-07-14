@@ -8,6 +8,7 @@
 package com.sitewhere.spi.tenant;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import com.sitewhere.spi.common.IColorProvider;
@@ -61,4 +62,11 @@ public interface ITenant extends IColorProvider, IIconProvider, IImageProvider, 
      * @return
      */
     String getDatasetTemplateId();
+
+    /**
+     * Get date tenant was created.
+     * 
+     * @return
+     */
+    Date getCreatedDate();
 }
