@@ -8,6 +8,7 @@
 package com.sitewhere.rest.model.tenant;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -59,6 +60,9 @@ public class Tenant implements ITenant {
 
     /** Metadata map */
     private Map<String, String> metadata;
+
+    /** Created date */
+    private Date createdDate;
 
     /*
      * @see com.sitewhere.spi.tenant.ITenant#getToken()
@@ -206,5 +210,17 @@ public class Tenant implements ITenant {
 
     public void setMetadata(Map<String, String> metadata) {
 	this.metadata = metadata;
+    }
+
+    /*
+     * @see com.sitewhere.spi.tenant.ITenant#getCreatedDate()
+     */
+    @Override
+    public Date getCreatedDate() {
+	return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+	this.createdDate = createdDate;
     }
 }
