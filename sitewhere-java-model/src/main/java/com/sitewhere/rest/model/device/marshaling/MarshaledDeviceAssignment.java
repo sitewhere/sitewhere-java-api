@@ -31,12 +31,6 @@ public class MarshaledDeviceAssignment extends DeviceAssignment {
     /** Associated asset */
     private MarshaledAsset asset;
 
-    /** Associated asset name */
-    private String assetName;
-
-    /** Associated asset image */
-    private String assetImageUrl;
-
     public MarshaledDevice getDevice() {
 	return device;
     }
@@ -67,21 +61,5 @@ public class MarshaledDeviceAssignment extends DeviceAssignment {
 
     public void setAsset(MarshaledAsset asset) {
 	this.asset = asset;
-    }
-
-    public String getAssetName() {
-	return assetName;
-    }
-
-    public void setAssetName(String assetName) {
-	this.assetName = assetName;
-    }
-
-    public String getAssetImageUrl() {
-	return assetImageUrl;
-    }
-
-    public void setAssetImageUrl(String assetImageUrl) {
-	this.assetImageUrl = assetImageUrl;
     }
 }

@@ -10,7 +10,6 @@ package com.sitewhere.rest.model.device.marshaling;
 import java.util.List;
 
 import com.sitewhere.rest.model.device.Device;
-import com.sitewhere.rest.model.device.DeviceAssignment;
 import com.sitewhere.rest.model.device.DeviceType;
 
 /**
@@ -25,7 +24,7 @@ public class MarshaledDevice extends Device {
     private DeviceType deviceType;
 
     /** Current device assignment */
-    private List<DeviceAssignment> activeDeviceAssignments;
+    private List<MarshaledDeviceAssignment> activeDeviceAssignments;
 
     public DeviceType getDeviceType() {
 	return deviceType;
@@ -35,11 +34,11 @@ public class MarshaledDevice extends Device {
 	this.deviceType = deviceType;
     }
 
-    public List<DeviceAssignment> getActiveDeviceAssignments() {
+    public List<MarshaledDeviceAssignment> getActiveDeviceAssignments() {
 	return activeDeviceAssignments;
     }
 
-    public void setActiveDeviceAssignments(List<DeviceAssignment> activeDeviceAssignments) {
+    public void setActiveDeviceAssignments(List<MarshaledDeviceAssignment> activeDeviceAssignments) {
 	this.activeDeviceAssignments = activeDeviceAssignments;
     }
 }
