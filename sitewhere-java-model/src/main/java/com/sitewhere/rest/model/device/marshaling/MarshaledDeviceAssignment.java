@@ -31,6 +31,18 @@ public class MarshaledDeviceAssignment extends DeviceAssignment {
     /** Associated asset */
     private MarshaledAsset asset;
 
+    /** Customer name */
+    private String customerName;
+
+    /** Customer image url */
+    private String customerImageUrl;
+
+    /** Area name */
+    private String areaName;
+
+    /** Area image url */
+    private String areaImageUrl;
+
     /** Associated asset name */
     private String assetName;
 
@@ -67,6 +79,38 @@ public class MarshaledDeviceAssignment extends DeviceAssignment {
 
     public void setAsset(MarshaledAsset asset) {
 	this.asset = asset;
+    }
+
+    public String getCustomerName() {
+	return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+	this.customerName = customerName;
+    }
+
+    public String getCustomerImageUrl() {
+	return customerImageUrl;
+    }
+
+    public void setCustomerImageUrl(String customerImageUrl) {
+	this.customerImageUrl = customerImageUrl;
+    }
+
+    public String getAreaName() {
+	return areaName;
+    }
+
+    public void setAreaName(String areaName) {
+	this.areaName = areaName;
+    }
+
+    public String getAreaImageUrl() {
+	return areaImageUrl;
+    }
+
+    public void setAreaImageUrl(String areaImageUrl) {
+	this.areaImageUrl = areaImageUrl;
     }
 
     public String getAssetName() {
