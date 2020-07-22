@@ -9,13 +9,12 @@ package com.sitewhere.rest.model.device.event.kafka;
 
 import com.sitewhere.spi.device.event.IDeviceEvent;
 import com.sitewhere.spi.device.event.IDeviceEventContext;
-import com.sitewhere.spi.device.event.kafka.IEnrichedEventPayload;
+import com.sitewhere.spi.device.event.kafka.IProcessedEventPayload;
 
 /**
- * Event payload that has been enriched with extra device/assignment data that
- * may be useful in processing.
+ * Event payload after persistence.
  */
-public class EnrichedEventPayload implements IEnrichedEventPayload {
+public class ProcessedEventPayload implements IProcessedEventPayload {
 
     /** Extra context */
     private IDeviceEventContext eventContext;

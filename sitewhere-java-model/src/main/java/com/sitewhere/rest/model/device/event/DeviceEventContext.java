@@ -20,6 +20,15 @@ import com.sitewhere.spi.device.event.IDeviceEventContext;
  */
 public class DeviceEventContext implements IDeviceEventContext {
 
+    /** Event originator */
+    private String originator;
+
+    /** Event source id */
+    private String sourceId;
+
+    /** Device token */
+    private String deviceToken;
+
     /** Device id */
     private UUID deviceId;
 
@@ -35,11 +44,59 @@ public class DeviceEventContext implements IDeviceEventContext {
     /** Device metadata */
     private Map<String, String> deviceMetadata;
 
+    /** Device assignment id */
+    private UUID deviceAssignmentId;
+
+    /** Customer id */
+    private UUID customerId;
+
+    /** Area id */
+    private UUID areaId;
+
+    /** Asset id */
+    private UUID assetId;
+
     /** Device assignment status */
-    private DeviceAssignmentStatus assignmentStatus;
+    private DeviceAssignmentStatus deviceAssignmentStatus;
 
     /** Device assignment metadata */
-    private Map<String, String> assignmentMetadata;
+    private Map<String, String> deviceAssignmentMetadata;
+
+    /*
+     * @see com.sitewhere.spi.device.event.IDeviceEventContext#getOriginator()
+     */
+    @Override
+    public String getOriginator() {
+	return originator;
+    }
+
+    public void setOriginator(String originator) {
+	this.originator = originator;
+    }
+
+    /*
+     * @see com.sitewhere.spi.device.event.IDeviceEventContext#getSourceId()
+     */
+    @Override
+    public String getSourceId() {
+	return sourceId;
+    }
+
+    public void setSourceId(String sourceId) {
+	this.sourceId = sourceId;
+    }
+
+    /*
+     * @see com.sitewhere.spi.device.event.IDeviceEventContext#getDeviceToken()
+     */
+    @Override
+    public String getDeviceToken() {
+	return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+	this.deviceToken = deviceToken;
+    }
 
     /*
      * @see com.sitewhere.spi.device.event.IDeviceEventContext#getDeviceId()
@@ -102,27 +159,78 @@ public class DeviceEventContext implements IDeviceEventContext {
     }
 
     /*
-     * @see com.sitewhere.spi.device.event.IDeviceEventContext#getAssignmentStatus()
+     * @see
+     * com.sitewhere.spi.device.event.IDeviceEventContext#getDeviceAssignmentId()
      */
     @Override
-    public DeviceAssignmentStatus getAssignmentStatus() {
-	return assignmentStatus;
+    public UUID getDeviceAssignmentId() {
+	return deviceAssignmentId;
     }
 
-    public void setAssignmentStatus(DeviceAssignmentStatus assignmentStatus) {
-	this.assignmentStatus = assignmentStatus;
+    public void setDeviceAssignmentId(UUID deviceAssignmentId) {
+	this.deviceAssignmentId = deviceAssignmentId;
+    }
+
+    /*
+     * @see com.sitewhere.spi.device.event.IDeviceEventContext#getCustomerId()
+     */
+    @Override
+    public UUID getCustomerId() {
+	return customerId;
+    }
+
+    public void setCustomerId(UUID customerId) {
+	this.customerId = customerId;
+    }
+
+    /*
+     * @see com.sitewhere.spi.device.event.IDeviceEventContext#getAreaId()
+     */
+    @Override
+    public UUID getAreaId() {
+	return areaId;
+    }
+
+    public void setAreaId(UUID areaId) {
+	this.areaId = areaId;
+    }
+
+    /*
+     * @see com.sitewhere.spi.device.event.IDeviceEventContext#getAssetId()
+     */
+    @Override
+    public UUID getAssetId() {
+	return assetId;
+    }
+
+    public void setAssetId(UUID assetId) {
+	this.assetId = assetId;
     }
 
     /*
      * @see
-     * com.sitewhere.spi.device.event.IDeviceEventContext#getAssignmentMetadata()
+     * com.sitewhere.spi.device.event.IDeviceEventContext#getDeviceAssignmentStatus(
+     * )
      */
     @Override
-    public Map<String, String> getAssignmentMetadata() {
-	return assignmentMetadata;
+    public DeviceAssignmentStatus getDeviceAssignmentStatus() {
+	return deviceAssignmentStatus;
     }
 
-    public void setAssignmentMetadata(Map<String, String> assignmentMetadata) {
-	this.assignmentMetadata = assignmentMetadata;
+    public void setDeviceAssignmentStatus(DeviceAssignmentStatus deviceAssignmentStatus) {
+	this.deviceAssignmentStatus = deviceAssignmentStatus;
+    }
+
+    /*
+     * @see com.sitewhere.spi.device.event.IDeviceEventContext#
+     * getDeviceAssignmentMetadata()
+     */
+    @Override
+    public Map<String, String> getDeviceAssignmentMetadata() {
+	return deviceAssignmentMetadata;
+    }
+
+    public void setDeviceAssignmentMetadata(Map<String, String> deviceAssignmentMetadata) {
+	this.deviceAssignmentMetadata = deviceAssignmentMetadata;
     }
 }

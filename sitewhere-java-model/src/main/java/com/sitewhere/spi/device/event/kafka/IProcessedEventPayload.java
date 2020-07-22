@@ -11,10 +11,9 @@ import com.sitewhere.spi.device.event.IDeviceEvent;
 import com.sitewhere.spi.device.event.IDeviceEventContext;
 
 /**
- * Event payload that has been enriched with extra device/assignment data that
- * may be useful in processing.
+ * Event payload after persistence.
  */
-public interface IEnrichedEventPayload {
+public interface IProcessedEventPayload {
 
     /**
      * Get extra context information for event.

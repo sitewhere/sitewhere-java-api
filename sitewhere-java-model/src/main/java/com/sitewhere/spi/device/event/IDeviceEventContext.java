@@ -20,6 +20,27 @@ import com.sitewhere.spi.device.DeviceAssignmentStatus;
 public interface IDeviceEventContext {
 
     /**
+     * Get device token.
+     * 
+     * @return
+     */
+    String getDeviceToken();
+
+    /**
+     * Get originator.
+     * 
+     * @return
+     */
+    String getOriginator();
+
+    /**
+     * Get source id.
+     * 
+     * @return
+     */
+    String getSourceId();
+
+    /**
      * Get the unique id of the device.
      * 
      * @return
@@ -55,16 +76,44 @@ public interface IDeviceEventContext {
     Map<String, String> getDeviceMetadata();
 
     /**
+     * Get the unique id of the device.
+     * 
+     * @return
+     */
+    UUID getDeviceAssignmentId();
+
+    /**
+     * Get customer id if assigned.
+     * 
+     * @return
+     */
+    UUID getCustomerId();
+
+    /**
+     * Get area id if assigned.
+     * 
+     * @return
+     */
+    UUID getAreaId();
+
+    /**
+     * Get asset id if assigned.
+     * 
+     * @return
+     */
+    UUID getAssetId();
+
+    /**
      * Get the device assignment status.
      * 
      * @return
      */
-    DeviceAssignmentStatus getAssignmentStatus();
+    DeviceAssignmentStatus getDeviceAssignmentStatus();
 
     /**
      * Get a map of device assignment metadata.
      * 
      * @return
      */
-    Map<String, String> getAssignmentMetadata();
+    Map<String, String> getDeviceAssignmentMetadata();
 }

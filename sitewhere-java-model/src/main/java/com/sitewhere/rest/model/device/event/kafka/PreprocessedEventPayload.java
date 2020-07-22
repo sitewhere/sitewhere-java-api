@@ -7,45 +7,27 @@
  */
 package com.sitewhere.rest.model.device.event.kafka;
 
-import java.util.UUID;
-
+import com.sitewhere.spi.device.event.IDeviceEventContext;
 import com.sitewhere.spi.device.event.kafka.IPreprocessedEventPayload;
 
 /**
- * Payload for inbound event which has been decoded and pre-processed by inbound
- * processing.
+ * Event payload before persistence.
  */
 public class PreprocessedEventPayload extends DecodedEventPayload implements IPreprocessedEventPayload {
 
-    /** Device id */
-    private UUID deviceId;
-
-    /** Device assignment id */
-    private UUID deviceAssignmentId;
-
-    /*
-     * @see
-     * com.sitewhere.spi.device.event.kafka.IPreprocessedEventPayload#getDeviceId()
-     */
-    @Override
-    public UUID getDeviceId() {
-	return deviceId;
-    }
-
-    public void setDeviceId(UUID deviceId) {
-	this.deviceId = deviceId;
-    }
+    /** Event context */
+    private IDeviceEventContext eventContext;
 
     /*
      * @see com.sitewhere.spi.device.event.kafka.IPreprocessedEventPayload#
-     * getDeviceAssignmentId()
+     * getEventContext()
      */
     @Override
-    public UUID getDeviceAssignmentId() {
-	return deviceAssignmentId;
+    public IDeviceEventContext getEventContext() {
+	return eventContext;
     }
 
-    public void setDeviceAssignmentId(UUID deviceAssignmentId) {
-	this.deviceAssignmentId = deviceAssignmentId;
+    public void setEventContext(IDeviceEventContext eventContext) {
+	this.eventContext = eventContext;
     }
 }

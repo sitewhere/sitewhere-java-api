@@ -7,25 +7,17 @@
  */
 package com.sitewhere.spi.device.event.kafka;
 
-import java.util.UUID;
+import com.sitewhere.spi.device.event.IDeviceEventContext;
 
 /**
- * Event payload after payload is decoded and initial inbound processing has
- * been completed.
+ * Event payload before persistence.
  */
 public interface IPreprocessedEventPayload extends IDecodedEventPayload {
 
     /**
-     * Get unique device id.
+     * Get extra context information for event.
      * 
      * @return
      */
-    UUID getDeviceId();
-
-    /**
-     * Get unique device assignment id.
-     * 
-     * @return
-     */
-    UUID getDeviceAssignmentId();
+    IDeviceEventContext getEventContext();
 }
