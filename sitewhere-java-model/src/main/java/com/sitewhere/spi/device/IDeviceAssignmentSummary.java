@@ -18,6 +18,41 @@ import com.sitewhere.spi.common.IPersistentEntity;
 public interface IDeviceAssignmentSummary extends IPersistentEntity {
 
     /**
+     * Get id for device associated with assignment.
+     * 
+     * @return
+     */
+    UUID getDeviceId();
+
+    /**
+     * Get token for device associated with assignment.
+     * 
+     * @return
+     */
+    String getDeviceToken();
+
+    /**
+     * Get id for device type associated with assignment.
+     * 
+     * @return
+     */
+    UUID getDeviceTypeId();
+
+    /**
+     * Get name for device type associated with assignment.
+     * 
+     * @return
+     */
+    String getDeviceTypeName();
+
+    /**
+     * Get image url for device type associated with assignment.
+     * 
+     * @return
+     */
+    String getDeviceTypeImageUrl();
+
+    /**
      * Get unqiue id for customer assigned to device.
      * 
      * @return
