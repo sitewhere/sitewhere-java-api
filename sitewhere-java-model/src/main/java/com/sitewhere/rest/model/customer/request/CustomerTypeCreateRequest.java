@@ -99,6 +99,11 @@ public class CustomerTypeCreateRequest extends BrandedEntityCreateRequest implem
 	    return this;
 	}
 
+	public Builder withImageUrl(String imageUrl) {
+	    request.setImageUrl(imageUrl);
+	    return this;
+	}
+
 	public Builder withIcon(String icon) {
 	    request.setIcon(icon);
 	    return this;
