@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.sitewhere.rest.model.common.request.BrandedEntityCreateRequest;
-import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest.Builder;
 import com.sitewhere.spi.area.IAreaType;
 import com.sitewhere.spi.area.request.IAreaTypeCreateRequest;
 
