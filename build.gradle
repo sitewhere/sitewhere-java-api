@@ -11,7 +11,7 @@ apply plugin: 'distribution'
 
 allprojects {
 	group = 'com.sitewhere'
-	version = '3.0.0.beta10'
+	version = '3.0.0.beta12'
 
 	repositories {
 		maven { url "https://repo.maven.apache.org/maven2" }
@@ -40,7 +40,7 @@ subprojects {
 
 	// Common dependencies used for all projects.
 	dependencies {
-		compile platform('io.quarkus:quarkus-bom:1.2.1.Final')
+		compile platform('io.quarkus:quarkus-bom:1.7.2.Final')
 
 		testCompile group: 'junit', name: 'junit'
 	}
