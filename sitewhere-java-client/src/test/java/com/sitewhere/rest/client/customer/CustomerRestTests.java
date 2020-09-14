@@ -1,10 +1,17 @@
-
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.client.customer;
 
@@ -56,7 +63,8 @@ public class CustomerRestTests extends AbstractWithLabelCRUDRestTest<Customer, C
 	String customerTypeToken = "construction";
 	String parentToken = "acme";
 	String name = "Test Customer";
-	CustomerCreateRequest.Builder builder = new CustomerCreateRequest.Builder(customerTypeToken, parentToken, token, name);
+	CustomerCreateRequest.Builder builder = new CustomerCreateRequest.Builder(customerTypeToken, parentToken, token,
+		name);
 	builder.withDescription("Some customer description");
 	return builder.build();
     }
@@ -69,7 +77,7 @@ public class CustomerRestTests extends AbstractWithLabelCRUDRestTest<Customer, C
     // ------------------------------------------------------------------------
     // READ
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected Customer findEntityByToken(String token) throws SiteWhereException {
 	return getClient().getCustomerByToken(getTenatAuthentication(), token);
@@ -78,20 +86,20 @@ public class CustomerRestTests extends AbstractWithLabelCRUDRestTest<Customer, C
     // ------------------------------------------------------------------------
     // UPDATE
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected CustomerCreateRequest buildUpdateRequest(String token) throws SiteWhereException {
 	String customerTypeToken = "construction";
 	String parentToken = "acme";
 	String name = "Test Customer";
-	CustomerCreateRequest.Builder builder = new CustomerCreateRequest.Builder(customerTypeToken, parentToken, token, name);
+	CustomerCreateRequest.Builder builder = new CustomerCreateRequest.Builder(customerTypeToken, parentToken, token,
+		name);
 	builder.withDescription("Some updated customer description");
 	return builder.build();
     }
 
     @Override
-    protected Customer updateEntity(String token, CustomerCreateRequest updateRequest)
-	    throws SiteWhereException {
+    protected Customer updateEntity(String token, CustomerCreateRequest updateRequest) throws SiteWhereException {
 	return getClient().updateCustomer(getTenatAuthentication(), token, updateRequest);
     }
 
@@ -111,7 +119,7 @@ public class CustomerRestTests extends AbstractWithLabelCRUDRestTest<Customer, C
     @Override
     protected SearchResults<? extends Customer> listEntities() throws SiteWhereException {
 	CustomerSearchCriteria searchCriteria = new CustomerSearchCriteria(1, 1);
-    	CustomerResponseFormat responseFormat = new CustomerResponseFormat();
+	CustomerResponseFormat responseFormat = new CustomerResponseFormat();
 	return getClient().listCustomers(getTenatAuthentication(), searchCriteria, responseFormat);
     }
 
@@ -127,21 +135,21 @@ public class CustomerRestTests extends AbstractWithLabelCRUDRestTest<Customer, C
     // ------------------------------------------------------------------------
     // OTHER TESTS
     // ------------------------------------------------------------------------
-    
+
     @Test
     public void testListAlerts() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
-	SearchResults<DeviceAlertWithAsset> alerts = getClient()
-		.listAlertsForCustomer(getTenatAuthentication(), knownEntityToken(), searchCriteria);
-	
+	SearchResults<DeviceAlertWithAsset> alerts = getClient().listAlertsForCustomer(getTenatAuthentication(),
+		knownEntityToken(), searchCriteria);
+
 	assertNotNull(alerts);
     }
 
@@ -149,100 +157,99 @@ public class CustomerRestTests extends AbstractWithLabelCRUDRestTest<Customer, C
     public void testListAssignments() throws SiteWhereException {
 	DeviceAssignmentSearchCriteria searchCriteria = new DeviceAssignmentSearchCriteria();
 	DeviceAssignmentResponseFormat responseFormat = new DeviceAssignmentResponseFormat();
-	SearchResults<MarshaledDeviceAssignment> assignments = 
-		getClient().listDeviceAssignmentsForCustomer(
-			getTenatAuthentication(), knownEntityToken(), searchCriteria, responseFormat);
+	SearchResults<MarshaledDeviceAssignment> assignments = getClient().listDeviceAssignmentsForCustomer(
+		getTenatAuthentication(), knownEntityToken(), searchCriteria, responseFormat);
 	assertNotNull(assignments);
     }
-    
+
     @Test
     public void testListCommandInvocations() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceCommandInvocation> commandInvocations = getClient()
 		.listCommandInvocationsForCustomer(getTenatAuthentication(), knownEntityToken(), searchCriteria);
-	
+
 	assertNotNull(commandInvocations);
     }
 
     @Test
     public void testListLocations() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceLocationWithAsset> locations = getClient()
 		.listLocationsForCustomer(getTenatAuthentication(), knownEntityToken(), searchCriteria);
-	
+
 	assertNotNull(locations);
-    }    
+    }
 
     @Test
     public void testListMeasurements() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceMeasurementWithAsset> measurements = getClient()
 		.listMeasurementsForCustomer(getTenatAuthentication(), knownEntityToken(), searchCriteria);
-	
+
 	assertNotNull(measurements);
-    }    
+    }
 
     @Test
     public void testListCommandResponses() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceCommandResponseWithAsset> commandResponses = getClient()
 		.listCommandResponsesForCustomer(getTenatAuthentication(), knownEntityToken(), searchCriteria);
-	
+
 	assertNotNull(commandResponses);
-    }    
+    }
 
     @Test
     public void testListStateChanges() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceStateChangeWithAsset> stateChanges = getClient()
 		.listStateChangesForCustomer(getTenatAuthentication(), knownEntityToken(), searchCriteria);
-	
+
 	assertNotNull(stateChanges);
-    }    
+    }
 
     @Test
     public void testTree() throws SiteWhereException {
 	List<TreeNode> tree = getClient().customerTree(getTenatAuthentication());
 	assertNotNull(tree);
-    }    
+    }
 }
