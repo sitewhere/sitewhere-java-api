@@ -1,19 +1,28 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.user.request;
+
 import com.sitewhere.spi.user.request.IRoleCreateRequest;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Default implementation of {@link IRoleCreateRequest} for use in
- * REST services.
+ * Default implementation of {@link IRoleCreateRequest} for use in REST
+ * services.
  */
 public class RoleCreateRequest implements IRoleCreateRequest {
 
@@ -30,36 +39,35 @@ public class RoleCreateRequest implements IRoleCreateRequest {
     private List<String> authorities = new ArrayList<>();
 
     /*
-     * @see
-     * com.sitewhere.spi.user.request.IRoleCreateRequest#getRole()
+     * @see com.sitewhere.spi.user.request.IRoleCreateRequest#getRole()
      */
     @Override
     public String getRole() {
-        return this.role;
+	return this.role;
     }
 
     public void setRole(String role) {
-        this.role = role;
+	this.role = role;
     }
 
     /*
-     * @see
-     * com.sitewhere.spi.user.request.IRoleCreateRequest#getDescription()
+     * @see com.sitewhere.spi.user.request.IRoleCreateRequest#getDescription()
      */
-    @Override public String getDescription() {
-        return this.description;
+    @Override
+    public String getDescription() {
+	return this.description;
     }
 
     @Override
     public List<String> getAuthorities() {
-        return this.authorities;
+	return this.authorities;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+	this.description = description;
     }
 
     public void setAuthorities(List<String> authorities) {
-        this.authorities = authorities;
+	this.authorities = authorities;
     }
 }
