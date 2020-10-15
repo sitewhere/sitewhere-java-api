@@ -35,4 +35,11 @@ public interface IDeviceRegistrationRequest extends IDeviceCreateRequest {
      * @return
      */
     String getAreaToken();
+    
+    /**
+     * Get token for the asset to which device should be assigned.
+     * 
+     * @return
+     */
+    String getAssetToken();
 }

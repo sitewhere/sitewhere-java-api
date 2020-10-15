@@ -35,6 +35,9 @@ public class DeviceRegistrationRequest extends DeviceCreateRequest implements ID
     /** Area token */
     private String areaToken;
 
+    /** Asset token */
+    private String assetToken;
+    
     /*
      * @see com.sitewhere.spi.device.event.request.IDeviceRegistrationRequest#
      * getCustomerToken()
@@ -59,5 +62,18 @@ public class DeviceRegistrationRequest extends DeviceCreateRequest implements ID
 
     public void setAreaToken(String areaToken) {
 	this.areaToken = areaToken;
+    }
+
+    /*
+     * @see com.sitewhere.spi.device.event.request.IDeviceRegistrationRequest#
+     * getAssetToken()
+     */
+    @Override
+    public String getAssetToken() {
+        return assetToken;
+    }
+
+    public void setAssetToken(String assetToken) {
+        this.assetToken = assetToken;
     }
 }
