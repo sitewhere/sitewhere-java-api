@@ -15,6 +15,11 @@
  */
 package com.sitewhere.rest.model.user;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -24,11 +29,6 @@ import com.sitewhere.spi.SiteWhereException;
 import com.sitewhere.spi.user.AccountStatus;
 import com.sitewhere.spi.user.IRole;
 import com.sitewhere.spi.user.IUser;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Model class for a User.
@@ -42,14 +42,14 @@ public class User extends PersistentEntity implements IUser {
     /** Unique username */
     private String username;
 
-    /** Hashed password */
-    private String hashedPassword;
-
     /** First name */
     private String firstName;
 
     /** Last name */
     private String lastName;
+
+    /** Email address */
+    private String email;
 
     /** Last login */
     private Date lastLogin;
@@ -74,18 +74,6 @@ public class User extends PersistentEntity implements IUser {
     }
 
     /*
-     * @see com.sitewhere.spi.user.IUser#getHashedPassword()
-     */
-    @Override
-    public String getHashedPassword() {
-	return hashedPassword;
-    }
-
-    public void setHashedPassword(String hashedPassword) {
-	this.hashedPassword = hashedPassword;
-    }
-
-    /*
      * @see com.sitewhere.spi.user.IUser#getFirstName()
      */
     @Override
@@ -107,6 +95,18 @@ public class User extends PersistentEntity implements IUser {
 
     public void setLastName(String lastName) {
 	this.lastName = lastName;
+    }
+
+    /*
+     * @see com.sitewhere.spi.user.IUser#getEmail()
+     */
+    @Override
+    public String getEmail() {
+	return email;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
     }
 
     /*
@@ -155,9 +155,9 @@ public class User extends PersistentEntity implements IUser {
     public static User copy(IUser input) throws SiteWhereException {
 	User result = new User();
 	result.setUsername(input.getUsername());
-	result.setHashedPassword(input.getHashedPassword());
 	result.setFirstName(input.getFirstName());
 	result.setLastName(input.getLastName());
+	result.setEmail(input.getEmail());
 	result.setLastLogin(input.getLastLogin());
 	result.setStatus(input.getStatus());
 	result.setRoles(new ArrayList<>(input.getRoles()));

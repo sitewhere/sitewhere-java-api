@@ -51,6 +51,9 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     /** User lastname */
     private String lastName;
 
+    /** User email */
+    private String email;
+
     /** User status */
     private AccountStatus status;
 
@@ -106,6 +109,18 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     }
 
     /*
+     * @see com.sitewhere.spi.user.request.IUserCreateRequest#getEmail()
+     */
+    @Override
+    public String getEmail() {
+	return email;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
+    }
+
+    /*
      * @see com.sitewhere.spi.user.request.IUserCreateRequest#getStatus()
      */
     @Override
@@ -143,7 +158,6 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
 
 	public Builder(IUser existing) {
 	    request.setUsername(existing.getUsername());
-	    request.setPassword(existing.getHashedPassword());
 	    request.setFirstName(existing.getFirstName());
 	    request.setLastName(existing.getLastName());
 	    request.setStatus(existing.getStatus());
