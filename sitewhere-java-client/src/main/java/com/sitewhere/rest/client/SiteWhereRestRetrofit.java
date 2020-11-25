@@ -31,8 +31,8 @@ import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
-import com.sitewhere.rest.model.batch.request.InvocationByDeviceCriteriaRequest;
 import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
+import com.sitewhere.rest.model.batch.request.InvocationByDeviceCriteriaRequest;
 import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
@@ -92,6 +92,8 @@ import com.sitewhere.rest.model.user.GrantedAuthorityHierarchyNode;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.GrantedAuthorityCreateRequest;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
+import com.sitewhere.spi.tenant.ITenantConfigurationTemplate;
+import com.sitewhere.spi.tenant.ITenantDatasetTemplate;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -837,6 +839,12 @@ public interface SiteWhereRestRetrofit {
     Call<SearchResults<Tenant>> listTenants(@Query("authUserId") String authUserId,
 	    @Query("textSearch") String textSearch, @Query("includeRuntimeInfo") Boolean includeRuntimeInfo,
 	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
+    @GET("tenants/templates/configuration")
+    Call<List<ITenantConfigurationTemplate>> listTenantConfigurationTemplates(@HeaderMap Map<String, String> headers);
+
+    @GET("tenants/templates/dataset")
+    Call<List<ITenantDatasetTemplate>> listTenantDatasetTemplates(@HeaderMap Map<String, String> headers);
 
     @GET("tenants/{tenantToken}")
     Call<Tenant> getTenantByToken(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);
