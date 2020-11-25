@@ -134,6 +134,8 @@ import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.ISiteWhereClient;
 import com.sitewhere.spi.ITenantAuthentication;
 import com.sitewhere.spi.SiteWhereException;
+import com.sitewhere.spi.tenant.ITenantConfigurationTemplate;
+import com.sitewhere.spi.tenant.ITenantDatasetTemplate;
 import com.sitewhere.spi.web.ISiteWhereWebConstants;
 
 import okhttp3.Headers;
@@ -929,6 +931,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see
      * com.sitewhere.spi.ISiteWhereClient#createCommandResponseForDeviceAssignment()
      */
+    @Override
     public DeviceCommandResponseWithAsset createCommandResponseForDeviceAssignment(ITenantAuthentication tenant,
 	    String token, DeviceCommandResponseCreateRequest request) throws SiteWhereException {
 	Call<DeviceCommandResponseWithAsset> call = getRestRetrofit().createCommandResponseForDeviceAssignment(token,
@@ -956,6 +959,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see
      * com.sitewhere.spi.ISiteWhereClient#createStateChangeForDeviceAssignment()
      */
+    @Override
     public DeviceStateChangeWithAsset createStateChangeForDeviceAssignment(ITenantAuthentication tenant, String token,
 	    DeviceStateChangeCreateRequest request) throws SiteWhereException {
 	Call<DeviceStateChangeWithAsset> call = getRestRetrofit().createStateChangeForDeviceAssignment(token, request,
@@ -968,6 +972,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#bulkListAlertsForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceAlertWithAsset> bulkListAlertsForDeviceAssignments(ITenantAuthentication tenant,
 	    DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceAlertWithAsset>> call = getRestRetrofit().bulkListAlertsForDeviceAssignments(request,
@@ -981,6 +986,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListCommandInvocationsForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceCommandInvocation> bulkListCommandInvocationsForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceCommandInvocation>> call = getRestRetrofit()
@@ -994,6 +1000,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListLocationsForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceLocationWithAsset> bulkListLocationsForDeviceAssignments(ITenantAuthentication tenant,
 	    DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceLocationWithAsset>> call = getRestRetrofit()
@@ -1007,6 +1014,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListCommandInvocationsForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceMeasurementWithAsset> bulkListMeasurementsForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceMeasurementWithAsset>> call = getRestRetrofit()
@@ -1020,6 +1028,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListMeasurementsForDeviceAssignmentsAsChartSeries()
      */
+    @Override
     public Map<String, List<ChartSeries<Double>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<Map<String, List<ChartSeries<Double>>>> call = getRestRetrofit()
@@ -1033,6 +1042,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListCommandResponsesForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceCommandResponseWithAsset> bulkListCommandResponsesForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceCommandResponseWithAsset>> call = getRestRetrofit()
@@ -1046,6 +1056,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListStateChangesForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceStateChangeWithAsset> bulkListStateChangesForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit()
@@ -1062,6 +1073,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#listAuthorities()
      */
+    @Override
     public SearchResults<GrantedAuthority> listAuthorities(ITenantAuthentication tenant) throws SiteWhereException {
 	Call<SearchResults<GrantedAuthority>> call = getRestRetrofit().listAuthorities(createHeadersFor(tenant));
 	return processRestCall(call);
@@ -1072,6 +1084,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#getAuthorityByName()
      */
+    @Override
     public GrantedAuthority getAuthorityByName(ITenantAuthentication tenant, String name) throws SiteWhereException {
 	Call<GrantedAuthority> call = getRestRetrofit().getAuthorityByName(name, createHeadersFor(tenant));
 	return processRestCall(call);
@@ -1082,6 +1095,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#createAuthority()
      */
+    @Override
     public GrantedAuthority createAuthority(ITenantAuthentication tenant, GrantedAuthorityCreateRequest request)
 	    throws SiteWhereException {
 	Call<GrantedAuthority> call = getRestRetrofit().createAuthority(request, createHeadersFor(tenant));
@@ -1093,6 +1107,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#getAuthoritiesHierarchy()
      */
+    @Override
     public List<GrantedAuthorityHierarchyNode> getAuthoritiesHierarchy(ITenantAuthentication tenant)
 	    throws SiteWhereException {
 	Call<List<GrantedAuthorityHierarchyNode>> call = getRestRetrofit()
@@ -2270,6 +2285,25 @@ public class SiteWhereClient implements ISiteWhereClient {
     @Override
     public Tenant getTenantByToken(String tenantToken) throws SiteWhereException {
 	Call<Tenant> call = getRestRetrofit().getTenantByToken(tenantToken, createDefaulHeaders());
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#listTenantConfigurationTemplates()
+     */
+    @Override
+    public List<ITenantConfigurationTemplate> listTenantConfigurationTemplates() throws SiteWhereException {
+	Call<List<ITenantConfigurationTemplate>> call = getRestRetrofit()
+		.listTenantConfigurationTemplates(createDefaulHeaders());
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#listTenantDatasetTemplates()
+     */
+    @Override
+    public List<ITenantDatasetTemplate> listTenantDatasetTemplates() throws SiteWhereException {
+	Call<List<ITenantDatasetTemplate>> call = getRestRetrofit().listTenantDatasetTemplates(createDefaulHeaders());
 	return processRestCall(call);
     }
 
