@@ -33,6 +33,13 @@ public interface IUser extends IPersistentEntity {
     String getUsername();
 
     /**
+     * Get the password.
+     *
+     * @return
+     */
+    String getHashedPassword();
+
+    /**
      * Get the common name.
      *
      * @return
@@ -45,13 +52,6 @@ public interface IUser extends IPersistentEntity {
      * @return
      */
     String getLastName();
-
-    /**
-     * Email address.
-     * 
-     * @return
-     */
-    String getEmail();
 
     /**
      * Get the last login date.

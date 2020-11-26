@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.sitewhere.rest.model.tenant.TenantConfigurationTemplate;
+import com.sitewhere.rest.model.tenant.TenantDatasetTemplate;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
@@ -134,8 +136,6 @@ import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.ISiteWhereClient;
 import com.sitewhere.spi.ITenantAuthentication;
 import com.sitewhere.spi.SiteWhereException;
-import com.sitewhere.spi.tenant.ITenantConfigurationTemplate;
-import com.sitewhere.spi.tenant.ITenantDatasetTemplate;
 import com.sitewhere.spi.web.ISiteWhereWebConstants;
 
 import okhttp3.Headers;
@@ -2292,8 +2292,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#listTenantConfigurationTemplates()
      */
     @Override
-    public List<ITenantConfigurationTemplate> listTenantConfigurationTemplates() throws SiteWhereException {
-	Call<List<ITenantConfigurationTemplate>> call = getRestRetrofit()
+    public List<TenantConfigurationTemplate> listTenantConfigurationTemplates() throws SiteWhereException {
+	Call<List<TenantConfigurationTemplate>> call = getRestRetrofit()
 		.listTenantConfigurationTemplates(createDefaulHeaders());
 	return processRestCall(call);
     }
@@ -2302,8 +2302,8 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#listTenantDatasetTemplates()
      */
     @Override
-    public List<ITenantDatasetTemplate> listTenantDatasetTemplates() throws SiteWhereException {
-	Call<List<ITenantDatasetTemplate>> call = getRestRetrofit().listTenantDatasetTemplates(createDefaulHeaders());
+    public List<TenantDatasetTemplate> listTenantDatasetTemplates() throws SiteWhereException {
+	Call<List<TenantDatasetTemplate>> call = getRestRetrofit().listTenantDatasetTemplates(createDefaulHeaders());
 	return processRestCall(call);
     }
 

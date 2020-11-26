@@ -54,13 +54,6 @@ public interface IUserCreateRequest extends IPersistentEntityCreateRequest {
     String getLastName();
 
     /**
-     * Get email address.
-     * 
-     * @return
-     */
-    String getEmail();
-
-    /**
      * Get the account status.
      *
      * @return

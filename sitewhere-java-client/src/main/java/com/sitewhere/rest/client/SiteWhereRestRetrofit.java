@@ -86,14 +86,14 @@ import com.sitewhere.rest.model.search.TreeNode;
 import com.sitewhere.rest.model.search.device.DeviceStateSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
+import com.sitewhere.rest.model.tenant.TenantConfigurationTemplate;
+import com.sitewhere.rest.model.tenant.TenantDatasetTemplate;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
 import com.sitewhere.rest.model.user.GrantedAuthority;
 import com.sitewhere.rest.model.user.GrantedAuthorityHierarchyNode;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.GrantedAuthorityCreateRequest;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
-import com.sitewhere.spi.tenant.ITenantConfigurationTemplate;
-import com.sitewhere.spi.tenant.ITenantDatasetTemplate;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -841,10 +841,10 @@ public interface SiteWhereRestRetrofit {
 	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
 
     @GET("tenants/templates/configuration")
-    Call<List<ITenantConfigurationTemplate>> listTenantConfigurationTemplates(@HeaderMap Map<String, String> headers);
+    Call<List<TenantConfigurationTemplate>> listTenantConfigurationTemplates(@HeaderMap Map<String, String> headers);
 
     @GET("tenants/templates/dataset")
-    Call<List<ITenantDatasetTemplate>> listTenantDatasetTemplates(@HeaderMap Map<String, String> headers);
+    Call<List<TenantDatasetTemplate>> listTenantDatasetTemplates(@HeaderMap Map<String, String> headers);
 
     @GET("tenants/{tenantToken}")
     Call<Tenant> getTenantByToken(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);
