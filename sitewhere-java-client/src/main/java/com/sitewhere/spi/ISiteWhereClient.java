@@ -117,14 +117,14 @@ import com.sitewhere.rest.model.search.scheduling.ScheduledJobSearchCriteria;
 import com.sitewhere.rest.model.search.tenant.TenantSearchCriteria;
 import com.sitewhere.rest.model.system.Version;
 import com.sitewhere.rest.model.tenant.Tenant;
+import com.sitewhere.rest.model.tenant.TenantConfigurationTemplate;
+import com.sitewhere.rest.model.tenant.TenantDatasetTemplate;
 import com.sitewhere.rest.model.tenant.request.TenantCreateRequest;
 import com.sitewhere.rest.model.user.GrantedAuthority;
 import com.sitewhere.rest.model.user.GrantedAuthorityHierarchyNode;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.GrantedAuthorityCreateRequest;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
-import com.sitewhere.spi.tenant.ITenantConfigurationTemplate;
-import com.sitewhere.spi.tenant.ITenantDatasetTemplate;
 
 /**
  * Interface for SiteWhere client calls.
@@ -2055,23 +2055,23 @@ public interface ISiteWhereClient {
     /**
      * List Tenant Configuration Templates.
      * 
-     * @return List of {@link ITenantConfigurationTemplate} found.
+     * @return List of {@link TenantConfigurationTemplate} found.
      * @throws SiteWhereException thrown in case of error.
      */
-    List<ITenantConfigurationTemplate> listTenantConfigurationTemplates() throws SiteWhereException;
+    List<TenantConfigurationTemplate> listTenantConfigurationTemplates() throws SiteWhereException;
 
     /**
      * List Tenant Dataset Templates.
      * 
-     * @return List of {@link ITenantDatasetTemplate} found.
+     * @return List of {@link TenantDatasetTemplate} found.
      * @throws SiteWhereException thrown in case of error.
      */
-    List<ITenantDatasetTemplate> listTenantDatasetTemplates() throws SiteWhereException;
+    List<TenantDatasetTemplate> listTenantDatasetTemplates() throws SiteWhereException;
 
     /**
      * Get a tenant by token.
      * 
-     * @param tenant Tenant authentication information.Token
+     * @param tenantToken Tenant authentication information.Token
      * @return
      * @throws SiteWhereException
      */
