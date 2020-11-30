@@ -20,18 +20,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public enum SiteWhereRole {
-    REST("ROLE_REST", "REST services access", Arrays.asList(SiteWhereAuthority.REST)), ADMIN_CONSOLE(
-	    "ROLE_ADMIN_CONSOLE", "Administrative console login",
-	    Arrays.asList(SiteWhereAuthority.AdminConsole)), VIEW_SERVER_INFO("ROLE_VIEW_SERVER_INFO",
-		    "View global server information",
-		    Arrays.asList(SiteWhereAuthority.ViewServerInfo)), ADMINISTER_USERS("ROLE_ADMINISTER_USERS",
-			    "Administer all users", Arrays.asList(SiteWhereAuthority.AdminUsers)), ADMINISTER_USER_SELF(
-				    "ROLE_ADMINISTER_USER_SELF", "Administer own user profile",
-				    Arrays.asList(SiteWhereAuthority.AdminSelf)), ADMINISTER_TENANTS(
-					    "ROLE_ADMINISTER_TENANTS", "Administer all tenants",
-					    Arrays.asList(SiteWhereAuthority.AdminTenants)), ADMINISTER_TENANT_SELF(
-						    "ROLE_ADMINISTER_TENANT_SELF", "Administer own tenant",
-						    Arrays.asList(SiteWhereAuthority.AdminOwnTenant));
+    /** System admin with all authorities */
+    SystemAdministrator(SiteWhereRoles.SystemAdministrator, "System Administrator",
+	    Arrays.asList(SiteWhereAuthority.ServerAdministrator, SiteWhereAuthority.RemoteAccessor,
+		    SiteWhereAuthority.UserAdministrator, SiteWhereAuthority.TenantAdministrator,
+		    SiteWhereAuthority.ScheduleAdministrator)),
+
+    /** Role with only external access rights */
+    RemoteAccessOnly(SiteWhereRoles.RemoteAccessOnly, "Remote Accessor",
+	    Arrays.asList(SiteWhereAuthority.RemoteAccessor));
 
     private String roleName;
     private String description;

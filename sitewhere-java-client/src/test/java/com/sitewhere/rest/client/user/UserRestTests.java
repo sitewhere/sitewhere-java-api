@@ -20,7 +20,6 @@ import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sitewhere.spi.user.SiteWhereRole;
 import org.junit.Test;
 
 import com.sitewhere.rest.client.AbstractCRUDRestClientTests;
@@ -30,6 +29,7 @@ import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.SiteWhereException;
 import com.sitewhere.spi.user.AccountStatus;
+import com.sitewhere.spi.user.SiteWhereRole;
 
 /**
  *
@@ -96,7 +96,7 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
 	request.setUsername(JOHN_DOE_USERNAME);
 	request.setPassword("12345");
 	List<String> roles = new ArrayList<String>();
-	roles.add(SiteWhereRole.ADMINISTER_TENANTS.getRoleName());
+	roles.add(SiteWhereRole.SystemAdministrator.getRoleName());
 	request.setRoles(roles);
 	return request;
     }

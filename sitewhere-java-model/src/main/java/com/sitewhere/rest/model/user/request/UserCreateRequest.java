@@ -16,7 +16,6 @@
 package com.sitewhere.rest.model.user.request;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -137,7 +136,7 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
      */
     @Override
     public List<String> getRoles() {
-	return Collections.unmodifiableList(this.roles);
+	return this.roles;
     }
 
     public void setRoles(List<String> roles) {
@@ -170,19 +169,19 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
 	    return this;
 	}
 
-	public Builder withRole(IRole role) {
-	    if (request.roles == null) {
-		request.roles = new ArrayList<>();
+	public Builder withRole(String role) {
+	    if (request.getRoles() == null) {
+		request.setRoles(new ArrayList<>());
 	    }
-	    request.roles.add(role.getRole());
+	    request.getRoles().add(role);
 	    return this;
 	}
 
-	public Builder withRoles(List<IRole> roles) {
-	    if (request.roles == null) {
-		request.roles = new ArrayList<>();
+	public Builder withRoles(List<String> roles) {
+	    if (request.getRoles() == null) {
+		request.setRoles(new ArrayList<>());
 	    }
-	    request.roles.addAll(roles.stream().map(IRole::getRole).collect(Collectors.toList()));
+	    request.getRoles().addAll(roles);
 	    return this;
 	}
 
