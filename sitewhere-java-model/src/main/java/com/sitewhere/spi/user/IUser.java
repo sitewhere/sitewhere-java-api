@@ -15,7 +15,6 @@
  */
 package com.sitewhere.spi.user;
 
-import java.util.Date;
 import java.util.List;
 
 import com.sitewhere.spi.common.IPersistentEntity;
@@ -54,18 +53,11 @@ public interface IUser extends IPersistentEntity {
     String getEmail();
 
     /**
-     * Get the last login date.
-     *
+     * Enablement indicator.
+     * 
      * @return
      */
-    Date getLastLogin();
-
-    /**
-     * Get the account status.
-     *
-     * @return
-     */
-    AccountStatus getStatus();
+    boolean isEnabled();
 
     /**
      * Get the list roles.

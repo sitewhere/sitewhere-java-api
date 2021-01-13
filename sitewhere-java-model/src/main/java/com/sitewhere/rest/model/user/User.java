@@ -17,16 +17,12 @@ package com.sitewhere.rest.model.user;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.PersistentEntity;
 import com.sitewhere.spi.SiteWhereException;
-import com.sitewhere.spi.user.AccountStatus;
 import com.sitewhere.spi.user.IRole;
 import com.sitewhere.spi.user.IUser;
 
@@ -51,14 +47,10 @@ public class User extends PersistentEntity implements IUser {
     /** Email address */
     private String email;
 
-    /** Last login */
-    private Date lastLogin;
-
-    /** Account status */
-    private AccountStatus status;
+    /** Enabled indicator */
+    private boolean enabled;
 
     /** List of roles */
-    @JsonIgnore
     private List<IRole> roles = new ArrayList<>();
 
     /*
@@ -110,28 +102,15 @@ public class User extends PersistentEntity implements IUser {
     }
 
     /*
-     * @see com.sitewhere.spi.user.IUser#getLastLogin()
+     * @see com.sitewhere.spi.user.IUser#isEnabled()
      */
     @Override
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
-    public Date getLastLogin() {
-	return lastLogin;
+    public boolean isEnabled() {
+	return enabled;
     }
 
-    public void setLastLogin(Date lastLogin) {
-	this.lastLogin = lastLogin;
-    }
-
-    /*
-     * @see com.sitewhere.spi.user.IUser#getStatus()
-     */
-    @Override
-    public AccountStatus getStatus() {
-	return status;
-    }
-
-    public void setStatus(AccountStatus status) {
-	this.status = status;
+    public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
     }
 
     /*
@@ -158,8 +137,7 @@ public class User extends PersistentEntity implements IUser {
 	result.setFirstName(input.getFirstName());
 	result.setLastName(input.getLastName());
 	result.setEmail(input.getEmail());
-	result.setLastLogin(input.getLastLogin());
-	result.setStatus(input.getStatus());
+	result.setEnabled(input.isEnabled());
 	result.setRoles(new ArrayList<>(input.getRoles()));
 	PersistentEntity.copy(input, result);
 	return result;

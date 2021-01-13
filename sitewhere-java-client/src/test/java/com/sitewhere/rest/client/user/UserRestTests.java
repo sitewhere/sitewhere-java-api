@@ -28,7 +28,6 @@ import com.sitewhere.rest.model.user.GrantedAuthority;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.SiteWhereException;
-import com.sitewhere.spi.user.AccountStatus;
 import com.sitewhere.spi.user.SiteWhereRole;
 
 /**
@@ -55,7 +54,7 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
 	request.setToken(token);
 	request.setFirstName("John");
 	request.setLastName("Doe");
-	request.setStatus(AccountStatus.Active);
+	request.setEnabled(true);
 	request.setUsername(JOHN_DOE_USERNAME);
 	request.setPassword("1234");
 	List<String> authorities = new ArrayList<String>();
@@ -92,7 +91,7 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
 	request.setToken(token);
 	request.setFirstName("John");
 	request.setLastName("Doe");
-	request.setStatus(AccountStatus.Active);
+	request.setEnabled(true);
 	request.setUsername(JOHN_DOE_USERNAME);
 	request.setPassword("12345");
 	List<String> roles = new ArrayList<String>();
