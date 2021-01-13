@@ -18,7 +18,6 @@ package com.sitewhere.spi.user.request;
 import java.util.List;
 
 import com.sitewhere.spi.common.request.IPersistentEntityCreateRequest;
-import com.sitewhere.spi.user.AccountStatus;
 
 /**
  * Interface for arguments needed to create a user.
@@ -61,11 +60,11 @@ public interface IUserCreateRequest extends IPersistentEntityCreateRequest {
     String getEmail();
 
     /**
-     * Get the account status.
+     * Get enablement indicator.
      *
      * @return
      */
-    AccountStatus getStatus();
+    boolean isEnabled();
 
     /**
      * Get the list of roles.

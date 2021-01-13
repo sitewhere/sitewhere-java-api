@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.request.PersistentEntityCreateRequest;
-import com.sitewhere.spi.user.AccountStatus;
 import com.sitewhere.spi.user.IRole;
 import com.sitewhere.spi.user.IUser;
 import com.sitewhere.spi.user.request.IUserCreateRequest;
@@ -53,8 +52,8 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     /** User email */
     private String email;
 
-    /** User status */
-    private AccountStatus status;
+    /** Enablement indicator */
+    private boolean enabled;
 
     /** User authorities */
     private List<String> roles = new ArrayList<>();
@@ -120,15 +119,15 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     }
 
     /*
-     * @see com.sitewhere.spi.user.request.IUserCreateRequest#getStatus()
+     * @see com.sitewhere.spi.user.request.IUserCreateRequest#isEnabled()
      */
     @Override
-    public AccountStatus getStatus() {
-	return status;
+    public boolean isEnabled() {
+	return enabled;
     }
 
-    public void setStatus(AccountStatus status) {
-	this.status = status;
+    public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
     }
 
     /*
@@ -153,19 +152,25 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
 	    request.setPassword(password);
 	    request.setFirstName(firstName);
 	    request.setLastName(lastName);
+	    request.setEnabled(true);
 	}
 
 	public Builder(IUser existing) {
 	    request.setUsername(existing.getUsername());
 	    request.setFirstName(existing.getFirstName());
 	    request.setLastName(existing.getLastName());
-	    request.setStatus(existing.getStatus());
+	    request.setEnabled(existing.isEnabled());
 	    request.setRoles(existing.getRoles().stream().map(IRole::getRole).collect(Collectors.toList()));
 	    request.setMetadata(existing.getMetadata());
 	}
 
-	public Builder withStatus(AccountStatus status) {
-	    request.setStatus(status);
+	public Builder enabled() {
+	    request.setEnabled(true);
+	    return this;
+	}
+
+	public Builder disabled() {
+	    request.setEnabled(false);
 	    return this;
 	}
 
