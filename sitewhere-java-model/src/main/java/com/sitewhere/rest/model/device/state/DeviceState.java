@@ -1,28 +1,34 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.device.state;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
+import com.sitewhere.rest.model.common.PersistentEntity;
 import com.sitewhere.spi.device.state.IDeviceState;
 
 /**
  * Model object for device state.
  */
 @JsonInclude(Include.NON_NULL)
-public class DeviceState implements IDeviceState {
+public class DeviceState extends PersistentEntity implements IDeviceState {
 
     /** Serial version UID */
     private static final long serialVersionUID = 3438565646525194167L;
@@ -53,15 +59,6 @@ public class DeviceState implements IDeviceState {
 
     /** Date presence was determined to be missing */
     private Date presenceMissingDate;
-
-    /** Event id of last location event */
-    private UUID lastLocationEventId;
-
-    /** Map of last measurement event ids by mx id */
-    private Map<String, UUID> lastMeasurementEventIds = new HashMap<>();
-
-    /** Map of last alert event ids by alert type */
-    private Map<String, UUID> lastAlertEventIds = new HashMap<>();
 
     /*
      * @see com.sitewhere.spi.device.state.IDeviceState#getId()
@@ -151,7 +148,7 @@ public class DeviceState implements IDeviceState {
      * @see com.sitewhere.spi.device.state.IDeviceState#getLastInteractionDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getLastInteractionDate() {
 	return lastInteractionDate;
     }
@@ -164,48 +161,12 @@ public class DeviceState implements IDeviceState {
      * @see com.sitewhere.spi.device.state.IDeviceState#getPresenceMissingDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public Date getPresenceMissingDate() {
 	return presenceMissingDate;
     }
 
     public void setPresenceMissingDate(Date presenceMissingDate) {
 	this.presenceMissingDate = presenceMissingDate;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.IDeviceState#getLastLocationEventId()
-     */
-    @Override
-    public UUID getLastLocationEventId() {
-	return lastLocationEventId;
-    }
-
-    public void setLastLocationEventId(UUID lastLocationEventId) {
-	this.lastLocationEventId = lastLocationEventId;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.IDeviceState#getLastMeasurementEventIds()
-     */
-    @Override
-    public Map<String, UUID> getLastMeasurementEventIds() {
-	return lastMeasurementEventIds;
-    }
-
-    public void setLastMeasurementEventIds(Map<String, UUID> lastMeasurementEventIds) {
-	this.lastMeasurementEventIds = lastMeasurementEventIds;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.IDeviceState#getLastAlertEventIds()
-     */
-    @Override
-    public Map<String, UUID> getLastAlertEventIds() {
-	return lastAlertEventIds;
-    }
-
-    public void setLastAlertEventIds(Map<String, UUID> lastAlertEventIds) {
-	this.lastAlertEventIds = lastAlertEventIds;
     }
 }

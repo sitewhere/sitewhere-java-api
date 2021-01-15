@@ -1,9 +1,17 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.device.event;
 
@@ -13,9 +21,7 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sitewhere.rest.model.common.MetadataProvider;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.spi.device.event.DeviceEventType;
 import com.sitewhere.spi.device.event.IDeviceEvent;
 
@@ -168,7 +174,6 @@ public abstract class DeviceEvent extends MetadataProvider implements IDeviceEve
      * @see com.sitewhere.spi.device.IDeviceEvent#getEventDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
     public Date getEventDate() {
 	return eventDate;
     }
@@ -183,7 +188,6 @@ public abstract class DeviceEvent extends MetadataProvider implements IDeviceEve
      * @see com.sitewhere.spi.device.IDeviceEvent#getReceivedDate()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
     public Date getReceivedDate() {
 	return receivedDate;
     }

@@ -31,7 +31,7 @@ publishing {
 			pom {
 			    name = 'SiteWhere Java Model'
 			    description = 'SiteWhere Java Model and REST Client'
-			    url = 'https://sitewhere.io'
+			    url = 'http://sitewhere.io'
 			    licenses {
 			        license {
 			            name = 'CPAL-1.0'

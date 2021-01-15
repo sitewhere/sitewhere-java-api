@@ -1,24 +1,29 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.user;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sitewhere.rest.model.common.PersistentEntity;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.spi.SiteWhereException;
-import com.sitewhere.spi.user.AccountStatus;
+import com.sitewhere.spi.user.IRole;
 import com.sitewhere.spi.user.IUser;
 
 /**
@@ -33,23 +38,20 @@ public class User extends PersistentEntity implements IUser {
     /** Unique username */
     private String username;
 
-    /** Hashed password */
-    private String hashedPassword;
-
     /** First name */
     private String firstName;
 
     /** Last name */
     private String lastName;
 
-    /** Last login */
-    private Date lastLogin;
+    /** Email address */
+    private String email;
 
-    /** Account status */
-    private AccountStatus status;
+    /** Enabled indicator */
+    private boolean enabled;
 
-    /** List of granted authorities */
-    private List<String> authorities = new ArrayList<>();
+    /** List of roles */
+    private List<IRole> roles = new ArrayList<>();
 
     /*
      * @see com.sitewhere.spi.user.IUser#getUsername()
@@ -61,18 +63,6 @@ public class User extends PersistentEntity implements IUser {
 
     public void setUsername(String username) {
 	this.username = username;
-    }
-
-    /*
-     * @see com.sitewhere.spi.user.IUser#getHashedPassword()
-     */
-    @Override
-    public String getHashedPassword() {
-	return hashedPassword;
-    }
-
-    public void setHashedPassword(String hashedPassword) {
-	this.hashedPassword = hashedPassword;
     }
 
     /*
@@ -100,57 +90,55 @@ public class User extends PersistentEntity implements IUser {
     }
 
     /*
-     * @see com.sitewhere.spi.user.IUser#getLastLogin()
+     * @see com.sitewhere.spi.user.IUser#getEmail()
      */
     @Override
-    @JsonSerialize(using = JsonDateSerializer.class)
-    public Date getLastLogin() {
-	return lastLogin;
+    public String getEmail() {
+	return email;
     }
 
-    public void setLastLogin(Date lastLogin) {
-	this.lastLogin = lastLogin;
+    public void setEmail(String email) {
+	this.email = email;
     }
 
     /*
-     * @see com.sitewhere.spi.user.IUser#getStatus()
+     * @see com.sitewhere.spi.user.IUser#isEnabled()
      */
     @Override
-    public AccountStatus getStatus() {
-	return status;
+    public boolean isEnabled() {
+	return enabled;
     }
 
-    public void setStatus(AccountStatus status) {
-	this.status = status;
+    public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
     }
 
     /*
-     * @see com.sitewhere.spi.user.IUser#getAuthorities()
+     * @see com.sitewhere.spi.user.IUser#getRoles()
      */
     @Override
-    public List<String> getAuthorities() {
-	return authorities;
+    public List<IRole> getRoles() {
+	return roles;
     }
 
-    public void setAuthorities(List<String> authorities) {
-	this.authorities = authorities;
+    public void setRoles(List<IRole> roles) {
+	this.roles = roles;
     }
 
     /**
      * Copy contents from the SPI class.
-     * 
+     *
      * @param input
      * @return
      */
     public static User copy(IUser input) throws SiteWhereException {
 	User result = new User();
 	result.setUsername(input.getUsername());
-	result.setHashedPassword(input.getHashedPassword());
 	result.setFirstName(input.getFirstName());
 	result.setLastName(input.getLastName());
-	result.setLastLogin(input.getLastLogin());
-	result.setStatus(input.getStatus());
-	result.setAuthorities(new ArrayList<String>(input.getAuthorities()));
+	result.setEmail(input.getEmail());
+	result.setEnabled(input.isEnabled());
+	result.setRoles(new ArrayList<>(input.getRoles()));
 	PersistentEntity.copy(input, result);
 	return result;
     }

@@ -1,9 +1,17 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.client.area;
 
@@ -47,22 +55,22 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
     private String parentToken = "southeast";
 
     private String name = "Test Area Name";
-    
+
     @Override
     protected String knownEntityToken() {
 	return parentToken;
     }
-    
+
     // ------------------------------------------------------------------------
     // CREATE
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected AreaCreateRequest buildCreateRequest(String token) {
 	AreaCreateRequest.Builder builder = new AreaCreateRequest.Builder(areaTypeToken, parentToken, token, name);
-	
+
 	builder.withDescription("Some area");
-	
+
 	return builder.build();
     }
 
@@ -87,9 +95,9 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
     @Override
     protected AreaCreateRequest buildUpdateRequest(String token) throws SiteWhereException {
 	AreaCreateRequest.Builder builder = new AreaCreateRequest.Builder(areaTypeToken, parentToken, token, name);
-	
+
 	builder.withDescription("Some updated description");
-	
+
 	return builder.build();
     }
 
@@ -110,7 +118,7 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
     // ------------------------------------------------------------------------
     // LIST
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected SearchResults<Area> listEntities() throws SiteWhereException {
 	AreaSearchCriteria searchCriteria = new AreaSearchCriteria(0, 10);
@@ -121,30 +129,30 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
     // ------------------------------------------------------------------------
     // LABEL
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected byte[] getLabelForEntity(String token, String generatorId) throws SiteWhereException {
 	return getClient().getLabelForArea(getTenatAuthentication(), token, generatorId);
     }
-    
+
     // ------------------------------------------------------------------------
     // OTHER TESTS
     // ------------------------------------------------------------------------
-    
+
     @Test
     public void testListAlerts() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
-	SearchResults<DeviceAlertWithAsset> alerts = getClient()
-		.listAlertsForArea(getTenatAuthentication(), parentToken, searchCriteria);
-	
+	SearchResults<DeviceAlertWithAsset> alerts = getClient().listAlertsForArea(getTenatAuthentication(),
+		parentToken, searchCriteria);
+
 	assertNotNull(alerts);
     }
 
@@ -153,100 +161,99 @@ public class AreaRestTests extends AbstractWithLabelCRUDRestTest<Area, AreaCreat
 	DeviceAssignmentSearchCriteria searchCriteria = new DeviceAssignmentSearchCriteria();
 	DeviceAssignmentResponseFormat responseFormat = new DeviceAssignmentResponseFormat();
 	responseFormat.setIncludeCustomer(true);
-	SearchResults<MarshaledDeviceAssignment> assignments = 
-		getClient().listDeviceAssignmentsForArea(
-			getTenatAuthentication(), parentToken, searchCriteria, responseFormat);
+	SearchResults<MarshaledDeviceAssignment> assignments = getClient()
+		.listDeviceAssignmentsForArea(getTenatAuthentication(), parentToken, searchCriteria, responseFormat);
 	assertNotNull(assignments);
     }
-    
+
     @Test
     public void testListCommandInvocations() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceCommandInvocation> commandInvocations = getClient()
 		.listCommandInvocationsForArea(getTenatAuthentication(), parentToken, searchCriteria);
-	
+
 	assertNotNull(commandInvocations);
     }
 
     @Test
     public void testListLocations() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
-	SearchResults<DeviceLocationWithAsset> locations = getClient()
-		.listLocationsForArea(getTenatAuthentication(), parentToken, searchCriteria);
-	
+	SearchResults<DeviceLocationWithAsset> locations = getClient().listLocationsForArea(getTenatAuthentication(),
+		parentToken, searchCriteria);
+
 	assertNotNull(locations);
-    }    
+    }
 
     @Test
     public void testListMeasurements() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceMeasurementWithAsset> measurements = getClient()
 		.listMeasurementsForArea(getTenatAuthentication(), parentToken, searchCriteria);
-	
+
 	assertNotNull(measurements);
-    }    
+    }
 
     @Test
     public void testListCommandResponses() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceCommandResponseWithAsset> commandResponses = getClient()
 		.listCommandResponsesForArea(getTenatAuthentication(), parentToken, searchCriteria);
-	
+
 	assertNotNull(commandResponses);
-    }    
+    }
 
     @Test
     public void testListStateChanges() throws SiteWhereException {
 	Calendar cal = Calendar.getInstance();
-	
+
 	cal.setTime(new Date());
 	cal.add(Calendar.YEAR, -1);
-	
+
 	Date startDate = cal.getTime();
 	Date endDate = new Date();
-	
+
 	DateRangeSearchCriteria searchCriteria = new DateRangeSearchCriteria(1, 10, startDate, endDate);
 	SearchResults<DeviceStateChangeWithAsset> stateChanges = getClient()
 		.listStateChangesForArea(getTenatAuthentication(), parentToken, searchCriteria);
-	
+
 	assertNotNull(stateChanges);
-    }    
+    }
 
     @Test
     public void testTree() throws SiteWhereException {
 	List<TreeNode> tree = getClient().areaTree(getTenatAuthentication());
 	assertNotNull(tree);
-    }    
+    }
 }

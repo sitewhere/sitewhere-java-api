@@ -1,10 +1,17 @@
-
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.client.device;
 
@@ -36,13 +43,14 @@ public class DeviceCommandRestTests extends AbstractCRUDRestClientTests<DeviceCo
     // ------------------------------------------------------------------------
     // CREATE
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected DeviceCommandCreateRequest buildCreateRequest(String token) {
 	String deviceTypeToken = "iphone6s";
 	String namespace = "default";
 	String name = "test command";
-	DeviceCommandCreateRequest.Builder builder = new DeviceCommandCreateRequest.Builder(deviceTypeToken, token, namespace, name);
+	DeviceCommandCreateRequest.Builder builder = new DeviceCommandCreateRequest.Builder(deviceTypeToken, token,
+		namespace, name);
 	builder.withDescription("Some description");
 	return builder.build();
     }
@@ -55,7 +63,7 @@ public class DeviceCommandRestTests extends AbstractCRUDRestClientTests<DeviceCo
     // ------------------------------------------------------------------------
     // READ
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected DeviceCommand findEntityByToken(String token) throws SiteWhereException {
 	return getClient().getDeviceCommandByToken(getTenatAuthentication(), token);
@@ -64,13 +72,14 @@ public class DeviceCommandRestTests extends AbstractCRUDRestClientTests<DeviceCo
     // ------------------------------------------------------------------------
     // UPDATE
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected DeviceCommandCreateRequest buildUpdateRequest(String token) throws SiteWhereException {
 	String deviceTypeToken = "iphone6s";
 	String namespace = "default";
 	String name = "test command";
-	DeviceCommandCreateRequest.Builder builder = new DeviceCommandCreateRequest.Builder(deviceTypeToken, token, namespace, name);
+	DeviceCommandCreateRequest.Builder builder = new DeviceCommandCreateRequest.Builder(deviceTypeToken, token,
+		namespace, name);
 	builder.withDescription("Some updated description");
 	return builder.build();
     }
@@ -93,22 +102,23 @@ public class DeviceCommandRestTests extends AbstractCRUDRestClientTests<DeviceCo
     // ------------------------------------------------------------------------
     // LIST
     // ------------------------------------------------------------------------
-    
-   @Override
+
+    @Override
     protected SearchResults<? extends DeviceCommand> listEntities() throws SiteWhereException {
 	DeviceCommandSearchCriteria searchCriteria = new DeviceCommandSearchCriteria(1, 1);
 	return getClient().listDeviceCommands(getTenatAuthentication(), searchCriteria);
     }
 
-   // ------------------------------------------------------------------------
-   // OTHER TESTS
-   // ------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // OTHER TESTS
+    // ------------------------------------------------------------------------
 
-   @Test
-   public void testListByNamespace() throws SiteWhereException {
+    @Test
+    public void testListByNamespace() throws SiteWhereException {
 	DeviceCommandSearchCriteria searchCriteria = new DeviceCommandSearchCriteria(1, 1);
 	searchCriteria.setDeviceTypeToken("iphone6s");
-	SearchResults<DeviceCommandNamespace> l = getClient().listDeviceCommandsByNamesapce(getTenatAuthentication(), searchCriteria);
+	SearchResults<DeviceCommandNamespace> l = getClient().listDeviceCommandsByNamesapce(getTenatAuthentication(),
+		searchCriteria);
 	assertNotNull(l);
-   }
+    }
 }

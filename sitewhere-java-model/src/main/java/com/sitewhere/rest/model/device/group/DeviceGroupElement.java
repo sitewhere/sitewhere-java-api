@@ -1,19 +1,27 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.device.group;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.sitewhere.rest.model.common.PersistentEntity;
 import com.sitewhere.spi.device.group.IDeviceGroup;
 import com.sitewhere.spi.device.group.IDeviceGroupElement;
 
@@ -21,13 +29,10 @@ import com.sitewhere.spi.device.group.IDeviceGroupElement;
  * Model object for an element in an {@link IDeviceGroup}.
  */
 @JsonInclude(Include.NON_NULL)
-public class DeviceGroupElement implements IDeviceGroupElement, Serializable {
+public class DeviceGroupElement extends PersistentEntity implements IDeviceGroupElement {
 
     /** Serialization version identifier */
     private static final long serialVersionUID = -5565956152579362877L;
-
-    /** Unqiue id */
-    private UUID id;
 
     /** Parent group id */
     private UUID groupId;
@@ -40,18 +45,6 @@ public class DeviceGroupElement implements IDeviceGroupElement, Serializable {
 
     /** List of roles for the element */
     private List<String> roles = new ArrayList<String>();
-
-    /*
-     * @see com.sitewhere.spi.device.group.IDeviceGroupElement#getId()
-     */
-    @Override
-    public UUID getId() {
-	return id;
-    }
-
-    public void setId(UUID id) {
-	this.id = id;
-    }
 
     /*
      * @see com.sitewhere.spi.device.group.IDeviceGroupElement#getGroupId()

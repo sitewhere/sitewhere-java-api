@@ -1,20 +1,30 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.client;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
 
 import com.sitewhere.rest.model.area.Area;
 import com.sitewhere.rest.model.area.AreaType;
@@ -29,13 +39,12 @@ import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
-import com.sitewhere.rest.model.batch.request.InvocationByDeviceCriteriaRequest;
 import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
+import com.sitewhere.rest.model.batch.request.InvocationByDeviceCriteriaRequest;
 import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
 import com.sitewhere.rest.model.customer.request.CustomerTypeCreateRequest;
-import com.sitewhere.rest.model.datatype.JsonDateSerializer;
 import com.sitewhere.rest.model.device.Device;
 import com.sitewhere.rest.model.device.DeviceElementMapping;
 import com.sitewhere.rest.model.device.DeviceStatus;
@@ -125,6 +134,8 @@ import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.ISiteWhereClient;
 import com.sitewhere.spi.ITenantAuthentication;
 import com.sitewhere.spi.SiteWhereException;
+import com.sitewhere.spi.tenant.ITenantConfigurationTemplate;
+import com.sitewhere.spi.tenant.ITenantDatasetTemplate;
 import com.sitewhere.spi.web.ISiteWhereWebConstants;
 
 import okhttp3.Headers;
@@ -143,7 +154,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class SiteWhereClient implements ISiteWhereClient {
 
     /** ISO 8601 Date Fromatter */
-    private static SimpleDateFormat iso8601DateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+    private static DateTimeFormatter ISO8601_FORMATTER = ISODateTimeFormat.dateTime();
 
     /** Default protocol for REST services */
     public static final String DEFAULT_PROTOCOL = "http";
@@ -920,6 +931,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see
      * com.sitewhere.spi.ISiteWhereClient#createCommandResponseForDeviceAssignment()
      */
+    @Override
     public DeviceCommandResponseWithAsset createCommandResponseForDeviceAssignment(ITenantAuthentication tenant,
 	    String token, DeviceCommandResponseCreateRequest request) throws SiteWhereException {
 	Call<DeviceCommandResponseWithAsset> call = getRestRetrofit().createCommandResponseForDeviceAssignment(token,
@@ -947,6 +959,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see
      * com.sitewhere.spi.ISiteWhereClient#createStateChangeForDeviceAssignment()
      */
+    @Override
     public DeviceStateChangeWithAsset createStateChangeForDeviceAssignment(ITenantAuthentication tenant, String token,
 	    DeviceStateChangeCreateRequest request) throws SiteWhereException {
 	Call<DeviceStateChangeWithAsset> call = getRestRetrofit().createStateChangeForDeviceAssignment(token, request,
@@ -959,6 +972,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#bulkListAlertsForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceAlertWithAsset> bulkListAlertsForDeviceAssignments(ITenantAuthentication tenant,
 	    DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceAlertWithAsset>> call = getRestRetrofit().bulkListAlertsForDeviceAssignments(request,
@@ -972,6 +986,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListCommandInvocationsForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceCommandInvocation> bulkListCommandInvocationsForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceCommandInvocation>> call = getRestRetrofit()
@@ -985,6 +1000,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListLocationsForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceLocationWithAsset> bulkListLocationsForDeviceAssignments(ITenantAuthentication tenant,
 	    DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceLocationWithAsset>> call = getRestRetrofit()
@@ -998,6 +1014,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListCommandInvocationsForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceMeasurementWithAsset> bulkListMeasurementsForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceMeasurementWithAsset>> call = getRestRetrofit()
@@ -1011,6 +1028,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListMeasurementsForDeviceAssignmentsAsChartSeries()
      */
+    @Override
     public Map<String, List<ChartSeries<Double>>> bulkListMeasurementsForDeviceAssignmentsAsChartSeries(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<Map<String, List<ChartSeries<Double>>>> call = getRestRetrofit()
@@ -1024,6 +1042,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListCommandResponsesForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceCommandResponseWithAsset> bulkListCommandResponsesForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceCommandResponseWithAsset>> call = getRestRetrofit()
@@ -1037,6 +1056,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * @see com.sitewhere.spi.ISiteWhereClient#
      * bulkListStateChangesForDeviceAssignments()
      */
+    @Override
     public SearchResults<DeviceStateChangeWithAsset> bulkListStateChangesForDeviceAssignments(
 	    ITenantAuthentication tenant, DeviceAssignmentBulkRequest request) throws SiteWhereException {
 	Call<SearchResults<DeviceStateChangeWithAsset>> call = getRestRetrofit()
@@ -1053,6 +1073,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#listAuthorities()
      */
+    @Override
     public SearchResults<GrantedAuthority> listAuthorities(ITenantAuthentication tenant) throws SiteWhereException {
 	Call<SearchResults<GrantedAuthority>> call = getRestRetrofit().listAuthorities(createHeadersFor(tenant));
 	return processRestCall(call);
@@ -1063,6 +1084,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#getAuthorityByName()
      */
+    @Override
     public GrantedAuthority getAuthorityByName(ITenantAuthentication tenant, String name) throws SiteWhereException {
 	Call<GrantedAuthority> call = getRestRetrofit().getAuthorityByName(name, createHeadersFor(tenant));
 	return processRestCall(call);
@@ -1073,6 +1095,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#createAuthority()
      */
+    @Override
     public GrantedAuthority createAuthority(ITenantAuthentication tenant, GrantedAuthorityCreateRequest request)
 	    throws SiteWhereException {
 	Call<GrantedAuthority> call = getRestRetrofit().createAuthority(request, createHeadersFor(tenant));
@@ -1084,6 +1107,7 @@ public class SiteWhereClient implements ISiteWhereClient {
      * 
      * @see com.sitewhere.spi.ISiteWhereClient#getAuthoritiesHierarchy()
      */
+    @Override
     public List<GrantedAuthorityHierarchyNode> getAuthoritiesHierarchy(ITenantAuthentication tenant)
 	    throws SiteWhereException {
 	Call<List<GrantedAuthorityHierarchyNode>> call = getRestRetrofit()
@@ -2265,6 +2289,25 @@ public class SiteWhereClient implements ISiteWhereClient {
     }
 
     /*
+     * @see com.sitewhere.spi.ISiteWhereClient#listTenantConfigurationTemplates()
+     */
+    @Override
+    public List<ITenantConfigurationTemplate> listTenantConfigurationTemplates() throws SiteWhereException {
+	Call<List<ITenantConfigurationTemplate>> call = getRestRetrofit()
+		.listTenantConfigurationTemplates(createDefaulHeaders());
+	return processRestCall(call);
+    }
+
+    /*
+     * @see com.sitewhere.spi.ISiteWhereClient#listTenantDatasetTemplates()
+     */
+    @Override
+    public List<ITenantDatasetTemplate> listTenantDatasetTemplates() throws SiteWhereException {
+	Call<List<ITenantDatasetTemplate>> call = getRestRetrofit().listTenantDatasetTemplates(createDefaulHeaders());
+	return processRestCall(call);
+    }
+
+    /*
      * @see com.sitewhere.spi.ISiteWhereClient#createTenant()
      */
     @Override
@@ -2641,11 +2684,11 @@ public class SiteWhereClient implements ISiteWhereClient {
 	if (criteria instanceof DateRangeSearchCriteria) {
 	    DateRangeSearchCriteria dates = (DateRangeSearchCriteria) criteria;
 	    if (dates.getStartDate() != null) {
-		vars.put("startDate", JsonDateSerializer.serialize(dates.getStartDate()));
+		vars.put("startDate", ISO8601_FORMATTER.print(dates.getStartDate().getTime()));
 	    }
 
 	    if (dates.getEndDate() != null) {
-		vars.put("endDate", JsonDateSerializer.serialize(dates.getEndDate()));
+		vars.put("endDate", ISO8601_FORMATTER.print(dates.getEndDate().getTime()));
 	    }
 	}
     }
@@ -2688,7 +2731,7 @@ public class SiteWhereClient implements ISiteWhereClient {
     protected String toISO8601(Date date) {
 	if (date == null)
 	    return "";
-	return iso8601DateFormat.format(date);
+	return ISO8601_FORMATTER.print(date.getTime());
     }
 
     protected static String assembleTokenList(List<String> tokenList) {

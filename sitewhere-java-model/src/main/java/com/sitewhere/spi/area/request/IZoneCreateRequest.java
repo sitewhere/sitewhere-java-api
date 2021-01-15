@@ -1,9 +1,17 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.spi.area.request;
 
@@ -22,47 +30,47 @@ public interface IZoneCreateRequest extends IPersistentEntityCreateRequest {
      * 
      * @return
      */
-    public String getAreaToken();
+    String getAreaToken();
 
     /**
      * Get zone name.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get zone boundary locations.
      * 
      * @return
      */
-    public List<? extends ILocation> getBounds();
+    List<? extends ILocation> getBounds();
 
     /**
      * Get border color for UI.
      * 
      * @return
      */
-    public String getBorderColor();
+    String getBorderColor();
 
     /**
      * Get opacity for border.
      * 
      * @return
      */
-    public Double getBorderOpacity();
+    Double getBorderOpacity();
 
     /**
      * Get fill color for UI.
      * 
      * @return
      */
-    public String getFillColor();
+    String getFillColor();
 
     /**
      * Get opacity for fill.
      * 
      * @return
      */
-    public Double getFillOpacity();
+    Double getFillOpacity();
 }

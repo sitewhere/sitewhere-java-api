@@ -1,19 +1,26 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.spi.device.state.request;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Map;
 import java.util.UUID;
 
 /**
- * Provides data required to create device assignment state.
+ * Provides data pertaining to recent device state.
  */
 public interface IDeviceStateCreateRequest extends Serializable {
 
@@ -22,75 +29,54 @@ public interface IDeviceStateCreateRequest extends Serializable {
      * 
      * @return
      */
-    public UUID getDeviceId();
+    UUID getDeviceId();
 
     /**
      * Get device type id.
      * 
      * @return
      */
-    public UUID getDeviceTypeId();
+    UUID getDeviceTypeId();
 
     /**
      * Get device assignment id.
      * 
      * @return
      */
-    public UUID getDeviceAssignmentId();
+    UUID getDeviceAssignmentId();
 
     /**
      * Get customer id if assigned.
      * 
      * @return
      */
-    public UUID getCustomerId();
+    UUID getCustomerId();
 
     /**
      * Get area id if assigned.
      * 
      * @return
      */
-    public UUID getAreaId();
+    UUID getAreaId();
 
     /**
      * Get asset id if assigned.
      * 
      * @return
      */
-    public UUID getAssetId();
+    UUID getAssetId();
 
     /**
      * Get date of last device interaction.
      * 
      * @return
      */
-    public Date getLastInteractionDate();
+    Date getLastInteractionDate();
 
     /**
      * Get date device was marked as missing.
      * 
      * @return
      */
-    public Date getPresenceMissingDate();
-
-    /**
-     * Get event id for last location reported.
-     * 
-     * @return
-     */
-    public UUID getLastLocationEventId();
-
-    /**
-     * Get last measurement event ids indexed by measurement id.
-     * 
-     * @return
-     */
-    public Map<String, UUID> getLastMeasurementEventIds();
-
-    /**
-     * Get last alert event ids indexed by alert type.
-     * 
-     * @return
-     */
-    public Map<String, UUID> getLastAlertEventIds();
+    Date getPresenceMissingDate();
 }

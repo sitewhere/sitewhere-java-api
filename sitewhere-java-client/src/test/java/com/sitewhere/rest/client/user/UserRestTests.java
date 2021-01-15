@@ -1,10 +1,17 @@
-
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.client.user;
 
@@ -21,7 +28,7 @@ import com.sitewhere.rest.model.user.GrantedAuthority;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
 import com.sitewhere.spi.SiteWhereException;
-import com.sitewhere.spi.user.AccountStatus;
+import com.sitewhere.spi.user.SiteWhereRole;
 
 /**
  *
@@ -36,26 +43,26 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
     protected String knownEntityToken() {
 	return "admin";
     }
-    
+
     // ------------------------------------------------------------------------
     // CREATE
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected UserCreateRequest buildCreateRequest(String token) throws SiteWhereException {
 	UserCreateRequest request = new UserCreateRequest();
 	request.setToken(token);
 	request.setFirstName("John");
 	request.setLastName("Doe");
-	request.setStatus(AccountStatus.Active);
+	request.setEnabled(true);
 	request.setUsername(JOHN_DOE_USERNAME);
 	request.setPassword("1234");
 	List<String> authorities = new ArrayList<String>();
 	authorities.add("GRP_SERVER");
-	request.setAuthorities(authorities);
+	request.setRoles(authorities);
 	return request;
     }
- 
+
     protected String getToken() {
 	return JOHN_DOE_USERNAME;
     }
@@ -84,12 +91,12 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
 	request.setToken(token);
 	request.setFirstName("John");
 	request.setLastName("Doe");
-	request.setStatus(AccountStatus.Active);
+	request.setEnabled(true);
 	request.setUsername(JOHN_DOE_USERNAME);
-	request.setPassword("12345");	
-	List<String> authorities = new ArrayList<String>();
-	authorities.add("GRP_SERVER");
-	request.setAuthorities(authorities);
+	request.setPassword("12345");
+	List<String> roles = new ArrayList<String>();
+	roles.add(SiteWhereRole.SystemAdministrator.getRoleName());
+	request.setRoles(roles);
 	return request;
     }
 
@@ -110,12 +117,12 @@ public class UserRestTests extends AbstractCRUDRestClientTests<User, UserCreateR
     // ------------------------------------------------------------------------
     // LIST
     // ------------------------------------------------------------------------
-    
+
     @Override
     protected SearchResults<User> listEntities() throws SiteWhereException {
 	return getClient().listUsers();
     }
-    
+
     @Test
     public void testListUserAuthorities() throws SiteWhereException {
 	SearchResults<GrantedAuthority> auths = getClient().listUserAuthorities(knownEntityToken());

@@ -1,13 +1,22 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.device.event.request;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -27,57 +36,54 @@ public class DeviceLocationCreateRequest extends DeviceEventCreateRequest
     private static final long serialVersionUID = -7160866457228082338L;
 
     /** Latitude value */
-    private Double latitude;
+    private BigDecimal latitude;
 
     /** Longitude value */
-    private Double longitude;
+    private BigDecimal longitude;
 
     /** Elevation value */
-    private Double elevation;
+    private BigDecimal elevation;
 
     public DeviceLocationCreateRequest() {
 	setEventType(DeviceEventType.Location);
     }
 
     /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.sitewhere.spi.device.request.IDeviceLocationCreateRequest#getLatitude ()
+     * @see com.sitewhere.spi.device.event.request.IDeviceLocationCreateRequest#
+     * getLatitude()
      */
-    public Double getLatitude() {
+    @Override
+    public BigDecimal getLatitude() {
 	return latitude;
     }
 
-    public void setLatitude(Double latitude) {
+    public void setLatitude(BigDecimal latitude) {
 	this.latitude = latitude;
     }
 
     /*
-     * (non-Javadoc)
-     * 
-     * @see com.sitewhere.spi.device.request.IDeviceLocationCreateRequest#
+     * @see com.sitewhere.spi.device.event.request.IDeviceLocationCreateRequest#
      * getLongitude()
      */
-    public Double getLongitude() {
+    @Override
+    public BigDecimal getLongitude() {
 	return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(BigDecimal longitude) {
 	this.longitude = longitude;
     }
 
     /*
-     * (non-Javadoc)
-     * 
-     * @see com.sitewhere.spi.device.request.IDeviceLocationCreateRequest#
+     * @see com.sitewhere.spi.device.event.request.IDeviceLocationCreateRequest#
      * getElevation()
      */
-    public Double getElevation() {
+    @Override
+    public BigDecimal getElevation() {
 	return elevation;
     }
 
-    public void setElevation(Double elevation) {
+    public void setElevation(BigDecimal elevation) {
 	this.elevation = elevation;
     }
 
@@ -85,14 +91,25 @@ public class DeviceLocationCreateRequest extends DeviceEventCreateRequest
 
 	private DeviceLocationCreateRequest request = new DeviceLocationCreateRequest();
 
-	public Builder(double latitude, double longitude) {
+	public Builder(BigDecimal latitude, BigDecimal longitude) {
 	    request.setLatitude(latitude);
 	    request.setLongitude(longitude);
-	    request.setElevation(0.0);
+	    request.setElevation(BigDecimal.ZERO);
+	}
+
+	public Builder(double latitude, double longitude) {
+	    request.setLatitude(new BigDecimal(latitude));
+	    request.setLongitude(new BigDecimal(longitude));
+	    request.setElevation(BigDecimal.ZERO);
+	}
+
+	public Builder withElevation(BigDecimal value) {
+	    request.setElevation(value);
+	    return this;
 	}
 
 	public Builder withElevation(double value) {
-	    request.setElevation(value);
+	    request.setElevation(new BigDecimal(value));
 	    return this;
 	}
 

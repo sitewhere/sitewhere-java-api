@@ -1,9 +1,17 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.client;
 
@@ -23,8 +31,8 @@ import com.sitewhere.rest.model.asset.request.AssetCreateRequest;
 import com.sitewhere.rest.model.asset.request.AssetTypeCreateRequest;
 import com.sitewhere.rest.model.batch.BatchElement;
 import com.sitewhere.rest.model.batch.BatchOperation;
-import com.sitewhere.rest.model.batch.request.InvocationByDeviceCriteriaRequest;
 import com.sitewhere.rest.model.batch.request.BatchCommandInvocationRequest;
+import com.sitewhere.rest.model.batch.request.InvocationByDeviceCriteriaRequest;
 import com.sitewhere.rest.model.customer.Customer;
 import com.sitewhere.rest.model.customer.CustomerType;
 import com.sitewhere.rest.model.customer.request.CustomerCreateRequest;
@@ -84,6 +92,8 @@ import com.sitewhere.rest.model.user.GrantedAuthorityHierarchyNode;
 import com.sitewhere.rest.model.user.User;
 import com.sitewhere.rest.model.user.request.GrantedAuthorityCreateRequest;
 import com.sitewhere.rest.model.user.request.UserCreateRequest;
+import com.sitewhere.spi.tenant.ITenantConfigurationTemplate;
+import com.sitewhere.spi.tenant.ITenantDatasetTemplate;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -829,6 +839,12 @@ public interface SiteWhereRestRetrofit {
     Call<SearchResults<Tenant>> listTenants(@Query("authUserId") String authUserId,
 	    @Query("textSearch") String textSearch, @Query("includeRuntimeInfo") Boolean includeRuntimeInfo,
 	    @Query("page") Integer page, @Query("pageSize") Integer pageSize, @HeaderMap Map<String, String> headers);
+
+    @GET("tenants/templates/configuration")
+    Call<List<ITenantConfigurationTemplate>> listTenantConfigurationTemplates(@HeaderMap Map<String, String> headers);
+
+    @GET("tenants/templates/dataset")
+    Call<List<ITenantDatasetTemplate>> listTenantDatasetTemplates(@HeaderMap Map<String, String> headers);
 
     @GET("tenants/{tenantToken}")
     Call<Tenant> getTenantByToken(@Path("tenantToken") String tenantToken, @HeaderMap Map<String, String> headers);

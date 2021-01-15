@@ -1,53 +1,73 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.spi.tenant.request;
 
+import java.io.Serializable;
 import java.util.List;
 
-import com.sitewhere.spi.common.request.IBrandedEntityCreateRequest;
+import com.sitewhere.spi.common.IColorProvider;
+import com.sitewhere.spi.common.IIconProvider;
+import com.sitewhere.spi.common.IImageProvider;
+import com.sitewhere.spi.common.IMetadataProvider;
 
 /**
  * Interface for arguments needed to create a tenant.
  */
-public interface ITenantCreateRequest extends IBrandedEntityCreateRequest {
+public interface ITenantCreateRequest
+	extends IColorProvider, IIconProvider, IImageProvider, IMetadataProvider, Serializable {
+
+    /**
+     * Get unique id.
+     * 
+     * @return
+     */
+    String getToken();
 
     /**
      * Get tenant name.
      * 
      * @return
      */
-    public String getName();
+    String getName();
 
     /**
      * Get token that devices pass to identify tenant.
      * 
      * @return
      */
-    public String getAuthenticationToken();
+    String getAuthenticationToken();
 
     /**
      * Get list of users authorized to access the tenant.
      * 
      * @return
      */
-    public List<String> getAuthorizedUserIds();
+    List<String> getAuthorizedUserIds();
 
     /**
-     * Get id of template used to create tenant.
+     * Get id of configuration template used for tenant.
      * 
      * @return
      */
-    public String getTenantTemplateId();
+    String getConfigurationTemplateId();
 
     /**
      * Get id of dataset template used to populate tenant.
      * 
      * @return
      */
-    public String getDatasetTemplateId();
+    String getDatasetTemplateId();
 }

@@ -1,9 +1,17 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.spi.device.event;
 
@@ -20,40 +28,40 @@ public interface IDeviceCommandInvocation extends IDeviceEvent {
      * 
      * @return
      */
-    public CommandInitiator getInitiator();
+    CommandInitiator getInitiator();
 
     /**
      * Get unique id of command initiated.
      * 
      * @return
      */
-    public String getInitiatorId();
+    String getInitiatorId();
 
     /**
      * Get actor type that received command.
      * 
      * @return
      */
-    public CommandTarget getTarget();
+    CommandTarget getTarget();
 
     /**
      * Get unique id of command target.
      * 
      * @return
      */
-    public String getTargetId();
+    String getTargetId();
 
     /**
      * Get unique id of device command being invoked.
      * 
      * @return
      */
-    public UUID getDeviceCommandId();
+    UUID getDeviceCommandId();
 
     /**
      * Get the list of parameter names mapped to values.
      * 
      * @return
      */
-    public Map<String, String> getParameterValues();
+    Map<String, String> getParameterValues();
 }

@@ -1,19 +1,30 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.user.request;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.request.PersistentEntityCreateRequest;
-import com.sitewhere.spi.user.AccountStatus;
+import com.sitewhere.spi.user.IRole;
+import com.sitewhere.spi.user.IUser;
 import com.sitewhere.spi.user.request.IUserCreateRequest;
 
 /**
@@ -38,11 +49,14 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     /** User lastname */
     private String lastName;
 
-    /** User status */
-    private AccountStatus status;
+    /** User email */
+    private String email;
+
+    /** Enablement indicator */
+    private boolean enabled;
 
     /** User authorities */
-    private List<String> authorities;
+    private List<String> roles = new ArrayList<>();
 
     /*
      * @see com.sitewhere.spi.user.request.IUserCreateRequest#getUsername()
@@ -93,26 +107,99 @@ public class UserCreateRequest extends PersistentEntityCreateRequest implements 
     }
 
     /*
-     * @see com.sitewhere.spi.user.request.IUserCreateRequest#getStatus()
+     * @see com.sitewhere.spi.user.request.IUserCreateRequest#getEmail()
      */
     @Override
-    public AccountStatus getStatus() {
-	return status;
+    public String getEmail() {
+	return email;
     }
 
-    public void setStatus(AccountStatus status) {
-	this.status = status;
+    public void setEmail(String email) {
+	this.email = email;
+    }
+
+    /*
+     * @see com.sitewhere.spi.user.request.IUserCreateRequest#isEnabled()
+     */
+    @Override
+    public boolean isEnabled() {
+	return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
     }
 
     /*
      * @see com.sitewhere.spi.user.request.IUserCreateRequest#getAuthorities()
      */
     @Override
-    public List<String> getAuthorities() {
-	return Collections.unmodifiableList(this.authorities);
+    public List<String> getRoles() {
+	return this.roles;
     }
 
-    public void setAuthorities(List<String> authorities) {
-	this.authorities = authorities;
+    public void setRoles(List<String> roles) {
+	this.roles = roles;
+    }
+
+    public static class Builder {
+
+	/** Request being built */
+	private UserCreateRequest request = new UserCreateRequest();
+
+	public Builder(String username, String password, String firstName, String lastName) {
+	    request.setUsername(username);
+	    request.setPassword(password);
+	    request.setFirstName(firstName);
+	    request.setLastName(lastName);
+	    request.setEnabled(true);
+	}
+
+	public Builder(IUser existing) {
+	    request.setUsername(existing.getUsername());
+	    request.setFirstName(existing.getFirstName());
+	    request.setLastName(existing.getLastName());
+	    request.setEnabled(existing.isEnabled());
+	    request.setRoles(existing.getRoles().stream().map(IRole::getRole).collect(Collectors.toList()));
+	    request.setMetadata(existing.getMetadata());
+	}
+
+	public Builder enabled() {
+	    request.setEnabled(true);
+	    return this;
+	}
+
+	public Builder disabled() {
+	    request.setEnabled(false);
+	    return this;
+	}
+
+	public Builder withRole(String role) {
+	    if (request.getRoles() == null) {
+		request.setRoles(new ArrayList<>());
+	    }
+	    request.getRoles().add(role);
+	    return this;
+	}
+
+	public Builder withRoles(List<String> roles) {
+	    if (request.getRoles() == null) {
+		request.setRoles(new ArrayList<>());
+	    }
+	    request.getRoles().addAll(roles);
+	    return this;
+	}
+
+	public Builder metadata(String name, String value) {
+	    if (request.getMetadata() == null) {
+		request.setMetadata(new HashMap<String, String>());
+	    }
+	    request.getMetadata().put(name, value);
+	    return this;
+	}
+
+	public UserCreateRequest build() {
+	    return request;
+	}
     }
 }

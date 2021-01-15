@@ -1,26 +1,32 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.device.marshaling;
 
-import java.util.Map;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.sitewhere.rest.model.area.Area;
+import com.sitewhere.rest.model.asset.Asset;
+import com.sitewhere.rest.model.customer.Customer;
+import com.sitewhere.rest.model.device.Device;
+import com.sitewhere.rest.model.device.DeviceAssignment;
+import com.sitewhere.rest.model.device.DeviceType;
 import com.sitewhere.rest.model.device.state.DeviceState;
-import com.sitewhere.spi.area.IArea;
-import com.sitewhere.spi.asset.IAsset;
-import com.sitewhere.spi.customer.ICustomer;
-import com.sitewhere.spi.device.IDevice;
-import com.sitewhere.spi.device.IDeviceAssignment;
-import com.sitewhere.spi.device.IDeviceType;
-import com.sitewhere.spi.device.event.IDeviceAlert;
-import com.sitewhere.spi.device.event.IDeviceLocation;
-import com.sitewhere.spi.device.event.IDeviceMeasurement;
+import com.sitewhere.rest.model.device.state.RecentStateEvent;
 
 /**
  * Extends {@link DeviceState} to support fields that can be included on REST
@@ -33,101 +39,79 @@ public class MarshaledDeviceState extends DeviceState {
     private static final long serialVersionUID = -699681075037936315L;
 
     /** Device */
-    private IDevice device;
+    private Device device;
 
     /** Device type */
-    private IDeviceType deviceType;
+    private DeviceType deviceType;
 
     /** Device assignment */
-    private IDeviceAssignment deviceAssignment;
+    private DeviceAssignment deviceAssignment;
 
     /** Assigned customer */
-    private ICustomer customer;
+    private Customer customer;
 
     /** Assigned area */
-    private IArea area;
+    private Area area;
 
     /** Associated asset */
-    private IAsset asset;
+    private Asset asset;
 
-    /** Last device location */
-    private IDeviceLocation lastLocationEvent;
+    /** Recent state events */
+    private List<RecentStateEvent> recentStatEvents;
 
-    /** Map of last measurement events by measurement id */
-    private Map<String, IDeviceMeasurement> lastMeasurementEvents;
-
-    /** Map of last alert events by alert type */
-    private Map<String, IDeviceAlert> lastAlertEvents;
-
-    public IDevice getDevice() {
+    public Device getDevice() {
 	return device;
     }
 
-    public void setDevice(IDevice device) {
+    public void setDevice(Device device) {
 	this.device = device;
     }
 
-    public IDeviceType getDeviceType() {
+    public DeviceType getDeviceType() {
 	return deviceType;
     }
 
-    public void setDeviceType(IDeviceType deviceType) {
+    public void setDeviceType(DeviceType deviceType) {
 	this.deviceType = deviceType;
     }
 
-    public IDeviceAssignment getDeviceAssignment() {
+    public DeviceAssignment getDeviceAssignment() {
 	return deviceAssignment;
     }
 
-    public void setDeviceAssignment(IDeviceAssignment deviceAssignment) {
+    public void setDeviceAssignment(DeviceAssignment deviceAssignment) {
 	this.deviceAssignment = deviceAssignment;
     }
 
-    public ICustomer getCustomer() {
+    public Customer getCustomer() {
 	return customer;
     }
 
-    public void setCustomer(ICustomer customer) {
+    public void setCustomer(Customer customer) {
 	this.customer = customer;
     }
 
-    public IArea getArea() {
+    public Area getArea() {
 	return area;
     }
 
-    public void setArea(IArea area) {
+    public void setArea(Area area) {
 	this.area = area;
     }
 
-    public IAsset getAsset() {
+    public Asset getAsset() {
 	return asset;
     }
 
-    public void setAsset(IAsset asset) {
+    public void setAsset(Asset asset) {
 	this.asset = asset;
     }
 
-    public IDeviceLocation getLastLocationEvent() {
-	return lastLocationEvent;
+    public List<RecentStateEvent> getRecentStatEvents() {
+	return recentStatEvents;
     }
 
-    public void setLastLocationEvent(IDeviceLocation lastLocationEvent) {
-	this.lastLocationEvent = lastLocationEvent;
-    }
-
-    public Map<String, IDeviceMeasurement> getLastMeasurementEvents() {
-	return lastMeasurementEvents;
-    }
-
-    public void setLastMeasurementEvents(Map<String, IDeviceMeasurement> lastMeasurementEvents) {
-	this.lastMeasurementEvents = lastMeasurementEvents;
-    }
-
-    public Map<String, IDeviceAlert> getLastAlertEvents() {
-	return lastAlertEvents;
-    }
-
-    public void setLastAlertEvents(Map<String, IDeviceAlert> lastAlertEvents) {
-	this.lastAlertEvents = lastAlertEvents;
+    public void setRecentStatEvents(List<RecentStateEvent> recentStatEvents) {
+	this.recentStatEvents = recentStatEvents;
     }
 }

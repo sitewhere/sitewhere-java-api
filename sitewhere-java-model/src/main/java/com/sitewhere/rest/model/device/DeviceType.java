@@ -1,19 +1,27 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.device;
+
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sitewhere.rest.model.common.BrandedEntity;
-import com.sitewhere.rest.model.device.element.DeviceElementSchema;
 import com.sitewhere.spi.device.DeviceContainerPolicy;
 import com.sitewhere.spi.device.IDeviceType;
-import com.sitewhere.spi.device.element.IDeviceElementSchema;
 
 /**
  * Model object for device specification information.
@@ -33,8 +41,8 @@ public class DeviceType extends BrandedEntity implements IDeviceType {
     /** Device container policy */
     private DeviceContainerPolicy containerPolicy = DeviceContainerPolicy.Standalone;
 
-    /** Schema that specifies allowable locations of nested devices */
-    private DeviceElementSchema deviceElementSchema;
+    /** Id of that specifies allowable locations of nested devices */
+    private UUID deviceElementSchemaId;
 
     /*
      * @see com.sitewhere.spi.device.IDeviceType#getName()
@@ -73,14 +81,14 @@ public class DeviceType extends BrandedEntity implements IDeviceType {
     }
 
     /*
-     * @see com.sitewhere.spi.device.IDeviceType#getDeviceElementSchema()
+     * @see com.sitewhere.spi.device.IDeviceType#getDeviceElementSchemaId()
      */
     @Override
-    public IDeviceElementSchema getDeviceElementSchema() {
-	return deviceElementSchema;
+    public UUID getDeviceElementSchemaId() {
+	return deviceElementSchemaId;
     }
 
-    public void setDeviceElementSchema(DeviceElementSchema deviceElementSchema) {
-	this.deviceElementSchema = deviceElementSchema;
+    public void setDeviceElementSchemaId(UUID deviceElementSchemaId) {
+	this.deviceElementSchemaId = deviceElementSchemaId;
     }
 }

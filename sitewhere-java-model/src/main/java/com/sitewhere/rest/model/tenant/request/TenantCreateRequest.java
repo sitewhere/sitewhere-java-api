@@ -1,19 +1,27 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.tenant.request;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.sitewhere.rest.model.common.request.BrandedEntityCreateRequest;
 import com.sitewhere.spi.tenant.ITenant;
 import com.sitewhere.spi.tenant.request.ITenantCreateRequest;
 
@@ -22,10 +30,13 @@ import com.sitewhere.spi.tenant.request.ITenantCreateRequest;
  * services.
  */
 @JsonInclude(Include.NON_NULL)
-public class TenantCreateRequest extends BrandedEntityCreateRequest implements ITenantCreateRequest {
+public class TenantCreateRequest implements ITenantCreateRequest {
 
     /** Serial version UID */
     private static final long serialVersionUID = -5706275554835627264L;
+
+    /** Unique id */
+    private String token;
 
     /** Tenant name */
     private String name;
@@ -36,11 +47,41 @@ public class TenantCreateRequest extends BrandedEntityCreateRequest implements I
     /** List of users authorized for access */
     private List<String> authorizedUserIds;
 
-    /** Tenant template id */
-    private String tenantTemplateId;
+    /** Configuration template id */
+    private String configurationTemplateId;
 
     /** Dataset template id */
     private String datasetTemplateId;
+
+    /** Background color */
+    private String backgroundColor;
+
+    /** Foreground color */
+    private String foregroundColor;
+
+    /** Border color */
+    private String borderColor;
+
+    /** Icon */
+    private String icon;
+
+    /** Image URL */
+    private String imageUrl;
+
+    /** Metadata */
+    private Map<String, String> metadata;
+
+    /*
+     * @see com.sitewhere.spi.tenant.request.ITenantCreateRequest#getToken()
+     */
+    @Override
+    public String getToken() {
+	return token;
+    }
+
+    public void setToken(String token) {
+	this.token = token;
+    }
 
     /*
      * @see com.sitewhere.spi.tenant.request.ITenantCreateRequest#getName()
@@ -82,16 +123,16 @@ public class TenantCreateRequest extends BrandedEntityCreateRequest implements I
     }
 
     /*
-     * @see
-     * com.sitewhere.spi.tenant.request.ITenantCreateRequest#getTenantTemplateId()
+     * @see com.sitewhere.spi.tenant.request.ITenantCreateRequest#
+     * getConfigurationTemplateId()
      */
     @Override
-    public String getTenantTemplateId() {
-	return tenantTemplateId;
+    public String getConfigurationTemplateId() {
+	return configurationTemplateId;
     }
 
-    public void setTenantTemplateId(String tenantTemplateId) {
-	this.tenantTemplateId = tenantTemplateId;
+    public void setConfigurationTemplateId(String configurationTemplateId) {
+	this.configurationTemplateId = configurationTemplateId;
     }
 
     /*
@@ -107,18 +148,95 @@ public class TenantCreateRequest extends BrandedEntityCreateRequest implements I
 	this.datasetTemplateId = datasetTemplateId;
     }
 
+    /*
+     * @see com.sitewhere.rest.model.common.request.BrandedEntityCreateRequest#
+     * getBackgroundColor()
+     */
+    @Override
+    public String getBackgroundColor() {
+	return backgroundColor;
+    }
+
+    public void setBackgroundColor(String backgroundColor) {
+	this.backgroundColor = backgroundColor;
+    }
+
+    /*
+     * @see com.sitewhere.rest.model.common.request.BrandedEntityCreateRequest#
+     * getForegroundColor()
+     */
+    @Override
+    public String getForegroundColor() {
+	return foregroundColor;
+    }
+
+    public void setForegroundColor(String foregroundColor) {
+	this.foregroundColor = foregroundColor;
+    }
+
+    /*
+     * @see com.sitewhere.rest.model.common.request.BrandedEntityCreateRequest#
+     * getBorderColor()
+     */
+    @Override
+    public String getBorderColor() {
+	return borderColor;
+    }
+
+    public void setBorderColor(String borderColor) {
+	this.borderColor = borderColor;
+    }
+
+    /*
+     * @see
+     * com.sitewhere.rest.model.common.request.BrandedEntityCreateRequest#getIcon()
+     */
+    @Override
+    public String getIcon() {
+	return icon;
+    }
+
+    public void setIcon(String icon) {
+	this.icon = icon;
+    }
+
+    /*
+     * @see com.sitewhere.rest.model.common.request.BrandedEntityCreateRequest#
+     * getImageUrl()
+     */
+    @Override
+    public String getImageUrl() {
+	return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+	this.imageUrl = imageUrl;
+    }
+
+    /*
+     * @see com.sitewhere.spi.common.IMetadataProvider#getMetadata()
+     */
+    @Override
+    public Map<String, String> getMetadata() {
+	return metadata;
+    }
+
+    public void setMetadata(Map<String, String> metadata) {
+	this.metadata = metadata;
+    }
+
     public static class Builder {
 
 	/** Request being built */
 	private TenantCreateRequest request = new TenantCreateRequest();
 
-	public Builder(String token, String name, String authenticationToken, String logoUrl, String tenantTemplateId,
-		String datasetTemplateId) {
+	public Builder(String token, String name, String authenticationToken, String logoUrl,
+		String configurationTemplateId, String datasetTemplateId) {
 	    request.setToken(token);
 	    request.setName(name);
 	    request.setAuthenticationToken(authenticationToken);
 	    request.setImageUrl(logoUrl);
-	    request.setTenantTemplateId(tenantTemplateId);
+	    request.setConfigurationTemplateId(configurationTemplateId);
 	    request.setDatasetTemplateId(datasetTemplateId);
 	}
 
@@ -128,9 +246,34 @@ public class TenantCreateRequest extends BrandedEntityCreateRequest implements I
 	    request.setImageUrl(existing.getImageUrl());
 	    request.setAuthenticationToken(existing.getAuthenticationToken());
 	    request.setAuthorizedUserIds(existing.getAuthorizedUserIds());
-	    request.setTenantTemplateId(existing.getTenantTemplateId());
+	    request.setConfigurationTemplateId(existing.getConfigurationTemplateId());
 	    request.setDatasetTemplateId(existing.getDatasetTemplateId());
 	    request.setMetadata(existing.getMetadata());
+	}
+
+	public Builder withBackgroundColor(String color) {
+	    request.setBackgroundColor(color);
+	    return this;
+	}
+
+	public Builder withForegroundColor(String color) {
+	    request.setForegroundColor(color);
+	    return this;
+	}
+
+	public Builder withBorderColor(String color) {
+	    request.setBorderColor(color);
+	    return this;
+	}
+
+	public Builder withIcon(String icon) {
+	    request.setIcon(icon);
+	    return this;
+	}
+
+	public Builder withImageUrl(String imageUrl) {
+	    request.setImageUrl(imageUrl);
+	    return this;
 	}
 
 	public Builder withAuthorizedUserId(String userId) {

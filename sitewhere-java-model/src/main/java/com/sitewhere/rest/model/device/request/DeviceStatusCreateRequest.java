@@ -1,9 +1,17 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.device.request;
 
@@ -17,16 +25,16 @@ public class DeviceStatusCreateRequest extends PersistentEntityCreateRequest imp
 
     /** Serial version UID */
     private static final long serialVersionUID = -1667891345754538713L;
-    
+
     /** Default Background Color */
     public static final String DEFAULT_BACKGROUD_COLOR = "#FFFFFF";
 
     /** Default Foreground Color */
     public static final String DEFAULT_FOREGROUND_COLOR = "#000000";
-    
+
     /** Default Border Color */
     public static final String DEFAULT_BORDER_COLOR = "#000000";
-	
+
     /** Default Icon */
     public static final String DEFAULT_ICON = "fa-question";
 
@@ -150,15 +158,15 @@ public class DeviceStatusCreateRequest extends PersistentEntityCreateRequest imp
     public void setIcon(String icon) {
 	this.icon = icon;
     }
-    
+
     public static Builder newBuilder() {
 	return new Builder();
     }
-    
+
     public static class Builder {
 
 	private DeviceStatusCreateRequest build;
-	
+
 	private Builder() {
 	    super();
 	    this.build = new DeviceStatusCreateRequest();
@@ -167,22 +175,22 @@ public class DeviceStatusCreateRequest extends PersistentEntityCreateRequest imp
 	    withBorderColor(DEFAULT_BORDER_COLOR);
 	    withIcon(DEFAULT_ICON);
 	}
-	
+
 	public Builder withToken(String token) {
 	    this.build.setToken(token);
 	    return this;
 	}
-	
+
 	public Builder withDeviceTypeToken(String deviceTypeToken) {
 	    this.build.setDeviceTypeToken(deviceTypeToken);
 	    return this;
 	}
-	
+
 	public Builder withCode(String code) {
 	    this.build.setCode(code);
 	    return this;
 	}
-	
+
 	public Builder withName(String name) {
 	    this.build.setName(name);
 	    return this;
@@ -207,7 +215,7 @@ public class DeviceStatusCreateRequest extends PersistentEntityCreateRequest imp
 	    this.build.setIcon(icon);
 	    return this;
 	}
-		
+
 	public DeviceStatusCreateRequest build() {
 	    return this.build;
 	}

@@ -1,9 +1,17 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.spi.user;
 
@@ -12,51 +20,56 @@ package com.sitewhere.spi.user;
  */
 public enum SiteWhereAuthority {
 
-    /** Group for server administration */
-    Server(SiteWhereRoles.GRP_SERVER, "Server administration", null, true),
+    /** Authority for server administrator */
+    ServerAdministrator(SiteWhereAuthorities.ServerAdministrator, "Server administration", null, true),
 
     /** View global server information */
-    ViewServerInfo(SiteWhereRoles.AUTH_VIEW_SERVER_INFO, "View global server information", SiteWhereRoles.GRP_SERVER,
-	    false),
+    ViewServerInformation(SiteWhereAuthorities.ViewServerInformation, "View global server information",
+	    SiteWhereAuthorities.ServerAdministrator, false),
 
-    /** Group for system access setting */
-    Access(SiteWhereRoles.GRP_ACCESS, "Remote access", null, true),
-
-    /** REST services access */
-    REST(SiteWhereRoles.AUTH_REST, "REST services access", SiteWhereRoles.GRP_ACCESS, false),
+    /** Authority for all remote access */
+    RemoteAccessor(SiteWhereAuthorities.RemoteAccessor, "Remote accessor", null, true),
 
     /** REST services access */
-    AdminConsole(SiteWhereRoles.AUTH_ADMIN_CONSOLE, "Administrative console login", SiteWhereRoles.GRP_ACCESS, false),
+    RestServicesAccess(SiteWhereAuthorities.RestServicesAccess, "REST services access",
+	    SiteWhereAuthorities.RemoteAccessor, false),
+
+    /** Admin UI console access */
+    AdminConsoleAccess(SiteWhereAuthorities.AdminConsoleAccess, "Administrative console login",
+	    SiteWhereAuthorities.RemoteAccessor, false),
 
     /** Group for all user authorities */
-    Users(SiteWhereRoles.GRP_USERS, "Users", null, true),
+    UserAdministrator(SiteWhereAuthorities.UserAdministrator, "User administrator", null, true),
 
     /** Administer all users */
-    AdminUsers(SiteWhereRoles.AUTH_ADMINISTER_USERS, "Administer all users", SiteWhereRoles.GRP_USERS, false),
+    AdminAllUsers(SiteWhereAuthorities.AdminAllUsers, "Administer all users", SiteWhereAuthorities.UserAdministrator,
+	    false),
 
     /** Administer own user profile */
-    AdminSelf(SiteWhereRoles.AUTH_ADMINISTER_USER_SELF, "Administer own user profile", SiteWhereRoles.GRP_USERS, false),
+    AdminUserSelf(SiteWhereAuthorities.AdminUserSelf, "Administer own user profile",
+	    SiteWhereAuthorities.UserAdministrator, false),
 
-    /** Group for all tenant authorities */
-    Tenants(SiteWhereRoles.GRP_TENANTS, "Tenants", null, true),
+    /** Administrator with all tenant authorities */
+    TenantAdministrator(SiteWhereAuthorities.TenantAdministrator, "Tenant administrator", null, true),
 
     /** Administer all users */
-    AdminTenants(SiteWhereRoles.AUTH_ADMINISTER_TENANTS, "Administer all tenants", SiteWhereRoles.GRP_TENANTS, false),
+    AdminAllTenants(SiteWhereAuthorities.AdminAllTenants, "Administer all tenants",
+	    SiteWhereAuthorities.TenantAdministrator, false),
 
     /** Administer own tenant */
-    AdminOwnTenant(SiteWhereRoles.AUTH_ADMINISTER_TENANT_SELF, "Administer own tenant", SiteWhereRoles.GRP_TENANTS,
-	    false),
+    AdminOwnedTenants(SiteWhereAuthorities.AdminOwnedTenants, "Administer owned tenants",
+	    SiteWhereAuthorities.TenantAdministrator, false),
 
-    /** Group for all schedules */
-    Schedules(SiteWhereRoles.GRP_SCHEDULES, "Schedules", null, true),
+    /** Administrator with all schedule authorities */
+    ScheduleAdministrator(SiteWhereAuthorities.ScheduleAdministrator, "Schedule administrator", null, true),
 
     /** Administer all schedules */
-    AdminSchedules(SiteWhereRoles.AUTH_ADMINISTER_SCHEDULES, "Administer schedules", SiteWhereRoles.GRP_SCHEDULES,
-	    false),
+    AdminAllSchedules(SiteWhereAuthorities.AdminAllSchedules, "Administer schedules",
+	    SiteWhereAuthorities.ScheduleAdministrator, false),
 
     /** Add scheduled job for batch or indivisual command invocation */
-    ScheduleCommands(SiteWhereRoles.AUTH_SCHEDULE_COMMANDS, "Schedule batch or individial commands",
-	    SiteWhereRoles.GRP_SCHEDULES, false);
+    ScheduleCommands(SiteWhereAuthorities.ScheduleCommands, "Schedule batch or individial commands",
+	    SiteWhereAuthorities.ScheduleAdministrator, false);
 
     /** Authority name */
     private String name;

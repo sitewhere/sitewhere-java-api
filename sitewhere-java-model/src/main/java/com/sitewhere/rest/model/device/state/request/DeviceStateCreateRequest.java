@@ -1,15 +1,21 @@
-/*
- * Copyright (c) SiteWhere, LLC. All rights reserved. http://www.sitewhere.com
+/**
+ * Copyright © 2014-2020 The SiteWhere Authors
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.txt file.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.sitewhere.rest.model.device.state.request;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import com.sitewhere.spi.device.state.request.IDeviceStateCreateRequest;
@@ -45,15 +51,6 @@ public class DeviceStateCreateRequest implements IDeviceStateCreateRequest {
 
     /** Date presence was determined to be missing */
     private Date presenceMissingDate;
-
-    /** Event id of last location event */
-    private UUID lastLocationEventId;
-
-    /** Map of last measurement event ids by mx id */
-    private Map<String, UUID> lastMeasurementEventIds = new HashMap<>();
-
-    /** Map of last alert event ids by alert type */
-    private Map<String, UUID> lastAlertEventIds = new HashMap<>();
 
     /*
      * @see
@@ -158,44 +155,5 @@ public class DeviceStateCreateRequest implements IDeviceStateCreateRequest {
 
     public void setPresenceMissingDate(Date presenceMissingDate) {
 	this.presenceMissingDate = presenceMissingDate;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.request.IDeviceStateCreateRequest#
-     * getLastLocationEventId()
-     */
-    @Override
-    public UUID getLastLocationEventId() {
-	return lastLocationEventId;
-    }
-
-    public void setLastLocationEventId(UUID lastLocationEventId) {
-	this.lastLocationEventId = lastLocationEventId;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.request.IDeviceStateCreateRequest#
-     * getLastMeasurementEventIds()
-     */
-    @Override
-    public Map<String, UUID> getLastMeasurementEventIds() {
-	return lastMeasurementEventIds;
-    }
-
-    public void setLastMeasurementEventIds(Map<String, UUID> lastMeasurementEventIds) {
-	this.lastMeasurementEventIds = lastMeasurementEventIds;
-    }
-
-    /*
-     * @see com.sitewhere.spi.device.state.request.IDeviceStateCreateRequest#
-     * getLastAlertEventIds()
-     */
-    @Override
-    public Map<String, UUID> getLastAlertEventIds() {
-	return lastAlertEventIds;
-    }
-
-    public void setLastAlertEventIds(Map<String, UUID> lastAlertEventIds) {
-	this.lastAlertEventIds = lastAlertEventIds;
     }
 }
