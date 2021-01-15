@@ -15,6 +15,7 @@
  */
 package com.sitewhere.rest.client.device;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
@@ -48,7 +49,7 @@ public class DeviceRestTests extends AbstractWithLabelCRUDRestTest<Device, Devic
 
     @Override
     protected String knownEntityToken() {
-	return "60737-MT90-4178968";
+	return "46553-IPHONE6S-1898078";
     }
 
     // ------------------------------------------------------------------------
@@ -185,5 +186,28 @@ public class DeviceRestTests extends AbstractWithLabelCRUDRestTest<Device, Devic
 	SearchResults<Device> result = getClient().listDevicesByDeviceGroupWithRole(getTenatAuthentication(), role,
 		searchCriteria, responseFormat);
 	assertNotNull(result);
+    }
+
+    @Test
+    public void testFindDeviceByToken() throws SiteWhereException {
+	MarshaledDevice device = getClient().getDeviceByToken(getTenatAuthentication(), knownEntityToken());
+	assertNotNull(device);
+    }
+
+    @Test
+    public void testUpdateDeviceWithAssigment() throws SiteWhereException {
+	String token = knownEntityToken();
+
+	String deviceType = "iphone6s";
+
+	DeviceCreateRequest.Builder builder = new DeviceCreateRequest.Builder(deviceType, token);
+	String comments = "Some comments";
+	builder.withComment(comments);
+	DeviceCreateRequest request = builder.build();
+
+	MarshaledDevice device = getClient().updateDevice(getTenatAuthentication(), knownEntityToken(), request);
+	assertNotNull(device);
+
+	assertEquals(device.getComments(), comments);
     }
 }
