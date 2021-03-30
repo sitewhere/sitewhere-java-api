@@ -1,20 +1,14 @@
-buildscript {
-	repositories {
-		maven { url "https://plugins.gradle.org/m2/" }
- 	}
-	dependencies {
-		classpath "gradle.plugin.nl.javadude.gradle.plugins:license-gradle-plugin:0.14.0"
-	}
+plugins {
+    id 'org.springframework.boot' version '2.4.4' apply false
+    id 'com.github.hierynomus.license' version '0.15.0'
 }
-
-apply plugin: 'distribution'
 
 allprojects {
 	group = 'com.sitewhere'
-	version = '3.0.0'
+	version = '3.1.0'
 
 	repositories {
-		maven { url "https://repo.maven.apache.org/maven2" }
+		mavenCentral()
 	}
 }
 
@@ -40,9 +34,10 @@ subprojects {
 
 	// Common dependencies used for all projects.
 	dependencies {
-		compile platform('io.quarkus:quarkus-bom:1.7.2.Final')
-
-		testCompile group: 'junit', name: 'junit'
+        // Sping dependency managment.
+        implementation platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+        
+		testImplementation group: 'junit', name: 'junit'
 	}
 	test {
 		exclude '**/*'
