@@ -15,52 +15,50 @@
  */
 package com.sitewhere.rest.model.user.request;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.sitewhere.spi.user.IGrantedAuthority;
+import com.sitewhere.spi.user.IRole;
 import com.sitewhere.spi.user.request.IRoleCreateRequest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Default implementation of {@link IRoleCreateRequest} for use in REST
- * services.
+ * Holds fields needed to create a new granted authority.
  */
+@JsonInclude(Include.NON_NULL)
 public class RoleCreateRequest implements IRoleCreateRequest {
 
     /** Serial version UID */
-    private static final long serialVersionUID = -2388892324819108444L;
+    private static final long serialVersionUID = 2752477482696017875L;
 
-    /** Role name */
+    /** Rol name */
     private String role;
 
-    /** Description of the authority */
+    /** Role description */
     private String description;
 
-    /** List of granted authorities */
-    private List<String> authorities = new ArrayList<>();
+    /** Role authorities */
+    private List<String> authorities;
 
-    /*
-     * @see com.sitewhere.spi.user.request.IRoleCreateRequest#getRole()
-     */
     @Override
     public String getRole() {
-	return this.role;
+	return role;
     }
 
-    public void setRole(String role) {
-	this.role = role;
-    }
-
-    /*
-     * @see com.sitewhere.spi.user.request.IRoleCreateRequest#getDescription()
-     */
     @Override
     public String getDescription() {
-	return this.description;
+	return description;
     }
 
     @Override
     public List<String> getAuthorities() {
-	return this.authorities;
+	return authorities;
+    }
+
+    public void setRole(String role) {
+	this.role = role;
     }
 
     public void setDescription(String description) {
@@ -69,5 +67,40 @@ public class RoleCreateRequest implements IRoleCreateRequest {
 
     public void setAuthorities(List<String> authorities) {
 	this.authorities = authorities;
+    }
+
+    public static class Builder {
+	/** Request being built */
+	private RoleCreateRequest request = new RoleCreateRequest();
+
+	public Builder(String role) {
+	    request.setRole(role);
+	}
+
+	public Builder(IRole existing) {
+	    request.setRole(existing.getRole());
+	    request.setDescription(existing.getDescription());
+	    request.setAuthorities(existing.getAuthorities().stream().map(IGrantedAuthority::getAuthority)
+		    .collect(Collectors.toList()));
+	}
+
+	public Builder withDescription(String description) {
+	    request.setDescription(description);
+	    return this;
+	}
+
+	public Builder withAuthority(String description) {
+	    request.setDescription(description);
+	    return this;
+	}
+
+	public Builder withAuthorities(List<String> authorities) {
+	    request.setAuthorities(authorities);
+	    return this;
+	}
+
+	public RoleCreateRequest build() {
+	    return request;
+	}
     }
 }

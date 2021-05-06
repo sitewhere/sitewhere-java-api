@@ -15,34 +15,38 @@
  */
 package com.sitewhere.rest.model.user.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.sitewhere.spi.user.IGrantedAuthority;
 import com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest;
 
 /**
- * Default implementation of {@link IGrantedAuthorityCreateRequest} for use in
- * REST services.
+ * Holds fields needed to create a new granted authority.
  */
+@JsonInclude(Include.NON_NULL)
 public class GrantedAuthorityCreateRequest implements IGrantedAuthorityCreateRequest {
 
     /** Serial version UID */
-    private static final long serialVersionUID = -2388892324819108444L;
+    private static final long serialVersionUID = 2752477482696017875L;
 
     /** Authority name */
     private String authority;
 
-    /** Description of the authority */
+    /** Authority description */
     private String description;
 
     /** Parent authority */
     private String parent;
 
-    /** Indicates if it's a group of authorities */
+    /** Indicates whether authority is a group */
     private boolean group;
 
     /*
-     * @see
-     * com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#getAuthority()
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#
+     * getAuthority()
      */
-    @Override
     public String getAuthority() {
 	return authority;
     }
@@ -52,11 +56,11 @@ public class GrantedAuthorityCreateRequest implements IGrantedAuthorityCreateReq
     }
 
     /*
-     * @see
-     * com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#getDescription(
-     * )
+     * (non-Javadoc)
+     * 
+     * @see com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#
+     * getDescription()
      */
-    @Override
     public String getDescription() {
 	return description;
     }
@@ -66,10 +70,11 @@ public class GrantedAuthorityCreateRequest implements IGrantedAuthorityCreateReq
     }
 
     /*
+     * (non-Javadoc)
+     * 
      * @see
      * com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#getParent()
      */
-    @Override
     public String getParent() {
 	return parent;
     }
@@ -79,14 +84,51 @@ public class GrantedAuthorityCreateRequest implements IGrantedAuthorityCreateReq
     }
 
     /*
+     * (non-Javadoc)
+     * 
      * @see com.sitewhere.spi.user.request.IGrantedAuthorityCreateRequest#isGroup()
      */
-    @Override
     public boolean isGroup() {
 	return group;
     }
 
     public void setGroup(boolean group) {
 	this.group = group;
+    }
+
+    public static class Builder {
+
+	/** Request being built */
+	private GrantedAuthorityCreateRequest request = new GrantedAuthorityCreateRequest();
+
+	public Builder(String authority) {
+	    request.setAuthority(authority);
+	}
+
+	public Builder(IGrantedAuthority existing) {
+	    request.setAuthority(existing.getAuthority());
+	    request.setParent(existing.getParent());
+	    request.setGroup(existing.isGroup());
+	    request.setDescription(existing.getDescription());
+	}
+
+	public Builder withDescription(String description) {
+	    request.setDescription(description);
+	    return this;
+	}
+
+	public Builder withParent(String parent) {
+	    request.setParent(parent);
+	    return this;
+	}
+
+	public Builder makeGroup(boolean group) {
+	    request.setGroup(group);
+	    return this;
+	}
+
+	public GrantedAuthorityCreateRequest build() {
+	    return request;
+	}
     }
 }
